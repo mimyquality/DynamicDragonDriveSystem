@@ -1,0 +1,3658 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Neck_run
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: {x: 0.018828757, y: -0.000000314943, z: -0.0000002696732, w: 0.99982274}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9666667
+        value: {x: 0.018828757, y: -0.000000314943, z: -0.0000002696732, w: 0.99982274}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.044278514, y: 0.0000003054588, z: 0.00000043237952, w: 0.99901927}
+        inSlope: {x: -0.014571994, y: -0.0000000063079137, z: 0.00000000445425, w: 0.0006437301}
+        outSlope: {x: -0.014571994, y: -0.0000000063079137, z: 0.00000000445425, w: 0.0006437301}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6
+        value: {x: -0.022660457, y: 0.00000027584582, z: 0.00000045184748, w: 0.9997432}
+        inSlope: {x: 0.14316393, y: 0.00000006469753, z: -0.000000039511043, w: 0.0032222301}
+        outSlope: {x: 0.14316393, y: 0.00000006469753, z: -0.000000039511043, w: 0.0032222301}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: 0.044278514, y: 0.0000003054588, z: 0.00000043237952, w: 0.99901927}
+        inSlope: {x: 0.014571167, y: 0.0000000063079426, z: -0.0000000044542703, w: -0.0006437331}
+        outSlope: {x: 0.014571167, y: 0.0000000063079426, z: -0.0000000044542703,
+          w: -0.0006437331}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.073137216, y: 0.00000030089618, z: -0.00000009038361, w: 0.9973219}
+        inSlope: {x: -0.020454524, y: 0.0000000018519585, z: 0.000000006171063, w: 0.0014948844}
+        outSlope: {x: -0.020454524, y: 0.0000000018519585, z: 0.000000006171063, w: 0.0014948844}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.45000002
+        value: {x: -0.029112907, y: 0.0000003145121, z: -0.00000026373334, w: 0.99957615}
+        inSlope: {x: -0.11321092, y: 0.000000069213975, z: -0.0000013281033, w: -0.003266931}
+        outSlope: {x: -0.11321092, y: 0.000000069213975, z: -0.0000013281033, w: -0.003266931}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9333334
+        value: {x: 0.06805241, y: 0.00000024255243, z: -0.0000009508941, w: 0.9976818}
+        inSlope: {x: 0.14472201, y: -0.00000023041602, z: -0.0000013963637, w: -0.009832969}
+        outSlope: {x: 0.14472201, y: -0.00000023041602, z: -0.0000013963637, w: -0.009832969}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: 0.073137216, y: 0.00000023603907, z: -0.0000009747952, w: 0.9973219}
+        inSlope: {x: 0.020453278, y: -0.0000000199905, z: -0.000000004843081, w: -0.0014948912}
+        outSlope: {x: 0.020453278, y: -0.0000000199905, z: -0.000000004843081, w: -0.0014948912}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.056714572, y: 0.00000029432766, z: -0.00000012385232, w: 0.99839044}
+        inSlope: {x: -0.007950962, y: 9.856649e-10, z: 0.0000000023439382, w: 0.00045061109}
+        outSlope: {x: -0.007950962, y: 9.856649e-10, z: 0.0000000023439382, w: 0.00045061109}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6333334
+        value: {x: 0.023104351, y: 0.00000029832663, z: -0.00000011388336, w: 0.9997331}
+        inSlope: {x: 0.09564365, y: -0.0000000108968745, z: -0.000000028540136, w: -0.0022155032}
+        outSlope: {x: 0.09564365, y: -0.0000000108968745, z: -0.000000028540136, w: -0.0022155032}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: 0.056714572, y: 0.00000029432766, z: -0.00000012385232, w: 0.99839044}
+        inSlope: {x: 0.0079521155, y: -9.856693e-10, z: -0.000000002343949, w: -0.00045061315}
+        outSlope: {x: 0.0079521155, y: -9.856693e-10, z: -0.000000002343949, w: -0.00045061315}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: {x: 0.034599856, y: 0.000000033685417, z: -0.0000002031566, w: 0.9994013}
+        inSlope: {x: -0.010640546, y: 0.000000002163176, z: 3.581135e-10, w: 0.00036835668}
+        outSlope: {x: -0.010640546, y: 0.000000002163176, z: 3.581135e-10, w: 0.00036835668}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.7166667
+        value: {x: 0.023443034, y: 0.000000035950826, z: -0.00000020276799, w: 0.9997252}
+        inSlope: {x: 0.05509229, y: -0.000000011174006, z: -0.000000001981137, w: -0.0012928259}
+        outSlope: {x: 0.05509229, y: -0.000000011174006, z: -0.000000001981137, w: -0.0012928259}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9833334
+        value: {x: 0.03459985, y: 0.00000003368542, z: -0.0000002031566, w: 0.9994013}
+        inSlope: {x: 0.010639848, y: -0.0000000021629574, z: -3.581126e-10, w: -0.00036835574}
+        outSlope: {x: 0.010639848, y: -0.0000000021629574, z: -3.581126e-10, w: -0.00036835574}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: {x: 0.02192655, y: -0.00000000976632, z: -0.0000000974333, w: 0.9997596}
+        inSlope: {x: -0.0034160165, y: 3.32907e-10, z: -3.32534e-11, w: 0.000075101845}
+        outSlope: {x: -0.0034160165, y: 3.32907e-10, z: -3.32534e-11, w: 0.000075101845}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8333334
+        value: {x: 0.020389013, y: -0.000000009616468, z: -0.00000009744821, w: 0.99979216}
+        inSlope: {x: 0.015989445, y: -0.0000000015584616, z: 1.539037e-10, w: -0.00032544168}
+        outSlope: {x: 0.015989445, y: -0.0000000015584616, z: 1.539037e-10, w: -0.00032544168}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9833334
+        value: {x: 0.021926552, y: -0.00000000976632, z: -0.0000000974333, w: 0.9997596}
+        inSlope: {x: 0.0034162314, y: -3.3290617e-10, z: 3.3253313e-11, w: -0.000075101656}
+        outSlope: {x: 0.0034162314, y: -3.3290617e-10, z: 3.3253313e-11, w: -0.000075101656}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.040662818, y: -0.000000009348846, z: -0.00000021548146, w: 0.9991729}
+        inSlope: {x: 0.010961964, y: -0.0000000023641353, z: 1.0231815e-10, w: 0.0004470348}
+        outSlope: {x: 0.010961964, y: -0.0000000023641353, z: 1.0231815e-10, w: 0.0004470348}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6166667
+        value: {x: 0.0077557396, y: -0.000000019769542, z: -0.00000021477624, w: 0.99996996}
+        inSlope: {x: -0.120404124, y: 0.000000025860889, z: -0.0000000023780422, w: 0.00092267926}
+        outSlope: {x: -0.120404124, y: 0.000000025860889, z: -0.0000000023780422,
+          w: 0.00092267926}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.040662818, y: -0.000000009348846, z: -0.00000021548146, w: 0.9991729}
+        inSlope: {x: -0.010962014, y: 0.0000000023641462, z: -1.0231862e-10, w: -0.00044703687}
+        outSlope: {x: -0.010962014, y: 0.0000000023641462, z: -1.0231862e-10, w: -0.00044703687}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.053142052, y: -0.00000090984554, z: -0.00000029957843, w: 0.998587}
+        inSlope: {x: 0.013382434, y: -0.0000000040108716, z: 0.000000012196323, w: 0.0007081031}
+        outSlope: {x: 0.013382434, y: -0.0000000040108716, z: 0.000000012196323, w: 0.0007081031}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6
+        value: {x: 0.008360371, y: -0.00000092654454, z: -0.00000024306627, w: 0.9999651}
+        inSlope: {x: -0.13164757, y: 0.000000032017084, z: -0.000000121977, w: 0.0010818252}
+        outSlope: {x: -0.13164757, y: 0.000000032017084, z: -0.000000121977, w: 0.0010818252}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.053142052, y: -0.00000090984554, z: -0.00000029957843, w: 0.998587}
+        inSlope: {x: -0.013383613, y: 0.00000000401089, z: -0.000000012196379, w: -0.0007081064}
+        outSlope: {x: -0.013383613, y: 0.00000000401089, z: -0.000000012196379, w: -0.0007081064}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.058741365, y: 0.0000010042079, z: -0.00000039632897, w: 0.99827325}
+        inSlope: {x: 0.017628819, y: -0.0000000070053825, z: -0.00000001773344, w: 0.0010335445}
+        outSlope: {x: 0.017628819, y: -0.0000000070053825, z: -0.00000001773344, w: 0.0010335445}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5
+        value: {x: 0.03197089, y: 0.0000009641575, z: -0.00000048570644, w: 0.99948883}
+        inSlope: {x: 0.0000004786998, y: -1.5099033e-14, z: -3.0198066e-14, w: -9.895302e-10}
+        outSlope: {x: 0.0000004786998, y: -1.5099033e-14, z: -3.0198066e-14, w: -9.895302e-10}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.058741365, y: 0.0000010042079, z: -0.00000039632897, w: 0.99827325}
+        inSlope: {x: -0.017630463, y: 0.0000000070054145, z: 0.000000017735227, w: -0.0010335492}
+        outSlope: {x: -0.017630463, y: 0.0000000070054145, z: 0.000000017735227, w: -0.0010335492}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.03284894, y: 0.000000021139872, z: -0.0000001788084, w: 0.99946034}
+        inSlope: {x: 0.008618161, y: -0.0000000015419132, z: -1.8161471e-10, w: 0.000282526}
+        outSlope: {x: 0.008618161, y: -0.0000000015419132, z: -1.8161471e-10, w: 0.000282526}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6333334
+        value: {x: 0.0036037152, y: 0.000000014608168, z: -0.00000017946013, w: 0.9999935}
+        inSlope: {x: -0.10378438, y: 0.000000018625114, z: 0.0000000015177182, w: 0.00036656813}
+        outSlope: {x: -0.10378438, y: 0.000000018625114, z: 0.0000000015177182, w: 0.00036656813}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.03284894, y: 0.000000021139872, z: -0.0000001788084, w: 0.99946034}
+        inSlope: {x: -0.008617977, y: 0.0000000015418137, z: 1.8161554e-10, w: -0.0002825273}
+        outSlope: {x: -0.008617977, y: 0.0000000015418137, z: 1.8161554e-10, w: -0.0002825273}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: {x: -0.034640566, y: 0.0000000028740617, z: 0.00000029183354, w: 0.99939984}
+        inSlope: {x: 0.005927458, y: 0.0000000017309753, z: -1.5347723e-11, w: 0.00020742415}
+        outSlope: {x: 0.005927458, y: 0.0000000017309753, z: -1.5347723e-11, w: 0.00020742415}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.8000001
+        value: {x: -0.031005574, y: 0.0000000039354258, z: 0.00000029182118, w: 0.9995192}
+        inSlope: {x: -0.029981036, y: -0.000000008753258, z: 1.1937107e-10, w: -0.0009280435}
+        outSlope: {x: -0.029981036, y: -0.000000008753258, z: 1.1937107e-10, w: -0.0009280435}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9833334
+        value: {x: -0.034640566, y: 0.0000000028740617, z: 0.00000029183354, w: 0.99939984}
+        inSlope: {x: -0.005928337, y: -0.0000000017312239, z: 1.5347683e-11, w: -0.00020742363}
+        outSlope: {x: -0.005928337, y: -0.0000000017312239, z: 1.5347683e-11, w: -0.00020742363}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: {x: -0.040014733, y: -0.00000044587247, z: 0.00000058090336, w: 0.9991991}
+        inSlope: {x: -0.009064524, y: -0.0000000052693845, z: -0.0000000040449777,
+          w: -0.0003647804}
+        outSlope: {x: -0.009064524, y: -0.0000000052693845, z: -0.0000000040449777,
+          w: -0.0003647804}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.73333335
+        value: {x: -0.0487343, y: -0.0000004247255, z: 0.000000040015802, w: 0.9988118}
+        inSlope: {x: 0.047613528, y: 0.000000073357796, z: -0.0000014442271, w: 0.0023227911}
+        outSlope: {x: 0.047613528, y: 0.000000073357796, z: -0.0000014442271, w: 0.0023227911}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9833334
+        value: {x: -0.04001473, y: -0.00000041067034, z: -0.00000029812176, w: 0.9991991}
+        inSlope: {x: 0.009065172, y: -0.0000000027046028, z: 0.0000000037260763, w: 0.00036477947}
+        outSlope: {x: 0.009065172, y: -0.0000000027046028, z: 0.0000000037260763,
+          w: 0.00036477947}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 3438901829
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1812176391
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1967382744
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2165181438
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2726358996
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 4136784753
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3733739735
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 729333926
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2296181124
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3816685368
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2816663193
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2850347811
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 0.018828757
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: 0.018828757
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: -0.000000314943
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: -0.000000314943
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: -0.0000002696732
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: -0.0000002696732
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 0.99982274
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: 0.99982274
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.044278514
+        inSlope: -0.014571994
+        outSlope: -0.014571994
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.022660457
+        inSlope: 0.14316393
+        outSlope: 0.14316393
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.044278514
+        inSlope: 0.014571167
+        outSlope: 0.014571167
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.0000003054588
+        inSlope: -0.0000000063079137
+        outSlope: -0.0000000063079137
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.00000027584582
+        inSlope: 0.00000006469753
+        outSlope: 0.00000006469753
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.0000003054588
+        inSlope: 0.0000000063079426
+        outSlope: 0.0000000063079426
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.00000043237952
+        inSlope: 0.00000000445425
+        outSlope: 0.00000000445425
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.00000045184748
+        inSlope: -0.000000039511043
+        outSlope: -0.000000039511043
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.00000043237952
+        inSlope: -0.0000000044542703
+        outSlope: -0.0000000044542703
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99901927
+        inSlope: 0.0006437301
+        outSlope: 0.0006437301
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.9997432
+        inSlope: 0.0032222301
+        outSlope: 0.0032222301
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99901927
+        inSlope: -0.0006437331
+        outSlope: -0.0006437331
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.073137216
+        inSlope: -0.020454524
+        outSlope: -0.020454524
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: -0.029112907
+        inSlope: -0.11321092
+        outSlope: -0.11321092
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: 0.06805241
+        inSlope: 0.14472201
+        outSlope: 0.14472201
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.073137216
+        inSlope: 0.020453278
+        outSlope: 0.020453278
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.00000030089618
+        inSlope: 0.0000000018519585
+        outSlope: 0.0000000018519585
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: 0.0000003145121
+        inSlope: 0.000000069213975
+        outSlope: 0.000000069213975
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: 0.00000024255243
+        inSlope: -0.00000023041602
+        outSlope: -0.00000023041602
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.00000023603907
+        inSlope: -0.0000000199905
+        outSlope: -0.0000000199905
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000009038361
+        inSlope: 0.000000006171063
+        outSlope: 0.000000006171063
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: -0.00000026373334
+        inSlope: -0.0000013281033
+        outSlope: -0.0000013281033
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: -0.0000009508941
+        inSlope: -0.0000013963637
+        outSlope: -0.0000013963637
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000009747952
+        inSlope: -0.000000004843081
+        outSlope: -0.000000004843081
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.9973219
+        inSlope: 0.0014948844
+        outSlope: 0.0014948844
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: 0.99957615
+        inSlope: -0.003266931
+        outSlope: -0.003266931
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: 0.9976818
+        inSlope: -0.009832969
+        outSlope: -0.009832969
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.9973219
+        inSlope: -0.0014948912
+        outSlope: -0.0014948912
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.056714572
+        inSlope: -0.007950962
+        outSlope: -0.007950962
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.023104351
+        inSlope: 0.09564365
+        outSlope: 0.09564365
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.056714572
+        inSlope: 0.0079521155
+        outSlope: 0.0079521155
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.00000029432766
+        inSlope: 9.856649e-10
+        outSlope: 9.856649e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.00000029832663
+        inSlope: -0.0000000108968745
+        outSlope: -0.0000000108968745
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.00000029432766
+        inSlope: -9.856693e-10
+        outSlope: -9.856693e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000012385232
+        inSlope: 0.0000000023439382
+        outSlope: 0.0000000023439382
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: -0.00000011388336
+        inSlope: -0.000000028540136
+        outSlope: -0.000000028540136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000012385232
+        inSlope: -0.000000002343949
+        outSlope: -0.000000002343949
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99839044
+        inSlope: 0.00045061109
+        outSlope: 0.00045061109
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.9997331
+        inSlope: -0.0022155032
+        outSlope: -0.0022155032
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99839044
+        inSlope: -0.00045061315
+        outSlope: -0.00045061315
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.034599856
+        inSlope: -0.010640546
+        outSlope: -0.010640546
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 0.023443034
+        inSlope: 0.05509229
+        outSlope: 0.05509229
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.03459985
+        inSlope: 0.010639848
+        outSlope: 0.010639848
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.000000033685417
+        inSlope: 0.000000002163176
+        outSlope: 0.000000002163176
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 0.000000035950826
+        inSlope: -0.000000011174006
+        outSlope: -0.000000011174006
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.00000003368542
+        inSlope: -0.0000000021629574
+        outSlope: -0.0000000021629574
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.0000002031566
+        inSlope: 3.581135e-10
+        outSlope: 3.581135e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: -0.00000020276799
+        inSlope: -0.000000001981137
+        outSlope: -0.000000001981137
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.0000002031566
+        inSlope: -3.581126e-10
+        outSlope: -3.581126e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.9994013
+        inSlope: 0.00036835668
+        outSlope: 0.00036835668
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 0.9997252
+        inSlope: -0.0012928259
+        outSlope: -0.0012928259
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.9994013
+        inSlope: -0.00036835574
+        outSlope: -0.00036835574
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.02192655
+        inSlope: -0.0034160165
+        outSlope: -0.0034160165
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: 0.020389013
+        inSlope: 0.015989445
+        outSlope: 0.015989445
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.021926552
+        inSlope: 0.0034162314
+        outSlope: 0.0034162314
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.00000000976632
+        inSlope: 3.32907e-10
+        outSlope: 3.32907e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: -0.000000009616468
+        inSlope: -0.0000000015584616
+        outSlope: -0.0000000015584616
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00000000976632
+        inSlope: -3.3290617e-10
+        outSlope: -3.3290617e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.0000000974333
+        inSlope: -3.32534e-11
+        outSlope: -3.32534e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: -0.00000009744821
+        inSlope: 1.539037e-10
+        outSlope: 1.539037e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.0000000974333
+        inSlope: 3.3253313e-11
+        outSlope: 3.3253313e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.9997596
+        inSlope: 0.000075101845
+        outSlope: 0.000075101845
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: 0.99979216
+        inSlope: -0.00032544168
+        outSlope: -0.00032544168
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.9997596
+        inSlope: -0.000075101656
+        outSlope: -0.000075101656
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.040662818
+        inSlope: 0.010961964
+        outSlope: 0.010961964
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.0077557396
+        inSlope: -0.120404124
+        outSlope: -0.120404124
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.040662818
+        inSlope: -0.010962014
+        outSlope: -0.010962014
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000009348846
+        inSlope: -0.0000000023641353
+        outSlope: -0.0000000023641353
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.000000019769542
+        inSlope: 0.000000025860889
+        outSlope: 0.000000025860889
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000009348846
+        inSlope: 0.0000000023641462
+        outSlope: 0.0000000023641462
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000021548146
+        inSlope: 1.0231815e-10
+        outSlope: 1.0231815e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.00000021477624
+        inSlope: -0.0000000023780422
+        outSlope: -0.0000000023780422
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000021548146
+        inSlope: -1.0231862e-10
+        outSlope: -1.0231862e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.9991729
+        inSlope: 0.0004470348
+        outSlope: 0.0004470348
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.99996996
+        inSlope: 0.00092267926
+        outSlope: 0.00092267926
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.9991729
+        inSlope: -0.00044703687
+        outSlope: -0.00044703687
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.053142052
+        inSlope: 0.013382434
+        outSlope: 0.013382434
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.008360371
+        inSlope: -0.13164757
+        outSlope: -0.13164757
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.053142052
+        inSlope: -0.013383613
+        outSlope: -0.013383613
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000090984554
+        inSlope: -0.0000000040108716
+        outSlope: -0.0000000040108716
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.00000092654454
+        inSlope: 0.000000032017084
+        outSlope: 0.000000032017084
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000090984554
+        inSlope: 0.00000000401089
+        outSlope: 0.00000000401089
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000029957843
+        inSlope: 0.000000012196323
+        outSlope: 0.000000012196323
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.00000024306627
+        inSlope: -0.000000121977
+        outSlope: -0.000000121977
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000029957843
+        inSlope: -0.000000012196379
+        outSlope: -0.000000012196379
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.998587
+        inSlope: 0.0007081031
+        outSlope: 0.0007081031
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.9999651
+        inSlope: 0.0010818252
+        outSlope: 0.0010818252
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.998587
+        inSlope: -0.0007081064
+        outSlope: -0.0007081064
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.058741365
+        inSlope: 0.017628819
+        outSlope: 0.017628819
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0.03197089
+        inSlope: 0.0000004786998
+        outSlope: 0.0000004786998
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.058741365
+        inSlope: -0.017630463
+        outSlope: -0.017630463
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.0000010042079
+        inSlope: -0.0000000070053825
+        outSlope: -0.0000000070053825
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0.0000009641575
+        inSlope: -1.5099033e-14
+        outSlope: -1.5099033e-14
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.0000010042079
+        inSlope: 0.0000000070054145
+        outSlope: 0.0000000070054145
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000039632897
+        inSlope: -0.00000001773344
+        outSlope: -0.00000001773344
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: -0.00000048570644
+        inSlope: -3.0198066e-14
+        outSlope: -3.0198066e-14
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000039632897
+        inSlope: 0.000000017735227
+        outSlope: 0.000000017735227
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99827325
+        inSlope: 0.0010335445
+        outSlope: 0.0010335445
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0.99948883
+        inSlope: -9.895302e-10
+        outSlope: -9.895302e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99827325
+        inSlope: -0.0010335492
+        outSlope: -0.0010335492
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.03284894
+        inSlope: 0.008618161
+        outSlope: 0.008618161
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.0036037152
+        inSlope: -0.10378438
+        outSlope: -0.10378438
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.03284894
+        inSlope: -0.008617977
+        outSlope: -0.008617977
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000000021139872
+        inSlope: -0.0000000015419132
+        outSlope: -0.0000000015419132
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.000000014608168
+        inSlope: 0.000000018625114
+        outSlope: 0.000000018625114
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000000021139872
+        inSlope: 0.0000000015418137
+        outSlope: 0.0000000015418137
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0000001788084
+        inSlope: -1.8161471e-10
+        outSlope: -1.8161471e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: -0.00000017946013
+        inSlope: 0.0000000015177182
+        outSlope: 0.0000000015177182
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000001788084
+        inSlope: 1.8161554e-10
+        outSlope: 1.8161554e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99946034
+        inSlope: 0.000282526
+        outSlope: 0.000282526
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.9999935
+        inSlope: 0.00036656813
+        outSlope: 0.00036656813
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99946034
+        inSlope: -0.0002825273
+        outSlope: -0.0002825273
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.034640566
+        inSlope: 0.005927458
+        outSlope: 0.005927458
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: -0.031005574
+        inSlope: -0.029981036
+        outSlope: -0.029981036
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.034640566
+        inSlope: -0.005928337
+        outSlope: -0.005928337
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.0000000028740617
+        inSlope: 0.0000000017309753
+        outSlope: 0.0000000017309753
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: 0.0000000039354258
+        inSlope: -0.000000008753258
+        outSlope: -0.000000008753258
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.0000000028740617
+        inSlope: -0.0000000017312239
+        outSlope: -0.0000000017312239
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.00000029183354
+        inSlope: -1.5347723e-11
+        outSlope: -1.5347723e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: 0.00000029182118
+        inSlope: 1.1937107e-10
+        outSlope: 1.1937107e-10
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.00000029183354
+        inSlope: 1.5347683e-11
+        outSlope: 1.5347683e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.99939984
+        inSlope: 0.00020742415
+        outSlope: 0.00020742415
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: 0.9995192
+        inSlope: -0.0009280435
+        outSlope: -0.0009280435
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.99939984
+        inSlope: -0.00020742363
+        outSlope: -0.00020742363
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.040014733
+        inSlope: -0.009064524
+        outSlope: -0.009064524
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: -0.0487343
+        inSlope: 0.047613528
+        outSlope: 0.047613528
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.04001473
+        inSlope: 0.009065172
+        outSlope: 0.009065172
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.00000044587247
+        inSlope: -0.0000000052693845
+        outSlope: -0.0000000052693845
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: -0.0000004247255
+        inSlope: 0.000000073357796
+        outSlope: 0.000000073357796
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00000041067034
+        inSlope: -0.0000000027046028
+        outSlope: -0.0000000027046028
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.00000058090336
+        inSlope: -0.0000000040449777
+        outSlope: -0.0000000040449777
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: 0.000000040015802
+        inSlope: -0.0000014442271
+        outSlope: -0.0000014442271
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00000029812176
+        inSlope: 0.0000000037260763
+        outSlope: 0.0000000037260763
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.9991991
+        inSlope: -0.0003647804
+        outSlope: -0.0003647804
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: 0.9988118
+        inSlope: 0.0023227911
+        outSlope: 0.0023227911
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.9991991
+        inSlope: 0.00036477947
+        outSlope: 0.00036477947
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  m_EulerEditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 2.157744
+        inSlope: 0.000004598073
+        outSlope: 0.000004598073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: 2.157744
+        inSlope: 0.000004598073
+        outSlope: 0.000004598073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: -0.00003669128
+        inSlope: 0.00001984404
+        outSlope: 0.00001984404
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: -0.00003669128
+        inSlope: 0.00001984404
+        outSlope: 0.00001984404
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.033333335
+        value: -0.000031598724
+        inSlope: 0.0000034751104
+        outSlope: 0.0000034751104
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9666667
+        value: -0.000031598724
+        inSlope: 0.0000034751104
+        outSlope: 0.0000034751104
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 5.0756035
+        inSlope: -1.6714286
+        outSlope: -1.6714286
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -2.596919
+        inSlope: 16.40508
+        outSlope: 16.407589
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 5.0756035
+        inSlope: 1.6714383
+        outSlope: 1.6714383
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000037308833
+        inSlope: -0.000033956276
+        outSlope: -0.000033956276
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.000030459458
+        inSlope: 0.00000029060175
+        outSlope: 0.00000043590265
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000037308833
+        inSlope: -0.000050934417
+        outSlope: -0.000050934417
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000051249284
+        inSlope: -0.000027364584
+        outSlope: -0.000027364584
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.000051100804
+        inSlope: -0.000026622181
+        outSlope: -0.00003993328
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000051249284
+        inSlope: -0.000041046882
+        outSlope: -0.000041046882
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 8.388397
+        inSlope: -2.3501587
+        outSlope: -2.3501587
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: -3.3365648
+        inSlope: -12.97708
+        outSlope: -12.976926
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: 7.8042636
+        inSlope: 16.618979
+        outSlope: 16.62218
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 8.388397
+        inSlope: 2.349703
+        outSlope: 2.349703
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.00003399399
+        inSlope: -0.000023176082
+        outSlope: -0.000023176082
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: 0.000036967656
+        inSlope: -0.00004300052
+        outSlope: -0.000040034964
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: 0.00002050465
+        inSlope: -0.00012727024
+        outSlope: -0.000236064
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.00001900934
+        inSlope: -0.00016877493
+        outSlope: -0.00016877493
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000007892108
+        inSlope: -0.0000491112
+        outSlope: -0.0000491112
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45000002
+        value: -0.00003131112
+        inSlope: -0.00019816024
+        outSlope: -0.00018449401
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9333334
+        value: -0.00010781898
+        inSlope: -0.00018316624
+        outSlope: 0.000045335662
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000110609224
+        inSlope: 0.00017089669
+        outSlope: 0.00017089669
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 6.5025
+        inSlope: -0.9125767
+        outSlope: -0.9125767
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 2.647799
+        inSlope: 10.96138
+        outSlope: 10.96234
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 6.5025
+        inSlope: 0.91275877
+        outSlope: 0.91275877
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000033081076
+        inSlope: -0.000012142885
+        outSlope: -0.000012142885
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.000033911278
+        inSlope: -0.000016075417
+        outSlope: -0.000027766635
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000033081076
+        inSlope: -0.00002097408
+        outSlope: -0.00002097408
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000012336107
+        inSlope: -0.000013844283
+        outSlope: -0.000013844283
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: -0.000012269848
+        inSlope: -0.000014158139
+        outSlope: -0.000024454972
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000012336107
+        inSlope: -0.000023912857
+        outSlope: -0.000023912857
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 3.9656427
+        inSlope: -1.2200944
+        outSlope: -1.2200944
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 2.68662
+        inSlope: 6.314501
+        outSlope: 6.314678
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 3.9656422
+        inSlope: 1.2199409
+        outSlope: 1.2199409
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.000003059593
+        inSlope: -0.00001311254
+        outSlope: -0.00001311254
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 0.0000035777507
+        inSlope: -0.000015333217
+        outSlope: -0.00004024969
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.0000030595934
+        inSlope: -0.00003442042
+        outSlope: -0.00003442042
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.000023188053
+        inSlope: -0.000031412248
+        outSlope: -0.000031412248
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: -0.000023157989
+        inSlope: -0.000031541094
+        outSlope: -0.00008279536
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.000023188053
+        inSlope: -0.00008245714
+        outSlope: -0.00008245714
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 2.512799
+        inSlope: -0.39151666
+        outSlope: -0.39151666
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: 2.3365707
+        inSlope: 1.8326147
+        outSlope: 1.8324275
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 2.512799
+        inSlope: 0.39160243
+        outSlope: 0.39160243
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.0000013649919
+        inSlope: 0.0000050142557
+        outSlope: 0.0000050142557
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: -0.000001330522
+        inSlope: 0.0000048876313
+        outSlope: 0.000026610433
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.0000013649919
+        inSlope: 0.000027299831
+        outSlope: 0.000027299831
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.000011197655
+        inSlope: -0.00001491845
+        outSlope: -0.00001491845
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8333334
+        value: -0.000011196196
+        inSlope: -0.000014923809
+        outSlope: -0.000081251834
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.000011197655
+        inSlope: -0.00008122266
+        outSlope: -0.00008122266
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -4.6609
+        inSlope: 1.2571737
+        outSlope: 1.2571737
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.8887512
+        inSlope: -13.7949095
+        outSlope: -13.796703
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -4.6609
+        inSlope: -1.2572479
+        outSlope: -1.2572479
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000006657211
+        inSlope: 0.00000032386433
+        outSlope: 0.00000032386433
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.0000024565306
+        inSlope: 0.000011950689
+        outSlope: 0.000019225023
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000006657211
+        inSlope: 0.00000052099915
+        outSlope: 0.00000052099915
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000024710085
+        inSlope: -0.000028252667
+        outSlope: -0.000028252667
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.000024631332
+        inSlope: -0.000028635792
+        outSlope: -0.000046066274
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000024710085
+        inSlope: -0.000045449946
+        outSlope: -0.000045449946
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.0925
+        inSlope: 1.5356516
+        outSlope: 1.5356516
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.958039
+        inSlope: -15.082782
+        outSlope: -15.084692
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.0925
+        inSlope: -1.5357865
+        outSlope: -1.5357865
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000102869984
+        inSlope: -0.000019707695
+        outSlope: -0.000019707695
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.000106418214
+        inSlope: -0.0000019665458
+        outSlope: -0.000002949819
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000102869984
+        inSlope: -0.000029561545
+        outSlope: -0.000029561545
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000028903274
+        inSlope: -0.00000807152
+        outSlope: -0.00000807152
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.000028744042
+        inSlope: -0.0000088676825
+        outSlope: -0.000013301525
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000028903274
+        inSlope: -0.000012107281
+        outSlope: -0.000012107281
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.7351413
+        inSlope: 2.02361
+        outSlope: 2.02361
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 3.6642182
+        inSlope: 0.000072956085
+        outSlope: 0.000072956085
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.7351413
+        inSlope: -2.0237532
+        outSlope: -2.0237532
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.00011835964
+        inSlope: 0.000022264037
+        outSlope: 0.000022264037
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 0.00010887096
+        inSlope: -0.000012356628
+        outSlope: -0.000012356628
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.00011835964
+        inSlope: 0.000022264037
+        outSlope: 0.000022264037
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000052459145
+        inSlope: 0.000040096667
+        outSlope: 0.000040096667
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: -0.00005220384
+        inSlope: 0.00003856483
+        outSlope: 0.00003856483
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000052459145
+        inSlope: 0.000040096667
+        outSlope: 0.000040096667
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -3.764888
+        inSlope: 0.9880975
+        outSlope: 0.9880975
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.4129562
+        inSlope: -11.891073
+        outSlope: -11.892265
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -3.764888
+        inSlope: -0.9880577
+        outSlope: -0.9880577
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000003100908
+        inSlope: -0.000014688511
+        outSlope: -0.000014688511
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 0.0000015998943
+        inSlope: -0.000007578446
+        outSlope: -0.000013090045
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000003100908
+        inSlope: -0.000025371071
+        outSlope: -0.000025371071
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000020602914
+        inSlope: 0.000025314275
+        outSlope: 0.000025314275
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6333334
+        value: -0.000020558984
+        inSlope: 0.000025106185
+        outSlope: 0.00004336524
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000020602914
+        inSlope: 0.000043724667
+        outSlope: 0.000043724667
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -3.9703102
+        inSlope: 0.6796475
+        outSlope: 0.6796475
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: -3.5535464
+        inSlope: -3.4371297
+        outSlope: -3.437168
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -3.9703102
+        inSlope: -0.6795918
+        outSlope: -0.6795918
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.0000008312874
+        inSlope: 0.0000031836535
+        outSlope: 0.0000031836535
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: -0.00000058721315
+        inSlope: 0.0000022489012
+        outSlope: 0.000009608942
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.0000008312874
+        inSlope: 0.000013602885
+        outSlope: 0.000013602885
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.000033490556
+        inSlope: -0.000011385872
+        outSlope: -0.000011385872
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.8000001
+        value: 0.000033474545
+        inSlope: -0.000011324554
+        outSlope: -0.000048386737
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.000033490556
+        inSlope: -0.000048648733
+        outSlope: -0.000048648733
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -4.5865746
+        inSlope: -1.0395653
+        outSlope: -1.0395653
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: -5.586752
+        inSlope: 5.4624004
+        outSlope: 5.4626527
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -4.586574
+        inSlope: 1.0396211
+        outSlope: 1.0396211
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: -0.000053888514
+        inSlope: -0.000029916175
+        outSlope: -0.000029916175
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: -0.000049068673
+        inSlope: 0.000013781742
+        outSlope: 0.000039507653
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00004580134
+        inSlope: 0.00000029965295
+        outSlope: 0.00000029965295
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0.000068778034
+        inSlope: 0.000031461954
+        outSlope: 0.000031461954
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.73333335
+        value: 0.0000069851003
+        inSlope: -0.00022086196
+        outSlope: -0.00026692663
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00003235542
+        inSlope: 0.000022054091
+        outSlope: 0.000022054091
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_Neck/dragon_Neck.001/dragon_Neck.002/dragon_Neck.003/dragon_Neck.004/dragon_Neck.005/dragon_Neck.006/dragon_Neck.007/dragon_Neck.008/dragon_Neck.009/dragon_Neck.010/dragon_Neck.011/dragon_Neck.012
+    classID: 4
+    script: {fileID: 0}
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events: []

@@ -1,0 +1,3569 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tail_hovering
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.038228754, y: -0.0000005917851, z: -0.00000010237202, w: 0.999269}
+        inSlope: {x: 0.13434067, y: -0.000000013673115, z: 0.00000007957069, w: 0.0049889083}
+        outSlope: {x: 0.13434067, y: -0.000000013673115, z: 0.00000007957069, w: 0.0049889083}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.48333335
+        value: {x: -0.012385799, y: -0.0000005942336, z: -0.00000008704072, w: 0.9999233}
+        inSlope: {x: -0.12390502, y: 0.000000010787755, z: -0.00000007363376, w: -0.0015413775}
+        outSlope: {x: -0.12390502, y: 0.000000010787755, z: -0.00000007363376, w: -0.0015413775}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9833334
+        value: {x: -0.04035809, y: -0.0000005915657, z: -0.00000010363288, w: 0.9991853}
+        inSlope: {x: 0.12381403, y: -0.000000012835826, z: 0.00000007330464, w: 0.0049924897}
+        outSlope: {x: 0.12381403, y: -0.000000012835826, z: 0.00000007330464, w: 0.0049924897}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.038228754, y: -0.0000005917851, z: -0.00000010237202, w: 0.999269}
+        inSlope: {x: 0.12776068, y: -0.000000013164995, z: 0.000000075651826, w: 0.005021118}
+        outSlope: {x: 0.12776068, y: -0.000000013164995, z: 0.000000075651826, w: 0.005021118}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.06900909, y: 4.369433e-11, z: -0.0000000011915924, w: 0.99761605}
+        inSlope: {x: 0.046748217, y: -5.5837206e-11, z: -2.0317081e-12, w: 0.0032150743}
+        outSlope: {x: 0.046748217, y: -5.5837206e-11, z: -2.0317081e-12, w: 0.0032150743}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6166667
+        value: {x: -0.06277733, y: 3.6251627e-11, z: -0.0000000011918421, w: 0.99802756}
+        inSlope: {x: -0.057524957, y: 6.8696035e-11, z: 2.0883278e-12, w: -0.0036174029}
+        outSlope: {x: -0.057524957, y: 6.8696035e-11, z: 2.0883278e-12, w: -0.0036174029}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.06900909, y: 4.369433e-11, z: -0.0000000011915924, w: 0.99761605}
+        inSlope: {x: 0.043168113, y: -5.1562112e-11, z: -1.89849e-12, w: 0.0030005113}
+        outSlope: {x: 0.043168113, y: -5.1562112e-11, z: -1.89849e-12, w: 0.0030005113}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.054451417, y: 4.6934297e-11, z: -7.6238293e-10, w: 0.99851644}
+        inSlope: {x: 0.06492399, y: -4.9570553e-11, z: -3.0242473e-12, w: 0.0035047529}
+        outSlope: {x: 0.06492399, y: -4.9570553e-11, z: -3.0242473e-12, w: 0.0035047529}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5666667
+        value: {x: -0.034131214, y: 3.1418396e-11, z: -7.6317985e-10, w: 0.99941736}
+        inSlope: {x: -0.08499344, y: 6.490303e-11, z: 2.674525e-12, w: -0.002905724}
+        outSlope: {x: -0.08499344, y: 6.490303e-11, z: 2.674525e-12, w: -0.002905724}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.054451417, y: 4.6934297e-11, z: -7.6238293e-10, w: 0.99851644}
+        inSlope: {x: 0.057262965, y: -4.3721058e-11, z: -2.711177e-12, w: 0.0031507157}
+        outSlope: {x: 0.057262965, y: -4.3721058e-11, z: -2.711177e-12, w: 0.0031507157}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.030830586, y: 1.0605203e-11, z: -1.4143064e-10, w: 0.99952465}
+        inSlope: {x: 0.068162866, y: -9.645148e-12, z: -7.1775913e-13, w: 0.0020635128}
+        outSlope: {x: 0.068162866, y: -9.645148e-12, z: -7.1775913e-13, w: 0.0020635128}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5666667
+        value: {x: 0.003786492, y: 5.703218e-12, z: -1.4171299e-10, w: 0.99999285}
+        inSlope: {x: -0.104489386, y: 1.4807584e-11, z: 5.9660566e-13, w: 0.0003898139}
+        outSlope: {x: -0.104489386, y: 1.4807584e-11, z: 5.9660566e-13, w: 0.0003898139}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.030830586, y: 1.0605203e-11, z: -1.4143064e-10, w: 0.99952465}
+        inSlope: {x: 0.055081535, y: -7.793801e-12, z: -5.870331e-13, w: 0.0017237741}
+        outSlope: {x: 0.055081535, y: -7.793801e-12, z: -5.870331e-13, w: 0.0017237741}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.028628578, y: 5.234889e-12, z: 5.0739482e-11, w: 0.9995901}
+        inSlope: {x: 0.048249025, y: 2.4490043e-12, z: -2.5375535e-13, w: 0.0013625621}
+        outSlope: {x: 0.048249025, y: 2.4490043e-12, z: -2.5375535e-13, w: 0.0013625621}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5833334
+        value: {x: 0.016164782, y: 7.501903e-12, z: 5.045414e-11, w: 0.99986935}
+        inSlope: {x: -0.11295597, y: -5.699899e-12, z: 8.470316e-13, w: 0.0018167513}
+        outSlope: {x: -0.11295597, y: -5.699899e-12, z: 8.470316e-13, w: 0.0018167513}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.028628578, y: 5.234889e-12, z: 5.0739482e-11, w: 0.9995901}
+        inSlope: {x: 0.029978069, y: 1.5217584e-12, z: -1.5654215e-13, w: 0.00086546334}
+        outSlope: {x: 0.029978069, y: 1.5217584e-12, z: -1.5654215e-13, w: 0.00086546334}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.029300008, y: 1.7440214e-11, z: -1.2815005e-10, w: 0.99957067}
+        inSlope: {x: 0.010665468, y: -1.3674477e-12, z: -1.8651745e-13, w: 0.00031113622}
+        outSlope: {x: 0.010665468, y: -1.3674477e-12, z: -1.8651745e-13, w: 0.00031113622}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6166667
+        value: {x: 0.017759878, y: 1.13917435e-11, z: -1.2882867e-10, w: 0.9998423}
+        inSlope: {x: -0.116914034, y: 1.5064134e-11, z: 1.333099e-12, w: 0.0020670875}
+        outSlope: {x: -0.116914034, y: 1.5064134e-11, z: 1.333099e-12, w: 0.0020670875}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.029300008, y: 1.7440214e-11, z: -1.2815005e-10, w: 0.99957067}
+        inSlope: {x: -0.010666635, y: 1.3675581e-12, z: 1.8651831e-13, w: -0.00031113764}
+        outSlope: {x: -0.010666635, y: 1.3675581e-12, z: 1.8651831e-13, w: -0.00031113764}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.052536037, y: 2.6245936e-11, z: -3.809482e-11, w: 0.998619}
+        inSlope: {x: 0.015640631, y: -5.967101e-13, z: -4.1092127e-13, w: 0.00082254404}
+        outSlope: {x: 0.015640631, y: -5.967101e-13, z: -4.1092127e-13, w: 0.00082254404}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6
+        value: {x: 0.019284505, y: 2.3443622e-11, z: -3.988058e-11, w: 0.99981403}
+        inSlope: {x: -0.1534862, y: 6.1216197e-12, z: 3.5998322e-12, w: 0.0029361276}
+        outSlope: {x: -0.1534862, y: 6.1216197e-12, z: 3.5998322e-12, w: 0.0029361276}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.052536037, y: 2.6245936e-11, z: -3.809482e-11, w: 0.998619}
+        inSlope: {x: -0.015640702, y: 5.967129e-13, z: 4.1092317e-13, w: -0.0008225478}
+        outSlope: {x: -0.015640702, y: 5.967129e-13, z: 4.1092317e-13, w: -0.0008225478}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.05253607, y: -7.085324e-12, z: -9.0200514e-11, w: 0.998619}
+        inSlope: {x: 0.015001147, y: -1.3550097e-12, z: 1.0616507e-13, w: 0.00079035753}
+        outSlope: {x: 0.015001147, y: -1.3550097e-12, z: 1.0616507e-13, w: 0.00079035753}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6
+        value: {x: 0.01634586, y: -1.3279026e-11, z: -8.949862e-11, w: 0.9998664}
+        inSlope: {x: -0.14722145, y: 1.3178143e-11, z: -1.953231e-12, w: 0.0023853802}
+        outSlope: {x: -0.14722145, y: 1.3178143e-11, z: -1.953231e-12, w: 0.0023853802}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.05253607, y: -7.085324e-12, z: -9.0200514e-11, w: 0.998619}
+        inSlope: {x: -0.015000545, y: 1.354964e-12, z: -1.0616556e-13, w: -0.0007903612}
+        outSlope: {x: -0.015000545, y: 1.354964e-12, z: -1.0616556e-13, w: -0.0007903612}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.0379319, y: -3.37817e-11, z: -7.6429287e-11, w: 0.99928033}
+        inSlope: {x: 0.012637674, y: -9.667267e-13, z: 4.2757462e-13, w: 0.00047922131}
+        outSlope: {x: 0.012637674, y: -9.667267e-13, z: 4.2757462e-13, w: 0.00047922131}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6
+        value: {x: 0.020036347, y: -3.8153727e-11, z: -7.434334e-11, w: 0.99979925}
+        inSlope: {x: -0.12388286, y: 9.212223e-12, z: -4.72664e-12, w: 0.0024676346}
+        outSlope: {x: -0.12388286, y: 9.212223e-12, z: -4.72664e-12, w: 0.0024676346}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.0379319, y: -3.37817e-11, z: -7.6429287e-11, w: 0.99928033}
+        inSlope: {x: -0.012637732, y: 9.66731e-13, z: -4.2757657e-13, w: -0.00047922353}
+        outSlope: {x: -0.012637732, y: 9.66731e-13, z: -4.2757657e-13, w: -0.00047922353}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.037932046, y: -6.705886e-11, z: -7.421786e-11, w: 0.99928033}
+        inSlope: {x: 0.028905494, y: -2.1461997e-12, z: 1.940531e-12, w: 0.001090765}
+        outSlope: {x: 0.028905494, y: -2.1461997e-12, z: 1.940531e-12, w: 0.001090765}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.38333336
+        value: {x: 0.0899647, y: -7.598602e-11, z: -6.504848e-11, w: 0.995945}
+        inSlope: {x: 0.3164157, y: -2.0672197e-11, z: 2.4135048e-11, w: -0.028497552}
+        outSlope: {x: 0.3164157, y: -2.0672197e-11, z: 2.4135048e-11, w: -0.028497552}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.70000005
+        value: {x: 0.058262642, y: -7.388004e-11, z: -6.743087e-11, w: 0.9983013}
+        inSlope: {x: -0.42674208, y: 2.8827385e-11, z: -3.1578313e-11, w: 0.024862312}
+        outSlope: {x: -0.42674208, y: 2.8827385e-11, z: -3.1578313e-11, w: 0.024862312}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.037932046, y: -6.705886e-11, z: -7.421786e-11, w: 0.99928033}
+        inSlope: {x: -0.028902274, y: 2.1462096e-12, z: -1.9401236e-12, w: -0.0010907699}
+        outSlope: {x: -0.028902274, y: 2.1462096e-12, z: -1.9401236e-12, w: -0.0010907699}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -0.037931968, y: -6.428636e-11, z: -1.7466105e-10, w: 0.99928033}
+        inSlope: {x: 0.028174592, y: -4.9239775e-12, z: 1.8143819e-12, w: 0.0010621548}
+        outSlope: {x: 0.028174592, y: -4.9239775e-12, z: 1.8143819e-12, w: 0.0010621548}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.38333336
+        value: {x: 0.08671795, y: -8.552226e-11, z: -1.6530323e-10, w: 0.9962329}
+        inSlope: {x: 0.308469, y: -5.1189428e-11, z: 2.6466725e-11, w: -0.026770212}
+        outSlope: {x: 0.308469, y: -5.1189428e-11, z: 2.6466725e-11, w: -0.026770212}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.7166667
+        value: {x: 0.048785754, y: -7.9176825e-11, z: -1.684347e-10, w: 0.9988093}
+        inSlope: {x: -0.42581886, y: 7.181013e-11, z: -3.3750534e-11, w: 0.020771045}
+        outSlope: {x: -0.42581886, y: 7.181013e-11, z: -3.3750534e-11, w: 0.020771045}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -0.037931968, y: -6.428636e-11, z: -1.7466105e-10, w: 0.99928033}
+        inSlope: {x: -0.02817271, y: 4.924e-12, z: -1.8135576e-12, w: -0.0010621595}
+        outSlope: {x: -0.02817271, y: 4.924e-12, z: -1.8135576e-12, w: -0.0010621595}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 1084760552
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3901986867
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1901771210
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1782055814
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 4277404621
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1484656427
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1020785904
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1054197871
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3010702849
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3221523663
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3488360721
+      attribute: 2
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.038228754
+        inSlope: 0.13434067
+        outSlope: 0.13434067
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: -0.012385799
+        inSlope: -0.12390502
+        outSlope: -0.12390502
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.04035809
+        inSlope: 0.12381403
+        outSlope: 0.12381403
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.038228754
+        inSlope: 0.12776068
+        outSlope: 0.12776068
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0000005917851
+        inSlope: -0.000000013673115
+        outSlope: -0.000000013673115
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: -0.0000005942336
+        inSlope: 0.000000010787755
+        outSlope: 0.000000010787755
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.0000005915657
+        inSlope: -0.000000012835826
+        outSlope: -0.000000012835826
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000005917851
+        inSlope: -0.000000013164995
+        outSlope: -0.000000013164995
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000010237202
+        inSlope: 0.00000007957069
+        outSlope: 0.00000007957069
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: -0.00000008704072
+        inSlope: -0.00000007363376
+        outSlope: -0.00000007363376
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00000010363288
+        inSlope: 0.00000007330464
+        outSlope: 0.00000007330464
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000010237202
+        inSlope: 0.000000075651826
+        outSlope: 0.000000075651826
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.999269
+        inSlope: 0.0049889083
+        outSlope: 0.0049889083
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: 0.9999233
+        inSlope: -0.0015413775
+        outSlope: -0.0015413775
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: 0.9991853
+        inSlope: 0.0049924897
+        outSlope: 0.0049924897
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.999269
+        inSlope: 0.005021118
+        outSlope: 0.005021118
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.06900909
+        inSlope: 0.046748217
+        outSlope: 0.046748217
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.06277733
+        inSlope: -0.057524957
+        outSlope: -0.057524957
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.06900909
+        inSlope: 0.043168113
+        outSlope: 0.043168113
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4.369433e-11
+        inSlope: -5.5837206e-11
+        outSlope: -5.5837206e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 3.6251627e-11
+        inSlope: 6.8696035e-11
+        outSlope: 6.8696035e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 4.369433e-11
+        inSlope: -5.1562112e-11
+        outSlope: -5.1562112e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0000000011915924
+        inSlope: -2.0317081e-12
+        outSlope: -2.0317081e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.0000000011918421
+        inSlope: 2.0883278e-12
+        outSlope: 2.0883278e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000000011915924
+        inSlope: -1.89849e-12
+        outSlope: -1.89849e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99761605
+        inSlope: 0.0032150743
+        outSlope: 0.0032150743
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.99802756
+        inSlope: -0.0036174029
+        outSlope: -0.0036174029
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99761605
+        inSlope: 0.0030005113
+        outSlope: 0.0030005113
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.054451417
+        inSlope: 0.06492399
+        outSlope: 0.06492399
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: -0.034131214
+        inSlope: -0.08499344
+        outSlope: -0.08499344
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.054451417
+        inSlope: 0.057262965
+        outSlope: 0.057262965
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4.6934297e-11
+        inSlope: -4.9570553e-11
+        outSlope: -4.9570553e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 3.1418396e-11
+        inSlope: 6.490303e-11
+        outSlope: 6.490303e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 4.6934297e-11
+        inSlope: -4.3721058e-11
+        outSlope: -4.3721058e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -7.6238293e-10
+        inSlope: -3.0242473e-12
+        outSlope: -3.0242473e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: -7.6317985e-10
+        inSlope: 2.674525e-12
+        outSlope: 2.674525e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -7.6238293e-10
+        inSlope: -2.711177e-12
+        outSlope: -2.711177e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99851644
+        inSlope: 0.0035047529
+        outSlope: 0.0035047529
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 0.99941736
+        inSlope: -0.002905724
+        outSlope: -0.002905724
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99851644
+        inSlope: 0.0031507157
+        outSlope: 0.0031507157
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.030830586
+        inSlope: 0.068162866
+        outSlope: 0.068162866
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 0.003786492
+        inSlope: -0.104489386
+        outSlope: -0.104489386
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.030830586
+        inSlope: 0.055081535
+        outSlope: 0.055081535
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.0605203e-11
+        inSlope: -9.645148e-12
+        outSlope: -9.645148e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 5.703218e-12
+        inSlope: 1.4807584e-11
+        outSlope: 1.4807584e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1.0605203e-11
+        inSlope: -7.793801e-12
+        outSlope: -7.793801e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1.4143064e-10
+        inSlope: -7.1775913e-13
+        outSlope: -7.1775913e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: -1.4171299e-10
+        inSlope: 5.9660566e-13
+        outSlope: 5.9660566e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -1.4143064e-10
+        inSlope: -5.870331e-13
+        outSlope: -5.870331e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99952465
+        inSlope: 0.0020635128
+        outSlope: 0.0020635128
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 0.99999285
+        inSlope: 0.0003898139
+        outSlope: 0.0003898139
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99952465
+        inSlope: 0.0017237741
+        outSlope: 0.0017237741
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.028628578
+        inSlope: 0.048249025
+        outSlope: 0.048249025
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 0.016164782
+        inSlope: -0.11295597
+        outSlope: -0.11295597
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.028628578
+        inSlope: 0.029978069
+        outSlope: 0.029978069
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 5.234889e-12
+        inSlope: 2.4490043e-12
+        outSlope: 2.4490043e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 7.501903e-12
+        inSlope: -5.699899e-12
+        outSlope: -5.699899e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 5.234889e-12
+        inSlope: 1.5217584e-12
+        outSlope: 1.5217584e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 5.0739482e-11
+        inSlope: -2.5375535e-13
+        outSlope: -2.5375535e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 5.045414e-11
+        inSlope: 8.470316e-13
+        outSlope: 8.470316e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 5.0739482e-11
+        inSlope: -1.5654215e-13
+        outSlope: -1.5654215e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.9995901
+        inSlope: 0.0013625621
+        outSlope: 0.0013625621
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 0.99986935
+        inSlope: 0.0018167513
+        outSlope: 0.0018167513
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.9995901
+        inSlope: 0.00086546334
+        outSlope: 0.00086546334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.029300008
+        inSlope: 0.010665468
+        outSlope: 0.010665468
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.017759878
+        inSlope: -0.116914034
+        outSlope: -0.116914034
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.029300008
+        inSlope: -0.010666635
+        outSlope: -0.010666635
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.7440214e-11
+        inSlope: -1.3674477e-12
+        outSlope: -1.3674477e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 1.13917435e-11
+        inSlope: 1.5064134e-11
+        outSlope: 1.5064134e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1.7440214e-11
+        inSlope: 1.3675581e-12
+        outSlope: 1.3675581e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1.2815005e-10
+        inSlope: -1.8651745e-13
+        outSlope: -1.8651745e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -1.2882867e-10
+        inSlope: 1.333099e-12
+        outSlope: 1.333099e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -1.2815005e-10
+        inSlope: 1.8651831e-13
+        outSlope: 1.8651831e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99957067
+        inSlope: 0.00031113622
+        outSlope: 0.00031113622
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.9998423
+        inSlope: 0.0020670875
+        outSlope: 0.0020670875
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99957067
+        inSlope: -0.00031113764
+        outSlope: -0.00031113764
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.052536037
+        inSlope: 0.015640631
+        outSlope: 0.015640631
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.019284505
+        inSlope: -0.1534862
+        outSlope: -0.1534862
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.052536037
+        inSlope: -0.015640702
+        outSlope: -0.015640702
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2.6245936e-11
+        inSlope: -5.967101e-13
+        outSlope: -5.967101e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 2.3443622e-11
+        inSlope: 6.1216197e-12
+        outSlope: 6.1216197e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 2.6245936e-11
+        inSlope: 5.967129e-13
+        outSlope: 5.967129e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -3.809482e-11
+        inSlope: -4.1092127e-13
+        outSlope: -4.1092127e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -3.988058e-11
+        inSlope: 3.5998322e-12
+        outSlope: 3.5998322e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -3.809482e-11
+        inSlope: 4.1092317e-13
+        outSlope: 4.1092317e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.998619
+        inSlope: 0.00082254404
+        outSlope: 0.00082254404
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.99981403
+        inSlope: 0.0029361276
+        outSlope: 0.0029361276
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.998619
+        inSlope: -0.0008225478
+        outSlope: -0.0008225478
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.05253607
+        inSlope: 0.015001147
+        outSlope: 0.015001147
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.01634586
+        inSlope: -0.14722145
+        outSlope: -0.14722145
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.05253607
+        inSlope: -0.015000545
+        outSlope: -0.015000545
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -7.085324e-12
+        inSlope: -1.3550097e-12
+        outSlope: -1.3550097e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -1.3279026e-11
+        inSlope: 1.3178143e-11
+        outSlope: 1.3178143e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -7.085324e-12
+        inSlope: 1.354964e-12
+        outSlope: 1.354964e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -9.0200514e-11
+        inSlope: 1.0616507e-13
+        outSlope: 1.0616507e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -8.949862e-11
+        inSlope: -1.953231e-12
+        outSlope: -1.953231e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -9.0200514e-11
+        inSlope: -1.0616556e-13
+        outSlope: -1.0616556e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.998619
+        inSlope: 0.00079035753
+        outSlope: 0.00079035753
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.9998664
+        inSlope: 0.0023853802
+        outSlope: 0.0023853802
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.998619
+        inSlope: -0.0007903612
+        outSlope: -0.0007903612
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0379319
+        inSlope: 0.012637674
+        outSlope: 0.012637674
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.020036347
+        inSlope: -0.12388286
+        outSlope: -0.12388286
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0379319
+        inSlope: -0.012637732
+        outSlope: -0.012637732
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -3.37817e-11
+        inSlope: -9.667267e-13
+        outSlope: -9.667267e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -3.8153727e-11
+        inSlope: 9.212223e-12
+        outSlope: 9.212223e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -3.37817e-11
+        inSlope: 9.66731e-13
+        outSlope: 9.66731e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -7.6429287e-11
+        inSlope: 4.2757462e-13
+        outSlope: 4.2757462e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -7.434334e-11
+        inSlope: -4.72664e-12
+        outSlope: -4.72664e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -7.6429287e-11
+        inSlope: -4.2757657e-13
+        outSlope: -4.2757657e-13
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99928033
+        inSlope: 0.00047922131
+        outSlope: 0.00047922131
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.99979925
+        inSlope: 0.0024676346
+        outSlope: 0.0024676346
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99928033
+        inSlope: -0.00047922353
+        outSlope: -0.00047922353
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.037932046
+        inSlope: 0.028905494
+        outSlope: 0.028905494
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: 0.0899647
+        inSlope: 0.3164157
+        outSlope: 0.3164157
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: 0.058262642
+        inSlope: -0.42674208
+        outSlope: -0.42674208
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.037932046
+        inSlope: -0.028902274
+        outSlope: -0.028902274
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.705886e-11
+        inSlope: -2.1461997e-12
+        outSlope: -2.1461997e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -7.598602e-11
+        inSlope: -2.0672197e-11
+        outSlope: -2.0672197e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: -7.388004e-11
+        inSlope: 2.8827385e-11
+        outSlope: 2.8827385e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.705886e-11
+        inSlope: 2.1462096e-12
+        outSlope: 2.1462096e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -7.421786e-11
+        inSlope: 1.940531e-12
+        outSlope: 1.940531e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -6.504848e-11
+        inSlope: 2.4135048e-11
+        outSlope: 2.4135048e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: -6.743087e-11
+        inSlope: -3.1578313e-11
+        outSlope: -3.1578313e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -7.421786e-11
+        inSlope: -1.9401236e-12
+        outSlope: -1.9401236e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99928033
+        inSlope: 0.001090765
+        outSlope: 0.001090765
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: 0.995945
+        inSlope: -0.028497552
+        outSlope: -0.028497552
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: 0.9983013
+        inSlope: 0.024862312
+        outSlope: 0.024862312
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99928033
+        inSlope: -0.0010907699
+        outSlope: -0.0010907699
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.037931968
+        inSlope: 0.028174592
+        outSlope: 0.028174592
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: 0.08671795
+        inSlope: 0.308469
+        outSlope: 0.308469
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 0.048785754
+        inSlope: -0.42581886
+        outSlope: -0.42581886
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.037931968
+        inSlope: -0.02817271
+        outSlope: -0.02817271
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.428636e-11
+        inSlope: -4.9239775e-12
+        outSlope: -4.9239775e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -8.552226e-11
+        inSlope: -5.1189428e-11
+        outSlope: -5.1189428e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: -7.9176825e-11
+        inSlope: 7.181013e-11
+        outSlope: 7.181013e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.428636e-11
+        inSlope: 4.924e-12
+        outSlope: 4.924e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1.7466105e-10
+        inSlope: 1.8143819e-12
+        outSlope: 1.8143819e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -1.6530323e-10
+        inSlope: 2.6466725e-11
+        outSlope: 2.6466725e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: -1.684347e-10
+        inSlope: -3.3750534e-11
+        outSlope: -3.3750534e-11
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -1.7466105e-10
+        inSlope: -1.8135576e-12
+        outSlope: -1.8135576e-12
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.99928033
+        inSlope: 0.0010621548
+        outSlope: 0.0010621548
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: 0.9962329
+        inSlope: -0.026770212
+        outSlope: -0.026770212
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 0.9988093
+        inSlope: 0.020771045
+        outSlope: 0.020771045
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99928033
+        inSlope: -0.0010621595
+        outSlope: -0.0010621595
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalRotation.w
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  m_EulerEditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -4.38176
+        inSlope: 15.402835
+        outSlope: 15.402835
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: -1.4193442
+        inSlope: -14.197637
+        outSlope: -14.197525
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -4.6259522
+        inSlope: 14.197576
+        outSlope: 14.201009
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -4.38176
+        inSlope: 14.650421
+        outSlope: 14.650421
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00006751288
+        inSlope: 0.000040206578
+        outSlope: 0.000040206578
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: -0.00006798625
+        inSlope: 0.000043144715
+        outSlope: 0.000041706557
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.00006747373
+        inSlope: 0.000038631446
+        outSlope: 0.0011589488
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00006751288
+        inSlope: 0.0011659961
+        outSlope: 0.0011659961
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000915673
+        inSlope: -0.000037874852
+        outSlope: -0.000037874852
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.48333335
+        value: -0.000009132767
+        inSlope: -0.00003802358
+        outSlope: -0.000036756126
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9833334
+        value: -0.000009159804
+        inSlope: -0.00003659391
+        outSlope: -0.0010978223
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000915673
+        inSlope: -0.0010983757
+        outSlope: -0.0010983757
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -7.9141483
+        inSlope: 5.369466
+        outSlope: 5.369466
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -7.1984863
+        inSlope: -6.6045647
+        outSlope: -6.6048136
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -7.9141483
+        inSlope: 4.9584913
+        outSlope: 4.9584913
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000000014556652
+        inSlope: -0.00000007081614
+        outSlope: -0.00000007081614
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.000000012820806
+        inSlope: -0.000000062371484
+        outSlope: -0.00000010033674
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000000014556652
+        inSlope: -0.00000011392163
+        outSlope: -0.00000011392163
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000013787965
+        inSlope: 0.00000067076587
+        outSlope: 0.00000067076587
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.0000001376514
+        inSlope: 0.00000066965544
+        outSlope: 0.0000010772718
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000013787965
+        inSlope: 0.0000010790582
+        outSlope: 0.0000010790582
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.24276
+        inSlope: 7.450227
+        outSlope: 7.450227
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: -3.9119086
+        inSlope: -9.7444
+        outSlope: -9.744785
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.24276
+        inSlope: 6.5715714
+        outSlope: 6.5715714
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000000010187727
+        inSlope: -0.000000053935022
+        outSlope: -0.000000053935022
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 0.0000000065984684
+        inSlope: -0.000000034933063
+        outSlope: -0.00000004568171
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000000010187727
+        inSlope: -0.00000007053043
+        outSlope: -0.00000007053043
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000088048004
+        inSlope: 0.00000046613644
+        outSlope: 0.00000046613644
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: -0.00000008773029
+        inSlope: 0.00000046445444
+        outSlope: 0.00000060736363
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000088048004
+        inSlope: 0.0000006095632
+        outSlope: 0.0000006095632
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -3.533485
+        inSlope: 7.8141437
+        outSlope: 7.8141437
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 0.43390104
+        inSlope: -11.972119
+        outSlope: -11.972791
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -3.533485
+        inSlope: 6.314865
+        outSlope: 6.314865
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.0000000017176182
+        inSlope: -0.000000009093272
+        outSlope: -0.000000009093272
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 5.920637e-10
+        inSlope: -0.0000000031344543
+        outSlope: -0.0000000040989026
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.0000000017176182
+        inSlope: -0.0000000118912045
+        outSlope: -0.0000000118912045
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000016267446
+        inSlope: 0.000000086121766
+        outSlope: 0.000000086121766
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5666667
+        value: -0.000000016236987
+        inSlope: 0.00000008596051
+        outSlope: 0.00000011240992
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000016267446
+        inSlope: 0.000000112620796
+        outSlope: 0.000000112620796
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -3.2810414
+        inSlope: 5.531014
+        outSlope: 5.531014
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 1.8524281
+        inSlope: -12.943362
+        outSlope: -12.944393
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -3.2810414
+        inSlope: 3.4366696
+        outSlope: 3.4366696
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4.338838e-10
+        inSlope: -0.0000000022314022
+        outSlope: -0.0000000022314022
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 9.534993e-10
+        inSlope: -0.0000000049037103
+        outSlope: -0.0000000068651955
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 4.338838e-10
+        inSlope: -0.0000000031239635
+        outSlope: -0.0000000031239635
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000000005804274
+        inSlope: -0.00000002985055
+        outSlope: -0.00000002985055
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833334
+        value: 0.000000005797789
+        inSlope: -0.000000029817198
+        outSlope: -0.000000041744084
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000000005804274
+        inSlope: -0.000000041790777
+        outSlope: -0.000000041790777
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -3.3580139
+        inSlope: 1.2226593
+        outSlope: 1.2226593
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 2.035239
+        inSlope: -13.396967
+        outSlope: -13.398475
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -3.3580139
+        inSlope: -1.2228503
+        outSlope: -1.2228503
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.0000000024320872
+        inSlope: -0.000000011831775
+        outSlope: -0.000000011831775
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: 0.0000000010436667
+        inSlope: -0.0000000050772972
+        outSlope: -0.000000008167826
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.0000000024320872
+        inSlope: -0.000000019033726
+        outSlope: -0.000000019033726
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000001476251
+        inSlope: 0.00000007181762
+        outSlope: 0.00000007181762
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6166667
+        value: -0.000000014746469
+        inSlope: 0.00000007173958
+        outSlope: 0.000000115407154
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000001476251
+        inSlope: 0.00000011553269
+        outSlope: 0.00000011553269
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.022959
+        inSlope: 1.7947124
+        outSlope: 1.7947124
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 2.2099783
+        inSlope: -17.585993
+        outSlope: -17.589014
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.022959
+        inSlope: -1.7948164
+        outSlope: -1.7948164
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.000000003250691
+        inSlope: -0.000000016253454
+        outSlope: -0.000000016253454
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 0.0000000025997453
+        inSlope: -0.000000012998726
+        outSlope: -0.00000001949809
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.000000003250691
+        inSlope: -0.000000024380183
+        outSlope: -0.000000024380183
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0000000045423962
+        inSlope: 0.00000002271198
+        outSlope: 0.00000002271198
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.000000004520683
+        inSlope: 0.000000022603414
+        outSlope: 0.000000033905124
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000000045423962
+        inSlope: 0.000000034067973
+        outSlope: 0.000000034067973
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -6.022963
+        inSlope: 1.7213367
+        outSlope: 1.7213367
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 1.873181
+        inSlope: -16.867735
+        outSlope: -16.870398
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -6.022963
+        inSlope: -1.7213167
+        outSlope: -1.7213167
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -2.6925917e-10
+        inSlope: 0.0000000013462959
+        outSlope: 0.0000000013462959
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.0000000016900037
+        inSlope: 0.0000000084500185
+        outSlope: 0.000000012675028
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -2.6925917e-10
+        inSlope: 0.000000002019444
+        outSlope: 0.000000002019444
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000010336345
+        inSlope: 0.000000051681727
+        outSlope: 0.000000051681727
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.000000010284785
+        inSlope: 0.000000051423918
+        outSlope: 0.00000007713589
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000010336345
+        inSlope: 0.0000000775226
+        outSlope: 0.0000000775226
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -4.3477182
+        inSlope: 1.4492083
+        outSlope: 1.4492083
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: 2.2961497
+        inSlope: -14.195896
+        outSlope: -14.19748
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -4.3477182
+        inSlope: -1.4492728
+        outSlope: -1.4492728
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0000000035463035
+        inSlope: 0.000000017731516
+        outSlope: 0.000000017731516
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.0000000045455586
+        inSlope: 0.000000022727791
+        outSlope: 0.00000003409169
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000000035463035
+        inSlope: 0.000000026597277
+        outSlope: 0.000000026597277
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.0000000086298435
+        inSlope: 0.000000043149218
+        outSlope: 0.000000043149218
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6
+        value: -0.000000008611923
+        inSlope: 0.00000004305961
+        outSlope: 0.00000006458942
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.0000000086298435
+        inSlope: 0.00000006472383
+        outSlope: 0.00000006472383
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -4.347735
+        inSlope: 3.3146653
+        outSlope: 3.3146653
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: 10.323153
+        inSlope: 36.38491
+        outSlope: 36.391323
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: 6.6801896
+        inSlope: -48.951015
+        outSlope: -48.95431
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -4.347735
+        inSlope: -3.3143382
+        outSlope: -3.3143382
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000007377477
+        inSlope: 0.000000057736774
+        outSlope: 0.000000057736774
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -0.0000000094963655
+        inSlope: 0.00000007431938
+        outSlope: 0.00000008996556
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: -0.000000008962691
+        inSlope: 0.0000000849097
+        outSlope: 0.00000008962693
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000007377477
+        inSlope: 0.00000007377478
+        outSlope: 0.00000007377478
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000008230821
+        inSlope: 0.000000064415126
+        outSlope: 0.000000064415126
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -0.000000008342171
+        inSlope: 0.00000006528656
+        outSlope: 0.00000007903109
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.70000005
+        value: -0.000000008263235
+        inSlope: 0.00000007828328
+        outSlope: 0.00000008263237
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000008230821
+        inSlope: 0.00000008230823
+        outSlope: 0.00000008230823
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -4.347726
+        inSlope: 3.230764
+        outSlope: 3.230764
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: 9.949642
+        inSlope: 35.461983
+        outSlope: 35.46651
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: 5.5926557
+        inSlope: -48.816963
+        outSlope: -48.82701
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -4.347726
+        inSlope: -3.2306979
+        outSlope: -3.2306979
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.x
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.00000000662123
+        inSlope: 0.00000005181832
+        outSlope: 0.00000005181832
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -0.000000011580016
+        inSlope: 0.0000000906262
+        outSlope: 0.00000010422014
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: -0.000000010051662
+        inSlope: 0.00000009046496
+        outSlope: 0.000000106429376
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.00000000662123
+        inSlope: 0.00000007010715
+        outSlope: 0.00000007010715
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.y
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.000000019777758
+        inSlope: 0.00000015478244
+        outSlope: 0.00000015478244
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.38333336
+        value: -0.000000020021973
+        inSlope: 0.0000001566937
+        outSlope: 0.00000018019776
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7166667
+        value: -0.000000019815166
+        inSlope: 0.00000017833649
+        outSlope: 0.00000020980767
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -0.000000019777758
+        inSlope: 0.00000020941158
+        outSlope: 0.00000020941158
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAngles.z
+    path: Armature/dragon_Root/dragon_upperChest/dragon_chest/dragon_spine/dragon_hips/tail/tail.001/tail.002/tail.003/tail.004/tail.005/tail.006/tail.007/tail.008/tail.009/tail.010
+    classID: 4
+    script: {fileID: 0}
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events: []

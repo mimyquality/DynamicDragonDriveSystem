@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dae6a877a925c4944b44fb3e36218182
+labels:
+- Animation
+- Environment
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - windVectors: {fileID: 2800000, guid: 6c795dd1d1d319e479e68164001557e8, type: 3}
+  - windZone: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
