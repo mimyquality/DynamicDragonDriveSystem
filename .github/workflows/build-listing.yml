@@ -1,7 +1,7 @@
 name: Build Repo Listing
 
 env:
-  CurrentPackageName: com.vrchat.demo-template
+  CurrentPackageName: dynamicdragondrivesystem
   listPublishDirectory: Website
   pathToCi: ci
   
