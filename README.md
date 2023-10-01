@@ -21,7 +21,6 @@ vpm add repo https://vpm.mimylab.com/index.json
 
 VCCから任意のプロジェクトを選択し、「Manage Project」から「Manage Packages」に移動します。  
 読み込んだパッケージが一覧に出てくるので、 **Dynamic Dragon Drive Sytstem** の右にある「＋」ボタンを押すか「Installed Version」から直接バージョンを選ぶことで、プロジェクトにインポートします。  
-![Manage Packages](Website/image/vcc_userpackages_add.png)
 
 
 リポジトリーを使わずに導入したい場合は、[Release](https://github.com/mimyquality/DynamicDragonDriveSystem/releases)からunitypackageファイル( *com.mimylab.DynamicDragonDriveSystem-\*.\*.\*.unitypackage* )をダウンロードして、プロジェクトにインポートしてください。  
