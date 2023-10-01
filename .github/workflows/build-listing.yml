@@ -1,7 +1,7 @@
 name: Build Repo Listing
 
 env:
-  CurrentPackageName: dynamicdragondrivesystem
+  CurrentPackageName: com.mimylab.dynamicdragondrivesystem
   listPublishDirectory: Website
   pathToCi: ci
   
