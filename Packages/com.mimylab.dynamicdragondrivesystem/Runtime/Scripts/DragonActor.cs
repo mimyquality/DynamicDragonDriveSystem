@@ -1,4 +1,9 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -33,7 +38,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector2 _noseDirection;
 
         private float _pitch, _roll;
-        private Vector3 _relativeVelocity;
+        private Vector3 _relativeVelocity, _relativeAngularVelocity;
 
         // Boolパラメーター
         private int _param_IsMount = Animator.StringToHash("IsMount");
@@ -119,6 +124,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _roll = Vector3.SignedAngle(datum, up, forward);
 
             _relativeVelocity = Quaternion.Inverse(_rigidbody.rotation) * _rigidbody.velocity;
+            _relativeAngularVelocity = Quaternion.Inverse(_rigidbody.rotation) * _rigidbody.angularVelocity;
         }
 
         private void SetAnimatorParameters()

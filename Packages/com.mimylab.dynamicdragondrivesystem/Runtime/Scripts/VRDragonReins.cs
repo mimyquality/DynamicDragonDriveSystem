@@ -1,4 +1,9 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -27,7 +32,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Range(0.0f, 1.0f), SerializeField]
         private float _brakesAcceptanceThreshold = 0.9f;
 
-        private VRCPlayerApi _localPlayer;
         private bool _isGrabLeft, _isGrabRight;
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
@@ -36,11 +40,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _inputMove, _oppositeMove;
         private Vector3 _inputRotate;
         private bool _prevGrabJump;
-
-        private void Start()
-        {
-            _localPlayer = Networking.LocalPlayer;
-        }
 
         public override void InputGrab(bool value, UdonInputEventArgs args)
         {
@@ -51,7 +50,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        protected override void KeyInput()
+        protected override void InputKey()
         {
             _originPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).position;
             _originRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;

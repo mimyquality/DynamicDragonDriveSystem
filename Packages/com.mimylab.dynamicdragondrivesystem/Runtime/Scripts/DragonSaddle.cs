@@ -1,9 +1,13 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using VRC.Udon.Common;
 using VRCStation = VRC.SDK3.Components.VRCStation;
 
 namespace MimyLab.DynamicDragonDriveSystem
@@ -16,6 +20,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonActor actor;
         public DragonInputManager reins;
         public SummonDragonSwitch summonSwitch;
+
+        [Tooltip("sec"), Min(0.2f)]
+        public float exitAcceptance = 0.8f;
 
         private bool _isMount = false;
         public bool IsMount

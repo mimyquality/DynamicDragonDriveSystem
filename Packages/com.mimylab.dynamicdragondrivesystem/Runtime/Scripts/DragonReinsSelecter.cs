@@ -1,4 +1,9 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -16,12 +21,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonSaddle saddle;
 
         public KBDragonReins keyboard;
-        public STKDragonReins joysticks;
-        public VRDragonReins vrHand;
+        public STKDragonReins thumbsticks;
+        public VRDragonReins vrHands;
         //public PADDragonReins touchPad;
 
         [SerializeField] private GameObject selectedKeyboard;
-        [SerializeField] private GameObject selectedJoysticks;
+        [SerializeField] private GameObject selectedThumbsticks;
         [SerializeField] private GameObject selectedVRHands;
         [SerializeField] private GameObject selectedTouchPad;
 
@@ -31,21 +36,21 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             keyboard = GetComponentInChildren<KBDragonReins>();
-            joysticks = GetComponentInChildren<STKDragonReins>();
-            vrHand = GetComponentInChildren<VRDragonReins>();
+            thumbsticks = GetComponentInChildren<STKDragonReins>();
+            vrHands = GetComponentInChildren<VRDragonReins>();
             //touchPad = GetComponentInChildren<PADDragonReins>();
 
             keyboard.driver = driver;
             keyboard.saddle = saddle;
             keyboard.enabled = false;
 
-            joysticks.driver = driver;
-            joysticks.saddle = saddle;
-            joysticks.enabled = false;
+            thumbsticks.driver = driver;
+            thumbsticks.saddle = saddle;
+            thumbsticks.enabled = false;
 
-            vrHand.driver = driver;
-            vrHand.saddle = saddle;
-            vrHand.enabled = false;
+            vrHands.driver = driver;
+            vrHands.saddle = saddle;
+            vrHands.enabled = false;
 
             // touchPad初期化
 
@@ -57,7 +62,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (Networking.LocalPlayer.IsUserInVR())
             {
-                SetJoysticks();
+                SetThumbsticks();
             }
             else
             {
@@ -70,27 +75,27 @@ namespace MimyLab.DynamicDragonDriveSystem
             saddle.reins = keyboard;
 
             selectedKeyboard.SetActive(true);
-            selectedJoysticks.SetActive(false);
+            selectedThumbsticks.SetActive(false);
             selectedVRHands.SetActive(false);
             //selectedTouchPad.SetActive(false);
         }
 
-        public void SetJoysticks()
+        public void SetThumbsticks()
         {
-            saddle.reins = joysticks;
+            saddle.reins = thumbsticks;
 
             selectedKeyboard.SetActive(false);
-            selectedJoysticks.SetActive(true);
+            selectedThumbsticks.SetActive(true);
             selectedVRHands.SetActive(false);
             //selectedTouchPad.SetActive(false);
         }
 
         public void SetVRHands()
         {
-            saddle.reins = vrHand;
+            saddle.reins = vrHands;
 
             selectedKeyboard.SetActive(false);
-            selectedJoysticks.SetActive(false);
+            selectedThumbsticks.SetActive(false);
             selectedVRHands.SetActive(true);
             //selectedTouchPad.SetActive(false);
         }
@@ -100,7 +105,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             //saddle.reins = touchPad;
 
             selectedKeyboard.SetActive(false);
-            selectedJoysticks.SetActive(false);
+            selectedThumbsticks.SetActive(false);
             selectedVRHands.SetActive(false);
             selectedTouchPad.SetActive(true);
         }

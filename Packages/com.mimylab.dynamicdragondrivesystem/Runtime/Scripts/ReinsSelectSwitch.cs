@@ -1,4 +1,9 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -10,8 +15,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     public enum ReinsSelectSwitchReinsType
     {
         KeyBoard,
-        Joysticks,
-        VRHand,
+        Thumbsticks,
+        VRHands,
         TouchPad
     }
 
@@ -29,8 +34,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             switch (switchType)
             {
                 case ReinsSelectSwitchReinsType.KeyBoard: selecter.SetKeyboard(); break;
-                case ReinsSelectSwitchReinsType.Joysticks: selecter.SetJoysticks(); break;
-                case ReinsSelectSwitchReinsType.VRHand: selecter.SetVRHands(); break;
+                case ReinsSelectSwitchReinsType.Thumbsticks: selecter.SetThumbsticks(); break;
+                case ReinsSelectSwitchReinsType.VRHands: selecter.SetVRHands(); break;
                 case ReinsSelectSwitchReinsType.TouchPad: selecter.SetTouchPad(); break;
             }
         }

@@ -1,9 +1,13 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using VRC.SDK3.Components;
 using VRC.Udon.Common;
 
 namespace MimyLab.DynamicDragonDriveSystem
@@ -14,15 +18,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonDriver driver;
         public DragonSaddle saddle;
 
-        [Tooltip("sec"), Min(0.2f), SerializeField]
-        private float _exitAcceptance = 0.8f;
-
-        protected float _thrust, _lift, _traverse;
+        protected VRCPlayerApi _localPlayer;
+        protected float _thrust, _lift, _lateral;
         protected float _elevator, _ladder, _aileron;
         protected bool _brakes, _turbo;
 
         private bool _inputJump;
         private float _inputJumpTimer;
+        private float _exitAcceptance;
 
         private Vector3 _accelerate = Vector3.zero;
         private Vector3 Accelerate
@@ -65,12 +68,18 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
+        private void Start()
+        {
+            _localPlayer = Networking.LocalPlayer;
+            _exitAcceptance = saddle.exitAcceptance;
+        }
+
         private void Update()
         {
-            JumpInput();
-            KeyInput();
+            CountInputJumpTimer();
+            InputKey();
 
-            Accelerate = new Vector3(_traverse, _lift, _thrust);
+            Accelerate = new Vector3(_lateral, _lift, _thrust);
             Rotate = new Vector3(_elevator, _ladder, _aileron);
             EmergencyBreakes = _brakes;
             Overdrive = _turbo;
@@ -86,9 +95,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             _inputJump = value;
         }
 
-        protected virtual void KeyInput() { }
+        protected virtual void InputKey() { }
 
-        private void JumpInput()
+        private void CountInputJumpTimer()
         {
             _inputJumpTimer = (_inputJump) ? _inputJumpTimer + Time.deltaTime : 0.0f;
 

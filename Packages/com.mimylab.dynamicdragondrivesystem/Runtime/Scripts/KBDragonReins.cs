@@ -1,4 +1,9 @@
-﻿
+﻿/*
+Copyright (c) 2023 Mimy Quality
+Released under the MIT license
+https://opensource.org/licenses/mit-license.php
+*/
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -24,7 +29,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _aileron = -value;
         }
 
-        protected override void KeyInput()
+        protected override void InputKey()
         {
             _thrust = (Input.GetKey(KeyCode.E)) ? 1.0f :
                       (Input.GetKey(KeyCode.Q)) ? -1.0f : 0.0f;
