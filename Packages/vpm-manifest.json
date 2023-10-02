@@ -1,1 +1,95 @@
-{"dependencies": {}, "locked": {}}
+{
+  "dependencies": {
+    "com.vrchat.core.vpm-resolver": {
+      "version": "0.1.24"
+    },
+    "com.vrchat.worlds": {
+      "version": "3.3.0"
+    },
+    "com.vrchat.udonsharp": {
+      "version": "1.1.9"
+    },
+    "com.vrchat.clientsim": {
+      "version": "1.2.7"
+    },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "2.1.5"
+    },
+    "jp.whiteflare.unlitwf": {
+      "version": "1.4.0"
+    },
+    "jp.whiteflare.worldtools": {
+      "version": "1.4.2"
+    },
+    "net.kaikoga.pen": {
+      "version": "1.0.0"
+    },
+    "com.mimylab.fukuroudon": {
+      "version": "1.6.9"
+    }
+  },
+  "locked": {
+    "com.vrchat.core.vpm-resolver": {
+      "version": "0.1.24",
+      "dependencies": {}
+    },
+    "com.vrchat.worlds": {
+      "version": "3.3.0",
+      "dependencies": {
+        "com.vrchat.base": "3.3.0"
+      }
+    },
+    "com.vrchat.base": {
+      "version": "3.3.0",
+      "dependencies": {}
+    },
+    "com.vrchat.udonsharp": {
+      "version": "1.1.9",
+      "dependencies": {
+        "com.vrchat.worlds": "^3.1.x"
+      }
+    },
+    "com.vrchat.clientsim": {
+      "version": "1.2.7",
+      "dependencies": {
+        "com.vrchat.worlds": "^3.2.2"
+      }
+    },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "2.1.5",
+      "dependencies": {
+        "com.vrchat.base": "^3.2.x"
+      }
+    },
+    "jp.whiteflare.unlitwf": {
+      "version": "1.4.0",
+      "dependencies": {
+        "jp.whiteflare.unlitwf.texpack": "^1.0.0"
+      }
+    },
+    "jp.whiteflare.unlitwf.texpack": {
+      "version": "1.0.0",
+      "dependencies": {}
+    },
+    "jp.whiteflare.worldtools": {
+      "version": "1.4.2",
+      "dependencies": {
+        "com.vrchat.worlds": "^3.1.13"
+      }
+    },
+    "net.kaikoga.pen": {
+      "version": "1.0.0",
+      "dependencies": {
+        "com.vrchat.base": "^3.0.0",
+        "com.vrchat.worlds": "^3.0.0",
+        "com.vrchat.udonsharp": "^1.0.0"
+      }
+    },
+    "com.mimylab.fukuroudon": {
+      "version": "1.6.9",
+      "dependencies": {
+        "com.vrchat.worlds": "^3.2.2"
+      }
+    }
+  }
+}

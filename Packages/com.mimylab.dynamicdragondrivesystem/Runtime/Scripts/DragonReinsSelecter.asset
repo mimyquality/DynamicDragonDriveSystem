@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: DragonReinsSelecter
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 911a51676f6a26a4585fff5da01ef224,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 1b0ef162b67e3e94c9653a030636a3c9,
     type: 2}
   udonAssembly: 
   assemblyError: 
@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonDriver, Assembly-CSharp
+      Data: MimyLab.DynamicDragonDriveSystem.DragonDriver, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 
@@ -122,7 +122,7 @@ MonoBehaviour:
       Data: 7|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonSaddle, Assembly-CSharp
+      Data: MimyLab.DynamicDragonDriveSystem.DragonSaddle, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 
@@ -176,7 +176,7 @@ MonoBehaviour:
       Data: 10|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.KBDragonReins, Assembly-CSharp
+      Data: MimyLab.DynamicDragonDriveSystem.KBDragonReins, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 
@@ -230,7 +230,7 @@ MonoBehaviour:
       Data: 13|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.STKDragonReins, Assembly-CSharp
+      Data: MimyLab.DynamicDragonDriveSystem.STKDragonReins, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 
@@ -284,7 +284,7 @@ MonoBehaviour:
       Data: 16|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.VRDragonReins, Assembly-CSharp
+      Data: MimyLab.DynamicDragonDriveSystem.VRDragonReins, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 

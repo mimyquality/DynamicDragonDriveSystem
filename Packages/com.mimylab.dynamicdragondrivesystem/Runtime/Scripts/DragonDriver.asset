@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: DragonDriver
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: ba9e555907a1b254d9fd76485f9b4dc7,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 59d3b7d465d9bc745b44b63e2b1781de,
     type: 2}
   udonAssembly: 
   assemblyError: 
@@ -2223,7 +2223,7 @@ MonoBehaviour:
       Data: 134|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonDrivingStateType, Assembly-CSharp
+      Data: MimyLab.DynamicDragonDriveSystem.DragonDrivingStateType, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 

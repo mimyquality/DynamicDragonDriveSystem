@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: DragonTandem
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 370628054b7dc5744bd51613247eb12e,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 98d49dfbdc3ab8a4b9b0da97f4e29330,
     type: 2}
   udonAssembly: 
   assemblyError: 
