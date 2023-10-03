@@ -4,8 +4,13 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.0.5] - 2023/10/4
+### Changed
+- Animator Controller更新
+
 ## [0.0.1] - 2023/10/1
 ### Add
 - VPM化
 
+[0.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.5
 [0.0.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.1
