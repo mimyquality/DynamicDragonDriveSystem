@@ -18,6 +18,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class DragonActor : UdonSharpBehaviour
     {
         public DragonDriver driver;
+        public bool isMount;
 
         public Transform nose;  // Debug
         public GameObject groundedLamp; //Debug
@@ -28,8 +29,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Animator _animator;
         private Rigidbody _rigidbody;
 
-        [UdonSynced]
-        private bool _isMount;
         [UdonSynced]
         private bool _isGrounded, _isBrakes, _isOverdrive;
         [UdonSynced]
@@ -56,7 +55,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int _param_VelocityY = Animator.StringToHash("VelocityY");
         private int _param_VelocityZ = Animator.StringToHash("VelocityZ");
         private int _param_VelocityMagnitude = Animator.StringToHash("VelocityMagnitude");
-
 
         private bool _initialized = false;
         private void Initialize()
@@ -98,7 +96,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_localPlayer.IsOwner(this.gameObject)) { return; }
 
-            _isMount = driver.IsMount;
             _isGrounded = driver.IsGrounded;
             _isBrakes = driver.IsBrakes;
             _isOverdrive = driver.IsOverdrive;
@@ -129,7 +126,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SetAnimatorParameters()
         {
-            _animator.SetBool(_param_IsMount, _isMount);
+            _animator.SetBool(_param_IsMount, isMount);
             _animator.SetBool(_param_IsGrounded, _isGrounded);
             _animator.SetBool(_param_IsBrakes, _isBrakes);
             _animator.SetBool(_param_IsOverdrive, _isOverdrive);

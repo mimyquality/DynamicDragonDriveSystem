@@ -28,15 +28,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             driver = GetComponentInChildren<DragonDriver>();
-            saddle = GetComponentInChildren<DragonSaddle>();
             actor = GetComponentInChildren<DragonActor>();
+            saddle = GetComponentInChildren<DragonSaddle>();
             reinsSelecter = GetComponentInChildren<DragonReinsSelecter>();
             summonSwitch = GetComponentInChildren<SummonDragonSwitch>();
 
+            actor.driver = driver;
             saddle.driver = driver;
             saddle.actor = actor;
             saddle.summonSwitch = summonSwitch;
-            actor.driver = driver;
             reinsSelecter.driver = driver;
             reinsSelecter.saddle = saddle;
             summonSwitch.driver = driver;
