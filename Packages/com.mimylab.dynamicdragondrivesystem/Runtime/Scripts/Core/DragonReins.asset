@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: DragonReinsSelecter
+  m_Name: DragonReins
   m_EditorClassIdentifier: 
   serializedUdonProgramAsset: {fileID: 11400000, guid: 1b0ef162b67e3e94c9653a030636a3c9,
     type: 2}
@@ -176,7 +176,7 @@ MonoBehaviour:
       Data: 10|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.KBDragonReins, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputKB, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 
@@ -230,7 +230,7 @@ MonoBehaviour:
       Data: 13|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.STKDragonReins, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputSTK, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 
@@ -284,7 +284,7 @@ MonoBehaviour:
       Data: 16|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.VRDragonReins, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputVR, com.mimylab.dynamicdragondrivesystem
     - Name: 
       Entry: 8
       Data: 

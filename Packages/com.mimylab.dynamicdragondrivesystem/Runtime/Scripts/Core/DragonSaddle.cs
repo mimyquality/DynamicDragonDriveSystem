@@ -16,7 +16,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         public DragonDriver driver;
         public DragonActor actor;
-        public DragonInputManager reins;
+        public ReinsInputManager reins;
         public SummonDragonSwitch summonSwitch;
 
         protected override void OnLocalPlayerStationEntered()

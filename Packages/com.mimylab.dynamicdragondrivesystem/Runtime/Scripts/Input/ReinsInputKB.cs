@@ -8,13 +8,12 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using VRC.SDK3.Components;
 using VRC.Udon.Common;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class KBDragonReins : DragonInputManager
+    public class ReinsInputKB : ReinsInputManager
     {
         // W・Sキー
         public override void InputMoveVertical(float value, UdonInputEventArgs args)

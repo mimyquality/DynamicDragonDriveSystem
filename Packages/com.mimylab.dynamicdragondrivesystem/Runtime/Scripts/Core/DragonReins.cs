@@ -20,9 +20,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonDriver driver;
         public DragonSaddle saddle;
 
-        public KBDragonReins keyboard;
-        public STKDragonReins thumbsticks;
-        public VRDragonReins vrHands;
+        public ReinsInputKB keyboard;
+        public ReinsInputSTK thumbsticks;
+        public ReinsInputVR vrHands;
         //public PADDragonReins touchPad;
 
         [SerializeField] private GameObject selectedKeyboard;
@@ -35,9 +35,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
-            keyboard = GetComponentInChildren<KBDragonReins>();
-            thumbsticks = GetComponentInChildren<STKDragonReins>();
-            vrHands = GetComponentInChildren<VRDragonReins>();
+            keyboard = GetComponentInChildren<ReinsInputKB>();
+            thumbsticks = GetComponentInChildren<ReinsInputSTK>();
+            vrHands = GetComponentInChildren<ReinsInputVR>();
             //touchPad = GetComponentInChildren<PADDragonReins>();
 
             keyboard.driver = driver;

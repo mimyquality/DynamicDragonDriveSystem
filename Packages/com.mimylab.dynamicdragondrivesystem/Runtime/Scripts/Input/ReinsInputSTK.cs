@@ -8,13 +8,12 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using VRC.SDK3.Components;
 using VRC.Udon.Common;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class STKDragonReins : DragonInputManager
+    public class ReinsInputSTK : ReinsInputManager
     {
         [Range(0.0f, 1.0f), SerializeField]
         private float _brakesAcceptanceThreshold = 0.9f;

@@ -13,7 +13,7 @@ using VRC.Udon.Common;
 namespace MimyLab.DynamicDragonDriveSystem
 {
     [DefaultExecutionOrder(-100)]
-    public class DragonInputManager : UdonSharpBehaviour
+    public class ReinsInputManager : UdonSharpBehaviour
     {
         public DragonDriver driver;
         public DragonSaddle saddle;
