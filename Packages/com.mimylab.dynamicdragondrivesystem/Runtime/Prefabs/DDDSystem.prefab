@@ -60,7 +60,7 @@ MonoBehaviour:
   driver: {fileID: 0}
   saddle: {fileID: 0}
   actor: {fileID: 0}
-  reinsSelecter: {fileID: 0}
+  reins: {fileID: 0}
   summonSwitch: {fileID: 0}
 --- !u!114 &8221800171798478483
 MonoBehaviour:
@@ -548,6 +548,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8221800171798478493}
     m_Modifications:
+    - target: {fileID: 3004530545748076932, guid: c03d143414b0f7e4e830e67d9a816a8b,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3004530545748076932, guid: c03d143414b0f7e4e830e67d9a816a8b,
+        type: 3}
     - target: {fileID: 3311772992720924177, guid: c03d143414b0f7e4e830e67d9a816a8b,
         type: 3}
       propertyPath: m_Name
@@ -625,6 +631,12 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 4738120064923292161, guid: c03d143414b0f7e4e830e67d9a816a8b,
+        type: 3}
+    - target: {fileID: 8203293991161919001, guid: c03d143414b0f7e4e830e67d9a816a8b,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8203293991161919001, guid: c03d143414b0f7e4e830e67d9a816a8b,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c03d143414b0f7e4e830e67d9a816a8b, type: 3}

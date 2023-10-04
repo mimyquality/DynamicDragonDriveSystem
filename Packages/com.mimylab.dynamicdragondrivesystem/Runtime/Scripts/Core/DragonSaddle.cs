@@ -26,7 +26,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             driver.IsMount = true;
             driver.enabled = true;
             reins.enabled = true;
-
         }
 
         protected override void OnLocalPlayerStationExited()
@@ -45,6 +44,16 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             actor.isMount = false;
             summonSwitch.HasMounted = false;
+        }
+
+        protected override void OnEnableAdjust()
+        {
+            reins.enabled = false;
+        }
+
+        protected override void OnDisableAdjust()
+        {
+            reins.enabled = IsMount;
         }
     }
 }

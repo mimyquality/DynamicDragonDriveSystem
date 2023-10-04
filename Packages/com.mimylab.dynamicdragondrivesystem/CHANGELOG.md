@@ -4,6 +4,13 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.1.0] - 2023/10/5
+### Add
+- すべての座席に座高調整機能を追加
+  - 操縦席はハンドル下のスイッチでドラゴンの操縦と切替式
+  - DTモードはWASDで水平方向の調整、↑↓で座高の調整
+  - VRモードは左スティックで水平方向の調整、右スティック上下で座高の調整
+
 ## [0.0.5] - 2023/10/4
 ### Changed
 - Animator Controller更新
@@ -12,5 +19,6 @@
 ### Add
 - VPM化
 
+[0.1.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.0
 [0.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.5
 [0.0.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.1

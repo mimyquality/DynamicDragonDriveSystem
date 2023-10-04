@@ -66,7 +66,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Tooltip("m/s"), Min(0.0f), SerializeField]
         private float _accelerateLimit = 18.0f * 5 / 18;
         [Tooltip("m/s"), SerializeField]
-        private float _jumpSpeed = 30.0f * 5 / 18;
+        private float _jumpSpeed = 28.8f * 5 / 18;
         [Min(0.0f), SerializeField]
         private float _brakePower = 2.0f;
         [SerializeField]

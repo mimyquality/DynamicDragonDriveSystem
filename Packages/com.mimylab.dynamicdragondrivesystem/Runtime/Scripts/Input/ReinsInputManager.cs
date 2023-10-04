@@ -71,12 +71,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Start()
         {
             _localPlayer = Networking.LocalPlayer;
-            _exitAcceptance = saddle.exitAcceptance;
         }
 
         private void Update()
         {
-            CountInputJumpTimer();
             InputKey();
 
             Accelerate = new Vector3(_lateral, _lift, _thrust);
@@ -91,21 +89,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 driver._InputJump();
             }
-
-            _inputJump = value;
         }
 
         protected virtual void InputKey() { }
-
-        private void CountInputJumpTimer()
-        {
-            _inputJumpTimer = (_inputJump) ? _inputJumpTimer + Time.deltaTime : 0.0f;
-
-            if (_inputJumpTimer > _exitAcceptance)
-            {
-                saddle.Exit();
-                _inputJump = false;
-            }
-        }
     }
 }

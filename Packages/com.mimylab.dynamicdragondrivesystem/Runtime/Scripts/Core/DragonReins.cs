@@ -23,22 +23,23 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputKB keyboard;
         public ReinsInputSTK thumbsticks;
         public ReinsInputVR vrHands;
-        //public PADDragonReins touchPad;
+        //public ReinsInputTP touchPad;
+
 
         [SerializeField] private GameObject selectedKeyboard;
         [SerializeField] private GameObject selectedThumbsticks;
         [SerializeField] private GameObject selectedVRHands;
-        [SerializeField] private GameObject selectedTouchPad;
+        //[SerializeField] private GameObject selectedTouchPad;
 
         private bool _initialized = false;
         private void Initialize()
         {
             if (_initialized) { return; }
 
-            keyboard = GetComponentInChildren<ReinsInputKB>();
-            thumbsticks = GetComponentInChildren<ReinsInputSTK>();
-            vrHands = GetComponentInChildren<ReinsInputVR>();
-            //touchPad = GetComponentInChildren<PADDragonReins>();
+            keyboard = GetComponentInChildren<ReinsInputKB>(true);
+            thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
+            vrHands = GetComponentInChildren<ReinsInputVR>(true);
+            //touchPad = GetComponentInChildren<ReinsInputTP>();
 
             keyboard.driver = driver;
             keyboard.saddle = saddle;
@@ -77,7 +78,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             selectedKeyboard.SetActive(true);
             selectedThumbsticks.SetActive(false);
             selectedVRHands.SetActive(false);
-            //selectedTouchPad.SetActive(false);
         }
 
         public void SetThumbsticks()
@@ -87,7 +87,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             selectedKeyboard.SetActive(false);
             selectedThumbsticks.SetActive(true);
             selectedVRHands.SetActive(false);
-            //selectedTouchPad.SetActive(false);
         }
 
         public void SetVRHands()
@@ -97,17 +96,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             selectedKeyboard.SetActive(false);
             selectedThumbsticks.SetActive(false);
             selectedVRHands.SetActive(true);
-            //selectedTouchPad.SetActive(false);
         }
 
-        public void SetTouchPad()
-        {
-            //saddle.reins = touchPad;
-
-            selectedKeyboard.SetActive(false);
-            selectedThumbsticks.SetActive(false);
-            selectedVRHands.SetActive(false);
-            selectedTouchPad.SetActive(true);
-        }
+        public void SetTouchPad() { }
     }
 }
