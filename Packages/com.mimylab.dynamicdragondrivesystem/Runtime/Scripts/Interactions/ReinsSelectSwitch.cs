@@ -24,7 +24,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class ReinsSelectSwitch : UdonSharpBehaviour
     {
         [SerializeField]
-        DragonReinsSelecter selecter;
+        DragonReins selecter;
 
         [SerializeField]
         ReinsSelectSwitchReinsType switchType = default;

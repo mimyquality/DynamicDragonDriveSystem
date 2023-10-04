@@ -15,7 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     [DefaultExecutionOrder(-200)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class DragonReinsSelecter : UdonSharpBehaviour
+    public class DragonReins : UdonSharpBehaviour
     {
         public DragonDriver driver;
         public DragonSaddle saddle;
