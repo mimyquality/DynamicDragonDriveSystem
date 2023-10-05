@@ -4,6 +4,12 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.1.1] - 2023/10/6
+### Fixed
+- Velocityが同期するように修正
+- 着座位置が同期するように修正
+- 操縦席は座った時だけ座高調節スイッチが出現し、スイッチを押して有効にしている間だけ座高調節可能になるよう修正
+
 ## [0.1.0] - 2023/10/5
 ### Add
 - すべての座席に座高調整機能を追加
@@ -19,6 +25,7 @@
 ### Add
 - VPM化
 
+[0.1.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.1
 [0.1.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.0
 [0.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.5
 [0.0.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.1

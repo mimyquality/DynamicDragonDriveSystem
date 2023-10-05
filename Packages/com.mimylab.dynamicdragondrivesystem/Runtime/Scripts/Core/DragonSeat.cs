@@ -12,25 +12,45 @@ using VRCStation = VRC.SDK3.Components.VRCStation;
 namespace MimyLab.DynamicDragonDriveSystem
 {
     [RequireComponent(typeof(VRCStation), typeof(SeatInputManager))]
-    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour
     {
-        [SerializeField, FieldChangeCallback(nameof(EnableAdjustInput))]
-        private bool _enableAdjustInput = true;
+        [SerializeField, FieldChangeCallback(nameof(EnableSeatAdjust))]
+        private bool _enableSeatAdjust = true;
         [SerializeField]
         private Vector3 _maxSeatAdjustment = new Vector3(0.0f, 0.7f, 0.3f);
         [SerializeField]
         private Vector3 _minSeatAdjustment = new Vector3(0.0f, -0.3f, -0.3f);
 
-        public bool EnableAdjustInput
+        [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
+        private Vector3 _adjustPoint;
+        public Vector3 AdjustPoint
         {
-            get => _enableAdjustInput;
+            get => _adjustPoint;
             set
             {
-                if (value && !_enableAdjustInput) { OnEnableAdjust(); }
-                if (!value && _enableAdjustInput) { OnDisableAdjust(); }
+                Initialize();
 
-                _enableAdjustInput = value;
+                _adjustPoint = value;
+                _adjustPoint.x = Mathf.Clamp(_adjustPoint.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
+                _adjustPoint.y = Mathf.Clamp(_adjustPoint.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
+                _adjustPoint.z = Mathf.Clamp(_adjustPoint.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
+
+                _enterPoint.localPosition = _adjustPoint;
+
+                RequestSerialization();
+            }
+        }
+
+        public bool EnableSeatAdjust
+        {
+            get => _enableSeatAdjust;
+            set
+            {
+                if (value && !_enableSeatAdjust) { OnEnableAdjust(); }
+                if (!value && _enableSeatAdjust) { OnDisableAdjust(); }
+
+                _enableSeatAdjust = value;
                 _seatInput.EnableAdjustInput = value;
             }
         }
@@ -52,6 +72,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Transform _enterPoint;
         private bool _isMount = false;
         private float _adjustSpeed = 0.5f;  // m/s
+        private Vector3 _localAdjustPoint;
 
         private bool _initialized = false;
         private void Initialize()
@@ -61,12 +82,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station = GetComponent<VRCStation>();
             _seatInput = GetComponent<SeatInputManager>();
             _enterPoint = (_station.stationEnterPlayerLocation) ? _station.stationEnterPlayerLocation : _station.transform;
+            _localAdjustPoint = _enterPoint.localPosition;
 
             _station.PlayerMobility = VRCStation.Mobility.ImmobilizeForVehicle;
             _station.canUseStationFromStation = false;
             _station.disableStationExit = true;
 
-            EnableAdjustInput = EnableAdjustInput;
+            EnableSeatAdjust = EnableSeatAdjust;
             _seatInput.enabled = false;
 
             _initialized = true;
@@ -84,20 +106,27 @@ namespace MimyLab.DynamicDragonDriveSystem
         public override void OnStationEntered(VRCPlayerApi player)
         {
             IsMount = true;
+
             if (player.isLocal)
             {
-                OnLocalPlayerStationEntered();
+                Networking.SetOwner(player, this.gameObject);
+                AdjustPoint = _localAdjustPoint;
                 _seatInput.enabled = true;
+
+                OnLocalPlayerMount();
             }
         }
 
         public override void OnStationExited(VRCPlayerApi player)
         {
             IsMount = false;
+
             if (player.isLocal)
             {
-                OnLocalPlayerStationExited();
+                _localAdjustPoint = AdjustPoint;
                 _seatInput.enabled = false;
+
+                OnLocalPlayerUnmount();
             }
         }
 
@@ -111,22 +140,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.ExitStation(Networking.LocalPlayer);
         }
 
-        public void _AdjustPosition(Vector3 input)
+        public void _SetAdjustPosition(Vector3 input)
         {
-            if (input == Vector3.zero) { return; }
-
-            var adjustPosition = _enterPoint.localPosition;
-            adjustPosition += Time.deltaTime * _adjustSpeed * input;
-
-            adjustPosition.x = Mathf.Clamp(adjustPosition.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
-            adjustPosition.y = Mathf.Clamp(adjustPosition.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
-            adjustPosition.z = Mathf.Clamp(adjustPosition.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
-
-            _enterPoint.localPosition = adjustPosition;
+            AdjustPoint += Time.deltaTime * _adjustSpeed * input;
         }
 
-        protected virtual void OnLocalPlayerStationEntered() { }
-        protected virtual void OnLocalPlayerStationExited() { }
+        protected virtual void OnLocalPlayerMount() { }
+        protected virtual void OnLocalPlayerUnmount() { }
         protected virtual void OnMount() { }
         protected virtual void OnUnmount() { }
         protected virtual void OnEnableAdjust() { }

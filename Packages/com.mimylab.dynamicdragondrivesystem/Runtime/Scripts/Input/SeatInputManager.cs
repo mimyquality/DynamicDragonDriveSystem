@@ -12,7 +12,7 @@ using VRC.Udon.Common;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class SeatInputManager : UdonSharpBehaviour
     {
         [Tooltip("sec"), Min(0.2f)]
@@ -25,7 +25,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         private DragonSeat _seat;
-        private bool _isDT = true;
+        private bool _isVR = true;
 
         private bool _inputJump;
         private float _inputJumpTimer;
@@ -43,12 +43,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Start()
         {
             _seat = GetComponent<DragonSeat>();
-            _isDT = !Networking.LocalPlayer.IsUserInVR();
+            _isVR = Networking.LocalPlayer.IsUserInVR();
         }
 
         private void Update()
         {
-            if (_isDT) { InputKey(); }
+            InputKey();
 
             _inputJumpTimer = (_inputJump) ? _inputJumpTimer + Time.deltaTime : 0.0f;
 
@@ -59,24 +59,32 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _inputAdjust = Vector3.zero;
             }
 
-            _seat._AdjustPosition(_inputAdjust);
+            if (_inputAdjust != Vector3.zero)
+            {
+                _seat._SetAdjustPosition(_inputAdjust);
+            }
         }
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
         {
-            if (_enableAdjustInput) { _inputAdjust.z = value; }
+            if (!_enableAdjustInput) { return; }
+
+            _inputAdjust.z = value;
         }
 
         public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
         {
-            if (_enableAdjustInput) { _inputAdjust.x = value; }
+            if (!_enableAdjustInput) { return; }
+            
+            _inputAdjust.x = value;
         }
 
         public override void InputLookVertical(float value, UdonInputEventArgs args)
         {
-            if (_isDT) { return; }
+            if (!_isVR) { return; }
+            if (!_enableAdjustInput) { return; }
 
-            if (_enableAdjustInput) { _inputAdjust.y = value; }
+            _inputAdjust.y = value;
         }
 
         public override void InputJump(bool value, UdonInputEventArgs args)
@@ -86,6 +94,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void InputKey()
         {
+            if (_isVR) { return; }
+            if (!_enableAdjustInput) { return; }
+
             _inputAdjust.y = (Input.GetKey(KeyCode.UpArrow)) ? 1.0f :
                              (Input.GetKey(KeyCode.DownArrow)) ? -1.0f : 0.0f;
         }

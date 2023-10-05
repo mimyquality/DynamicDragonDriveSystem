@@ -856,6 +856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeatAdjustSwitch
       objectReference: {fileID: 0}
+    - target: {fileID: 9183001682295376114, guid: 42009515fd2e60749a9513a086ef93c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42009515fd2e60749a9513a086ef93c9, type: 3}
 --- !u!4 &1807203025400497965 stripped

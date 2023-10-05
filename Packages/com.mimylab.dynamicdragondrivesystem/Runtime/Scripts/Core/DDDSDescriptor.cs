@@ -20,6 +20,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonSaddle saddle;
         public DragonActor actor;
         public DragonReins reins;
+        public SeatAdjusterSwitch adjusterSwitch;
         public SummonDragonSwitch summonSwitch;
 
         private bool _initialized = false;
@@ -31,11 +32,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             actor = GetComponentInChildren<DragonActor>(true);
             saddle = GetComponentInChildren<DragonSaddle>(true);
             reins = GetComponentInChildren<DragonReins>(true);
+            adjusterSwitch = GetComponentInChildren<SeatAdjusterSwitch>(true);
             summonSwitch = GetComponentInChildren<SummonDragonSwitch>(true);
 
             actor.driver = driver;
             saddle.driver = driver;
             saddle.actor = actor;
+            saddle.adjusterSwitch = adjusterSwitch;
             saddle.summonSwitch = summonSwitch;
             reins.driver = driver;
             reins.saddle = saddle;

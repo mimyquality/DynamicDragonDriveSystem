@@ -22,10 +22,15 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         Material _enableMaterial, _disableMaterial;
 
+        private void OnEnable()
+        {
+            _lamp.sharedMaterial = (_seat.EnableSeatAdjust) ? _enableMaterial : _disableMaterial;
+        }
+
         public override void Interact()
         {
-            var toggleAdjust = !_seat.EnableAdjustInput;
-            _seat.EnableAdjustInput = toggleAdjust;
+            var toggleAdjust = !_seat.EnableSeatAdjust;
+            _seat.EnableSeatAdjust = toggleAdjust;
             _lamp.sharedMaterial = (toggleAdjust) ? _enableMaterial : _disableMaterial;
         }
     }

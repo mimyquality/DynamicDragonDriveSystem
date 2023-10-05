@@ -11,27 +11,30 @@ using VRC.Udon;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonSaddle : DragonSeat
     {
         public DragonDriver driver;
         public DragonActor actor;
         public ReinsInputManager reins;
+        public SeatAdjusterSwitch adjusterSwitch;
         public SummonDragonSwitch summonSwitch;
 
-        protected override void OnLocalPlayerStationEntered()
+        protected override void OnLocalPlayerMount()
         {
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
             Networking.SetOwner(Networking.LocalPlayer, actor.gameObject);
             driver.IsMount = true;
             driver.enabled = true;
             reins.enabled = true;
+            EnableSeatAdjust = false;
+            adjusterSwitch.gameObject.SetActive(true);
         }
 
-        protected override void OnLocalPlayerStationExited()
+        protected override void OnLocalPlayerUnmount()
         {
             driver.IsMount = false;
             reins.enabled = false;
+            adjusterSwitch.gameObject.SetActive(false);
         }
 
         protected override void OnMount()
