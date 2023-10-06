@@ -16,7 +16,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class ReinsInputManager : UdonSharpBehaviour
     {
         public DragonDriver driver;
-        public DragonSaddle saddle;
 
         protected VRCPlayerApi _localPlayer;
         protected float _thrust, _lift, _lateral;

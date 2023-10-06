@@ -38,10 +38,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             actor.driver = driver;
             saddle.driver = driver;
             saddle.actor = actor;
+            saddle.reins = reins;
             saddle.adjusterSwitch = adjusterSwitch;
             saddle.summonSwitch = summonSwitch;
             reins.driver = driver;
-            reins.saddle = saddle;
             summonSwitch.driver = driver;
 
             _initialized = true;

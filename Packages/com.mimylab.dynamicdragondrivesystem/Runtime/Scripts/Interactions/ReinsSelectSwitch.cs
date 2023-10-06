@@ -12,32 +12,18 @@ using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    public enum ReinsSelectSwitchReinsType
-    {
-        KeyBoard,
-        Thumbsticks,
-        VRHands,
-        TouchPad
-    }
-
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsSelectSwitch : UdonSharpBehaviour
     {
         [SerializeField]
-        DragonReins selecter;
+        DragonReins reins;
 
         [SerializeField]
-        ReinsSelectSwitchReinsType switchType = default;
+        DragonReinsInputType switchType = default;
 
         public override void Interact()
         {
-            switch (switchType)
-            {
-                case ReinsSelectSwitchReinsType.KeyBoard: selecter.SetKeyboard(); break;
-                case ReinsSelectSwitchReinsType.Thumbsticks: selecter.SetThumbsticks(); break;
-                case ReinsSelectSwitchReinsType.VRHands: selecter.SetVRHands(); break;
-                case ReinsSelectSwitchReinsType.TouchPad: selecter.SetTouchPad(); break;
-            }
+            reins.SelectedInput = switchType;
         }
     }
 }

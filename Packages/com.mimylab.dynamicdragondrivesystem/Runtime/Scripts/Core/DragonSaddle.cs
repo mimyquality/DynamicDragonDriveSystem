@@ -15,7 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         public DragonDriver driver;
         public DragonActor actor;
-        public ReinsInputManager reins;
+        public DragonReins reins;
         public SeatAdjusterSwitch adjusterSwitch;
         public SummonDragonSwitch summonSwitch;
 
@@ -25,7 +25,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Networking.SetOwner(Networking.LocalPlayer, actor.gameObject);
             driver.IsMount = true;
             driver.enabled = true;
-            reins.enabled = true;
+            reins.EnableReinsInput = true;
             EnableSeatAdjust = false;
             adjusterSwitch.gameObject.SetActive(true);
         }
@@ -33,7 +33,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         protected override void OnLocalPlayerUnmount()
         {
             driver.IsMount = false;
-            reins.enabled = false;
+            reins.EnableReinsInput = false;
             adjusterSwitch.gameObject.SetActive(false);
         }
 
@@ -51,12 +51,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         protected override void OnEnableAdjust()
         {
-            reins.enabled = false;
+            reins.EnableReinsInput = false;
         }
 
         protected override void OnDisableAdjust()
         {
-            reins.enabled = IsMount;
+            reins.EnableReinsInput = IsMount;
         }
     }
 }

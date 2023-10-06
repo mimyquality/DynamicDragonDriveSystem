@@ -61,6 +61,7 @@ MonoBehaviour:
   saddle: {fileID: 0}
   actor: {fileID: 0}
   reins: {fileID: 0}
+  adjusterSwitch: {fileID: 0}
   summonSwitch: {fileID: 0}
 --- !u!114 &8221800171798478483
 MonoBehaviour:
@@ -399,6 +400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8039717460870233838, guid: c86e0375f2c655a428418953091a3778,
         type: 3}
+      propertyPath: reins
+      value: 
+      objectReference: {fileID: 4691334874834567411}
+    - target: {fileID: 8039717460870233838, guid: c86e0375f2c655a428418953091a3778,
+        type: 3}
       propertyPath: selecter
       value: 
       objectReference: {fileID: 4691334874834567411}
@@ -513,6 +519,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8039717460870233838, guid: c86e0375f2c655a428418953091a3778,
         type: 3}
+      propertyPath: reins
+      value: 
+      objectReference: {fileID: 4691334874834567411}
+    - target: {fileID: 8039717460870233838, guid: c86e0375f2c655a428418953091a3778,
+        type: 3}
       propertyPath: selecter
       value: 
       objectReference: {fileID: 4691334874834567411}
@@ -553,6 +564,12 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 3004530545748076932, guid: c03d143414b0f7e4e830e67d9a816a8b,
+        type: 3}
+    - target: {fileID: 3273595764295364129, guid: c03d143414b0f7e4e830e67d9a816a8b,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3273595764295364129, guid: c03d143414b0f7e4e830e67d9a816a8b,
         type: 3}
     - target: {fileID: 3311772992720924177, guid: c03d143414b0f7e4e830e67d9a816a8b,
         type: 3}
@@ -741,6 +758,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8039717460870233838, guid: c86e0375f2c655a428418953091a3778,
+        type: 3}
+      propertyPath: reins
+      value: 
+      objectReference: {fileID: 4691334874834567411}
     - target: {fileID: 8039717460870233838, guid: c86e0375f2c655a428418953091a3778,
         type: 3}
       propertyPath: selecter
