@@ -37,8 +37,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector2 _noseDirection;
 
         private float _pitch, _roll;
+        private int _velocitySmoothingRange = 30;
         private Vector3 _revPosition;
         private Quaternion _revRotation;
+        private Vector3[] _revVelocity;
         private Vector3 _relativeVelocity, _relativeAngularVelocity;
 
         // Boolパラメーター
@@ -66,8 +68,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             _localPlayer = Networking.LocalPlayer;
             _animator = GetComponent<Animator>();
             _rigidbody = driver.GetComponent<Rigidbody>();
+
             _revPosition = _rigidbody.position;
             _revRotation = _rigidbody.rotation;
+            _revVelocity = new Vector3[_velocitySmoothingRange];
 
             _initialized = true;
         }
@@ -124,7 +128,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             datum = Quaternion.LookRotation(forward) * Vector3.up;
             _roll = Vector3.SignedAngle(datum, up, forward);
 
-            var velocity = (_rigidbody.position - _revPosition) / Time.deltaTime;
+            System.Array.Copy(_revVelocity, 0, _revVelocity, 1, _revVelocity.Length - 1);
+            _revVelocity[0] = (_rigidbody.position - _revPosition) / Time.deltaTime;
+
+            Vector3 velocity = Vector3.zero;
+            for (int i = 0; i < _revVelocity.Length; i++)
+            {
+                velocity += _revVelocity[i];
+            }
+            velocity /= _velocitySmoothingRange;
             _relativeVelocity = Quaternion.Inverse(_rigidbody.rotation) * velocity;
 
             float rotateAngle;

@@ -4,6 +4,11 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.1.2] - 2023/10/7
+### Fixed
+- Velocity系の値がチャタるのを修正
+- スイッチ類の見た目をUIレイヤーに変更(カメラに写さない対応)
+
 ## [0.1.1] - 2023/10/6
 ### Fixed
 - Velocityが同期するように修正
@@ -25,6 +30,7 @@
 ### Add
 - VPM化
 
+[0.1.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.2
 [0.1.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.1
 [0.1.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.0
 [0.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.0.5

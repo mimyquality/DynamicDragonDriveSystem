@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1450387555749898121}
   - component: {fileID: 4930938980736552310}
   - component: {fileID: 282604867016861116}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 1523996394098420506}
   - component: {fileID: 5520658250654696326}
   - component: {fileID: 7044684265099468188}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: TargetSpeedLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 3609356910171398200}
   - component: {fileID: 8357981558250718133}
   - component: {fileID: 8253711889817487796}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: SpeedGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 4831584379272270950}
   - component: {fileID: 5820496606278196047}
   - component: {fileID: 3539204562747778091}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: SpeedGauge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899458263949374251}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: SpeedMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 1738176002260573317}
   - component: {fileID: 5099408746830711820}
   - component: {fileID: 288328399868930961}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: SpeedLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 6588427855432021672}
   - component: {fileID: 4082261369912959708}
   - component: {fileID: 6780470561648288086}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 4941821016678252693}
   - component: {fileID: 6817964255142046848}
   - component: {fileID: 3366277996375131181}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: GroundedLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1533723322053569908}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,11 +846,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9036259706839203379, guid: 42009515fd2e60749a9513a086ef93c9,
-        type: 3}
-      propertyPath: proximity
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 9183001682295376114, guid: 42009515fd2e60749a9513a086ef93c9,
         type: 3}
       propertyPath: m_Name
@@ -876,6 +871,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3311772992720924187}
     m_Modifications:
+    - target: {fileID: 2498875798473804858, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7181122239084507886, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -906,6 +906,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489349567574465798, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7489349567574465799, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
         type: 3}
@@ -987,10 +992,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2470050685107022350, guid: 37a0d0dfb6739e1419edf6aa5095c493,
         type: 3}
+    - target: {fileID: 5387156186329334901, guid: 37a0d0dfb6739e1419edf6aa5095c493,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5451365159847780934, guid: 37a0d0dfb6739e1419edf6aa5095c493,
         type: 3}
       propertyPath: m_Name
       value: TandemSeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561193141657058152, guid: 37a0d0dfb6739e1419edf6aa5095c493,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37a0d0dfb6739e1419edf6aa5095c493, type: 3}
