@@ -18,20 +18,30 @@ namespace MimyLab.DynamicDragonDriveSystem
         // W・Sキー
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
         {
-            _elevator = -value;
+            if (_throttleInputHand == HandType.RIGHT) { _thrust = value; }
+            if (_elevatorInputHand == HandType.RIGHT) { _elevator = -value; }
         }
 
         // A・Dキー
         public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
         {
-            _ladder = value;
-            _aileron = -value;
+            if (_turningInputHand == HandType.RIGHT) { _ladder = value; }
+            if (_turningInputHand == HandType.RIGHT) { _aileron = -value; }
         }
 
         protected override void InputKey()
         {
-            _thrust = (Input.GetKey(KeyCode.E)) ? 1.0f :
-                      (Input.GetKey(KeyCode.Q)) ? -1.0f : 0.0f;
+            if (_throttleInputHand == HandType.LEFT)
+            {
+                _thrust = (Input.GetKey(KeyCode.E)) ? 1.0f :
+                          (Input.GetKey(KeyCode.Q)) ? -1.0f : 0.0f;
+            }
+
+            if (_elevatorInputHand == HandType.LEFT)
+            {
+                _elevator = (Input.GetKey(KeyCode.E)) ? 1.0f :
+                            (Input.GetKey(KeyCode.Q)) ? -1.0f : 0.0f;
+            }
 
             _brakes = Input.GetKey(KeyCode.F);
         }

@@ -15,13 +15,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputVR : ReinsInputManager
     {
-        [SerializeField]
-        private HandType _moveInputHand = HandType.LEFT;
         [Tooltip("meter"), SerializeField]
         private float _moveScale = 0.2f;
-
-        [SerializeField]
-        private HandType _rotateInputHand = HandType.RIGHT;
         [Tooltip("radius"), SerializeField]
         private float _rotateRatio = 60.0f;
 
@@ -36,8 +31,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
         private Quaternion _originRotation, _leftGrabRotation, _rightGrabRotation;
 
-        private Vector3 _inputMove, _oppositeMove;
-        private Vector3 _inputRotate;
+        private Vector3 _rightGrabMove, _leftGrgabMove;
+        private Vector3 _rightGrabRotate, _leftGrabRotate;
         private bool _prevGrabJump;
 
         public override void InputGrab(bool value, UdonInputEventArgs args)
@@ -53,38 +48,23 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _originPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).position;
             _originRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
-
-            if (_moveInputHand == HandType.RIGHT)
-            {
-                _inputMove = GetRightGrabMove();
-                _oppositeMove = GetLeftGrabMove();
-            }
-            else
-            {
-                _inputMove = GetLeftGrabMove();
-                _oppositeMove = GetRightGrabMove();
-            }
-
-            if (_rotateInputHand == HandType.RIGHT)
-            {
-                _inputRotate = GetRightGrabRotate();
-            }
-            else
-            {
-                _inputRotate = GetLeftGrabRotate();
-            }
+            _rightGrabMove = GetRightGrabMove();
+            _leftGrgabMove = GetLeftGrabMove();
+            _rightGrabRotate = GetRightGrabRotate();
+            _leftGrabRotate = GetLeftGrabRotate();
 
             InputGrabJump();
-            _brakes = ((_inputMove.z < -_brakesAcceptanceThreshold) && (_oppositeMove.z < -_brakesAcceptanceThreshold));
+
+            _brakes = ((_leftGrgabMove.z < -_brakesAcceptanceThreshold) && (_rightGrabMove.z < -_brakesAcceptanceThreshold));
             //_turbo = 
 
-            _thrust = _inputMove.z;
-            //_lift = _inputMove.y;
-            //_traverse = _inputMove.x;
+            _thrust = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.z : _rightGrabMove.z;
+            //_lift = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.y : _rightGrabMove.y;
+            //_lateral = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.x : _rightGrabMove.x;
 
-            _elevator = _inputRotate.x;
-            _ladder = _inputRotate.y;
-            _aileron = _inputRotate.z;
+            _elevator = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
+            _ladder = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
+            _aileron = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
 
             _flagGrabLeft = false;
             _flagGrabRight = false;
@@ -202,7 +182,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void InputGrabJump()
         {
-            var grabJump = _inputMove.y > _jumpAcceptanceThreshold;
+            var grabJump = _leftGrgabMove.y > _jumpAcceptanceThreshold;
             if (grabJump && !_prevGrabJump)
             {
                 driver._InputJump();
