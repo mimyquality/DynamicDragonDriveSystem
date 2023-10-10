@@ -29,14 +29,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputVR vrHands;
         //public ReinsInputTP touchPad;
 
-        [FieldChangeCallback(nameof(EnableReinsInput))]
-        private bool _enableReinsInput = false;
-        public bool EnableReinsInput
+        [FieldChangeCallback(nameof(IsEnabledInput))]
+        private bool _isEnabledInput = false;
+        public bool IsEnabledInput
         {
-            get => _enableReinsInput;
+            get => _isEnabledInput;
             set
             {
-                _enableReinsInput = value;
+                _isEnabledInput = value;
 
                 keyboard.enabled = (SelectedInput == DragonReinsInputType.Keyboard) && value;
                 thumbsticks.enabled = (SelectedInput == DragonReinsInputType.Thumbsticks) && value;
@@ -94,24 +94,34 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 SelectedInput = DragonReinsInputType.Keyboard;
             }
-            EnableReinsInput = EnableReinsInput;
+            IsEnabledInput = IsEnabledInput;
         }
 
-        public void SetKeyboard()
+        public void _SetKeyboard()
         {
             SelectedInput = DragonReinsInputType.Keyboard;
         }
 
-        public void SetThumbsticks()
+        public void _SetThumbsticks()
         {
             SelectedInput = DragonReinsInputType.Thumbsticks;
         }
 
-        public void SetVRHands()
+        public void _SetVRHands()
         {
             SelectedInput = DragonReinsInputType.VRHands;
         }
 
-        public void SetTouchPad() { }
+        public void _SetTouchPad() { }
+
+        public void _EnableDragonControl()
+        {
+            IsEnabledInput = true;
+        }
+
+        public void _DisableDragonControl()
+        {
+            IsEnabledInput = false;
+        }
     }
 }

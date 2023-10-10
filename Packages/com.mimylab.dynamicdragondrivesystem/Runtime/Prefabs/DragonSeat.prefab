@@ -154,7 +154,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 6630009392426912582}
-  _enableAdjustInput: 1
+  _enableSeatAdjust: 1
   _maxSeatAdjustment: {x: 0, y: 0.7, z: 0.3}
   _minSeatAdjustment: {x: 0, y: -0.3, z: -0.3}
 --- !u!114 &6630009392426912582
@@ -176,7 +176,7 @@ MonoBehaviour:
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
-  _syncMethod: 2
+  _syncMethod: 3
   serializedProgramAsset: {fileID: 11400000, guid: 27a3881f34a1c6f49b06e444954b496c,
     type: 2}
   programSource: {fileID: 11400000, guid: 303094bf341ffd84e9da97129da31c97, type: 2}
@@ -225,7 +225,7 @@ MonoBehaviour:
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
-  _syncMethod: 2
+  _syncMethod: 3
   serializedProgramAsset: {fileID: 11400000, guid: 98d49dfbdc3ab8a4b9b0da97f4e29330,
     type: 2}
   programSource: {fileID: 11400000, guid: 0c28505a138d06040b859c41f52f727c, type: 2}

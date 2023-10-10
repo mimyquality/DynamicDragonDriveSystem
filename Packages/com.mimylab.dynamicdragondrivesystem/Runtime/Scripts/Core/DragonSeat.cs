@@ -15,8 +15,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour
     {
-        [SerializeField, FieldChangeCallback(nameof(EnableSeatAdjust))]
-        private bool _enableSeatAdjust = true;
+        [SerializeField]
+        private bool _isEnabledAdjustInput = true;
         [SerializeField]
         private Vector3 _maxSeatAdjustment = new Vector3(0.0f, 0.7f, 0.3f);
         [SerializeField]
@@ -42,15 +42,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public bool EnableSeatAdjust
+        public bool IsEnabledAdjustInput
         {
-            get => _enableSeatAdjust;
-            set
+            get => _isEnabledAdjustInput;
+            protected set
             {
-                if (value && !_enableSeatAdjust) { OnEnableAdjust(); }
-                if (!value && _enableSeatAdjust) { OnDisableAdjust(); }
+                if (value && !_isEnabledAdjustInput) { OnEnableAdjust(); }
+                if (!value && _isEnabledAdjustInput) { OnDisableAdjust(); }
 
-                _enableSeatAdjust = value;
+                _isEnabledAdjustInput = value;
                 _seatInput.EnableAdjustInput = value;
             }
         }
@@ -88,7 +88,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.canUseStationFromStation = false;
             _station.disableStationExit = true;
 
-            EnableSeatAdjust = EnableSeatAdjust;
+            IsEnabledAdjustInput = IsEnabledAdjustInput;
             _seatInput.enabled = false;
 
             _initialized = true;
@@ -144,6 +144,17 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             AdjustPoint += Time.deltaTime * _adjustSpeed * input;
         }
+
+        public void _EnableSeatAdjust()
+        {
+            IsEnabledAdjustInput = true;
+        }
+
+        public void _DisableSeatAdjust()
+        {
+            IsEnabledAdjustInput = false;
+        }
+
 
         protected virtual void OnLocalPlayerMount() { }
         protected virtual void OnLocalPlayerUnmount() { }
