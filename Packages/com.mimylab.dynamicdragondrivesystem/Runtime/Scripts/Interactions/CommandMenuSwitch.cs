@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void Interact()
         {
-            _commandMenu.SetActive(true);
+            _commandMenu.SetActive(!_commandMenu.activeSelf);
         }
     }
 }

@@ -100,41 +100,41 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!value) { driver._InputJump(); }
         }
 
-        public int GetThrustSign() { return (_accelerateSign.z > 0.0f) ? 1 : -1; }
-        public void InvertThrust() { _accelerateSign.z = -1.0f; }
-        public void NormalThrust() { _accelerateSign.z = 1.0f; }
+        public int _GetThrustSign() { return (_accelerateSign.z > 0.0f) ? 1 : -1; }
+        public void _InvertThrust() { _accelerateSign.z = -1.0f; }
+        public void _NormalThrust() { _accelerateSign.z = 1.0f; }
 
-        public int GetLiftSign() { return (_accelerateSign.y > 0.0f) ? 1 : -1; }
-        public void InvertLift() { _accelerateSign.y = -1.0f; }
-        public void NormalLift() { _accelerateSign.y = 1.0f; }
+        public int _GetLiftSign() { return (_accelerateSign.y > 0.0f) ? 1 : -1; }
+        public void _InvertLift() { _accelerateSign.y = -1.0f; }
+        public void _NormalLift() { _accelerateSign.y = 1.0f; }
 
-        public int GetLateralSign() { return (_accelerateSign.x > 0.0f) ? 1 : -1; }
-        public void InvertLateral() { _accelerateSign.x = -1.0f; }
-        public void NormalLateral() { _accelerateSign.x = 1.0f; }
+        public int _GetLateralSign() { return (_accelerateSign.x > 0.0f) ? 1 : -1; }
+        public void _InvertLateral() { _accelerateSign.x = -1.0f; }
+        public void _NormalLateral() { _accelerateSign.x = 1.0f; }
 
-        public int GetElevatorSign() { return (_rotateSign.x > 0.0f) ? 1 : -1; }
-        public void InvertElevator() { _rotateSign.x = -1.0f; }
-        public void NormalElevator() { _rotateSign.x = 1.0f; }
+        public int _GetElevatorSign() { return (_rotateSign.x > 0.0f) ? 1 : -1; }
+        public void _InvertElevator() { _rotateSign.x = -1.0f; }
+        public void _NormalElevator() { _rotateSign.x = 1.0f; }
 
-        public int GetLadderSign() { return (_rotateSign.y > 0.0f) ? 1 : -1; }
-        public void InvertLadder() { _rotateSign.y = -1.0f; }
-        public void NormalLadder() { _rotateSign.y = 1.0f; }
+        public int _GetLadderSign() { return (_rotateSign.y > 0.0f) ? 1 : -1; }
+        public void _InvertLadder() { _rotateSign.y = -1.0f; }
+        public void _NormalLadder() { _rotateSign.y = 1.0f; }
 
-        public int GetAileronSign() { return (_rotateSign.z > 0.0f) ? 1 : -1; }
-        public void InvertAileron() { _rotateSign.z = -1.0f; }
-        public void NormalAileron() { _rotateSign.z = 1.0f; }
+        public int _GetAileronSign() { return (_rotateSign.z > 0.0f) ? 1 : -1; }
+        public void _InvertAileron() { _rotateSign.z = -1.0f; }
+        public void _NormalAileron() { _rotateSign.z = 1.0f; }
 
-        public HandType GetThrottleHand() { return _throttleInputHand; }
-        public void SetThrottleRightHand() { _throttleInputHand = HandType.RIGHT; }
-        public void SetThrottleLeftHand() { _throttleInputHand = HandType.LEFT; }
+        public HandType _GetThrottleHand() { return _throttleInputHand; }
+        public void _SetThrottleRightHand() { _throttleInputHand = HandType.RIGHT; }
+        public void _SetThrottleLeftHand() { _throttleInputHand = HandType.LEFT; }
 
-        public HandType GetTurningHand() { return _turningInputHand; }
-        public void SetTurningRightHand() { _turningInputHand = HandType.RIGHT; }
-        public void SetTurningLeftHand() { _turningInputHand = HandType.LEFT; }
+        public HandType _GetTurningHand() { return _turningInputHand; }
+        public void _SetTurningRightHand() { _turningInputHand = HandType.RIGHT; }
+        public void _SetTurningLeftHand() { _turningInputHand = HandType.LEFT; }
 
-        public HandType GetElevatorHand() { return _elevatorInputHand; }
-        public void SetElevatorRightHand() { _elevatorInputHand = HandType.RIGHT; }
-        public void SetElevatorLeftHand() { _elevatorInputHand = HandType.LEFT; }
+        public HandType _GetElevatorHand() { return _elevatorInputHand; }
+        public void _SetElevatorRightHand() { _elevatorInputHand = HandType.RIGHT; }
+        public void _SetElevatorLeftHand() { _elevatorInputHand = HandType.LEFT; }
 
         protected virtual void InputKey() { }
     }

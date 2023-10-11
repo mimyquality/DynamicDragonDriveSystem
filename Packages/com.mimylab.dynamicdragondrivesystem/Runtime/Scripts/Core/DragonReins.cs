@@ -49,21 +49,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonReinsInputType SelectedInput
         {
             get => _selectedInput;
-            set
-            {
-                _selectedInput = value;
-
-                //Debug
-                selectedKeyboard.SetActive(value == DragonReinsInputType.Keyboard);
-                selectedThumbsticks.SetActive(value == DragonReinsInputType.Thumbsticks);
-                selectedVRHands.SetActive(value == DragonReinsInputType.VRHands);
-            }
+            set => _selectedInput = value;
         }
-
-        [SerializeField] private GameObject selectedKeyboard;
-        [SerializeField] private GameObject selectedThumbsticks;
-        [SerializeField] private GameObject selectedVRHands;
-        //[SerializeField] private GameObject selectedTouchPad;
 
         private bool _initialized = false;
         private void Initialize()
