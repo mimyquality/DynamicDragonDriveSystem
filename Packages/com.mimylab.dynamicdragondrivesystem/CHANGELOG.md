@@ -4,6 +4,10 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.2.1] - 2023/10/12
+### Fixed
+- 魔方陣メニューがうまく操作できなかったのを修正
+
 ## [0.2.0] - 2023/10/11
 ### Changed
 - 魔方陣メニューを追加し、各種調整項目を集約
@@ -34,6 +38,7 @@
 ### Add
 - VPM化
 
+[0.2.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.2.1
 [0.2.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.2.0
 [0.1.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.2
 [0.1.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.1.1
