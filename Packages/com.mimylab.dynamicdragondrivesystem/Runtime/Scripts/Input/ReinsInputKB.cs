@@ -7,8 +7,9 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
+//using VRC.Udon;
 using VRC.Udon.Common;
+//using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
@@ -39,8 +40,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (_elevatorInputHand == HandType.LEFT)
             {
-                _elevator = (Input.GetKey(KeyCode.E)) ? 1.0f :
-                            (Input.GetKey(KeyCode.Q)) ? -1.0f : 0.0f;
+                _elevator = (Input.GetKey(KeyCode.E)) ? -1.0f :
+                            (Input.GetKey(KeyCode.Q)) ? 1.0f : 0.0f;
             }
 
             _brakes = Input.GetKey(KeyCode.F);

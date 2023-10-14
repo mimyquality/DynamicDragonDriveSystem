@@ -7,8 +7,9 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
+//using VRC.Udon;
 using VRC.Udon.Common;
+//using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {

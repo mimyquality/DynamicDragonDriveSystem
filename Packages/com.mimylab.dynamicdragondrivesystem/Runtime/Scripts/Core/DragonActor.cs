@@ -7,8 +7,8 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
-using VRC.SDK3.Components;
+//using VRC.Udon;
+//using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
@@ -17,8 +17,19 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonActor : UdonSharpBehaviour
     {
+        [HideInInspector]
         public DragonDriver driver;
+        [HideInInspector]
         public bool isMount;
+
+        [SerializeField, Min(0.0f), Tooltip("sec")]
+        private float _blinkRateMin = 20.0f;
+        [SerializeField, Min(0.0f), Tooltip("sec")]
+        private float _blinkRateMax = 60.0f;
+        [SerializeField, Min(0.0f), Tooltip("sec")]
+        private float _blinkMembraneRateMin = 4.0f;
+        [SerializeField, Min(0.0f), Tooltip("sec")]
+        private float _blinkMembraneRateMax = 20.0f;
 
         public Transform nose;  // Debug
         public GameObject groundedLamp; //Debug
@@ -42,14 +53,22 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Quaternion _revRotation;
         private Vector3[] _revVelocity;
         private Vector3 _relativeVelocity, _relativeAngularVelocity;
+        private bool _randomBool;
+        private int _randomInt;
+        private float _randomFloat;
 
+        // Triggerパラメーター
+        private int _param_Blink = Animator.StringToHash("Blink");
+        private int _param_BlinkMembrane = Animator.StringToHash("BlinkMembrane");
         // Boolパラメーター
         private int _param_IsMount = Animator.StringToHash("IsMount");
         private int _param_IsGrounded = Animator.StringToHash("IsGrounded");
         private int _param_IsBrakes = Animator.StringToHash("IsBrakes");
         private int _param_IsOverdrive = Animator.StringToHash("IsOverdrive");
+        private int _param_RandomBool = Animator.StringToHash("RandomBool");
         // Intパラメーター
         private int _param_State = Animator.StringToHash("State");
+        private int _param_RandomInt = Animator.StringToHash("RandomInt");
         // Floatパラメーター
         private int _param_Pitch = Animator.StringToHash("Pitch");
         private int _param_Roll = Animator.StringToHash("Roll");
@@ -59,6 +78,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int _param_VelocityY = Animator.StringToHash("VelocityY");
         private int _param_VelocityZ = Animator.StringToHash("VelocityZ");
         private int _param_VelocityMagnitude = Animator.StringToHash("VelocityMagnitude");
+        private int _param_RandomFloat = Animator.StringToHash("RandomFloat");
 
         private bool _initialized = false;
         private void Initialize()
@@ -78,6 +98,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Start()
         {
             Initialize();
+
+            _TriggerBlink();
+            _TriggerBlinkMembrane();
         }
 
         private void Update()
@@ -98,6 +121,37 @@ namespace MimyLab.DynamicDragonDriveSystem
             targetSpeedToLocalPosition.y = driver.TargetSpeed / driver.MaxSpeed;
             targetSpeedLamp.localPosition = targetSpeedToLocalPosition;
             // End Debug
+        }
+
+        public void _GenerateRandomBool()
+        {
+            _randomBool = Random.value > 0.5f;
+        }
+
+        public void _GenerateRandomInt()
+        {
+            _randomInt = Random.Range(-1, byte.MaxValue) + 1;
+        }
+
+        public void _GenerateRandomFloat()
+        {
+            _randomFloat = Random.value;
+        }
+
+        public void _TriggerBlink()
+        {
+            _animator.SetTrigger(_param_Blink);
+
+            var nextTiming = Random.Range(_blinkRateMin, _blinkRateMax);
+            SendCustomEventDelayedSeconds(nameof(_TriggerBlink), nextTiming);
+        }
+
+        public void _TriggerBlinkMembrane()
+        {
+            _animator.SetTrigger(_param_BlinkMembrane);
+
+            var nextTiming = Random.Range(_blinkMembraneRateMin, _blinkMembraneRateMax);
+            SendCustomEventDelayedSeconds(nameof(_TriggerBlinkMembrane), nextTiming);
         }
 
         private void UpdateSyncedParameters()
@@ -155,7 +209,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator.SetBool(_param_IsGrounded, _isGrounded);
             _animator.SetBool(_param_IsBrakes, _isBrakes);
             _animator.SetBool(_param_IsOverdrive, _isOverdrive);
+            _animator.SetBool(_param_RandomBool, _randomBool);
             _animator.SetInteger(_param_State, (int)_state);
+            _animator.SetInteger(_param_RandomInt, _randomInt);
             _animator.SetFloat(_param_NosePitch, _noseDirection.x);
             _animator.SetFloat(_param_NoseYaw, _noseDirection.y);
             _animator.SetFloat(_param_Pitch, _pitch);
@@ -164,6 +220,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator.SetFloat(_param_VelocityY, _relativeVelocity.y);
             _animator.SetFloat(_param_VelocityZ, _relativeVelocity.z);
             _animator.SetFloat(_param_VelocityMagnitude, _relativeVelocity.magnitude);
+            _animator.SetFloat(_param_RandomFloat, _randomFloat);
         }
     }
 }

@@ -7,7 +7,8 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
+//using VRC.Udon;
+//using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
@@ -22,6 +23,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonReins : UdonSharpBehaviour
     {
+        [HideInInspector]
         public DragonDriver driver;
 
         public ReinsInputKB keyboard;
@@ -29,41 +31,37 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputVR vrHands;
         //public ReinsInputTP touchPad;
 
-        [FieldChangeCallback(nameof(IsEnabledInput))]
-        private bool _isEnabledInput = false;
-        public bool IsEnabledInput
+        [FieldChangeCallback(nameof(EnabledInput))]
+        private bool _enabledInput = false;
+        public bool EnabledInput
         {
-            get => _isEnabledInput;
+            get => _enabledInput;
             set
             {
-                _isEnabledInput = value;
+                _enabledInput = value;
 
-                keyboard.enabled = (_selectedInput == DragonReinsInputType.Keyboard) && value;
-                thumbsticks.enabled = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
-                vrHands.enabled = (_selectedInput == DragonReinsInputType.VRHands) && value;
+                if (keyboard) keyboard.enabled = (_selectedInput == DragonReinsInputType.Keyboard) && value;
+                if (thumbsticks) thumbsticks.enabled = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
+                if (vrHands) vrHands.enabled = (_selectedInput == DragonReinsInputType.VRHands) && value;
             }
         }
 
         private DragonReinsInputType _selectedInput = default;
-        private DragonReinsInputType SelectedInput
-        {
-            get => _selectedInput;
-            set => _selectedInput = value;
-        }
+        public DragonReinsInputType SelectedImput { get => _selectedInput; }
 
         private bool _initialized = false;
         private void Initialize()
         {
             if (_initialized) { return; }
 
-            keyboard = GetComponentInChildren<ReinsInputKB>(true);
-            thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
-            vrHands = GetComponentInChildren<ReinsInputVR>(true);
+            if (keyboard) keyboard = GetComponentInChildren<ReinsInputKB>(true);
+            if (thumbsticks) thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
+            if (vrHands) vrHands = GetComponentInChildren<ReinsInputVR>(true);
             //touchPad = GetComponentInChildren<ReinsInputTP>();
 
-            keyboard.driver = driver;
-            thumbsticks.driver = driver;
-            vrHands.driver = driver;
+            if (keyboard) keyboard.driver = driver;
+            if (thumbsticks) thumbsticks.driver = driver;
+            if (vrHands) vrHands.driver = driver;
             // touchPad初期化
 
             _initialized = true;
@@ -74,43 +72,43 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (Networking.LocalPlayer.IsUserInVR())
             {
-                SelectedInput = DragonReinsInputType.Thumbsticks;
+                _selectedInput = DragonReinsInputType.Thumbsticks;
             }
             else
             {
-                SelectedInput = DragonReinsInputType.Keyboard;
+                _selectedInput = DragonReinsInputType.Keyboard;
             }
-            IsEnabledInput = IsEnabledInput;
+            EnabledInput = EnabledInput;
         }
 
         public void _SetKeyboard()
         {
-            SelectedInput = DragonReinsInputType.Keyboard;
-            IsEnabledInput = IsEnabledInput;
+            _selectedInput = DragonReinsInputType.Keyboard;
+            EnabledInput = EnabledInput;
         }
 
         public void _SetThumbsticks()
         {
-            SelectedInput = DragonReinsInputType.Thumbsticks;
-            IsEnabledInput = IsEnabledInput;
+            _selectedInput = DragonReinsInputType.Thumbsticks;
+            EnabledInput = EnabledInput;
         }
 
         public void _SetVRHands()
         {
-            SelectedInput = DragonReinsInputType.VRHands;
-            IsEnabledInput = IsEnabledInput;
+            _selectedInput = DragonReinsInputType.VRHands;
+            EnabledInput = EnabledInput;
         }
 
         public void _SetTouchPad() { }
 
         public void _EnableDragonControl()
         {
-            IsEnabledInput = true;
+            EnabledInput = true;
         }
 
         public void _DisableDragonControl()
         {
-            IsEnabledInput = false;
+            EnabledInput = false;
         }
     }
 }

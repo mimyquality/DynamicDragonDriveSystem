@@ -6,7 +6,8 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
+//using VRC.Udon;
+//using VRC.SDK3.Components;
 using VRCStation = VRC.SDK3.Components.VRCStation;
 
 namespace MimyLab.DynamicDragonDriveSystem
@@ -16,7 +17,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class DragonSeat : UdonSharpBehaviour
     {
         [SerializeField]
-        private bool _isEnabledAdjustInput = true;
+        private bool _enabledAdjustInput = true;
         [SerializeField]
         private Vector3 _maxSeatAdjustment = new Vector3(0.0f, 0.7f, 0.3f);
         [SerializeField]
@@ -42,15 +43,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public bool IsEnabledAdjustInput
+        public bool EnabledAdjustInput
         {
-            get => _isEnabledAdjustInput;
+            get => _enabledAdjustInput;
             protected set
             {
-                if (value && !_isEnabledAdjustInput) { OnEnableAdjust(); }
-                if (!value && _isEnabledAdjustInput) { OnDisableAdjust(); }
+                if (value && !_enabledAdjustInput) { OnEnableAdjust(); }
+                if (!value && _enabledAdjustInput) { OnDisableAdjust(); }
 
-                _isEnabledAdjustInput = value;
+                _enabledAdjustInput = value;
                 _seatInput.EnableAdjustInput = value;
             }
         }
@@ -88,7 +89,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.canUseStationFromStation = false;
             _station.disableStationExit = true;
 
-            IsEnabledAdjustInput = IsEnabledAdjustInput;
+            EnabledAdjustInput = EnabledAdjustInput;
             _seatInput.enabled = false;
 
             _initialized = true;
@@ -109,11 +110,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (player.isLocal)
             {
-                Networking.SetOwner(player, this.gameObject);
                 AdjustPoint = _localAdjustPoint;
                 _seatInput.enabled = true;
 
-                OnLocalPlayerMount();
+                OnLocalPlayerMounted();
             }
         }
 
@@ -126,12 +126,13 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _localAdjustPoint = AdjustPoint;
                 _seatInput.enabled = false;
 
-                OnLocalPlayerUnmount();
+                OnLocalPlayerUnmounted();
             }
         }
 
         public void _Ride()
         {
+            Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
             _station.UseStation(Networking.LocalPlayer);
         }
 
@@ -147,17 +148,17 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _EnableSeatAdjust()
         {
-            IsEnabledAdjustInput = true;
+            EnabledAdjustInput = true;
         }
 
         public void _DisableSeatAdjust()
         {
-            IsEnabledAdjustInput = false;
+            EnabledAdjustInput = false;
         }
 
 
-        protected virtual void OnLocalPlayerMount() { }
-        protected virtual void OnLocalPlayerUnmount() { }
+        protected virtual void OnLocalPlayerMounted() { }
+        protected virtual void OnLocalPlayerUnmounted() { }
         protected virtual void OnMount() { }
         protected virtual void OnUnmount() { }
         protected virtual void OnEnableAdjust() { }

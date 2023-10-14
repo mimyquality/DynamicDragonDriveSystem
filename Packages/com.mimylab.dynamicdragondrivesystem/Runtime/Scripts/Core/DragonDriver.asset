@@ -2921,13 +2921,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: _isMount
+      Data: _isAwake
     - Name: $v
       Entry: 7
       Data: 165|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: _isMount
+      Data: _isAwake
     - Name: <UserType>k__BackingField
       Entry: 9
       Data: 138

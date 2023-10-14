@@ -7,53 +7,54 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
+//using VRC.Udon;
+//using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
     public class DragonSaddle : DragonSeat
     {
+        [HideInInspector]
         public DragonDriver driver;
+        [HideInInspector]
         public DragonActor actor;
+        [HideInInspector]
         public DragonReins reins;
-        public SummonDragonSwitch summonSwitch;
 
-        protected override void OnLocalPlayerMount()
+        protected override void OnLocalPlayerMounted()
         {
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
             Networking.SetOwner(Networking.LocalPlayer, actor.gameObject);
-            driver.IsMount = true;
+            driver.IsAwake = true;
             driver.enabled = true;
-            reins.IsEnabledInput = true;
-            IsEnabledAdjustInput = false;
+            reins.EnabledInput = true;
+            EnabledAdjustInput = false;
         }
 
-        protected override void OnLocalPlayerUnmount()
+        protected override void OnLocalPlayerUnmounted()
         {
-            driver.IsMount = false;
-            reins.IsEnabledInput = false;
+            driver.IsAwake = false;
+            reins.EnabledInput = false;
         }
 
         protected override void OnMount()
         {
             actor.isMount = true;
-            summonSwitch.HasMounted = true;
         }
 
         protected override void OnUnmount()
         {
             actor.isMount = false;
-            summonSwitch.HasMounted = false;
         }
 
         protected override void OnEnableAdjust()
         {
-            reins.IsEnabledInput = false;
+            reins.EnabledInput = false;
         }
 
         protected override void OnDisableAdjust()
         {
-            reins.IsEnabledInput = IsMount;
+            reins.EnabledInput = IsMount;
         }
     }
 }

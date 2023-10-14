@@ -7,7 +7,7 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
+//using VRC.Udon;
 using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
@@ -105,7 +105,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         // Actor渡し用
-        public bool IsMount { get => _isMount; set => _isMount = value; }
+        public bool IsAwake { get => _isAwake; set => _isAwake = value; }
         public int State { get => (int)_state; }
         public bool IsGrounded { get => _isGrounded; }
         public bool IsBrakes { get => _isBrakes; }
@@ -131,8 +131,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Input
         private Vector3 _throttle;
         private float _elevator, _ladder, _aileron;
-        [FieldChangeCallback(nameof(IsMount))]
-        private bool _isMount;
+        [FieldChangeCallback(nameof(IsAwake))]
+        private bool _isAwake;
 
         private bool _initialized = false;
         private void Initialize()
@@ -225,7 +225,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _rigidbody.velocity = _velocity;
 
             // 搭乗者が居ない時はスリープ
-            this.enabled = IsMount;
+            this.enabled = IsAwake;
         }
 
         public void Summon()

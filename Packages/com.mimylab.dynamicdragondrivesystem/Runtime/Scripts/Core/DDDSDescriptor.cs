@@ -6,9 +6,9 @@ https://opensource.org/licenses/mit-license.php
 
 using UdonSharp;
 using UnityEngine;
-using VRC.SDKBase;
-using VRC.Udon;
-using VRC.SDK3.Components;
+//using VRC.SDKBase;
+//using VRC.Udon;
+//using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
@@ -20,26 +20,22 @@ namespace MimyLab.DynamicDragonDriveSystem
         public DragonSaddle saddle;
         public DragonActor actor;
         public DragonReins reins;
-        public SummonDragonSwitch summonSwitch;
 
         private bool _initialized = false;
         private void Initialize()
         {
             if (_initialized) { return; }
 
-            driver = GetComponentInChildren<DragonDriver>(true);
-            actor = GetComponentInChildren<DragonActor>(true);
-            saddle = GetComponentInChildren<DragonSaddle>(true);
-            reins = GetComponentInChildren<DragonReins>(true);
-            summonSwitch = GetComponentInChildren<SummonDragonSwitch>(true);
+            if (driver) driver = GetComponentInChildren<DragonDriver>(true);
+            if (actor) actor = GetComponentInChildren<DragonActor>(true);
+            if (saddle) saddle = GetComponentInChildren<DragonSaddle>(true);
+            if (reins) reins = GetComponentInChildren<DragonReins>(true);
 
             actor.driver = driver;
             saddle.driver = driver;
             saddle.actor = actor;
             saddle.reins = reins;
-            saddle.summonSwitch = summonSwitch;
             reins.driver = driver;
-            summonSwitch.driver = driver;
 
             _initialized = true;
         }
