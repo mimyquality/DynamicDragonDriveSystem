@@ -30,6 +30,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _blinkMembraneRateMin = 4.0f;
         [SerializeField, Min(0.0f), Tooltip("sec")]
         private float _blinkMembraneRateMax = 20.0f;
+        [SerializeField, Min(0.0f), Tooltip("m/s")]
+        private float _collisionTriggerVelocity = 8.0f;
 
         public Transform nose;  // Debug
         public GameObject groundedLamp; //Debug
@@ -58,8 +60,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _randomFloat;
 
         // Triggerパラメーター
-        private int _param_Blink = Animator.StringToHash("Blink");
-        private int _param_BlinkMembrane = Animator.StringToHash("BlinkMembrane");
+        private int _param_Blink = Animator.StringToHash("OnBlink");
+        private int _param_BlinkMembrane = Animator.StringToHash("OnBlinkMembrane");
+        private int _param_Collision = Animator.StringToHash("OnCollision");
         // Boolパラメーター
         private int _param_IsMount = Animator.StringToHash("IsMount");
         private int _param_IsGrounded = Animator.StringToHash("IsGrounded");
@@ -152,6 +155,15 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             var nextTiming = Random.Range(_blinkMembraneRateMin, _blinkMembraneRateMax);
             SendCustomEventDelayedSeconds(nameof(_TriggerBlinkMembrane), nextTiming);
+        }
+
+        public void _TriggerCollision()
+        {
+            if (!_animator) { return; }
+            if (_state == 0) { return; }
+            if (_relativeVelocity.sqrMagnitude < _collisionTriggerVelocity * _collisionTriggerVelocity) { return; }
+
+            _animator.SetTrigger(_param_Collision);
         }
 
         private void UpdateSyncedParameters()

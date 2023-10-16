@@ -54,9 +54,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
-            if (keyboard) keyboard = GetComponentInChildren<ReinsInputKB>(true);
-            if (thumbsticks) thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
-            if (vrHands) vrHands = GetComponentInChildren<ReinsInputVR>(true);
+            if (!keyboard) keyboard = GetComponentInChildren<ReinsInputKB>(true);
+            if (!thumbsticks) thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
+            if (!vrHands) vrHands = GetComponentInChildren<ReinsInputVR>(true);
             //touchPad = GetComponentInChildren<ReinsInputTP>();
 
             if (keyboard) keyboard.driver = driver;
