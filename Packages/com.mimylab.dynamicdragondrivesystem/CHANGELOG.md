@@ -4,6 +4,10 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.4.0] - 2023/10/23
+### Add
+- 操作系統に初代Viveコントローラー用の選択肢を追加
+
 ## [0.3.0] - 2023/10/16
 ### Add
 - ジャンプと衝突アニメーションを追加
@@ -49,6 +53,7 @@
 ### Add
 - VPM化
 
+[0.4.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.0
 [0.3.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.3.0
 [0.2.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.2.2
 [0.2.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.2.1

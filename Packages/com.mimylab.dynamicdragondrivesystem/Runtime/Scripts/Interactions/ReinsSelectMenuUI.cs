@@ -24,6 +24,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Button _button_Thumbsticks;
         [SerializeField]
         private Button _button_VRHands;
+        [SerializeField]
+        private Button _button_Gaze;
+        [SerializeField]
+        private Button _button_Legacy;
 
         [SerializeField]
         private GameObject _menu_Keyboard;
@@ -31,6 +35,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private GameObject _menu_Thumbsticks;
         [SerializeField]
         private GameObject _menu_VRHands;
+        [SerializeField]
+        private GameObject _menu_Gaze;
+        [SerializeField]
+        private GameObject _menu_Legacy;
 
         private void OnEnable()
         {
@@ -52,15 +60,29 @@ namespace MimyLab.DynamicDragonDriveSystem
             SetSelectInput(DragonReinsInputType.VRHands);
         }
 
+        public void _SetGaze()
+        {
+            SetSelectInput(DragonReinsInputType.Gaze);
+        }
+
+        public void _SetLegacy()
+        {
+            SetSelectInput(DragonReinsInputType.Legacy);
+        }
+
         private void SetSelectInput(DragonReinsInputType selectInput)
         {
             _button_Keyboard.interactable = selectInput != DragonReinsInputType.Keyboard;
             _button_Thumbsticks.interactable = selectInput != DragonReinsInputType.Thumbsticks;
             _button_VRHands.interactable = selectInput != DragonReinsInputType.VRHands;
+            //_button_Gaze.interactable = selectInput != DragonReinsInputType.Gaze;
+            _button_Legacy.interactable = selectInput != DragonReinsInputType.Legacy;
 
             _menu_Keyboard.SetActive(selectInput == DragonReinsInputType.Keyboard);
             _menu_Thumbsticks.SetActive(selectInput == DragonReinsInputType.Thumbsticks);
             _menu_VRHands.SetActive(selectInput == DragonReinsInputType.VRHands);
+            //_menu_Gaze.SetActive(selectInput == DragonReinsInputType.Gaze);
+            _menu_Legacy.SetActive(selectInput == DragonReinsInputType.Legacy);
         }
     }
 }

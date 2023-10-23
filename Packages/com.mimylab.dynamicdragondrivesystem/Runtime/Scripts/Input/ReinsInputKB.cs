@@ -16,29 +16,36 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputKB : ReinsInputManager
     {
+        private void Start()
+        {
+            _SetThrottleRightHand();
+            _SetElevatorLeftHand();
+            _SetTurningLeftHand();
+        }
+
         // W・Sキー
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
         {
-            if (_throttleInputHand == HandType.RIGHT) { _thrust = value; }
-            if (_elevatorInputHand == HandType.RIGHT) { _elevator = -value; }
+            if (_throttleInputHand == HandType.LEFT) { _thrust = value; }
+            if (_elevatorInputHand == HandType.LEFT) { _elevator = -value; }
         }
 
         // A・Dキー
         public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
         {
-            if (_turningInputHand == HandType.RIGHT) { _ladder = value; }
-            if (_turningInputHand == HandType.RIGHT) { _aileron = -value; }
+            if (_turningInputHand == HandType.LEFT) { _ladder = value; }
+            if (_turningInputHand == HandType.LEFT) { _aileron = -value; }
         }
 
         protected override void InputKey()
         {
-            if (_throttleInputHand == HandType.LEFT)
+            if (_throttleInputHand == HandType.RIGHT)
             {
                 _thrust = (Input.GetKey(KeyCode.E)) ? 1.0f :
                           (Input.GetKey(KeyCode.Q)) ? -1.0f : 0.0f;
             }
 
-            if (_elevatorInputHand == HandType.LEFT)
+            if (_elevatorInputHand == HandType.RIGHT)
             {
                 _elevator = (Input.GetKey(KeyCode.E)) ? -1.0f :
                             (Input.GetKey(KeyCode.Q)) ? 1.0f : 0.0f;

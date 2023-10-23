@@ -27,6 +27,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Range(0.0f, 1.0f), SerializeField]
         private float _brakesAcceptanceThreshold = 0.9f;
 
+        private VRCPlayerApi _localPlayer;
         private bool _isGrabLeft, _isGrabRight;
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
@@ -35,6 +36,11 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _rightGrabMove, _leftGrgabMove;
         private Vector3 _rightGrabRotate, _leftGrabRotate;
         private bool _prevGrabJump;
+
+        private void Start()
+        {
+            _localPlayer = Networking.LocalPlayer;
+        }
 
         public override void InputGrab(bool value, UdonInputEventArgs args)
         {

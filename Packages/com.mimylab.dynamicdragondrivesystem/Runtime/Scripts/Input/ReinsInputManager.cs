@@ -19,7 +19,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         [HideInInspector]
         public DragonDriver driver;
 
-        protected VRCPlayerApi _localPlayer;
         protected float _thrust, _lift, _lateral;
         protected float _elevator, _ladder, _aileron;
         protected bool _brakes, _turbo;
@@ -80,11 +79,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (_overdrive != value) { driver._InputOverdrive(value); }
                 _overdrive = value;
             }
-        }
-
-        private void Start()
-        {
-            _localPlayer = Networking.LocalPlayer;
         }
 
         private void Update()

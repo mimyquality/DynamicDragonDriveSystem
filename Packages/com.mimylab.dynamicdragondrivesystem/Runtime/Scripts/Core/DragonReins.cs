@@ -16,7 +16,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         Keyboard,
         Thumbsticks,
-        VRHands
+        VRHands,
+        Gaze,
+        Legacy
     }
 
     [DefaultExecutionOrder(-200)]
@@ -29,7 +31,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputKB keyboard;
         public ReinsInputSTK thumbsticks;
         public ReinsInputVR vrHands;
-        //public ReinsInputTP touchPad;
+        //public ReinsInputGZ gaze;
+        public ReinsInputLGC legacy;
 
         [FieldChangeCallback(nameof(EnabledInput))]
         private bool _enabledInput = false;
@@ -43,6 +46,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (keyboard) keyboard.enabled = (_selectedInput == DragonReinsInputType.Keyboard) && value;
                 if (thumbsticks) thumbsticks.enabled = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
                 if (vrHands) vrHands.enabled = (_selectedInput == DragonReinsInputType.VRHands) && value;
+                //if (gaze) gaze.enabled = (_selectedInput == DragonReinsInputType.Gaze) && value;
+                if (legacy) legacy.enabled = (_selectedInput == DragonReinsInputType.Legacy) && value;
             }
         }
 
@@ -57,12 +62,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!keyboard) keyboard = GetComponentInChildren<ReinsInputKB>(true);
             if (!thumbsticks) thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
             if (!vrHands) vrHands = GetComponentInChildren<ReinsInputVR>(true);
-            //touchPad = GetComponentInChildren<ReinsInputTP>();
+            //if (!gaze) gaze = GetComponentInChildren<ReinsInputGZ>(true);
+            if (!legacy) legacy = GetComponentInChildren<ReinsInputLGC>(true);
 
             if (keyboard) keyboard.driver = driver;
             if (thumbsticks) thumbsticks.driver = driver;
             if (vrHands) vrHands.driver = driver;
-            // touchPad初期化
+            // if (gaze) gaze.driver = driver;
+            if (legacy) legacy.driver = driver;
 
             _initialized = true;
         }
@@ -99,7 +106,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             EnabledInput = EnabledInput;
         }
 
-        public void _SetTouchPad() { }
+        public void _SetGaze()
+        {
+            _selectedInput = DragonReinsInputType.Gaze;
+            EnabledInput = EnabledInput;
+        }
+
+        public void _SetLegacy()
+        {
+            _selectedInput = DragonReinsInputType.Legacy;
+            EnabledInput = EnabledInput;
+        }
 
         public void _EnableDragonControl()
         {
