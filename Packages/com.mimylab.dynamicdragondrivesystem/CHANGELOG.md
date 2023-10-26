@@ -4,6 +4,13 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.4.1] - 2023/10/27
+### Changed
+- 衝突相手の傾きを衝突判定の判断材料に追加、これに伴い地上走行中も衝突するように変更
+- 初代Viveコントローラー用入力のデフォルト操作を一部変更
+- 初代Viveコントローラー用入力の急ブレーキ操作を変更(左パッド←＋右パッド↓)
+- 移動手段を取捨選択できるようにプロパティ追加
+
 ## [0.4.0] - 2023/10/23
 ### Add
 - 操作系統に初代Viveコントローラー用の選択肢を追加
@@ -53,6 +60,7 @@
 ### Add
 - VPM化
 
+[0.4.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.1
 [0.4.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.0
 [0.3.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.3.0
 [0.2.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.2.2

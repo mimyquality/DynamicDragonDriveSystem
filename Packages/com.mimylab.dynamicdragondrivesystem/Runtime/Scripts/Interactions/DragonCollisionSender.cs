@@ -27,7 +27,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!Utilities.IsValid(other)) { return; }
             if (!Utilities.IsValid(other.collider)) { return; }
 
-            actor._TriggerCollision();
+            actor._TriggerCollision(other);
         }
     }
 }

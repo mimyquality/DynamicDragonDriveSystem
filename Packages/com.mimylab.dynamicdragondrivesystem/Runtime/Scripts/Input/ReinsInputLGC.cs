@@ -22,9 +22,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Start()
         {
-            _SetThrottleRightHand();
+            _SetThrottleLeftHand();
             _SetElevatorLeftHand();
-            _SetTurningLeftHand();
+            _SetTurningRightHand();
         }
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
@@ -41,19 +41,16 @@ namespace MimyLab.DynamicDragonDriveSystem
             _InputBrakeLeft = value < -_brakesAcceptanceThreshold;
         }
 
-        /* public override void InputLookVertical(float value, UdonInputEventArgs args)
+        public override void InputLookVertical(float value, UdonInputEventArgs args)
         {
-            if (_throttleInputHand == HandType.RIGHT) { _thrust = value; }
-            if (_elevatorInputHand == HandType.RIGHT) { _elevator = -value; }
-        } */
+            _InputBrakeRight = value < -_brakesAcceptanceThreshold;
+        }
 
         public override void InputLookHorizontal(float value, UdonInputEventArgs args)
         {
             if (_throttleInputHand == HandType.RIGHT) { _thrust = value; }
             if (_turningInputHand == HandType.RIGHT) { _ladder = value; }
             if (_turningInputHand == HandType.RIGHT) { _aileron = -value; }
-
-            _InputBrakeRight = value > _brakesAcceptanceThreshold;
         }
 
         protected override void InputKey()

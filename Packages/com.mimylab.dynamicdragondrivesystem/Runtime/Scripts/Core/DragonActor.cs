@@ -32,6 +32,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _blinkMembraneRateMax = 20.0f;
         [SerializeField, Min(0.0f), Tooltip("m/s")]
         private float _collisionTriggerVelocity = 8.0f;
+        [SerializeField, Min(0.0f), Tooltip("degree")]
+        private float _collisionIncidenceAngle = 75.0f;
 
         public Transform nose;  // Debug
         public GameObject groundedLamp; //Debug
@@ -157,11 +159,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             SendCustomEventDelayedSeconds(nameof(_TriggerBlinkMembrane), nextTiming);
         }
 
-        public void _TriggerCollision()
+        public void _TriggerCollision(Collision other)
         {
             if (!_animator) { return; }
-            if (_state == 0) { return; }
-            if (_relativeVelocity.sqrMagnitude < _collisionTriggerVelocity * _collisionTriggerVelocity) { return; }
+            if (_relativeVelocity.sqrMagnitude < _collisionTriggerVelocity * _collisionTriggerVelocity) { return; }            
+            for (int i = 0; i < other.contactCount; i++)
+            {
+                if (Vector3.Angle(Vector3.up, other.contacts[0].normal) < _collisionIncidenceAngle)
+                {
+                    return;
+                }
+            }
 
             _animator.SetTrigger(_param_Collision);
         }

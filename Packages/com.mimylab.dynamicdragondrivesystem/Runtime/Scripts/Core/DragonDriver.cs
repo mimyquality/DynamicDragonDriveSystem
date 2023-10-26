@@ -12,13 +12,19 @@ using VRC.SDK3.Components;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    public enum DragonDrivingStateType
+    public enum DragonDriverStateType
     {
         Walking,
         Hovering,
         Flight,
         Brakes,
         Overdrive
+    }
+    public enum DragonDriverEnabledStateSelect
+    {
+        Landing = 1 << 0,
+        Hovering = 1 << 1,
+        Flight = 1 << 2
     }
 
     [RequireComponent(typeof(Rigidbody), typeof(SphereCollider), typeof(VRCObjectSync))]
@@ -63,6 +69,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _landingSpeed = 30.0f;
 
         [Header("Others")]
+        [EnumFlag, SerializeField]
+        private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)0b1111;
         [Tooltip("m/s"), Min(0.0f), SerializeField]
         private float _accelerateLimit = 18.0f * 5 / 18;
         [Tooltip("m/s"), SerializeField]
@@ -122,7 +130,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _velocity, _targetVelocity;
         private Quaternion _rotation, _noseRotation;
         private float _drag, _defaultDrag, _sqrSpeed;
-        private DragonDrivingStateType _state;
+        private DragonDriverStateType _state;
         private bool _isWalking, _isGrounded, _isBrakes, _isOverdrive;
         private float _inertialRoll, _inertialPitch;
         private float _groundCheckRadius, _groundCheckRange;
@@ -190,33 +198,42 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (_isBrakes)
             {
-                _state = DragonDrivingStateType.Brakes;
+                _state = DragonDriverStateType.Brakes;
             }
-            else if (_isWalking)
+            else if (_isWalking && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Landing) > 0)
             {
-                _state = DragonDrivingStateType.Walking;
+                _state = DragonDriverStateType.Walking;
             }
-            else if (_isOverdrive)
+            else if (_isOverdrive && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
             {
-                _state = DragonDrivingStateType.Overdrive;
+                _state = DragonDriverStateType.Overdrive;
             }
-            else if (_sqrSpeed > _hoveringSpeedThresholdConverted * _hoveringSpeedThresholdConverted)
+            else if ((_sqrSpeed > _hoveringSpeedThresholdConverted * _hoveringSpeedThresholdConverted)
+                 && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
             {
-                _state = DragonDrivingStateType.Flight;
+                _state = DragonDriverStateType.Flight;
+            }
+            else if (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Hovering) > 0)
+            {
+                _state = DragonDriverStateType.Hovering;
+            }
+            else if (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
+            {
+                _state = DragonDriverStateType.Flight;
             }
             else
             {
-                _state = DragonDrivingStateType.Hovering;
+                _state = default;
             }
 
             // 状態に合わせたRigidbodyの計算
             switch (_state)
             {
-                case DragonDrivingStateType.Walking: Walking(); break;
-                case DragonDrivingStateType.Hovering: Hovering(); break;
-                case DragonDrivingStateType.Flight: Flight(); break;
-                case DragonDrivingStateType.Brakes: Brakes(); break;
-                case DragonDrivingStateType.Overdrive: Overdrive(); break;
+                case DragonDriverStateType.Walking: Walking(); break;
+                case DragonDriverStateType.Hovering: Hovering(); break;
+                case DragonDriverStateType.Flight: Flight(); break;
+                case DragonDriverStateType.Brakes: Brakes(); break;
+                case DragonDriverStateType.Overdrive: Overdrive(); break;
             }
 
             // 計算結果を出力
