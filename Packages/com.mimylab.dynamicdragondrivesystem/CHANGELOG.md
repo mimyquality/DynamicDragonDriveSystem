@@ -4,6 +4,10 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.4.2] - 2023/10/28
+### Changed
+- 衝突時の傾き判定をドラゴン自身の姿勢基準に変更
+
 ## [0.4.1] - 2023/10/27
 ### Changed
 - 衝突相手の傾きを衝突判定の判断材料に追加、これに伴い地上走行中も衝突するように変更
@@ -60,6 +64,7 @@
 ### Add
 - VPM化
 
+[0.4.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.2
 [0.4.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.1
 [0.4.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.0
 [0.3.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.3.0
