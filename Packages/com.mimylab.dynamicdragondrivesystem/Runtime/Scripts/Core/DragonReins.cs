@@ -31,7 +31,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputKB keyboard;
         public ReinsInputSTK thumbsticks;
         public ReinsInputVR vrHands;
-        //public ReinsInputGZ gaze;
+        public ReinsInputGZ gaze;
         public ReinsInputLGC legacy;
 
         [FieldChangeCallback(nameof(EnabledInput))]
@@ -46,7 +46,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (keyboard) keyboard.enabled = (_selectedInput == DragonReinsInputType.Keyboard) && value;
                 if (thumbsticks) thumbsticks.enabled = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
                 if (vrHands) vrHands.enabled = (_selectedInput == DragonReinsInputType.VRHands) && value;
-                //if (gaze) gaze.enabled = (_selectedInput == DragonReinsInputType.Gaze) && value;
+                if (gaze) gaze.enabled = (_selectedInput == DragonReinsInputType.Gaze) && value;
                 if (legacy) legacy.enabled = (_selectedInput == DragonReinsInputType.Legacy) && value;
             }
         }
@@ -62,13 +62,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!keyboard) keyboard = GetComponentInChildren<ReinsInputKB>(true);
             if (!thumbsticks) thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
             if (!vrHands) vrHands = GetComponentInChildren<ReinsInputVR>(true);
-            //if (!gaze) gaze = GetComponentInChildren<ReinsInputGZ>(true);
+            if (!gaze) gaze = GetComponentInChildren<ReinsInputGZ>(true);
             if (!legacy) legacy = GetComponentInChildren<ReinsInputLGC>(true);
 
             if (keyboard) keyboard.driver = driver;
             if (thumbsticks) thumbsticks.driver = driver;
             if (vrHands) vrHands.driver = driver;
-            // if (gaze) gaze.driver = driver;
+             if (gaze) gaze.driver = driver;
             if (legacy) legacy.driver = driver;
 
             _initialized = true;

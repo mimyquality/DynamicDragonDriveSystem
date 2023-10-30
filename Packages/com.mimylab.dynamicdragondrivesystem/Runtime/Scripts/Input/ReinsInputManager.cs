@@ -81,6 +81,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
+        private void OnDisable()
+        {
+            if (!driver) { return; }
+
+            driver._InputAccelerate(Vector3.zero);
+            driver._InputRotate(Vector3.zero);
+            driver._InputRotateDirect(Quaternion.identity);
+            driver._InputEmergencyBrakes(false);
+            driver._InputOverdrive(false);
+        }
+
         private void Update()
         {
             InputKey();

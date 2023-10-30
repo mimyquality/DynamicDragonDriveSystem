@@ -200,9 +200,10 @@ MonoBehaviour:
   _maxNoseYaw: 45
   _centerSnapTolerance: 5
   _stateShiftSpeed: 20
-  _landingSpeed: 30
+  _landingSpeed: 60
+  _enabledState: 15
   _accelerateLimit: 5
-  _jumpSpeed: 8.333333
+  _jumpSpeed: 8
   _brakePower: 2
   _groundLayer:
     serializedVersion: 2

@@ -75,13 +75,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _button_Keyboard.interactable = selectInput != DragonReinsInputType.Keyboard;
             _button_Thumbsticks.interactable = selectInput != DragonReinsInputType.Thumbsticks;
             _button_VRHands.interactable = selectInput != DragonReinsInputType.VRHands;
-            //_button_Gaze.interactable = selectInput != DragonReinsInputType.Gaze;
+            _button_Gaze.interactable = selectInput != DragonReinsInputType.Gaze;
             _button_Legacy.interactable = selectInput != DragonReinsInputType.Legacy;
 
             _menu_Keyboard.SetActive(selectInput == DragonReinsInputType.Keyboard);
             _menu_Thumbsticks.SetActive(selectInput == DragonReinsInputType.Thumbsticks);
             _menu_VRHands.SetActive(selectInput == DragonReinsInputType.VRHands);
-            //_menu_Gaze.SetActive(selectInput == DragonReinsInputType.Gaze);
+            _menu_Gaze.SetActive(selectInput == DragonReinsInputType.Gaze);
             _menu_Legacy.SetActive(selectInput == DragonReinsInputType.Legacy);
         }
     }

@@ -66,7 +66,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Tooltip("deg/s"), SerializeField]
         private float _stateShiftSpeed = 20.0f;
         [Tooltip("deg/s"), SerializeField]
-        private float _landingSpeed = 30.0f;
+        private float _landingSpeed = 60.0f;
 
         [Header("Others")]
         [EnumFlag, SerializeField]
@@ -139,6 +139,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Input
         private Vector3 _throttle;
         private float _elevator, _ladder, _aileron;
+        private Quaternion _gazeRotation;
         [FieldChangeCallback(nameof(IsAwake))]
         private bool _isAwake;
 
@@ -178,6 +179,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _InputAccelerate(Vector3.zero);
             _InputRotate(Vector3.zero);
+            _InputRotateDirect(Quaternion.identity);
             _InputEmergencyBrakes(false);
             _InputOverdrive(false);
 
@@ -226,6 +228,14 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _state = default;
             }
 
+            if (_state == DragonDriverStateType.Flight)
+            {
+                if (_gazeRotation != Quaternion.identity)
+                {
+                    _state = DragonDriverStateType.Hovering;
+                }
+            }
+
             // 状態に合わせたRigidbodyの計算
             switch (_state)
             {
@@ -269,8 +279,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             _aileron = Mathf.Clamp(rot.z, -1.0f, 1.0f);
         }
 
-        public void _InputRotateDirect(Vector3 rot)
+        public void _InputRotateDirect(Quaternion rot)
         {
+            _gazeRotation = rot;
         }
 
         public void _InputEmergencyBrakes(bool value)
@@ -315,13 +326,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             var sign = (Vector3.Dot(noseDirection, velocityFront) < 0.0f) ? -1.0f : 1.0f;
 
             // 入力値計算
-            //var pitch = Time.deltaTime * noseRotateSpeed * _elevator;
             var yaw = Time.deltaTime * _noseRotateSpeed * _ladder;
 
             // 入力を反映
             var relativeRotation = Quaternion.Inverse(_rotation) * _noseRotation;
-            //relativeRotation = Quaternion.AngleAxis(pitch, Vector3.right) * relativeRotation;
             relativeRotation = Quaternion.AngleAxis(yaw, Vector3.up) * relativeRotation;
+            if (_gazeRotation != Quaternion.identity)
+            {
+                relativeRotation = _gazeRotation;
+            }
 
             // 進行方向の軸制限
             var relativeDirection = relativeRotation * Vector3.forward;
@@ -412,6 +425,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             var relativeRotation = Quaternion.Inverse(_rotation) * _noseRotation;
             relativeRotation = Quaternion.AngleAxis(pitch, Vector3.right) * relativeRotation;
             relativeRotation = Quaternion.AngleAxis(yaw, Vector3.up) * relativeRotation;
+            if (_gazeRotation != Quaternion.identity)
+            {
+                relativeRotation = _gazeRotation;
+            }
 
             // 進行方向の軸制限
             if (_elevator == 0.0f && _ladder == 0.0f)

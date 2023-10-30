@@ -32,10 +32,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 Initialize();
 
-                _adjustPoint = value;
-                _adjustPoint.x = Mathf.Clamp(_adjustPoint.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
-                _adjustPoint.y = Mathf.Clamp(_adjustPoint.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
-                _adjustPoint.z = Mathf.Clamp(_adjustPoint.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
+                _adjustPoint.x = Mathf.Clamp(value.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
+                _adjustPoint.y = Mathf.Clamp(value.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
+                _adjustPoint.z = Mathf.Clamp(value.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
 
                 _enterPoint.localPosition = _adjustPoint;
 
@@ -155,7 +154,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             EnabledAdjustInput = false;
         }
-
 
         protected virtual void OnLocalPlayerMounted() { }
         protected virtual void OnLocalPlayerUnmounted() { }

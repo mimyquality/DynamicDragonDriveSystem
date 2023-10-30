@@ -13,7 +13,7 @@ using VRC.Udon.Common;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class SeatInputManager : UdonSharpBehaviour
     {
         [Tooltip("sec"), Min(0.2f)]
