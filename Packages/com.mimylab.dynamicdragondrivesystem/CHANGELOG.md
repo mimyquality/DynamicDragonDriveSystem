@@ -4,6 +4,10 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.5.1] - 2023/10/31
+### Changed
+- プラットフォームに合わせて入力操作の選択肢を制限するように変更
+
 ## [0.5.0] - 2023/10/30
 ### Add
 - 操作入力モードにGazeを追加
@@ -11,6 +15,7 @@
   - この入力モードの時はFlight状態にならなくなる
 
 ### Known issues
+- ClientSim上でのみGazeモードが動かない
 - Gazeモードを選択してから別のモードを選択すると、一部の入力操作を受け付けなくなる
   - 更に別のモードを選択してから選択したいモードを再選択すると治る
 
@@ -74,6 +79,7 @@
 ### Add
 - VPM化
 
+[0.5.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.1
 [0.5.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.0
 [0.4.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.2
 [0.4.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.4.1

@@ -7,7 +7,7 @@ https://opensource.org/licenses/mit-license.php
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
-//using VRC.SDKBase;
+using VRC.SDKBase;
 //using VRC.Udon;
 //using VRC.SDK3.Components;
 
@@ -43,6 +43,32 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void OnEnable()
         {
             SetSelectInput(reins.SelectedImput);
+        }
+
+        private void Start()
+        {
+            var platform = reins.Platform;
+            if (platform == PlatformType.VR)
+            {
+                _button_Gaze.gameObject.SetActive(false);
+            }
+            else if (platform == PlatformType.Desktop)
+            {
+                _button_VRHands.gameObject.SetActive(false);
+                _button_Legacy.gameObject.SetActive(false);
+            }
+            else if (platform == PlatformType.Quest)
+            {
+                _button_Keyboard.gameObject.SetActive(false);
+                _button_Gaze.gameObject.SetActive(false);
+                _button_Legacy.gameObject.SetActive(false);
+            }
+            else if (platform == PlatformType.Android)
+            {
+                _button_VRHands.gameObject.SetActive(false);
+                _button_Keyboard.gameObject.SetActive(false);
+                _button_Legacy.gameObject.SetActive(false);
+            }
         }
 
         public void _SetKeyboard()

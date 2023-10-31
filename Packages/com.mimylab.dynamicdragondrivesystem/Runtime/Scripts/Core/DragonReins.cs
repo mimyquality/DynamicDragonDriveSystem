@@ -12,6 +12,15 @@ using VRC.SDKBase;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
+    public enum PlatformType
+    {
+        Unknown,
+        VR,
+        Desktop,
+        Quest,
+        Android
+    }
+
     public enum DragonReinsInputType
     {
         Keyboard,
@@ -54,6 +63,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private DragonReinsInputType _selectedInput = default;
         public DragonReinsInputType SelectedImput { get => _selectedInput; }
 
+        private PlatformType _platform = default;
+        public PlatformType Platform { get => _platform; }
+
         private bool _initialized = false;
         private void Initialize()
         {
@@ -68,7 +80,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (keyboard) keyboard.driver = driver;
             if (thumbsticks) thumbsticks.driver = driver;
             if (vrHands) vrHands.driver = driver;
-             if (gaze) gaze.driver = driver;
+            if (gaze) gaze.driver = driver;
             if (legacy) legacy.driver = driver;
 
             _initialized = true;
@@ -77,15 +89,19 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-            if (Networking.LocalPlayer.IsUserInVR())
+#if UNITY_STANDALONE_WIN
+            _platform = (Networking.LocalPlayer.IsUserInVR()) ? PlatformType.VR : PlatformType.Desktop;
+#elif UNITY_ANDROID
+            _platform = (Networking.LocalPlayer.IsUserInVR()) ? PlatformType.Quest : PlatformType.Android;
+#endif
+
+            switch (_platform)
             {
-                _selectedInput = DragonReinsInputType.Thumbsticks;
+                case PlatformType.VR: _SetThumbsticks(); break;
+                case PlatformType.Desktop: _SetKeyboard(); break;
+                case PlatformType.Quest: _SetThumbsticks(); break;
+                case PlatformType.Android: _SetGaze(); break;
             }
-            else
-            {
-                _selectedInput = DragonReinsInputType.Keyboard;
-            }
-            EnabledInput = EnabledInput;
         }
 
         public void _SetKeyboard()
