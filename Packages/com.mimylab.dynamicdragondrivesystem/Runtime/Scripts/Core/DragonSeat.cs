@@ -3,15 +3,16 @@ Copyright (c) 2023 Mimy Quality
 Released under the MIT license
 https://opensource.org/licenses/mit-license.php
 */
-using UdonSharp;
-using UnityEngine;
-using VRC.SDKBase;
-//using VRC.Udon;
-//using VRC.SDK3.Components;
-using VRCStation = VRC.SDK3.Components.VRCStation;
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
+    using UdonSharp;
+    using UnityEngine;
+    using VRC.SDKBase;
+    //using VRC.Udon;
+    //using VRC.SDK3.Components;
+    using VRCStation = VRC.SDK3.Components.VRCStation;
+
     [RequireComponent(typeof(VRCStation), typeof(SeatInputManager))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour

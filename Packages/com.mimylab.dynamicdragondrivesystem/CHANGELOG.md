@@ -4,10 +4,17 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.6.0] - 2023/11/22
+### Added
+- メニューに追加メニュー呼び出し用の機構を追加
+
+### Fixed
+- 環境によってネームスペースが干渉する可能性があるのに対応
+
 ## [0.5.2] - 2023/11/1
-- Changed
-  - リスポーンスイッチをクソデカに変更
-  - ドラゴンがリスポーン近くに居る間はリスポーンスイッチ非表示になるよう変更
+### Changed
+- リスポーンスイッチをクソデカに変更
+- ドラゴンがリスポーン近くに居る間はリスポーンスイッチ非表示になるよう変更
 
 ## [0.5.1] - 2023/10/31
 ### Changed
@@ -84,6 +91,7 @@
 ### Add
 - VPM化
 
+[0.6.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.0
 [0.5.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.2
 [0.5.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.1
 [0.5.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.0

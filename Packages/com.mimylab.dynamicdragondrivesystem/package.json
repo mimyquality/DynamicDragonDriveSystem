@@ -1,8 +1,8 @@
 {
   "name": "com.mimylab.dynamicdragondrivesystem",
   "displayName": "Dynamic Dragon Drive System",
-  "version": "0.5.2",
-  "description": "Riding gimmick encompassing ground driving, hovering, and flight functions. nUtilizes VRChat's Udonsharp.",
+  "version": "0.6.0",
+  "description": "Riding gimmick encompassing ground driving, hovering, and flight functions. Utilizes VRChat's Udonsharp.",
   "unity": "2019.4",
   "author": {
     "name": "Mimy Quality",
