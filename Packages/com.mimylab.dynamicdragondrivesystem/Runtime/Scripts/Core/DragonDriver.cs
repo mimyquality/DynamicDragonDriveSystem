@@ -30,18 +30,16 @@ namespace MimyLab.DynamicDragonDriveSystem
     [RequireComponent(typeof(Rigidbody), typeof(SphereCollider), typeof(VRCObjectSync))]
     public class DragonDriver : UdonSharpBehaviour
     {
-        private const float ConvertKMPHtoMPS = 5 / 18f;
-
         [Header("Speed settings")]
         [Tooltip("m/s^2"), SerializeField]
         private float _acceleration = 5.0f;
-        [Tooltip("km/h"), SerializeField]
-        private float _maxSpeed = 200.0f;
-        [Tooltip("km/h"), SerializeField]
-        private float _maxWalkSpeed = 60.0f;
-        [Tooltip("km/h"), SerializeField]
-        private float _hoveringSpeedThreshold = 60.0f;
-        [Tooltip("km/h"), SerializeField]
+        [Tooltip("m/s"), SerializeField]
+        private float _maxSpeed = 56.0f;
+        [Tooltip("m/s"), SerializeField]
+        private float _maxWalkSpeed = 16.0f;
+        [Tooltip("m/s"), SerializeField]
+        private float _hoveringSpeedThreshold = 16.0f;
+        [Tooltip("m/s"), SerializeField]
         private float _stillSpeedThreshold = 5.0f;
         [Min(0.0f), SerializeField]
         private float _stillDrag = 1.0f;
@@ -72,9 +70,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         [EnumFlag, SerializeField]
         private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)0b1111;
         [Tooltip("m/s"), Min(0.0f), SerializeField]
-        private float _accelerateLimit = 18.0f * 5 / 18;
+        private float _accelerateLimit = 5.0f;
         [Tooltip("m/s"), SerializeField]
-        private float _jumpSpeed = 28.8f * 5 / 18;
+        private float _jumpSpeed = 8.0f;
         [Min(0.0f), SerializeField]
         private float _brakePower = 2.0f;
         [SerializeField]
@@ -82,44 +80,15 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Tooltip("degree"), Range(0.0f, 89.9f), SerializeField]
         private float _slopeLimit = 45.0f;
 
-        // 単位変換用
-        [FieldChangeCallback(nameof(MaxSpeed))]
-        private float _maxSpeedConverted;
-        public float MaxSpeed
-        {
-            get => _maxSpeedConverted;
-            set => _maxSpeedConverted = value;
-        }
-        [FieldChangeCallback(nameof(MaxWalkSpeed))]
-        private float _maxWalkSpeedConverted;
-        public float MaxWalkSpeed
-        {
-            get => _maxWalkSpeedConverted;
-            set => _maxWalkSpeedConverted = value;
-        }
-        [FieldChangeCallback(nameof(HoveringSpeedThreshold))]
-        private float _hoveringSpeedThresholdConverted;
-        public float HoveringSpeedThreshold
-        {
-            get => _hoveringSpeedThresholdConverted;
-            set => _hoveringSpeedThresholdConverted = value;
-        }
-        [FieldChangeCallback(nameof(StillSpeedThreshold))]
-        private float _stillSpeedThresholdConverted;
-        public float StillSpeedThreshold
-        {
-            get => _stillSpeedThresholdConverted;
-            set => _stillSpeedThresholdConverted = value;
-        }
-
         // Actor渡し用
-        public bool IsAwake { get => _isAwake; set => _isAwake = value; }
         public int State { get => (int)_state; }
         public bool IsGrounded { get => _isGrounded; }
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
-        public float TargetSpeed { get => _targetVelocity.magnitude; }
         public Quaternion NoseRotation { get => _noseRotation; }
+
+        // Saddle渡し用
+        public bool IsAwake { get => _isAwake; set => _isAwake = value; }
 
         // コンポーネント
         private Rigidbody _rigidbody;
@@ -153,14 +122,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             _objectSync = GetComponent<VRCObjectSync>();
 
             _rigidbody.freezeRotation = true;
-            _rigidbody.maxDepenetrationVelocity = _maxSpeedConverted;
+            _rigidbody.maxDepenetrationVelocity = _maxSpeed;
             _objectSync.SetKinematic(false);
             _objectSync.SetGravity(false);
-
-            MaxSpeed = _maxSpeed * ConvertKMPHtoMPS;
-            MaxWalkSpeed = _maxWalkSpeed * ConvertKMPHtoMPS;
-            HoveringSpeedThreshold = _hoveringSpeedThreshold * ConvertKMPHtoMPS;
-            StillSpeedThreshold = _stillSpeedThreshold * ConvertKMPHtoMPS;
 
             _defaultDrag = _rigidbody.drag;
             _groundCheckRadius = _collider.radius * 0.9f;
@@ -210,7 +174,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _state = DragonDriverStateType.Overdrive;
             }
-            else if ((_sqrSpeed > _hoveringSpeedThresholdConverted * _hoveringSpeedThresholdConverted)
+            else if ((_sqrSpeed > _hoveringSpeedThreshold * _hoveringSpeedThreshold)
                  && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
             {
                 _state = DragonDriverStateType.Flight;
@@ -379,7 +343,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             var targetSqrSpeed = _targetVelocity.sqrMagnitude;
             if (_throttle == Vector3.zero)
             {
-                if (targetSqrSpeed < _stillSpeedThresholdConverted * _stillSpeedThresholdConverted)
+                if (targetSqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
                 {
                     _targetVelocity = Vector3.zero;
                     return;
@@ -392,7 +356,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _targetVelocity = Vector3.ClampMagnitude(_targetVelocity, _accelerateLimit) + velocityForward;
             }
 
-            _targetVelocity = Vector3.ClampMagnitude(_targetVelocity + thrust, _maxWalkSpeedConverted);
+            _targetVelocity = Vector3.ClampMagnitude(_targetVelocity + thrust, _maxWalkSpeed);
             _velocity += Time.deltaTime * _acceleration * (_noseRotation * (_targetVelocity - velocityForward));
         }
 
@@ -452,7 +416,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _noseRotation = turn * _noseRotation;
 
             // 速度の再計算
-            CalculateVelocity(_maxSpeedConverted);
+            CalculateVelocity(_maxSpeed);
         }
 
         private void Flight()
@@ -513,7 +477,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _noseRotation = Quaternion.LookRotation(noseDirection);
 
             // 速度の再計算
-            CalculateVelocity(_maxSpeedConverted);
+            CalculateVelocity(_maxSpeed);
         }
 
         private void Brakes()
@@ -525,7 +489,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             var forward = _rotation * Vector3.forward;
             var noseDirection = _noseRotation * Vector3.forward;
             var horizontalForward = Vector3.ProjectOnPlane(forward, Vector3.up);
-            if (_sqrSpeed < _stillSpeedThresholdConverted * _stillSpeedThresholdConverted)
+            if (_sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
             {
                 var horizontalRotation = Quaternion.LookRotation(horizontalForward);
                 var targetRotation = Quaternion.RotateTowards(_rotation, horizontalRotation, Time.deltaTime * _stateShiftSpeed);
@@ -551,7 +515,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             // 速度の再計算
             var velocityForward = Vector3.Project(Quaternion.Inverse(_noseRotation) * _velocity, _targetVelocity);
-            _targetVelocity = Vector3.ClampMagnitude(velocityForward, _maxSpeedConverted);
+            _targetVelocity = Vector3.ClampMagnitude(velocityForward, _maxSpeed);
             // 本体速度は物理減速に任せる
             //_velocity += Time.deltaTime * _acceleration * (_noseRotation * _targetVelocity - _velocity);
         }
@@ -584,7 +548,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private float SetDrag(float sqrSpeed)
         {
-            if (sqrSpeed < _stillSpeedThresholdConverted * _stillSpeedThresholdConverted)
+            if (sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
             {
                 if (_throttle == Vector3.zero)
                 {
@@ -631,7 +595,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             var targetSqrSpeed = _targetVelocity.sqrMagnitude;
             if (_throttle == Vector3.zero)
             {
-                if (targetSqrSpeed < _stillSpeedThresholdConverted * _stillSpeedThresholdConverted)
+                if (targetSqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
                 {
                     _targetVelocity = Vector3.zero;
                     return;

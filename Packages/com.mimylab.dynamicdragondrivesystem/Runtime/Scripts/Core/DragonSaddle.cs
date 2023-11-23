@@ -24,7 +24,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         protected override void OnLocalPlayerMounted()
         {
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
-            Networking.SetOwner(Networking.LocalPlayer, actor.gameObject);
+            if (actor) { Networking.SetOwner(Networking.LocalPlayer, actor.gameObject); }
             driver.IsAwake = true;
             driver.enabled = true;
             reins.EnabledInput = true;
@@ -39,12 +39,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         protected override void OnMount()
         {
-            actor.isMount = true;
+            if (actor) { actor.isMount = true; }
         }
 
         protected override void OnUnmount()
         {
-            actor.isMount = false;
+            if (actor) { actor.isMount = false; }
         }
 
         protected override void OnEnableAdjust()

@@ -31,7 +31,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!saddle) saddle = GetComponentInChildren<DragonSaddle>(true);
             if (!reins) reins = GetComponentInChildren<DragonReins>(true);
 
-            actor.driver = driver;
+            if (actor) { actor.driver = driver; }
             saddle.driver = driver;
             saddle.actor = actor;
             saddle.reins = reins;

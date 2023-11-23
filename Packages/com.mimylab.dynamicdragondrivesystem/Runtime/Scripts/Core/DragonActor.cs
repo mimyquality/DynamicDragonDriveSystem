@@ -113,19 +113,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             UpdateSyncedParameters();
             CalculateParameters();
             SetAnimatorParameters();
-
-            // Debug
-            nose.rotation = driver.NoseRotation;
-            groundedLamp.SetActive(driver.IsGrounded);
-
-            var speedToLocalPosition = speedLamp.localPosition;
-            speedToLocalPosition.y = _rigidbody.velocity.magnitude / driver.MaxSpeed;
-            speedLamp.localPosition = speedToLocalPosition;
-
-            var targetSpeedToLocalPosition = targetSpeedLamp.localPosition;
-            targetSpeedToLocalPosition.y = driver.TargetSpeed / driver.MaxSpeed;
-            targetSpeedLamp.localPosition = targetSpeedToLocalPosition;
-            // End Debug
         }
 
         public void _GenerateRandomBool()
