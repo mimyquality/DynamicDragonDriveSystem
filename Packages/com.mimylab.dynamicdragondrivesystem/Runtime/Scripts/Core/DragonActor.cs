@@ -35,11 +35,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Range(0.0f, 180.0f), Tooltip("degree")]
         private float _collisionIncidenceAngle = 60.0f;
 
-        public Transform nose;  // Debug
-        public GameObject groundedLamp; //Debug
-        public Transform speedLamp; //Debug
-        public Transform targetSpeedLamp; //Debug
-
         private VRCPlayerApi _localPlayer;
         private Animator _animator;
         private Rigidbody _rigidbody;

@@ -40,7 +40,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Tooltip("m/s"), SerializeField]
         private float _hoveringSpeedThreshold = 16.0f;
         [Tooltip("m/s"), SerializeField]
-        private float _stillSpeedThreshold = 5.0f;
+        private float _stillSpeedThreshold = 1.5f;
         [Min(0.0f), SerializeField]
         private float _stillDrag = 1.0f;
 
