@@ -112,6 +112,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 AdjustPoint = _localAdjustPoint;
                 _seatInput.enabled = true;
+                this.DisableInteractive = true;
 
                 OnLocalPlayerMounted();
             }
@@ -125,6 +126,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _localAdjustPoint = AdjustPoint;
                 _seatInput.enabled = false;
+                this.DisableInteractive = false;
 
                 OnLocalPlayerUnmounted();
             }

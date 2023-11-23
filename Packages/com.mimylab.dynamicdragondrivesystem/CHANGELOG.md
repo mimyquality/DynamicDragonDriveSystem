@@ -4,6 +4,10 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.6.1] - 2023/11/23
+### Fixed
+- 座っている間、Sit判定が無効になるよう修正
+
 ## [0.6.0] - 2023/11/22
 ### Added
 - メニューに追加メニュー呼び出し用の機構を追加
@@ -91,6 +95,7 @@
 ### Add
 - VPM化
 
+[0.6.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.1
 [0.6.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.0
 [0.5.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.2
 [0.5.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.1
