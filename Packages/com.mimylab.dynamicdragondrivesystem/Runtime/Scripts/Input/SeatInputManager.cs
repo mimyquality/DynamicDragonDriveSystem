@@ -77,7 +77,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_enableAdjustInput) { return; }
 
-            _inputAdjust.x = value;
+            _inputAdjust.y = -value;
         }
 
         public override void InputLookHorizontal(float value, UdonInputEventArgs args)
@@ -85,7 +85,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!_isVR) { return; }
             if (!_enableAdjustInput) { return; }
 
-            _inputAdjust.y = value;            
+            _inputAdjust.x = value;
         }
 
         public override void InputJump(bool value, UdonInputEventArgs args)
@@ -98,7 +98,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_isVR) { return; }
             if (!_enableAdjustInput) { return; }
 
-            _inputAdjust.y = (Input.GetKey(KeyCode.UpArrow)) ? 1.0f :
+            _inputAdjust.x = (Input.GetKey(KeyCode.UpArrow)) ? 1.0f :
                              (Input.GetKey(KeyCode.DownArrow)) ? -1.0f : 0.0f;
         }
     }
