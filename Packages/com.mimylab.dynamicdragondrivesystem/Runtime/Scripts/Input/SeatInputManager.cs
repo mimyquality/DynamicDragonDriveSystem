@@ -80,12 +80,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             _inputAdjust.x = value;
         }
 
-        public override void InputLookVertical(float value, UdonInputEventArgs args)
+        public override void InputLookHorizontal(float value, UdonInputEventArgs args)
         {
             if (!_isVR) { return; }
             if (!_enableAdjustInput) { return; }
 
-            _inputAdjust.y = value;
+            _inputAdjust.y = value;            
         }
 
         public override void InputJump(bool value, UdonInputEventArgs args)
