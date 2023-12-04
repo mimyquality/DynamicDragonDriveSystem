@@ -4,6 +4,12 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.6.2] - 2023/12/4
+### Fixed
+- 速度パラメーターの単位をm/sで統一
+- 座高調節機能の入力を配置変更(どのモードでも使えるようにする為の措置)
+- メニューのオンオフをドラゴンへの騎乗と連動するように変更
+
 ## [0.6.1] - 2023/11/23
 ### Fixed
 - 座っている間、Sit判定が無効になるよう修正
@@ -95,6 +101,7 @@
 ### Add
 - VPM化
 
+[0.6.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.2
 [0.6.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.1
 [0.6.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.0
 [0.5.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.5.2
