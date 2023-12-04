@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon;
     using VRC.SDK3.Components;
 
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Any)]
     public class DragonEffecter : UdonSharpBehaviour
     {
         [SerializeField] AudioSource _mouth;

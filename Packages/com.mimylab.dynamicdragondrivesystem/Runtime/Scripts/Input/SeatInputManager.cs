@@ -98,8 +98,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_isVR) { return; }
             if (!_enableAdjustInput) { return; }
 
-            _inputAdjust.x = (Input.GetKey(KeyCode.UpArrow)) ? 1.0f :
-                             (Input.GetKey(KeyCode.DownArrow)) ? -1.0f : 0.0f;
+            _inputAdjust.x = (Input.GetKey(KeyCode.RightArrow)) ? 1.0f :
+                             (Input.GetKey(KeyCode.LeftArrow)) ? -1.0f : 0.0f;
         }
     }
 }
