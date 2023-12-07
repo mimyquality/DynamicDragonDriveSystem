@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MenuIcon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 145b06c02eb71234d821f8739b01356f, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6515e5b0052c53b4da331e8a4c5b35a9, type: 3}
+  - {fileID: 21300000, guid: a7cf77668c0b866489c5466abb5279eb, type: 3}
+  - {fileID: 21300000, guid: 730c0788eefe3144d887b57da4824a9c, type: 3}
+  - {fileID: 21300000, guid: 13c3419aca4dbab43a2f5120921d04d7, type: 3}
+  - {fileID: 21300000, guid: 9674dfdb6cde9d448a1c2094d9e5e98c, type: 3}
+  - {fileID: 21300000, guid: 58e1ddfc916a21f4f9d9a65fd4675eb2, type: 3}
+  - {fileID: 21300000, guid: a820dcad83168d147b3eb8da5d621405, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - input_normal
+  - item_gamepad201805g_800
+  - input_reverse
+  - controller_
+  - rotateArrow
+  - doubleArrow
+  - circle
+  m_Tag: MenuIcon
+  m_IsVariant: 0
