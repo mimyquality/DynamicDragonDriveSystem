@@ -4,6 +4,10 @@
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 利用手順は[こちら](https://github.com/mimyquality/FukuroUdon/wiki)からご確認ください。
 
+## [0.6.4] - 2023/12/8
+### Fixed
+- インプット設定メニューのアイコンを変更
+
 ## [0.6.3] - 2023/12/7
 ### Add
 - インプット設定メニューのUIをビジュアルリッチに更新
@@ -105,6 +109,7 @@
 ### Add
 - VPM化
 
+[0.6.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.4
 [0.6.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.3
 [0.6.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.2
 [0.6.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.1
