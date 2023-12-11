@@ -28,10 +28,22 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 145b06c02eb71234d821f8739b01356f, type: 3}
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 6515e5b0052c53b4da331e8a4c5b35a9: 21300000
+    - a7cf77668c0b866489c5466abb5279eb: 21300000
+    - 730c0788eefe3144d887b57da4824a9c: 21300000
+    - 13c3419aca4dbab43a2f5120921d04d7: 21300000
+    - 9674dfdb6cde9d448a1c2094d9e5e98c: 21300000
+    - 58e1ddfc916a21f4f9d9a65fd4675eb2: 21300000
+    - a820dcad83168d147b3eb8da5d621405: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 6515e5b0052c53b4da331e8a4c5b35a9, type: 3}
@@ -49,5 +61,6 @@ SpriteAtlas:
   - rotateArrow
   - doubleArrow
   - circle
+  m_RenderDataMap: {}
   m_Tag: MenuIcon
   m_IsVariant: 0
