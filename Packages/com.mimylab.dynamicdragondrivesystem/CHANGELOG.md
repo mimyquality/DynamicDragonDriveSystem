@@ -4,6 +4,13 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.6.5] - 2023/12/20
+
+### Fixed
+
+- スマホ版でドラゴンから降りられないのを対処(ジャンプボタンをダブルタップで降りる)
+  既知の不具合：1回目のタップ時点で小ジャンプしてしまうため、ドラゴンが地面から浮いた状態になる
+
 ## [0.6.4] - 2023/12/8
 
 ### Fixed
@@ -153,6 +160,7 @@
 
 - VPM化
 
+[0.6.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.5
 [0.6.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.4
 [0.6.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.3
 [0.6.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.2
