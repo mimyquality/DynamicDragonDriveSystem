@@ -1142,7 +1142,7 @@ MonoBehaviour:
       Data: 74|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonDriverEnabledStateSelect, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonDriverEnabledStateSelect, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -2076,7 +2076,7 @@ MonoBehaviour:
       Data: 128|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonDriverStateType, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonDriverStateType, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

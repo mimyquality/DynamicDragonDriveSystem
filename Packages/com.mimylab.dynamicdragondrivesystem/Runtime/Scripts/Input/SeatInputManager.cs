@@ -16,6 +16,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class SeatInputManager : UdonSharpBehaviour
     {
+        private const float DoubleTapDuration = 0.2f;    // 単位：sec
+
         [Tooltip("sec"), Min(0.2f)]
         public float exitAcceptance = 0.8f;
 
@@ -30,17 +32,11 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private bool _inputJump;
         private float _inputJumpTimer;
+        private float _inputDoubleJumpTimer = DoubleTapDuration;
 
         private bool _enableAdjustInput;
         private Vector3 _inputAdjust;
 
-        private bool _initialized = false;
-        private void Initialize()
-        {
-            if (_initialized) { return; }
-
-            _initialized = true;
-        }
         private void Start()
         {
             _seat = GetComponent<DragonSeat>();
@@ -51,14 +47,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             InputKey();
 
-            _inputJumpTimer = (_inputJump) ? _inputJumpTimer + Time.deltaTime : 0.0f;
-
-            if (_inputJumpTimer > exitAcceptance)
-            {
-                _seat._Exit();
-                _inputJump = false;
-                _inputAdjust = Vector3.zero;
-            }
+            _inputJumpTimer = _inputJump ? _inputJumpTimer + Time.deltaTime : 0.0f;
+            if (_inputJumpTimer > exitAcceptance) { SeatExit(); }
+#if UNITY_ANDROID
+            // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
+            if (!_inputJump && _inputDoubleJumpTimer < DoubleTapDuration) { _inputDoubleJumpTimer += Time.deltaTime; }
+#endif
 
             if (_inputAdjust != Vector3.zero)
             {
@@ -91,6 +85,19 @@ namespace MimyLab.DynamicDragonDriveSystem
         public override void InputJump(bool value, UdonInputEventArgs args)
         {
             _inputJump = value;
+
+#if UNITY_ANDROID
+            // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
+            if (!_isVR && value)
+            {
+                if (_inputDoubleJumpTimer < DoubleTapDuration)
+                {
+                    SeatExit();
+                    return;
+                }
+                _inputDoubleJumpTimer = 0.0f;
+            }
+#endif
         }
 
         private void InputKey()
@@ -98,8 +105,16 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_isVR) { return; }
             if (!_enableAdjustInput) { return; }
 
-            _inputAdjust.x = (Input.GetKey(KeyCode.RightArrow)) ? 1.0f :
-                             (Input.GetKey(KeyCode.LeftArrow)) ? -1.0f : 0.0f;
+            _inputAdjust.x = Input.GetKey(KeyCode.RightArrow) ? 1.0f :
+                             Input.GetKey(KeyCode.LeftArrow) ? -1.0f : 0.0f;
+        }
+
+        private void SeatExit()
+        {
+            _seat._Exit();
+            _inputJump = false;
+            _inputAdjust = Vector3.zero;
+            _inputDoubleJumpTimer = DoubleTapDuration;
         }
     }
 }

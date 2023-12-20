@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonReins, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonReins, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

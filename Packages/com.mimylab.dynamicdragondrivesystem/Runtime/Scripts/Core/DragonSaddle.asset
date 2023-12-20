@@ -350,7 +350,7 @@ MonoBehaviour:
       Data: 21|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.SeatInputManager, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.SeatInputManager, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -662,7 +662,7 @@ MonoBehaviour:
       Data: 37|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonDriver, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonDriver, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -722,7 +722,7 @@ MonoBehaviour:
       Data: 41|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonActor, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonActor, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -782,7 +782,7 @@ MonoBehaviour:
       Data: 45|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonReins, com.mimylab.dynamicdragondrivesystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonReins, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

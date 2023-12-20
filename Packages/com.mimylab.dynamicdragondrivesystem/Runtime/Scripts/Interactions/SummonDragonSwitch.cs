@@ -83,7 +83,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void ToggleInteractive()
         {
-            var flag = (_isCoolDown || _isStay);
+            var flag = _isCoolDown || _isStay;
             this.DisableInteractive = flag;
             for (int i = 0; i < _children.Length; i++)
             {
