@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2023 Mimy Quality
+Copyright (c) 2024 Mimy Quality
 Released under the MIT license
 https://opensource.org/licenses/mit-license.php
 */
@@ -40,7 +40,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Tooltip("m/s"), SerializeField]
         private float _hoveringSpeedThreshold = 16.0f;
         [Tooltip("m/s"), SerializeField]
-        private float _stillSpeedThreshold = 1.5f;
+        private float _stillSpeedThreshold = 3.0f;
         [Min(0.0f), SerializeField]
         private float _stillDrag = 1.0f;
 

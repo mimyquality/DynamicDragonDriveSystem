@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2023 Mimy Quality
+Copyright (c) 2024 Mimy Quality
 Released under the MIT license
 https://opensource.org/licenses/mit-license.php
 */
@@ -62,7 +62,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             InputGrabJump();
 
-            _brakes = ((_leftGrgabMove.z < -_brakesAcceptanceThreshold) && (_rightGrabMove.z < -_brakesAcceptanceThreshold));
+            _brakes = (_leftGrgabMove.z < -_brakesAcceptanceThreshold) && (_rightGrabMove.z < -_brakesAcceptanceThreshold);
             //_turbo = 
 
             _thrust = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.z : _rightGrabMove.z;
@@ -102,7 +102,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _rightGrabPosition = handPosition;
             }
-            result = (handPosition - _rightGrabPosition);
+            result = handPosition - _rightGrabPosition;
             result = result / (avatarScale * _moveScale);
 
             return result;
@@ -121,7 +121,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _leftGrabPosition = handPosition;
             }
-            result = (handPosition - _leftGrabPosition);
+            result = handPosition - _leftGrabPosition;
             result = result / (avatarScale * _moveScale);
 
             return result;
