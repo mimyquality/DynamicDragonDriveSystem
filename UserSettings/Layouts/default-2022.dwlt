@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: Hierarchy 4
+  m_Title: Project
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 28
+  controlID: 178
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: VRCSdkControlPanel
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -145,15 +145,15 @@ MonoBehaviour:
     y: 0
     width: 518
     height: 1299.3334
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 516, y: 600}
+  m_MaxSize: {x: 516, y: 2000}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 20}
   - {fileID: 14}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 0
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,8 +322,8 @@ MonoBehaviour:
     y: 0
     width: 1531.3334
     height: 842
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -367,7 +367,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   tab: 0
   buildReportWindows: {fileID: 1, guid: 8594b4170484d4f47a2954e07ae3e87f, type: 2}
-  buildReportQuest: {fileID: 1, guid: 68585653cee331d479c6b839d325ad5c, type: 2}
+  buildReportQuest: {fileID: 1, guid: 2a1dfcaa0fe8e494f9216deac20e29ad, type: 2}
   treeViewState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
@@ -405,6 +405,7 @@ MonoBehaviour:
       - Documentation: 
       - Documentation: 
       - Documentation: 
+      - Documentation: 
       - Documentation: https://docs.vrchat.com/docs/quest-content-limitations#shaders
       - Documentation: 
       - Documentation: 
@@ -416,23 +417,22 @@ MonoBehaviour:
       - Documentation: https://gitlab.com/s-ilent/SCSS/-/wikis/Other/Occlusion-Culling
       - Documentation: 
       - Documentation: 
+      - Documentation: 
       disabled: 0
     - listName: Lighting
       MessageGroups:
-      - Documentation: 
       - Documentation: https://gitlab.com/s-ilent/SCSS/-/wikis/Other/Light-Baking
       - Documentation: https://gitlab.com/s-ilent/SCSS/-/wikis/Other/Reflection-Probes
       disabled: 0
     - listName: Post Processing
       MessageGroups:
       - Documentation: 
-      - Documentation: 
-      - Documentation: 
       disabled: 0
     scrollPos: {x: 0, y: 0}
   general:
     listName: General
     MessageGroups:
+    - Documentation: 
     - Documentation: 
     - Documentation: 
     - Documentation: 
@@ -452,19 +452,17 @@ MonoBehaviour:
     - Documentation: https://gitlab.com/s-ilent/SCSS/-/wikis/Other/Occlusion-Culling
     - Documentation: 
     - Documentation: 
+    - Documentation: 
     disabled: 0
   lighting:
     listName: Lighting
     MessageGroups:
-    - Documentation: 
     - Documentation: https://gitlab.com/s-ilent/SCSS/-/wikis/Other/Light-Baking
     - Documentation: https://gitlab.com/s-ilent/SCSS/-/wikis/Other/Reflection-Probes
     disabled: 0
   postProcessing:
     listName: Post Processing
     MessageGroups:
-    - Documentation: 
-    - Documentation: 
     - Documentation: 
     disabled: 0
   selectedBuildReport: 0
@@ -507,7 +505,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 25952
+  m_LastSelectedObjectID: 1492876
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -767,7 +765,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Dragon
+    - Assets/MimyLab/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -775,16 +773,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Dragon
+  - Assets/MimyLab/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\VRChatProject\DynamicDragonDriveSystem
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8a780000
-    m_LastClickedID: 30858
-    m_ExpandedIDs: 000000006e5e00007478000076780000787800007a7800007c7800007e78000000ca9a3bffffff7f
+    m_SelectedIDs: ba930000
+    m_LastClickedID: 37818
+    m_ExpandedIDs: 000000006e5e00007478000076780000787800007a7800007c7800007e7800009078000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -914,7 +912,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Packages/com.mimylab.dynamicdragondrivesystem/Runtime/Prefabs
+    - Packages/com.mimylab.dynamicdragondrivesystem
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -922,15 +920,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Packages/com.mimylab.dynamicdragondrivesystem/Runtime/Prefabs
+  - Packages/com.mimylab.dynamicdragondrivesystem
   m_LastFoldersGridSize: 71
   m_LastProjectPath: D:\VRChatProject\DynamicDragonDriveSystem
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 415}
-    m_SelectedIDs: b6780000
-    m_LastClickedID: 30902
+    m_SelectedIDs: 78780000
+    m_LastClickedID: 30840
     m_ExpandedIDs: 000000006e5e00007478000076780000787800007a7800007c7800007e78000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -986,7 +984,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000000000070660b00
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1056,7 +1054,7 @@ MonoBehaviour:
     m_CachedPref: 389
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 1492876
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -1101,9 +1099,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 60650000
-      m_LastClickedID: 25952
-      m_ExpandedIDs: 80faffff84faffffcafaffff7065000074650000
+      m_SelectedIDs: 8cc71600
+      m_LastClickedID: 1492876
+      m_ExpandedIDs: 6689ebffb289ebff163cf1ff864ff1ffd44ff1ff40fff6ff560efeffb410feff0811feff541dfeffe25efeff365ffeff886bfeff4262ffffb662ffff186fffff7ccdffff80faffff84faffffcafaffff7065000074650000f893000066b800000ebb0000a0bc000066bf00008cc71600
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1484,9 +1482,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.0046002716, y: 2.4561684, z: 0.3925958}
+    m_Target: {x: -228.14067, y: 3.393196, z: -216.18983}
     speed: 2
-    m_Value: {x: -0.0046002716, y: 2.4561684, z: 0.3925958}
+    m_Value: {x: -228.14067, y: 3.393196, z: -216.18983}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1508,15 +1506,15 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 0.1, y: 0.1}
     yGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 0.1, y: 0.1}
@@ -1524,21 +1522,21 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 0.1, y: 0.1}
-    m_ShowGrid: 1
+    m_ShowGrid: 0
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.13496344, y: -0.23827903, z: 0.03345695, w: 0.96119446}
+    m_Target: {x: 0.13555694, y: -0.16855104, z: 0.023408744, w: 0.9760533}
     speed: 2
-    m_Value: {x: 0.1349127, y: -0.23971984, z: 0.033659257, w: 0.9608331}
+    m_Value: {x: 0.13412641, y: -0.1671203, z: 0.02295457, w: 0.9765009}
   m_Size:
-    m_Target: 0.24829413
+    m_Target: 5.52388
     speed: 2
-    m_Value: 0.24829413
+    m_Value: 5.28601
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1556,7 +1554,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_LastSceneViewRotation: {x: 0.066901684, y: -0.12686592, z: 0.008575993, w: 0.98962754}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
