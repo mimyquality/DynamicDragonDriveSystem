@@ -13,6 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
+    [DefaultExecutionOrder(-100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputSTK : ReinsInputManager
     {

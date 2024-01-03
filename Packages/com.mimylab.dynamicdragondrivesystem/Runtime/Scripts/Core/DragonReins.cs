@@ -34,14 +34,13 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonReins : UdonSharpBehaviour
     {
-        [HideInInspector]
-        public DragonDriver driver;
-
         public ReinsInputKB keyboard;
         public ReinsInputSTK thumbsticks;
         public ReinsInputVR vrHands;
         public ReinsInputGZ gaze;
         public ReinsInputLGC legacy;
+
+        internal DragonDriver driver;
 
         [FieldChangeCallback(nameof(EnabledInput))]
         private bool _enabledInput = false;

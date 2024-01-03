@@ -13,6 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
+    [DefaultExecutionOrder(-100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputLGC : ReinsInputManager
     {
@@ -22,9 +23,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Start()
         {
-            _SetThrottleLeftHand();
+            _SetThrottleRightHand();
             _SetElevatorLeftHand();
-            _SetTurningRightHand();
+            _SetTurningLeftHand();
         }
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)

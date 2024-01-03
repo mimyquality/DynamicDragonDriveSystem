@@ -17,10 +17,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonActor : UdonSharpBehaviour
     {
-        [HideInInspector]
-        public DragonDriver driver;
-        [HideInInspector]
-        public bool isMount;
+        internal DragonDriver driver;
+        internal bool isMount;
 
         [SerializeField, Min(0.0f), Tooltip("sec")]
         private float _blinkRateMin = 20.0f;

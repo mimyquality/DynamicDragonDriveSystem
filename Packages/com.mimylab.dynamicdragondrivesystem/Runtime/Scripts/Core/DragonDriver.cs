@@ -38,7 +38,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Tooltip("m/s"), SerializeField]
         private float _maxWalkSpeed = 16.0f;
         [Tooltip("m/s"), SerializeField]
-        private float _hoveringSpeedThreshold = 16.0f;
+        private float _hoveringSpeedThreshold = 12.0f;
         [Tooltip("m/s"), SerializeField]
         private float _stillSpeedThreshold = 3.0f;
         [Min(0.0f), SerializeField]
@@ -76,7 +76,16 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Min(0.0f), SerializeField]
         private float _brakePower = 2.0f;
         [SerializeField]
-        private LayerMask _groundLayer = 0b00000000000000111000100100010111;
+        private LayerMask _groundLayer =
+            (1 << 0) |  // Default
+            (1 << 1) |  // TransparentFX
+            (1 << 2) |  // Ignore Raycast
+            (1 << 4) |  // Water
+            (1 << 8) |  // Interactive
+            (1 << 11) | // Environment
+            (1 << 15) | // StereoLeft
+            (1 << 16) | // StereoRight
+            (1 << 17);  // Walkthrough
         [Tooltip("degree"), Range(0.0f, 89.9f), SerializeField]
         private float _slopeLimit = 45.0f;
 
@@ -108,7 +117,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Input
         private Vector3 _throttle;
         private float _elevator, _ladder, _aileron;
-        private Quaternion _gazeRotation;
+        private Quaternion _gazeRotation = Quaternion.identity;
         [FieldChangeCallback(nameof(IsAwake))]
         private bool _isAwake;
 
@@ -246,6 +255,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _InputRotateDirect(Quaternion rot)
         {
             _gazeRotation = rot;
+
+            Debug.Log($"InputRotationDirect : {_gazeRotation}");
         }
 
         public void _InputEmergencyBrakes(bool value)

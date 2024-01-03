@@ -14,12 +14,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     public class DragonSaddle : DragonSeat
     {
-        [HideInInspector]
-        public DragonDriver driver;
-        [HideInInspector]
-        public DragonActor actor;
-        [HideInInspector]
-        public DragonReins reins;
+        internal DragonDriver driver;
+        internal DragonActor actor;
+        internal DragonReins reins;
 
         protected override void OnLocalPlayerMounted()
         {

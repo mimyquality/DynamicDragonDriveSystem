@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 328825576729133349, guid: 38ee00cceaf10c549be58291bbb020d2,
@@ -62,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 4841951636232897930, guid: 38ee00cceaf10c549be58291bbb020d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6630009392426912582, guid: 38ee00cceaf10c549be58291bbb020d2,
         type: 3}
@@ -74,5 +75,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TandemSeat
       objectReference: {fileID: 0}
+    - target: {fileID: 7196667116634316918, guid: 38ee00cceaf10c549be58291bbb020d2,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196667116634316918, guid: 38ee00cceaf10c549be58291bbb020d2,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38ee00cceaf10c549be58291bbb020d2, type: 3}

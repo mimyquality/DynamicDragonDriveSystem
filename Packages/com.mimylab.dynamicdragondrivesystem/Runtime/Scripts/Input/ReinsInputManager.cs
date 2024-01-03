@@ -16,8 +16,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     [DefaultExecutionOrder(-100)]
     public class ReinsInputManager : UdonSharpBehaviour
     {
-        [HideInInspector]
-        public DragonDriver driver;
+        internal DragonDriver driver;
 
         protected float _thrust, _lift, _lateral;
         protected float _elevator, _ladder, _aileron;
@@ -26,10 +25,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         protected HandType _throttleInputHand = HandType.LEFT;
         protected HandType _turningInputHand = HandType.RIGHT;
         protected HandType _elevatorInputHand = HandType.RIGHT;
-
-        private bool _inputJump;
-        private float _inputJumpTimer;
-        private float _exitAcceptance;
 
         private Vector3 _accelerateSign = Vector3.one;
         private Vector3 _rotateSign = Vector3.one;
@@ -85,15 +80,17 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!driver) { return; }
 
-            driver._InputAccelerate(Vector3.zero);
-            driver._InputRotate(Vector3.zero);
+            Accelerate = Vector3.zero;
+            Rotate = Vector3.zero;
+            EmergencyBreakes = false;
+            Overdrive = false;
             driver._InputRotateDirect(Quaternion.identity);
-            driver._InputEmergencyBrakes(false);
-            driver._InputOverdrive(false);
         }
 
         private void Update()
         {
+            if (!this.enabled) { return; }
+
             InputKey();
 
             Accelerate = new Vector3(_lateral, _lift, _thrust);

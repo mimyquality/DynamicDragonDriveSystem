@@ -33,7 +33,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             SnapAndToggleActive(true);
         }
 
-        public void SnapAndInactive()
+        public void SnapAndSetInactive()
         {
             SnapAndToggleActive(false);
         }
