@@ -255,8 +255,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _InputRotateDirect(Quaternion rot)
         {
             _gazeRotation = rot;
-
-            Debug.Log($"InputRotationDirect : {_gazeRotation}");
         }
 
         public void _InputEmergencyBrakes(bool value)

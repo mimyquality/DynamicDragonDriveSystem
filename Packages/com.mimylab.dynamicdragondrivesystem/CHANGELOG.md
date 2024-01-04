@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.2] - 2024/1/4
+
+### Changed
+
+- メニューにジャンプ操作、急ブレーキ操作についてTIPSを追加
+
 ## [0.7.1] - 2024/1/3
 
 ### Added
@@ -181,6 +187,7 @@
 
 - VPM化
 
+[0.7.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.2
 [0.7.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.1
 [0.7.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.0
 [0.6.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.6.5
