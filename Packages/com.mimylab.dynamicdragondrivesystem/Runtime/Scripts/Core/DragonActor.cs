@@ -108,6 +108,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             SetAnimatorParameters();
         }
 
+
+        // Animator.applyRootMotionを強制的にオフにする
+        private void OnAnimatorMove() { }
+
         public void _GenerateRandomBool()
         {
             _randomBool = Random.value > 0.5f;

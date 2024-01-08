@@ -27,81 +27,72 @@ namespace MimyLab.DynamicDragonDriveSystem
         Flight = 1 << 2
     }
 
-    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider), typeof(VRCObjectSync))]
+    [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync), typeof(DragonCollisionDetector))]
     public class DragonDriver : UdonSharpBehaviour
     {
         [Header("Speed settings")]
-        [Tooltip("m/s^2"), SerializeField]
+        [SerializeField, Tooltip("m/s^2")]
         private float _acceleration = 5.0f;
-        [Tooltip("m/s"), SerializeField]
+        [SerializeField, Tooltip("m/s")]
         private float _maxSpeed = 56.0f;
-        [Tooltip("m/s"), SerializeField]
+        [SerializeField, Tooltip("m/s")]
         private float _maxWalkSpeed = 16.0f;
-        [Tooltip("m/s"), SerializeField]
+        [SerializeField, Tooltip("m/s")]
         private float _hoveringSpeedThreshold = 12.0f;
-        [Tooltip("m/s"), SerializeField]
+        [SerializeField, Tooltip("m/s")]
         private float _stillSpeedThreshold = 3.0f;
-        [Min(0.0f), SerializeField]
+        [SerializeField, Min(0.0f)]
         private float _stillDrag = 1.0f;
 
         [Header("Rotate settings")]
-        [Tooltip("deg/s"), SerializeField]
+        [SerializeField, Tooltip("deg/s")]
         private float _updownSpeed = 45.0f;
-        [Tooltip("deg/s"), SerializeField]
+        [SerializeField, Tooltip("deg/s")]
         private float _rollSpeed = 45.0f;
-        [Range(0.0f, 2.0f), SerializeField]
+        [SerializeField, Range(0.0f, 2.0f)]
         private float _rollToTurnRatio = 1.0f;
-        [Tooltip("sec"), Min(0.0f), SerializeField]
+        [SerializeField, Tooltip("sec"), Min(0.0f)]
         private float _inertialInputDuration = 0.3f;
-        [Tooltip("deg/s"), SerializeField]
+        [SerializeField, Tooltip("deg/s")]
         private float _noseRotateSpeed = 90.0f;
-        [Tooltip("degree"), Range(0.0f, 89.0f), SerializeField]
+        [SerializeField, Tooltip("degree"), Range(0.0f, 89.0f)]
         private float _maxNosePitch = 89.0f;
-        [Tooltip("degree"), Range(0.0f, 89.0f), SerializeField]
+        [SerializeField, Tooltip("degree"), Range(0.0f, 89.0f)]
         private float _maxNoseYaw = 45.0f;
-        [Tooltip("degree"), Range(0.0f, 89.0f), SerializeField]
+        [SerializeField, Tooltip("degree"), Range(0.0f, 89.0f)]
         private float _centerSnapTolerance = 5.0f;
-        [Tooltip("deg/s"), SerializeField]
+        [SerializeField, Tooltip("deg/s")]
         private float _stateShiftSpeed = 20.0f;
-        [Tooltip("deg/s"), SerializeField]
+        [SerializeField, Tooltip("deg/s")]
         private float _landingSpeed = 60.0f;
 
         [Header("Others")]
-        [EnumFlag, SerializeField]
+        [SerializeField, EnumFlag]
         private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)0b1111;
-        [Tooltip("m/s"), Min(0.0f), SerializeField]
+        [SerializeField, Tooltip("m/s"), Min(0.0f)]
         private float _accelerateLimit = 5.0f;
-        [Tooltip("m/s"), SerializeField]
+        [SerializeField, Tooltip("m/s")]
         private float _jumpSpeed = 8.0f;
-        [Min(0.0f), SerializeField]
+        [SerializeField, Min(0.0f)]
         private float _brakePower = 2.0f;
-        [SerializeField]
-        private LayerMask _groundLayer =
-            (1 << 0) |  // Default
-            (1 << 1) |  // TransparentFX
-            (1 << 2) |  // Ignore Raycast
-            (1 << 4) |  // Water
-            (1 << 8) |  // Interactive
-            (1 << 11) | // Environment
-            (1 << 15) | // StereoLeft
-            (1 << 16) | // StereoRight
-            (1 << 17);  // Walkthrough
-        [Tooltip("degree"), Range(0.0f, 89.9f), SerializeField]
+        [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
         private float _slopeLimit = 45.0f;
 
         // Actor渡し用
         public int State { get => (int)_state; }
-        public bool IsGrounded { get => _isGrounded; }
+        public bool IsGrounded { get => _isGrounded; internal set => _isGrounded = value; }
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
         public Quaternion NoseRotation { get => _noseRotation; }
 
-        // Saddle渡し用
+        // Saddle受け取り用
         public bool IsAwake { get => _isAwake; set => _isAwake = value; }
+
+        // CollisionDetector受け取り用
+        internal RaycastHit groundInfo;
 
         // コンポーネント
         private Rigidbody _rigidbody;
-        private SphereCollider _collider;
         private VRCObjectSync _objectSync;
 
         // 計算用
@@ -111,8 +102,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private DragonDriverStateType _state;
         private bool _isWalking, _isGrounded, _isBrakes, _isOverdrive;
         private float _inertialRoll, _inertialPitch;
-        private float _groundCheckRadius, _groundCheckRange;
-        private RaycastHit _groundInfo = new RaycastHit();
 
         // Input
         private Vector3 _throttle;
@@ -127,17 +116,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             _rigidbody = GetComponent<Rigidbody>();
-            _collider = GetComponent<SphereCollider>();
             _objectSync = GetComponent<VRCObjectSync>();
 
             _rigidbody.freezeRotation = true;
             _rigidbody.maxDepenetrationVelocity = _maxSpeed;
+            _objectSync.AllowCollisionOwnershipTransfer = false;
             _objectSync.SetKinematic(false);
             _objectSync.SetGravity(false);
 
             _defaultDrag = _rigidbody.drag;
-            _groundCheckRadius = _collider.radius * 0.9f;
-            _groundCheckRange = 2 * (_collider.radius - _groundCheckRadius);
 
             _initialized = true;
         }
@@ -169,7 +156,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _sqrSpeed = _velocity.sqrMagnitude;
             _rotation = _rigidbody.rotation;
             // _noseRotation = _noseRotation;
-            if (_isGrounded = CheckGrounded()) { _isWalking = true; }
+            if (_isGrounded) { _isWalking = true; }
 
             if (_isBrakes)
             {
@@ -311,11 +298,11 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             // 進行方向の軸制限
             var relativeDirection = relativeRotation * Vector3.forward;
-            if (_groundInfo.collider)
+            if (groundInfo.collider)
             {
-                if (Vector3.Angle(Vector3.up, _groundInfo.normal) < _slopeLimit)
+                if (Vector3.Angle(Vector3.up, groundInfo.normal) < _slopeLimit)
                 {
-                    horizontalRotation = Quaternion.Inverse(_rotation) * Quaternion.FromToRotation(_rotation * Vector3.up, _groundInfo.normal) * _rotation;
+                    horizontalRotation = Quaternion.Inverse(_rotation) * Quaternion.FromToRotation(_rotation * Vector3.up, groundInfo.normal) * _rotation;
                     var groundForward = Vector3.ProjectOnPlane(relativeDirection, horizontalRotation * Vector3.up);
                     var groundRotation = Quaternion.FromToRotation(relativeDirection, groundForward) * relativeRotation;
                     relativeRotation = Quaternion.RotateTowards(relativeRotation, groundRotation, Time.deltaTime * _landingSpeed);
@@ -540,21 +527,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          その他内部処理
          ******************************/
-        private bool CheckGrounded()
-        {
-            var origin = _rigidbody.position + _rigidbody.rotation * _collider.center;
-            return Physics.SphereCast
-                    (
-                        origin,
-                        _groundCheckRadius,
-                        Vector3.down,
-                        out _groundInfo,
-                        _groundCheckRange,
-                        _groundLayer,
-                        QueryTriggerInteraction.Ignore
-                    );
-        }
-
         private float SetDrag(float sqrSpeed)
         {
             if (sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
