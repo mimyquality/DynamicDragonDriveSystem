@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ReinsInputSTK
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: d958b6502f351a0498cee2d0a012fa69,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: bc40778c9a282934b8636ad2d7f7a66c,
     type: 2}
   udonAssembly: 
   assemblyError: 

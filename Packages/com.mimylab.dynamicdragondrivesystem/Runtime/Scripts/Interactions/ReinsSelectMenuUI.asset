@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ReinsSelectMenuUI
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 181c3ebc7e8545b4a932641cf30b1d3a,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 06211ac141c78ef498f56eb40a1adf3f,
     type: 2}
   udonAssembly: 
   assemblyError: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ReinsInputVR
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 139102f978752034eb98612633f25f64,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: a2e33a01c2141e6418638fb83f2a3045,
     type: 2}
   udonAssembly: 
   assemblyError: 

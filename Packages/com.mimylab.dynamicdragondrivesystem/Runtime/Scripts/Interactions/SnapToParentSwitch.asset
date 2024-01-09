@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: SnapToParentSwitch
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 151d3f04bdeaebd4da0b6bc18b4a7ae1,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 0c11dfbd7f83cbf40ad9f480cc9dbb0f,
     type: 2}
   udonAssembly: 
   assemblyError: 

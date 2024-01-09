@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: SummonDragonSwitch
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 53f4cd2b69200294888b0a5a82dccf20,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 9e85f69e967153e418820007f5cbd3fa,
     type: 2}
   udonAssembly: 
   assemblyError: 

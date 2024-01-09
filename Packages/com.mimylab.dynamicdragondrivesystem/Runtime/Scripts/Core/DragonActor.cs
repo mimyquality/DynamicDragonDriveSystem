@@ -46,9 +46,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private float _pitch, _roll;
         private int _velocitySmoothingRange = 30;
+        private Vector3[] _posHistory;
+        private float[] _timeHistory;
         private Vector3 _revPosition;
         private Quaternion _revRotation;
-        private Vector3[] _revVelocity;
         private Vector3 _relativeVelocity, _relativeAngularVelocity;
         private bool _randomBool;
         private int _randomInt;
@@ -87,9 +88,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator = GetComponent<Animator>();
             _rigidbody = driver.GetComponent<Rigidbody>();
 
+            _posHistory = new Vector3[_velocitySmoothingRange];
+            _timeHistory = new float[_velocitySmoothingRange];
             _revPosition = _rigidbody.position;
             _revRotation = _rigidbody.rotation;
-            _revVelocity = new Vector3[_velocitySmoothingRange];
 
             _initialized = true;
         }
@@ -186,15 +188,20 @@ namespace MimyLab.DynamicDragonDriveSystem
             datum = Quaternion.LookRotation(forward) * Vector3.up;
             _roll = Vector3.SignedAngle(datum, up, forward);
 
-            System.Array.Copy(_revVelocity, 0, _revVelocity, 1, _revVelocity.Length - 1);
-            _revVelocity[0] = (_rigidbody.position - _revPosition) / Time.deltaTime;
+            System.Array.Copy(_posHistory, 0, _posHistory, 1, _posHistory.Length - 1);
+            _posHistory[0] = _rigidbody.position - _revPosition;
+            System.Array.Copy(_timeHistory, 0, _timeHistory, 1, _timeHistory.Length - 1);
+            _timeHistory[0] = Time.deltaTime;
 
-            Vector3 velocity = Vector3.zero;
-            for (int i = 0; i < _revVelocity.Length; i++)
+            var position = Vector3.zero;
+            var time = 0.0f;
+            for (int i = 0; i < _velocitySmoothingRange; i++)
             {
-                velocity += _revVelocity[i];
+                position += _posHistory[i];
+                time += _timeHistory[i];
             }
-            velocity /= _velocitySmoothingRange;
+            if (time == 0.0f) { time = 1.0f; }
+            var velocity = position / time;
             _relativeVelocity = Quaternion.Inverse(_rigidbody.rotation) * velocity;
 
             float rotateAngle;

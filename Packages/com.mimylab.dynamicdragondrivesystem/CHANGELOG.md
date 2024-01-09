@@ -4,6 +4,16 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.4] - 2024/1/9
+
+### Added
+
+- デバッグ用兼サンプルPrefab追加
+
+### Fixed
+
+- Velocity系の計算式見直し、安定性向上
+
 ## [0.7.3] - 2024/1/8
 
 ## Fixed
@@ -178,7 +188,7 @@
 
 - すべての座席に座高調整機能を追加
   - 操縦席はハンドル下のスイッチでドラゴンの操縦と切替式
-  - DTモードはWASDで水平方向の調整、↑↓で座高の調整
+  - デスクトップモードはWASDで水平方向の調整、↑↓で座高の調整
   - VRモードは左スティックで水平方向の調整、右スティック上下で座高の調整
 
 ## [0.0.5] - 2023/10/4
@@ -193,6 +203,7 @@
 
 - VPM化
 
+[0.7.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.4
 [0.7.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.3
 [0.7.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.2
 [0.7.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.1

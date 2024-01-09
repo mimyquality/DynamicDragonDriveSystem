@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ReinsInputLGC
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 93e5aaf71f972544da418c61d4f8b99a,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: cabd502b643e48e438e5d26e15c2a1d9,
     type: 2}
   udonAssembly: 
   assemblyError: 
