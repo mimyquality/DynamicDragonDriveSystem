@@ -13,6 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
     using VRCStation = VRC.SDK3.Components.VRCStation;
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Seat")]
     [RequireComponent(typeof(VRCStation), typeof(SeatInputManager))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour

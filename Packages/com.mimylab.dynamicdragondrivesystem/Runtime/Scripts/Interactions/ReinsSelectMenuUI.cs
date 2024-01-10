@@ -13,6 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Reins SelectMenu UI")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsSelectMenuUI : UdonSharpBehaviour
     {

@@ -30,6 +30,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         Legacy
     }
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Reins")]
     [DefaultExecutionOrder(-200)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonReins : UdonSharpBehaviour

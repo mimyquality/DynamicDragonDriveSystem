@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Actor")]
     [RequireComponent(typeof(Animator))]
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]

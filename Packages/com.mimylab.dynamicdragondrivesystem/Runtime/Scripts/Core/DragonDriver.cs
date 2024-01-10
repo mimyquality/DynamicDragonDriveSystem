@@ -27,6 +27,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         Flight = 1 << 2
     }
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
     [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync), typeof(DragonCollisionDetector))]
     public class DragonDriver : UdonSharpBehaviour
     {
@@ -75,8 +76,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _jumpSpeed = 8.0f;
         [SerializeField, Min(0.0f)]
         private float _brakePower = 2.0f;
-        [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
-        private float _slopeLimit = 45.0f;
 
         // Actor渡し用
         public int State { get => (int)_state; }
@@ -298,21 +297,18 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             // 進行方向の軸制限
             var relativeDirection = relativeRotation * Vector3.forward;
-            if (groundInfo.collider)
+            if (_isGrounded && groundInfo.collider)
             {
-                if (Vector3.Angle(Vector3.up, groundInfo.normal) < _slopeLimit)
-                {
-                    horizontalRotation = Quaternion.Inverse(_rotation) * Quaternion.FromToRotation(_rotation * Vector3.up, groundInfo.normal) * _rotation;
-                    var groundForward = Vector3.ProjectOnPlane(relativeDirection, horizontalRotation * Vector3.up);
-                    var groundRotation = Quaternion.FromToRotation(relativeDirection, groundForward) * relativeRotation;
-                    relativeRotation = Quaternion.RotateTowards(relativeRotation, groundRotation, Time.deltaTime * _landingSpeed);
+                horizontalRotation = Quaternion.Inverse(_rotation) * Quaternion.FromToRotation(_rotation * Vector3.up, groundInfo.normal) * _rotation;
+                var groundForward = Vector3.ProjectOnPlane(relativeDirection, horizontalRotation * Vector3.up);
+                var groundRotation = Quaternion.FromToRotation(relativeDirection, groundForward) * relativeRotation;
+                relativeRotation = Quaternion.RotateTowards(relativeRotation, groundRotation, Time.deltaTime * _landingSpeed);
 
-                    if (_ladder == 0.0f)
+                if (_ladder == 0.0f)
+                {
+                    if (Quaternion.Angle(relativeRotation, horizontalRotation) < _centerSnapTolerance)
                     {
-                        if (Quaternion.Angle(relativeRotation, horizontalRotation) < _centerSnapTolerance)
-                        {
-                            relativeRotation = horizontalRotation;
-                        }
+                        relativeRotation = horizontalRotation;
                     }
                 }
             }

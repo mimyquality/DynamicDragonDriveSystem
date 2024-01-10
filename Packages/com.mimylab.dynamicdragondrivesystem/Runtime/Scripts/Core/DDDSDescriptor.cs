@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [AddComponentMenu("Dynamic Dragon Drive System/DDDS Descriptor")]
     [DefaultExecutionOrder(-1000)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DDDSDescriptor : UdonSharpBehaviour

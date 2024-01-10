@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Collision Detector")]
     [RequireComponent(typeof(SphereCollider))]
     [DefaultExecutionOrder(-100)]
     public class DragonCollisionDetector : UdonSharpBehaviour
@@ -30,6 +31,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             (1 << 15) | // StereoLeft
             (1 << 16) | // StereoRight
             (1 << 17);  // Walkthrough
+        [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
+        private float _slopeLimit = 45.0f;
 
         private Transform _transform;
         private SphereCollider _collider;
@@ -66,7 +69,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool CheckGrounded()
         {
             var origin = _transform.position + _transform.rotation * _collider.center;
-            return Physics.SphereCast
+            if (Physics.SphereCast
                 (
                     origin,
                     _groundCheckRadius,
@@ -75,7 +78,10 @@ namespace MimyLab.DynamicDragonDriveSystem
                     _groundCheckRange,
                     _groundLayer,
                     QueryTriggerInteraction.Ignore
-                );
+                ))
+            { return Vector3.Angle(Vector3.up, _groundInfo.normal) < _slopeLimit; }
+
+            return false;
         }
     }
 }
