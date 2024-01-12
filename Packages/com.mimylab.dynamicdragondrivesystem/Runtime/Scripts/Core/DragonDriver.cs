@@ -28,7 +28,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
-    [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync), typeof(DragonCollisionDetector))]
+    [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync))]
     public class DragonDriver : UdonSharpBehaviour
     {
         [Header("Speed settings")]
@@ -88,7 +88,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsAwake { get => _isAwake; set => _isAwake = value; }
 
         // CollisionDetector受け取り用
-        internal RaycastHit groundInfo;
+        internal RaycastHit groundInfo = new RaycastHit();
 
         // コンポーネント
         private Rigidbody _rigidbody;

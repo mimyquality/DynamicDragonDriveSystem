@@ -53,6 +53,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void FixedUpdate()
         {
+            if (!driver) { return; }
+
             driver.IsGrounded = CheckGrounded();
             driver.groundInfo = _groundInfo;
         }

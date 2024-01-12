@@ -53,7 +53,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        protected override void InputKey()
+        public override void PostLateUpdate()
         {
             _originPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).position;
             _originRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
@@ -61,7 +61,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _leftGrgabMove = GetLeftGrabMove();
             _rightGrabRotate = GetRightGrabRotate();
             _leftGrabRotate = GetLeftGrabRotate();
+            
+            _flagGrabLeft = false;
+            _flagGrabRight = false;
+        }
 
+        protected override void InputKey()
+        {
             InputGrabJump();
 
             _brakes = (_leftGrgabMove.z < -_brakesAcceptanceThreshold) && (_rightGrabMove.z < -_brakesAcceptanceThreshold);
@@ -74,9 +80,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             _elevator = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
             _ladder = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
             _aileron = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
-
-            _flagGrabLeft = false;
-            _flagGrabRight = false;
         }
 
         private void ActivateGrabLeft(bool value)
@@ -96,7 +99,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             var result = Vector3.zero;
             if (!_isGrabRight) { return result; }
 
-            var avatarScale = _localPlayer.GetAvatarEyeHeightAsMeters();
+            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
             var handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
             handPosition = Quaternion.Inverse(_originRotation) * (handPosition - _originPosition);
 
@@ -115,7 +118,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             var result = Vector3.zero;
             if (!_isGrabLeft) { return result; }
 
-            var avatarScale = _localPlayer.GetAvatarEyeHeightAsMeters();
+            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
             var handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
             handPosition = Quaternion.Inverse(_originRotation) * (handPosition - _originPosition);
 

@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.6] - 2024/1/11
+
+- VRHands入力モードの安定性向上(これにより、急ブレーキが利かないことがあるバグも修正)
+- ビルドし直した時に接地判定が消失する事があるバグを修正
+
 ## [0.7.5] - 2024/1/10
 
 ### Fixed
@@ -210,6 +215,7 @@
 
 - VPM化
 
+[0.7.6]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.6
 [0.7.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.5
 [0.7.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.4
 [0.7.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.3
