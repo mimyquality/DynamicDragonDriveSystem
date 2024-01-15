@@ -9,7 +9,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    using VRC.Udon;
+    //using VRC.Udon;
     //using VRC.SDK3.Components;
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Collision Detector")]

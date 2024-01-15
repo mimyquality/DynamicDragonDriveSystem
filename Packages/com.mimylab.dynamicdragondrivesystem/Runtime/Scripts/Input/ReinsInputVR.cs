@@ -34,14 +34,37 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
         private Quaternion _originRotation, _leftGrabRotation, _rightGrabRotation;
+        private Quaternion _leftHandRotation, _prevLeftHandRotation;
+        private Quaternion _rightHandRotation, _prevRightHandRotation;
 
-        private Vector3 _rightGrabMove, _leftGrgabMove;
-        private Vector3 _rightGrabRotate, _leftGrabRotate;
+        private Vector3 _leftGrgabMove, _rightGrabMove;
+        private Vector3 _leftGrabRotate, _rightGrabRotate;
+        private Vector3 _leftHandRotate, _rightHandRotate;
         private bool _prevGrabJump;
 
         private void Start()
         {
             _localPlayer = Networking.LocalPlayer;
+        }
+
+        public override void PostLateUpdate()
+        {
+            if (!this.enabled) { return; }
+
+            _originPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).position;
+            _originRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
+            _leftGrgabMove = GetLeftGrabMove();
+            _rightGrabMove = GetRightGrabMove();
+            _leftGrabRotate = ConvertQuaternionToAngle3(GetLeftGrabRotate());
+            _rightGrabRotate = ConvertQuaternionToAngle3(GetRightGrabRotate());
+
+            _leftHandRotate = ConvertQuaternionToAngle3(GetLeftHandRotate());
+            _rightHandRotate = ConvertQuaternionToAngle3(GetRightHandRotate());
+
+            _flagGrabLeft = false;
+            _flagGrabRight = false;
+            _prevLeftHandRotation = _leftHandRotation;
+            _prevRightHandRotation = _rightHandRotation;
         }
 
         public override void InputGrab(bool value, UdonInputEventArgs args)
@@ -51,19 +74,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 case HandType.RIGHT: ActivateGrabRight(value); break;
                 case HandType.LEFT: ActivateGrabLeft(value); break;
             }
-        }
-
-        public override void PostLateUpdate()
-        {
-            _originPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).position;
-            _originRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
-            _rightGrabMove = GetRightGrabMove();
-            _leftGrgabMove = GetLeftGrabMove();
-            _rightGrabRotate = GetRightGrabRotate();
-            _leftGrabRotate = GetLeftGrabRotate();
-            
-            _flagGrabLeft = false;
-            _flagGrabRight = false;
         }
 
         protected override void InputKey()
@@ -78,8 +88,16 @@ namespace MimyLab.DynamicDragonDriveSystem
             //_lateral = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.x : _rightGrabMove.x;
 
             _elevator = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
+            _elevator = Mathf.Clamp(_elevator / _rotateRatio, -1.0f, 1.0f);
             _ladder = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
+            _ladder = Mathf.Clamp(_ladder / _rotateRatio, -1.0f, 1.0f);
             _aileron = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
+            _aileron = Mathf.Clamp(_aileron / _rotateRatio, -1.0f, 1.0f);
+
+            var pitch = (_elevatorInputHand == HandType.LEFT) ? _leftHandRotate.x : _rightHandRotate.x;
+            var yaw = (_turningInputHand == HandType.LEFT) ? _leftHandRotate.y : _rightHandRotate.y;
+            var roll = (_turningInputHand == HandType.LEFT) ? _leftHandRotate.z : _rightHandRotate.z;
+            driver._InputDirectRotate(new Vector3(pitch, yaw, roll));
         }
 
         private void ActivateGrabLeft(bool value)
@@ -92,25 +110,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (value & !_isGrabRight) { _flagGrabRight = true; }
             _isGrabRight = value;
-        }
-
-        private Vector3 GetRightGrabMove()
-        {
-            var result = Vector3.zero;
-            if (!_isGrabRight) { return result; }
-
-            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
-            var handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
-            handPosition = Quaternion.Inverse(_originRotation) * (handPosition - _originPosition);
-
-            if (_flagGrabRight)
-            {
-                _rightGrabPosition = handPosition;
-            }
-            result = handPosition - _rightGrabPosition;
-            result = result / (avatarScale * _moveScale);
-
-            return result;
         }
 
         private Vector3 GetLeftGrabMove()
@@ -132,62 +131,88 @@ namespace MimyLab.DynamicDragonDriveSystem
             return result;
         }
 
-        private Vector3 GetRightGrabRotate()
+        private Vector3 GetRightGrabMove()
         {
             var result = Vector3.zero;
             if (!_isGrabRight) { return result; }
 
-            var handRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).rotation;
-            handRotation = Quaternion.Inverse(_originRotation) * handRotation;
+            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
+            var handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
+            handPosition = Quaternion.Inverse(_originRotation) * (handPosition - _originPosition);
 
             if (_flagGrabRight)
             {
-                _rightGrabRotation = handRotation;
+                _rightGrabPosition = handPosition;
             }
-
-            var relativeGrabRotation = handRotation * Quaternion.Inverse(_rightGrabRotation);
-            var relativeGrabDirection = relativeGrabRotation * Vector3.forward;
-
-            var axisDirection = Vector3.ProjectOnPlane(relativeGrabDirection, Vector3.right);
-            var angle = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.right);
-            result.x = angle / _rotateRatio;
-
-            axisDirection = Vector3.ProjectOnPlane(relativeGrabDirection, Vector3.up);
-            angle = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.up);
-            result.y = angle / _rotateRatio;
-
-            angle = Vector3.SignedAngle(Quaternion.LookRotation(relativeGrabDirection) * Vector3.up, relativeGrabRotation * Vector3.up, relativeGrabDirection);
-            result.z = angle / _rotateRatio;
+            result = handPosition - _rightGrabPosition;
+            result = result / (avatarScale * _moveScale);
 
             return result;
         }
 
-        private Vector3 GetLeftGrabRotate()
+        private Quaternion GetLeftGrabRotate()
         {
-            var result = Vector3.zero;
-            if (!_isGrabLeft) { return result; }
+            if (!_isGrabLeft) { return Quaternion.identity; }
 
-            var handRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).rotation;
-            handRotation = Quaternion.Inverse(_originRotation) * handRotation;
+            _leftHandRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).rotation;
+            _leftHandRotation = Quaternion.Inverse(_originRotation) * _leftHandRotation;
 
             if (_flagGrabLeft)
             {
-                _leftGrabRotation = handRotation;
+                _leftGrabRotation = _leftHandRotation;
+                _prevLeftHandRotation = _leftHandRotation;
             }
 
-            var relativeGrabRotation = handRotation * Quaternion.Inverse(_leftGrabRotation);
-            var relativeGrabDirection = relativeGrabRotation * Vector3.forward;
+            return _leftHandRotation * Quaternion.Inverse(_leftGrabRotation);
+        }
 
-            var axisDirection = Vector3.ProjectOnPlane(relativeGrabDirection, Vector3.right);
+        private Quaternion GetRightGrabRotate()
+        {
+            if (!_isGrabRight) { return Quaternion.identity; }
+
+            _rightHandRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).rotation;
+            _rightHandRotation = Quaternion.Inverse(_originRotation) * _rightHandRotation;
+
+            if (_flagGrabRight)
+            {
+                _rightGrabRotation = _rightHandRotation;
+                _prevRightHandRotation = _rightHandRotation;
+            }
+
+            return _rightHandRotation * Quaternion.Inverse(_rightGrabRotation);
+        }
+
+        private Quaternion GetLeftHandRotate()
+        {
+            if (!_isGrabLeft) { return Quaternion.identity; }
+
+            return _leftHandRotation * Quaternion.Inverse(_prevLeftHandRotation);
+        }
+
+        private Quaternion GetRightHandRotate()
+        {
+            if (!_isGrabRight) { return Quaternion.identity; }
+
+            return _rightHandRotation * Quaternion.Inverse(_prevRightHandRotation);
+        }
+
+        private Vector3 ConvertQuaternionToAngle3(Quaternion rotation)
+        {
+            var result = Vector3.zero;
+            if (rotation == Quaternion.identity) { return result; }
+
+            var rotateDirection = rotation * Vector3.forward;
+
+            var axisDirection = Vector3.ProjectOnPlane(rotateDirection, Vector3.right);
             var angle = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.right);
-            result.x = angle / _rotateRatio;
+            result.x = angle;
 
-            axisDirection = Vector3.ProjectOnPlane(relativeGrabDirection, Vector3.up);
+            axisDirection = Vector3.ProjectOnPlane(rotateDirection, Vector3.up);
             angle = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.up);
-            result.y = angle / _rotateRatio;
+            result.y = angle;
 
-            angle = Vector3.SignedAngle(Quaternion.LookRotation(relativeGrabDirection) * Vector3.up, relativeGrabRotation * Vector3.up, relativeGrabDirection);
-            result.z = angle / _rotateRatio;
+            angle = Vector3.SignedAngle(Quaternion.LookRotation(rotateDirection) * Vector3.up, rotation * Vector3.up, rotateDirection);
+            result.z = angle;
 
             return result;
         }

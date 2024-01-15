@@ -84,7 +84,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Rotate = Vector3.zero;
             EmergencyBreakes = false;
             Overdrive = false;
-            driver._InputRotateDirect(Quaternion.identity);
+            driver._InputGazeRotate(Quaternion.identity);
         }
 
         private void Update()

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: VRChat SDK
+  m_Title: Project
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 145
+  controlID: 566
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -172,15 +172,15 @@ MonoBehaviour:
     y: 0
     width: 1530.6666
     height: 434.00006
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 23}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
   - {fileID: 23}
   - {fileID: 14}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -367,7 +367,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 5687514
+  m_LastSelectedObjectID: 1868772
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -894,9 +894,9 @@ MonoBehaviour:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e47a0100
-    m_LastClickedID: 96996
-    m_ExpandedIDs: 000000003c5f0000e47a0100e67a0100e87a0100ea7a0100ffffff7f
+    m_SelectedIDs: e07a0100
+    m_LastClickedID: 96992
+    m_ExpandedIDs: 000000003c5f0000e07a0100e27a0100e47a0100e67a0100ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -924,7 +924,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e47a0100e67a0100e87a0100ea7a0100
+    m_ExpandedIDs: 00000000e07a0100e27a0100e47a0100e67a0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1041,9 +1041,9 @@ MonoBehaviour:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 107b0100
-    m_LastClickedID: 97040
-    m_ExpandedIDs: 00000000e47a0100e67a0100e87a0100ea7a0100
+    m_SelectedIDs: 0a7b0100
+    m_LastClickedID: 97034
+    m_ExpandedIDs: 00000000e07a0100e27a0100e47a0100e67a0100ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1071,7 +1071,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e47a0100e67a0100e87a0100ea7a0100
+    m_ExpandedIDs: 00000000e07a0100e27a0100e47a0100e67a0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1215,7 +1215,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 30dbf2ff7edbf2ff1aaff8ffbefaffff
+      m_ExpandedIDs: 1095e6ff5e95e6fff668ecffb483ecff0084ecff1a58f2ff2691f2ff7491f2ff1065f8ffcafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1596,9 +1596,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.0369501, y: 1.2475097, z: -0.0070631504}
+    m_Target: {x: -229.9503, y: 3.709108, z: -217.1049}
     speed: 2
-    m_Value: {x: -1.0369501, y: 1.2475097, z: -0.0070631504}
+    m_Value: {x: -229.9503, y: 3.709108, z: -217.1049}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1646,11 +1646,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.10260617, y: -0.30460462, z: 0.033025928, w: 0.94636154}
     speed: 2
-    m_Value: {x: -0.10260617, y: 0.30460462, z: -0.03302593, w: -0.94636154}
+    m_Value: {x: 0.10260602, y: -0.30460417, z: 0.03302588, w: 0.9463602}
   m_Size:
-    m_Target: 1.9204798
+    m_Target: 6.721071
     speed: 2
-    m_Value: 1.9204798
+    m_Value: 6.721071
   m_Ortho:
     m_Target: 0
     speed: 2

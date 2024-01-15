@@ -22,10 +22,24 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _brakesAcceptanceThreshold = 0.9f;
 
         private VRCPlayerApi _localPlayer;
+        private Quaternion _gazeRotation;
 
         private void Start()
         {
             _localPlayer = Networking.LocalPlayer;
+        }
+
+        public override void PostLateUpdate()
+        {
+            if (!this.enabled) { return; }
+
+            var playerRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
+            var headRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;
+            _gazeRotation = Quaternion.Inverse(playerRotation) * headRotation;
+            if (_gazeRotation.w == 0.0f && _gazeRotation.z == 0.0f && _gazeRotation.y == 0.0f && _gazeRotation.x == 0.0f)
+            {
+                _gazeRotation = Quaternion.identity;
+            }
         }
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
@@ -40,11 +54,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         protected override void InputKey()
         {
-            var playerRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
-            if (playerRotation.w == 0.0f && playerRotation.z == 0.0f && playerRotation.y == 0.0f && playerRotation.x == 0.0f) { playerRotation = Quaternion.identity; }
-            var headRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;
-            if (headRotation.w == 0.0f && headRotation.z == 0.0f && headRotation.y == 0.0f && headRotation.x == 0.0f) { headRotation = Quaternion.identity; }
-            driver._InputRotateDirect(Quaternion.Inverse(playerRotation) * headRotation);
+            driver._InputGazeRotate(_gazeRotation);
         }
     }
 }

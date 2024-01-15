@@ -69,7 +69,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         [Header("Others")]
         [SerializeField, EnumFlag]
-        private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)0b1111;
+        private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)(
+            (1 << 0) |  // Landing
+            (1 << 1) |  // Hovering
+            (1 << 2));  // Flight
         [SerializeField, Tooltip("m/s"), Min(0.0f)]
         private float _accelerateLimit = 5.0f;
         [SerializeField, Tooltip("m/s")]
@@ -105,8 +108,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Input
         private Vector3 _throttle;
         private float _elevator, _ladder, _aileron;
+        private Vector3 _directRotation = Vector3.zero;
         private Quaternion _gazeRotation = Quaternion.identity;
-        [FieldChangeCallback(nameof(IsAwake))]
         private bool _isAwake;
 
         private bool _initialized = false;
@@ -138,7 +141,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _InputAccelerate(Vector3.zero);
             _InputRotate(Vector3.zero);
-            _InputRotateDirect(Quaternion.identity);
+            _InputDirectRotate(Vector3.zero);
+            _InputGazeRotate(Quaternion.identity);
             _InputEmergencyBrakes(false);
             _InputOverdrive(false);
 
@@ -157,46 +161,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             // _noseRotation = _noseRotation;
             if (_isGrounded) { _isWalking = true; }
 
-            if (_isBrakes)
-            {
-                _state = DragonDriverStateType.Brakes;
-            }
-            else if (_isWalking && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Landing) > 0)
-            {
-                _state = DragonDriverStateType.Walking;
-            }
-            else if (_isOverdrive && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
-            {
-                _state = DragonDriverStateType.Overdrive;
-            }
-            else if ((_sqrSpeed > _hoveringSpeedThreshold * _hoveringSpeedThreshold)
-                 && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
-            {
-                _state = DragonDriverStateType.Flight;
-            }
-            else if (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Hovering) > 0)
-            {
-                _state = DragonDriverStateType.Hovering;
-            }
-            else if (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
-            {
-                _state = DragonDriverStateType.Flight;
-            }
-            else
-            {
-                _state = default;
-            }
-
-            if (_state == DragonDriverStateType.Flight)
-            {
-                if (_gazeRotation != Quaternion.identity)
-                {
-                    _state = DragonDriverStateType.Hovering;
-                }
-            }
-
             // 状態に合わせたRigidbodyの計算
-            switch (_state)
+            switch (_state = DecideOnState())
             {
                 case DragonDriverStateType.Walking: Walking(); break;
                 case DragonDriverStateType.Hovering: Hovering(); break;
@@ -238,7 +204,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             _aileron = Mathf.Clamp(rot.z, -1.0f, 1.0f);
         }
 
-        public void _InputRotateDirect(Quaternion rot)
+        public void _InputDirectRotate(Vector3 rot)
+        {
+            _directRotation = rot;
+        }
+
+        public void _InputGazeRotate(Quaternion rot)
         {
             _gazeRotation = rot;
         }
@@ -268,6 +239,36 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          状態別の処理
          ******************************/
+        private DragonDriverStateType DecideOnState()
+        {
+            if (_isBrakes) { return DragonDriverStateType.Brakes; }
+
+            if (_isOverdrive && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
+            {
+                return DragonDriverStateType.Overdrive;
+            }
+
+            if (_isWalking && (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Landing) > 0))
+            {
+                return DragonDriverStateType.Walking;
+            }
+
+            if ((_sqrSpeed > _hoveringSpeedThreshold * _hoveringSpeedThreshold) &&
+                ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
+            {
+                if (_gazeRotation != Quaternion.identity) { return DragonDriverStateType.Hovering; }
+
+                return DragonDriverStateType.Flight;
+            }
+
+            if (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Hovering) > 0)
+            {
+                return DragonDriverStateType.Hovering;
+            }
+
+            return default;
+        }
+
         private void Walking()
         {
             _drag = SetDrag(_sqrSpeed);
@@ -285,14 +286,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             var sign = (Vector3.Dot(noseDirection, velocityFront) < 0.0f) ? -1.0f : 1.0f;
 
             // 入力値計算
-            var yaw = Time.deltaTime * _noseRotateSpeed * _ladder;
+            var yaw = (_directRotation.y != 0.0f) ? _directRotation.y : Time.deltaTime * _noseRotateSpeed * _ladder;
 
             // 入力を反映
-            var relativeRotation = Quaternion.Inverse(_rotation) * _noseRotation;
-            relativeRotation = Quaternion.AngleAxis(yaw, Vector3.up) * relativeRotation;
-            if (_gazeRotation != Quaternion.identity)
+            var relativeRotation = _gazeRotation;
+            if (_gazeRotation == Quaternion.identity)
             {
-                relativeRotation = _gazeRotation;
+                relativeRotation = Quaternion.Inverse(_rotation) * _noseRotation;
+                relativeRotation = Quaternion.AngleAxis(yaw, Vector3.up) * relativeRotation;
             }
 
             // 進行方向の軸制限
@@ -326,7 +327,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             var turn = Quaternion.AngleAxis(Time.deltaTime * Mathf.Clamp01(_sqrSpeed) * turnAngle, up);
             _rotation = turn * _rotation;
             _noseRotation = turn * _noseRotation;
-            noseDirection = _noseRotation * Vector3.forward;
 
             // 速度の再計算
             _velocity = turn * _velocity;
@@ -374,16 +374,16 @@ namespace MimyLab.DynamicDragonDriveSystem
             var sign = (Vector3.Dot(noseDirection, velocityFront) < 0.0f) ? -1.0f : 1.0f;
 
             // 入力値計算
-            var pitch = Time.deltaTime * _noseRotateSpeed * _elevator;
-            var yaw = Time.deltaTime * _noseRotateSpeed * _ladder;
+            var pitch = (_directRotation.x != 0.0f) ? _directRotation.x : Time.deltaTime * _noseRotateSpeed * _elevator;
+            var yaw = (_directRotation.y != 0.0f) ? _directRotation.y : Time.deltaTime * _noseRotateSpeed * _ladder;
 
             // 入力を反映
-            var relativeRotation = Quaternion.Inverse(_rotation) * _noseRotation;
-            relativeRotation = Quaternion.AngleAxis(pitch, Vector3.right) * relativeRotation;
-            relativeRotation = Quaternion.AngleAxis(yaw, Vector3.up) * relativeRotation;
-            if (_gazeRotation != Quaternion.identity)
+            var relativeRotation = _gazeRotation;
+            if (_gazeRotation == Quaternion.identity)
             {
-                relativeRotation = _gazeRotation;
+                relativeRotation = Quaternion.Inverse(_rotation) * _noseRotation;
+                relativeRotation = Quaternion.AngleAxis(pitch, Vector3.right) * relativeRotation;
+                relativeRotation = Quaternion.AngleAxis(yaw, Vector3.up) * relativeRotation;
             }
 
             // 進行方向の軸制限
