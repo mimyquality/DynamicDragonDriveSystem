@@ -13,7 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
-    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class SeatInputManager : UdonSharpBehaviour
     {
         private const float DoubleTapDuration = 0.2f;    // 単位：sec
@@ -41,6 +41,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _seat = GetComponent<DragonSeat>();
             _isVR = Networking.LocalPlayer.IsUserInVR();
+
+            // 未使用警告消す用
+            if (_inputDoubleJumpTimer < 0.0f) { }
         }
 
         private void Update()

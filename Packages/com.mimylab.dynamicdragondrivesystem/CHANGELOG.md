@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.8] - 2024/1/17
+
+- Dragon Songコンポーネント追加
+- 同期系コンポーネントと一緒に付く補助コンポーネントのBehaviourSyncModeをNoVariableSyncに変更
+
 ## [0.7.7] - 2024/1/15
 
 - Gaze入力モードの安定性向上
@@ -219,6 +224,8 @@
 
 - VPM化
 
+[0.7.8]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.8
+[0.7.7]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.7
 [0.7.6]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.6
 [0.7.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.5
 [0.7.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.4

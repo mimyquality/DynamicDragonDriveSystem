@@ -30,7 +30,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     [AddComponentMenu("Dynamic Dragon Drive System/Seat Mount EventTrigger")]
     [RequireComponent(typeof(VRCStation))]
-    [UdonBehaviourSyncMode(BehaviourSyncMode.Any)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class SeatMountEventTrigger : UdonSharpBehaviour
     {
         [SerializeField]

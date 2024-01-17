@@ -15,6 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Collision Detector")]
     [RequireComponent(typeof(SphereCollider))]
     [DefaultExecutionOrder(-100)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class DragonCollisionDetector : UdonSharpBehaviour
     {
         internal DragonDriver driver;
@@ -37,16 +38,20 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Transform _transform;
         private SphereCollider _collider;
 
+        private Vector3 _colliderCenter;
         private float _groundCheckRadius, _groundCheckRange;
         private RaycastHit _groundInfo = new RaycastHit();
 
         private void Start()
         {
-            driver = GetComponent<DragonDriver>();
-            actor = GetComponentInChildren<DragonActor>(true);
+            var descriptor = GetComponentInParent<DDDSDescriptor>();
+            driver = descriptor.driver;
+            actor = descriptor.actor;
+
             _transform = transform;
             _collider = GetComponent<SphereCollider>();
 
+            _colliderCenter = _collider.center;
             _groundCheckRadius = _collider.radius * 0.9f;
             _groundCheckRange = 2 * (_collider.radius - _groundCheckRadius);
         }
@@ -70,7 +75,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private bool CheckGrounded()
         {
-            var origin = _transform.position + _transform.rotation * _collider.center;
+            var origin = _transform.position + _transform.rotation * _colliderCenter;
             if (Physics.SphereCast
                 (
                     origin,
