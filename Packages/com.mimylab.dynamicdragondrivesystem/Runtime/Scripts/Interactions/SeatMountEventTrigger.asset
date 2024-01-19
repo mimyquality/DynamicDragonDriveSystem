@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: SeatMountEventTrigger
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 7e02ff160ed85794f82008bf18cb3eea,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: a65c9cd54235f1e4ea06519d74a4ecb5,
     type: 2}
   udonAssembly: 
   assemblyError: 

@@ -34,24 +34,21 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Range(0.0f, 180.0f), Tooltip("degree")]
         private float _collisionIncidenceAngle = 60.0f;
 
-        private VRCPlayerApi _localPlayer;
-        private Animator _animator;
-        private Rigidbody _rigidbody;
-
         [UdonSynced]
         private bool _isGrounded, _isBrakes, _isOverdrive;
         [UdonSynced]
         private byte _state;
         [UdonSynced(UdonSyncMode.Linear)]
         private Vector2 _noseDirection;
-
-        private float _pitch, _roll;
-        private int _velocitySmoothingRange = 30;
-        private Vector3[] _posHistory;
-        private float[] _timeHistory;
-        private Vector3 _revPosition;
-        private Quaternion _revRotation;
+        [UdonSynced(UdonSyncMode.Smooth)]
         private Vector3 _relativeVelocity, _relativeAngularVelocity;
+
+        private Animator _animator;
+        private Rigidbody _rigidbody;
+
+        private Quaternion _rotation;
+        private float _pitch, _roll;
+        private float _speed, _angularSpeed;
         private bool _randomBool;
         private int _randomInt;
         private float _randomFloat;
@@ -78,6 +75,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int _param_VelocityY = Animator.StringToHash("VelocityY");
         private int _param_VelocityZ = Animator.StringToHash("VelocityZ");
         private int _param_VelocityMagnitude = Animator.StringToHash("VelocityMagnitude");
+        private int _param_Speed = Animator.StringToHash("Speed");
+        private int _param_AngularVelocityX = Animator.StringToHash("AngularVelocityX");
+        private int _param_AngularVelocityY = Animator.StringToHash("AngularVelocityY");
+        private int _param_AngularVelocityZ = Animator.StringToHash("AngularVelocityZ");
+        private int _param_AngularVelocityMagnitude = Animator.StringToHash("AngularVelocityMagnitude");
+        private int _param_AngularSpeed = Animator.StringToHash("AngularSpeed");
         private int _param_RandomFloat = Animator.StringToHash("RandomFloat");
 
         private bool _initialized = false;
@@ -85,14 +88,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
-            _localPlayer = Networking.LocalPlayer;
             _animator = GetComponent<Animator>();
             _rigidbody = driver.GetComponent<Rigidbody>();
-
-            _posHistory = new Vector3[_velocitySmoothingRange];
-            _timeHistory = new float[_velocitySmoothingRange];
-            _revPosition = _rigidbody.position;
-            _revRotation = _rigidbody.rotation;
 
             _initialized = true;
         }
@@ -106,6 +103,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Update()
         {
+            _rotation = _rigidbody.rotation;
             UpdateSyncedParameters();
             CalculateParameters();
             SetAnimatorParameters();
@@ -163,14 +161,17 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void UpdateSyncedParameters()
         {
-            if (!_localPlayer.IsOwner(this.gameObject)) { return; }
+            if (!Networking.IsOwner(this.gameObject)) { return; }
 
-            _isGrounded = driver.IsGrounded;
             _isBrakes = driver.IsBrakes;
             _isOverdrive = driver.IsOverdrive;
+
             _state = (byte)driver.State;
 
-            var noseForward = Quaternion.Inverse(_rigidbody.rotation) * driver.NoseRotation * Vector3.forward;
+            _relativeVelocity = Quaternion.Inverse(_rotation) * _rigidbody.velocity;
+            _relativeAngularVelocity = Quaternion.Inverse(_rotation) * _rigidbody.angularVelocity;
+
+            var noseForward = Quaternion.Inverse(_rotation) * driver.NoseRotation * Vector3.forward;
             var AxisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.left);
             _noseDirection.x = Vector3.SignedAngle(Vector3.forward, AxisDirection, Vector3.left);
             AxisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.up);
@@ -179,40 +180,20 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void CalculateParameters()
         {
-            var forward = _rigidbody.rotation * Vector3.forward;
-            var left = _rigidbody.rotation * Vector3.left;
-            var up = _rigidbody.rotation * Vector3.up;
+            _isGrounded = driver.IsGrounded;
 
-            var datum = Vector3.ProjectOnPlane(forward, Vector3.up);
-            _pitch = Vector3.SignedAngle(datum, forward, left);
+            var forward = _rotation * Vector3.forward;
+            var left = _rotation * Vector3.left;
+            var up = _rotation * Vector3.up;
 
-            datum = Quaternion.LookRotation(forward) * Vector3.up;
-            _roll = Vector3.SignedAngle(datum, up, forward);
+            var level = Vector3.ProjectOnPlane(forward, Vector3.up);
+            _pitch = Vector3.SignedAngle(level, forward, left);
 
-            System.Array.Copy(_posHistory, 0, _posHistory, 1, _posHistory.Length - 1);
-            _posHistory[0] = _rigidbody.position - _revPosition;
-            System.Array.Copy(_timeHistory, 0, _timeHistory, 1, _timeHistory.Length - 1);
-            _timeHistory[0] = Time.deltaTime;
+            level = Quaternion.LookRotation(forward) * Vector3.up;
+            _roll = Vector3.SignedAngle(level, up, forward);
 
-            var position = Vector3.zero;
-            var time = 0.0f;
-            for (int i = 0; i < _velocitySmoothingRange; i++)
-            {
-                position += _posHistory[i];
-                time += _timeHistory[i];
-            }
-            if (time == 0.0f) { time = 1.0f; }
-            var velocity = position / time;
-            _relativeVelocity = Quaternion.Inverse(_rigidbody.rotation) * velocity;
-
-            float rotateAngle;
-            Vector3 rotateAxis;
-            var deltaRotate = Quaternion.Inverse(_revRotation) * _rigidbody.rotation;
-            deltaRotate.ToAngleAxis(out rotateAngle, out rotateAxis);
-            _relativeAngularVelocity = rotateAxis * (rotateAngle / Time.deltaTime);
-
-            _revPosition = _rigidbody.position;
-            _revRotation = _rigidbody.rotation;
+            _speed = _relativeVelocity.magnitude;
+            _angularSpeed = _relativeAngularVelocity.magnitude;
         }
 
         private void SetAnimatorParameters()
@@ -222,8 +203,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator.SetBool(_param_IsBrakes, _isBrakes);
             _animator.SetBool(_param_IsOverdrive, _isOverdrive);
             _animator.SetBool(_param_RandomBool, _randomBool);
+
             _animator.SetInteger(_param_State, (int)_state);
             _animator.SetInteger(_param_RandomInt, _randomInt);
+
             _animator.SetFloat(_param_NosePitch, _noseDirection.x);
             _animator.SetFloat(_param_NoseYaw, _noseDirection.y);
             _animator.SetFloat(_param_Pitch, _pitch);
@@ -231,7 +214,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator.SetFloat(_param_VelocityX, _relativeVelocity.x);
             _animator.SetFloat(_param_VelocityY, _relativeVelocity.y);
             _animator.SetFloat(_param_VelocityZ, _relativeVelocity.z);
-            _animator.SetFloat(_param_VelocityMagnitude, _relativeVelocity.magnitude);
+            _animator.SetFloat(_param_VelocityMagnitude, _speed);
+            _animator.SetFloat(_param_Speed, _speed);
+            _animator.SetFloat(_param_AngularVelocityX, _relativeAngularVelocity.x);
+            _animator.SetFloat(_param_AngularVelocityY, _relativeAngularVelocity.y);
+            _animator.SetFloat(_param_AngularVelocityZ, _relativeAngularVelocity.z);
+            _animator.SetFloat(_param_AngularVelocityMagnitude, _angularSpeed);
+            _animator.SetFloat(_param_AngularSpeed, _angularSpeed);
             _animator.SetFloat(_param_RandomFloat, _randomFloat);
         }
     }

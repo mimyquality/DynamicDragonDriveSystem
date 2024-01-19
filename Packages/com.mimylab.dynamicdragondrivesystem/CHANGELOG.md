@@ -4,17 +4,39 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.9] - 2024/1/19
+
+### Added
+
+- Dragon Actorに新パラメーター追加(Speed, Angular系)
+
+### Fixed
+
+- Dragon Actorの一部パラメーターの同期を見直し
+
 ## [0.7.8] - 2024/1/17
 
+### Added
+
 - Dragon Songコンポーネント追加
+
+### Fixed
+
 - 同期系コンポーネントと一緒に付く補助コンポーネントのBehaviourSyncModeをNoVariableSyncに変更
 
 ## [0.7.7] - 2024/1/15
 
+### Fixed
+
 - Gaze入力モードの安定性向上
+
+### Changed
+
 - VRHandsモードの回転入力は、首振り操作に対して回転速度では無く回転量を直接反映するように変更
 
 ## [0.7.6] - 2024/1/11
+
+### Fixed
 
 - VRHands入力モードの安定性向上(これにより、急ブレーキが利かないことがあるバグも修正)
 
@@ -224,6 +246,7 @@
 
 - VPM化
 
+[0.7.9]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.9
 [0.7.8]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.8
 [0.7.7]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.7
 [0.7.6]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.6

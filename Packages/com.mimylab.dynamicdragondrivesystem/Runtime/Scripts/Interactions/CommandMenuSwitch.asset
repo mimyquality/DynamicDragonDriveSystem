@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: CommandMenuSwitch
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: b253079bf44e12b4aa55be043f0fb05c,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 6b7ada0bca426cf4db9d7e78ce943780,
     type: 2}
   udonAssembly: 
   assemblyError: 

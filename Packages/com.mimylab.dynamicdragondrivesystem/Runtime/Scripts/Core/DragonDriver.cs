@@ -81,10 +81,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _brakePower = 2.0f;
 
         // Actor渡し用
-        public int State { get => (int)_state; }
         public bool IsGrounded { get => _isGrounded; internal set => _isGrounded = value; }
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
+        public int State { get => (int)_state; }
         public Quaternion NoseRotation { get => _noseRotation; }
 
         // Saddle受け取り用

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ReactiveTriggerToDragon
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 45d8a8f1341d6704ea96f0d4d7033fb6,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 5d73ca2cb09123d468676a0e17843ca8,
     type: 2}
   udonAssembly: 
   assemblyError: 

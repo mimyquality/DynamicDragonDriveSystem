@@ -41,6 +41,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _colliderCenter;
         private float _groundCheckRadius, _groundCheckRange;
         private RaycastHit _groundInfo = new RaycastHit();
+        private bool _wasGrounded;
 
         private void Start()
         {
@@ -60,7 +61,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!driver) { return; }
 
-            driver.IsGrounded = CheckGrounded();
+            var isGrounded = CheckGrounded();
+            if (isGrounded != _wasGrounded)
+            {
+                driver.IsGrounded = isGrounded;
+                if (Networking.IsOwner(driver.gameObject)) { driver.enabled = true; }
+                
+                _wasGrounded = isGrounded;
+            }
             driver.groundInfo = _groundInfo;
         }
 
