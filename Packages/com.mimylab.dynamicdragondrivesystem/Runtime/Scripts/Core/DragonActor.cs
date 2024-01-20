@@ -40,7 +40,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private byte _state;
         [UdonSynced(UdonSyncMode.Linear)]
         private Vector2 _noseDirection;
-        [UdonSynced(UdonSyncMode.Smooth)]
+        [UdonSynced(UdonSyncMode.Linear)]
         private Vector3 _relativeVelocity, _relativeAngularVelocity;
 
         private Animator _animator;

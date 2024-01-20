@@ -4,6 +4,13 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.10] - 2024/1/20
+
+### Fixed
+
+- DebugDragonの追加修正
+- DebugDragon用のAnimationClipが含まれていなかったのを追加
+
 ## [0.7.9] - 2024/1/19
 
 ### Added
@@ -246,6 +253,7 @@
 
 - VPM化
 
+[0.7.10]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.10
 [0.7.9]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.9
 [0.7.8]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.8
 [0.7.7]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.7
