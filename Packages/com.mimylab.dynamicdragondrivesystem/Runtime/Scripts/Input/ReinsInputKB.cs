@@ -14,8 +14,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
 
     [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput Keyboard")]
-    [DefaultExecutionOrder(-100)]
-    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputKB : ReinsInputManager
     {
         private void Start()

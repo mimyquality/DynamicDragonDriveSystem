@@ -29,6 +29,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
     [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync))]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class DragonDriver : UdonSharpBehaviour
     {
         [Header("Speed settings")]
@@ -81,7 +82,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _brakePower = 2.0f;
 
         // Actor渡し用
-        public bool IsGrounded { get => _isGrounded; internal set => _isGrounded = value; }
+        public bool IsGrounded { get => _isGrounded; set => _isGrounded = value; }
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
         public int State { get => (int)_state; }

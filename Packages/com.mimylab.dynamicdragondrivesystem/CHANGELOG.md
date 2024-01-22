@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.7.11] - 2024/1/22
+
+### Fixed
+
+- ビルドし直した時に接地判定が消失する事があるバグを修正
+
 ## [0.7.10] - 2024/1/20
 
 ### Fixed
@@ -253,6 +259,7 @@
 
 - VPM化
 
+[0.7.11]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.11
 [0.7.10]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.10
 [0.7.9]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.9
 [0.7.8]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.8

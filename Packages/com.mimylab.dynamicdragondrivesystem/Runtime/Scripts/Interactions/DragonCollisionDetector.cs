@@ -18,9 +18,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class DragonCollisionDetector : UdonSharpBehaviour
     {
-        internal DragonDriver driver;
-        internal DragonActor actor;
-
         [SerializeField]
         private LayerMask _groundLayer =
             (1 << 0) |  // Default
@@ -35,6 +32,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
         private float _slopeLimit = 45.0f;
 
+        private DragonDriver _driver;
+        private DragonActor _actor;
         private Transform _transform;
         private SphereCollider _collider;
 
@@ -46,8 +45,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Start()
         {
             var descriptor = GetComponentInParent<DDDSDescriptor>();
-            driver = descriptor.driver;
-            actor = descriptor.actor;
+            _driver = descriptor.driver;
+            _actor = descriptor.actor;
 
             _transform = transform;
             _collider = GetComponent<SphereCollider>();
@@ -59,26 +58,26 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void FixedUpdate()
         {
-            if (!driver) { return; }
+            if (!_driver) { return; }
 
             var isGrounded = CheckGrounded();
             if (isGrounded != _wasGrounded)
             {
-                driver.IsGrounded = isGrounded;
-                if (Networking.IsOwner(driver.gameObject)) { driver.enabled = true; }
-                
+                _driver.IsGrounded = isGrounded;
+                if (Networking.IsOwner(_driver.gameObject)) { _driver.enabled = true; }
+
                 _wasGrounded = isGrounded;
             }
-            driver.groundInfo = _groundInfo;
+            _driver.groundInfo = _groundInfo;
         }
 
         private void OnCollisionEnter(Collision other)
         {
             if (!Utilities.IsValid(other)) { return; }
             if (!Utilities.IsValid(other.collider)) { return; }
-            if (!actor) { return; }
+            if (!_actor) { return; }
 
-            actor._TriggerCollision(other);
+            _actor._TriggerCollision(other);
         }
 
         private bool CheckGrounded()
