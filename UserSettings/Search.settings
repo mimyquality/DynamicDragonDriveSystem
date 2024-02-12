@@ -8,6 +8,15 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"last_search.110DEAF1" = ""
+	"OpenInspectorPreview.110DEAF1" = "0"
+	"currentGroup.110DEAF1" = "scene"
+	"last_search.310DEAF1" = "FAE_Spruce_C_LOD0"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "scene"
+	"last_search.3BE40471" = "static>6 Grass_LOD1"
+	"OpenInspectorPreview.3BE40471" = "0"
+	"currentGroup.3BE40471" = "scene"
 }
 providers = {
 	find = {
@@ -55,10 +64,50 @@ providers = {
 		priority = 25
 		defaultAction = null
 	}
+	menu = {
+		active = true
+		priority = 80
+		defaultAction = null
+	}
+	settings = {
+		active = true
+		priority = 100
+		defaultAction = null
+	}
+	calculator = {
+		active = true
+		priority = 10
+		defaultAction = null
+	}
+	static_methods = {
+		active = true
+		priority = 85
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }
 recentSearches = [
+	"FAE_Spruce_C_LOD2"
+	"FAE_Spruce_C_Billboard"
+	"FAE_Spruce_B_LOD2"
+	"FAE_Spruce_A_Billboard"
+	"FAE_Spruce"
+	"prefab:root FAE_Spruce_A"
+	"FAE_Spruce_A"
+	"FAE_Birch_C_Billboard"
+	"FAE_Birch_B_LOD0"
+	"FAE_Birch_A_Billboard"
+	"FAE_Birch_A_LOD0"
+	"ChervilCluster"
+	"FAE_Palm_A_LOD0"
+	"RockCluster_"
+	"prefab:root RockCluster_A"
+	"prefab:root Lilypad"
+	"Lilypad"
+	"GrassThick_LOD0"
+	"prefab:root GrassThick"
+	"GrassThick"
 ]
 searchItemFavorites = [
 ]
@@ -67,9 +116,9 @@ showSavedSearchPanel = false
 hideTabs = false
 expandedQueries = [
 ]
-queryBuilder = false
+queryBuilder = true
 ignoredProperties = "id;name;classname;imagecontentshash"
-helperWidgetCurrentArea = "all"
+helperWidgetCurrentArea = "h:"
 disabledIndexers = ""
 minIndexVariations = 2
 findProviderIndexHelper = true

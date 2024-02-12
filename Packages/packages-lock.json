@@ -18,6 +18,13 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.momoma.genelit": {
+      "version": "https://github.com/momoma-null/GeneLit.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1a9818087aa981ec95064fb3bed9e045c37fddd2"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -260,6 +267,13 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
+    },
+    "s-ilent.filamented": {
+      "version": "https://gitlab.com/s-ilent/filamented.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6031c99ce328714d52a6f49416b3acae9fd255a4"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
