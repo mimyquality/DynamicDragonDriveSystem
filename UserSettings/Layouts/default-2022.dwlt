@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 3072
     height: 1636.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: VRChat SDK
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 109
+  controlID: 166
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 222
+  controlID: 220
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: VRCSdkControlPanel
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -145,15 +145,15 @@ MonoBehaviour:
     y: 0
     width: 637.6001
     height: 1586.8
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 516, y: 600}
+  m_MaxSize: {x: 516, y: 2000}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 20}
   - {fileID: 14}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 0
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 28
+  controlID: 18
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 29
+  controlID: 19
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,8 +322,8 @@ MonoBehaviour:
     y: 0
     width: 1850.4
     height: 1056
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -403,7 +403,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 97754
+  m_LastSelectedObjectID: 5752564
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -427,7 +427,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73.6
-    width: 1850.2
+    width: 1849.4
     height: 1035
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
     - e00: 1
       e01: 0
       e02: 0
-      e03: 132.59998
+      e03: 132.19995
       e10: 0
       e11: 1
       e12: 0
@@ -490,12 +490,12 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.44234678
+    - e00: 0.5464284
       e01: 0
       e02: 0
-      e03: 276.52783
+      e03: 339.3226
       e10: 0
-      e11: 0.44234678
+      e11: 0.5464284
       e12: 0
       e13: 15
       e20: 0
@@ -589,11 +589,11 @@ MonoBehaviour:
     - e00: 1.1337016
       e01: 0
       e02: 0
-      e03: -210.1862
+      e03: -134.18623
       e10: 0
       e11: 1.1337016
       e12: 0
-      e13: 309.1205
+      e13: 376.1205
       e20: 0
       e21: 0
       e22: 1
@@ -957,7 +957,7 @@ MonoBehaviour:
     - e00: 1
       e01: 0
       e02: 0
-      e03: 132.59998
+      e03: 132.19995
       e10: 0
       e11: 1
       e12: 0
@@ -987,10 +987,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: a5f2f726ab0aae04b80ae6f5cf7d3ba0,
+  m_AnimatorController: {fileID: 9100000, guid: 9539e9d1fd2a9f14394adaae3fd27f7e,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -3942334854623494463, guid: a5f2f726ab0aae04b80ae6f5cf7d3ba0,
+  - m_Target: {fileID: 5373010050063083473, guid: 9539e9d1fd2a9f14394adaae3fd27f7e,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -1085,7 +1085,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/MimyLab/DragonDrivingSchool/Textures
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1093,16 +1093,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/MimyLab/DragonDrivingSchool/Textures
+  - Assets
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\VRChatProject\DynamicDragonDriveSystem
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 278.19995}
-    m_SelectedIDs: 647d0100
-    m_LastClickedID: 97636
-    m_ExpandedIDs: 00000000e45f0000a4740100a6740100a8740100aa740100ac740100ae740100b0740100b2740100b4740100b6740100b8740100ba740100bc740100be740100c0740100ffffff7f
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: e45f0000
+    m_LastClickedID: 24548
+    m_ExpandedIDs: 00000000bc7d0100be7d0100c07d0100c27d0100c47d0100c67d0100c87d0100ca7d0100cc7d0100ce7d0100d07d0100d27d0100d47d0100d67d0100d87d0100a27e0100ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1130,7 +1130,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e45f0000a4740100a6740100a8740100aa740100ac740100ae740100b0740100b2740100b4740100b6740100b8740100ba740100bc740100be740100c0740100
+    m_ExpandedIDs: 00000000bc7d0100be7d0100c07d0100c27d0100c47d0100c67d0100c87d0100ca7d0100cc7d0100ce7d0100d07d0100d27d0100d47d0100d67d0100d87d0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1230,26 +1230,26 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 3
+    m_SearchArea: 1
     m_Folders:
-    - Assets/Fantasy Adventure Environment
+    - Assets/Dragon
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
-  m_StartGridSize: 16
+  m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Fantasy Adventure Environment
+  - Assets/Dragon
   m_LastFoldersGridSize: 96
   m_LastProjectPath: D:\VRChatProject\DynamicDragonDriveSystem
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ae740100
-    m_LastClickedID: 95406
-    m_ExpandedIDs: 00000000e45f0000a4740100a6740100a8740100aa740100ac740100ae740100b0740100b2740100b4740100b6740100b8740100ba740100bc740100be740100c07401001e7d0100207d0100ffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 287e0100
+    m_LastClickedID: 97832
+    m_ExpandedIDs: 00000000e45f0000bc7d0100c07d0100c27d0100c47d0100c87d0100ca7d0100cc7d0100ce7d0100d27d0100d47d0100d67d0100d87d0100ee7d0100f87d0100287e0100a27e01000a1b0300521b0300541b0300ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1277,7 +1277,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e45f0000a4740100a6740100a8740100aa740100ac740100ae740100b0740100b2740100b4740100b6740100b8740100ba740100bc740100be740100c0740100
+    m_ExpandedIDs: 00000000bc7d0100be7d0100c07d0100c27d0100c47d0100c67d0100c87d0100ca7d0100cc7d0100ce7d0100d07d0100d27d0100d47d0100d67d0100d87d0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000000000070660b00cc795f00827e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1330,7 +1330,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 16
+    m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 336
 --- !u!114 &20
@@ -1419,9 +1419,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 86700100
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 946ef2ffe06ef2ff2045f8ffcafafffffab90000
+      m_ExpandedIDs: 403aceff8e3aceff0218d4ff4a32d4ff9a32d4fffe0fdaffb0a0daff00a1daff647ee0ff6cabe8ffbaabe8ffd481eeffe696eeff3697eeff8c70f4ff1629fcffcafaffffa66f0000aa9500009ed3000062ee00001e391e00269d1e007abe1e0060d01e003cf91e00b0512000605220006232210080692100fab72100fcb72100feb72100dac421009623220016562200408d2200ee4a2300dac65700f8c65700
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1510,7 +1510,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 24.666666}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -1815,9 +1815,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 166.98154, y: 22.042435, z: -60.20291}
+    m_Target: {x: -225.78494, y: 3.5324805, z: -218.43246}
     speed: 2
-    m_Value: {x: 166.98154, y: 22.042435, z: -60.20291}
+    m_Value: {x: -225.78494, y: 3.5324805, z: -218.43246}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1863,13 +1863,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.22705534, y: -0.6986691, z: 0.2517954, w: 0.63004327}
+    m_Target: {x: 0.069217876, y: 0.3330569, z: -0.02452385, w: 0.9400434}
     speed: 2
-    m_Value: {x: 0.22799464, y: -0.69827384, z: 0.25283712, w: 0.6296869}
+    m_Value: {x: 0.069217846, y: 0.33305675, z: -0.02452384, w: 0.9400429}
   m_Size:
-    m_Target: 55.87766
+    m_Target: 1.6616087
     speed: 2
-    m_Value: 58.51064
+    m_Value: 1.6616087
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1887,8 +1887,8 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.17840898, y: 0.17751093, z: -0.032741636, w: 0.967258}
-  m_LastSceneViewOrtho: 1
+  m_LastSceneViewRotation: {x: 0.19462639, y: -0.7131479, z: 0.21779351, w: 0.637303}
+  m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1
@@ -1999,7 +1999,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1

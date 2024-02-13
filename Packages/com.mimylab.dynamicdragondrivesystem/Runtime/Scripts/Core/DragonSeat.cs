@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class DragonSeat : UdonSharpBehaviour
     {
         [SerializeField]
-        private bool _enabledAdjustInput = true;
+        private bool _enabledAdjust = true;
         [SerializeField]
         private Vector3 _maxSeatAdjustment = new Vector3(0.0f, 0.7f, 0.3f);
         [SerializeField]
@@ -44,23 +44,23 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public bool EnabledAdjustInput
+        public bool EnabledAdjust
         {
-            get => _enabledAdjustInput;
-            protected set
+            get => _enabledAdjust;
+            set
             {
-                if (value && !_enabledAdjustInput) { OnEnableAdjust(); }
-                if (!value && _enabledAdjustInput) { OnDisableAdjust(); }
+                if (value && !_enabledAdjust) { OnEnableAdjust(); }
+                if (!value && _enabledAdjust) { OnDisableAdjust(); }
 
-                _enabledAdjustInput = value;
-                _seatInput.EnableAdjustInput = value;
+                _enabledAdjust = value;
+                _seatInput.DisabledAdjust = !value;
             }
         }
 
         public bool IsMount
         {
             get => _isMount;
-            private set
+            set // private
             {
                 if (value && !_isMount) { OnMount(); }
                 if (!value && _isMount) { OnUnmount(); }
@@ -69,8 +69,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        private VRCStation _station;
-        private SeatInputManager _seatInput;
+        protected VRCStation _station;
+        protected SeatInputManager _seatInput;
         private Transform _enterPoint;
         private bool _isMount = false;
         private float _adjustSpeed = 0.5f;  // m/s
@@ -83,21 +83,21 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _station = GetComponent<VRCStation>();
             _seatInput = GetComponent<SeatInputManager>();
-            _enterPoint = (_station.stationEnterPlayerLocation) ? _station.stationEnterPlayerLocation : _station.transform;
+            _enterPoint = _station.stationEnterPlayerLocation ? _station.stationEnterPlayerLocation : _station.transform;
             _localAdjustPoint = _enterPoint.localPosition;
 
             _station.PlayerMobility = VRCStation.Mobility.ImmobilizeForVehicle;
             _station.canUseStationFromStation = false;
             _station.disableStationExit = true;
 
-            EnabledAdjustInput = EnabledAdjustInput;
             _seatInput.enabled = false;
 
             _initialized = true;
         }
-        protected virtual void Start()
+        private void Start()
         {
             Initialize();
+            PostStart();
         }
 
         public override void Interact()
@@ -107,6 +107,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnStationEntered(VRCPlayerApi player)
         {
+            Initialize();
+
             IsMount = true;
 
             if (player.isLocal)
@@ -121,6 +123,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnStationExited(VRCPlayerApi player)
         {
+            Initialize();
+
             IsMount = false;
 
             if (player.isLocal)
@@ -135,30 +139,41 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Ride()
         {
+            Initialize();
+
             Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
             _station.UseStation(Networking.LocalPlayer);
         }
 
         public void _Exit()
         {
+            Initialize();
+
             _station.ExitStation(Networking.LocalPlayer);
         }
 
         public void _SetAdjustPosition(Vector3 input)
         {
+            Initialize();
+
             AdjustPoint += Time.deltaTime * _adjustSpeed * input;
         }
 
         public void _EnableSeatAdjust()
         {
-            EnabledAdjustInput = true;
+            Initialize();
+
+            EnabledAdjust = true;
         }
 
         public void _DisableSeatAdjust()
         {
-            EnabledAdjustInput = false;
+            Initialize();
+
+            EnabledAdjust = false;
         }
 
+        protected virtual void PostStart() { }
         protected virtual void OnLocalPlayerMounted() { }
         protected virtual void OnLocalPlayerUnmounted() { }
         protected virtual void OnMount() { }

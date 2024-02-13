@@ -70,10 +70,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         [Header("Others")]
         [SerializeField, EnumFlag]
-        private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)(
+        private DragonDriverEnabledStateSelect _enabledState = (DragonDriverEnabledStateSelect)
+        (
             (1 << 0) |  // Landing
             (1 << 1) |  // Hovering
-            (1 << 2));  // Flight
+            (1 << 2)    // Flight
+        );
         [SerializeField, Tooltip("m/s"), Min(0.0f)]
         private float _accelerateLimit = 5.0f;
         [SerializeField, Tooltip("m/s")]
@@ -332,24 +334,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             // 速度の再計算
             _velocity = turn * _velocity;
 
-            var thrust = Time.deltaTime * _acceleration * _throttle;
-            var targetSqrSpeed = _targetVelocity.sqrMagnitude;
-            if (_throttle == Vector3.zero)
+            if (CheckStill(_targetVelocity.sqrMagnitude))
             {
-                if (targetSqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
-                {
-                    _targetVelocity = Vector3.zero;
-                    return;
-                }
+                _targetVelocity = Vector3.zero;
+                return;
             }
             var velocityForward = Vector3.Project(Quaternion.Inverse(_noseRotation) * _velocity, _targetVelocity);
-            var differenceVelocity = _targetVelocity - velocityForward;
-            if (differenceVelocity.sqrMagnitude > _accelerateLimit * _accelerateLimit)
-            {
-                _targetVelocity = Vector3.ClampMagnitude(_targetVelocity, _accelerateLimit) + velocityForward;
-            }
-
-            _targetVelocity = Vector3.ClampMagnitude(_targetVelocity + thrust, _maxWalkSpeed);
+            _targetVelocity = CalculateTargetVelocity(_targetVelocity, _maxWalkSpeed);
             _velocity += Time.deltaTime * _acceleration * (_noseRotation * (_targetVelocity - velocityForward));
         }
 
@@ -409,7 +400,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _noseRotation = turn * _noseRotation;
 
             // 速度の再計算
-            CalculateVelocity(_maxSpeed);
+            if (CheckStill(_targetVelocity.sqrMagnitude))
+            {
+                _targetVelocity = Vector3.zero;
+                return;
+            }
+            _targetVelocity = CalculateTargetVelocity(_targetVelocity, _maxSpeed);
+            _velocity += Time.deltaTime * _acceleration * (_noseRotation * _targetVelocity - _velocity);
         }
 
         private void Flight()
@@ -422,9 +419,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             var targetRotation = Quaternion.FromToRotation(_rotation * Vector3.forward, noseDirection) * _rotation;
             targetRotation = Quaternion.RotateTowards(_rotation, targetRotation, Time.deltaTime * _stateShiftSpeed);
 
-            var horizontalRotation = Vector3.ProjectOnPlane(_rotation * Vector3.forward, Vector3.up);
-            var horizontalTargetRotation = Vector3.ProjectOnPlane(targetRotation * Vector3.forward, Vector3.up);
-            var baranceRoll = Vector3.SignedAngle(horizontalTargetRotation, horizontalRotation, Vector3.up);
+            var horizontalDirection = Vector3.ProjectOnPlane(_rotation * Vector3.forward, Vector3.up);
+            var horizontalTargetDirection = Vector3.ProjectOnPlane(targetRotation * Vector3.forward, Vector3.up);
+            var baranceRoll = Vector3.SignedAngle(horizontalTargetDirection, horizontalDirection, Vector3.up);
             _rotation = targetRotation * Quaternion.AngleAxis(baranceRoll, Vector3.forward);
 
             // 前後判定
@@ -452,8 +449,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             _rotation = calculateRotation * _rotation;
             _noseRotation = calculateRotation * _noseRotation;
 
-            calculateRotation = Quaternion.AngleAxis(pitch, Vector3.right);
-            calculateRotation = _rotation * calculateRotation * Quaternion.Inverse(_rotation);
+            var up = (Vector3.Dot(_rotation * Vector3.up, Vector3.up) < 0.0f) ? -1.0f : 1.0f;
+            horizontalDirection = up * Vector3.Cross(Vector3.up, _rotation * Vector3.forward);
+            calculateRotation = Quaternion.AngleAxis(pitch, horizontalDirection);
             _rotation = calculateRotation * _rotation;
             _noseRotation = calculateRotation * _noseRotation;
 
@@ -470,7 +468,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _noseRotation = Quaternion.LookRotation(noseDirection);
 
             // 速度の再計算
-            CalculateVelocity(_maxSpeed);
+            if (CheckStill(_targetVelocity.sqrMagnitude))
+            {
+                _targetVelocity = Vector3.zero;
+                return;
+            }
+            _targetVelocity = CalculateTargetVelocity(_targetVelocity, _maxSpeed);
+            _velocity += Time.deltaTime * _acceleration * (_noseRotation * _targetVelocity - _velocity);
         }
 
         private void Brakes()
@@ -565,30 +569,26 @@ namespace MimyLab.DynamicDragonDriveSystem
             return relativeRotation;
         }
 
-        private void CalculateVelocity(float maxSpeed)
+        private bool CheckStill(float sqrSpeed)
+        {
+            return (_throttle == Vector3.zero) &&
+                   (sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold);
+        }
+
+        private Vector3 CalculateTargetVelocity(Vector3 targetVelocity, float maxSpeed)
         {
             // 入力値計算
             var thrust = Time.deltaTime * _acceleration * _throttle;
 
-            var targetSqrSpeed = _targetVelocity.sqrMagnitude;
-            if (_throttle == Vector3.zero)
-            {
-                if (targetSqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
-                {
-                    _targetVelocity = Vector3.zero;
-                    return;
-                }
-            }
-
-            var velocityForward = Vector3.Project(Quaternion.Inverse(_noseRotation) * _velocity, _targetVelocity);
-            var differenceVelocity = _targetVelocity - velocityForward;
+            var velocityForward = Vector3.Project(Quaternion.Inverse(_noseRotation) * _velocity, targetVelocity);
+            var differenceVelocity = targetVelocity - velocityForward;
             if (differenceVelocity.sqrMagnitude > _accelerateLimit * _accelerateLimit)
             {
-                _targetVelocity = Vector3.ClampMagnitude(_targetVelocity, _accelerateLimit) + velocityForward;
+                targetVelocity = Vector3.ClampMagnitude(targetVelocity, _accelerateLimit) + velocityForward;
             }
+            targetVelocity = Vector3.ClampMagnitude(targetVelocity + thrust, maxSpeed);
 
-            _targetVelocity = Vector3.ClampMagnitude(_targetVelocity + thrust, maxSpeed);
-            _velocity += Time.deltaTime * _acceleration * (_noseRotation * _targetVelocity - _velocity);
+            return targetVelocity;
         }
     }
 }

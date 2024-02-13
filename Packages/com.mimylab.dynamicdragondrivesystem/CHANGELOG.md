@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.8.0] - 2024/2/14
+
+- **Changed**
+  - ジャンプボタン短押しで座位置調整機構をオンオフできるように変更
+  - 高速飛行時のエレベーター入力を、ドラゴン基準からワールド基準に変更
+
 ## [0.7.12] - 2024/2/12
 
 - **Fixed**
@@ -222,6 +228,7 @@
 - **Added**
   - VPM化
 
+[0.8.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.0
 [0.7.12]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.12
 [0.7.11]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.11
 [0.7.10]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.10

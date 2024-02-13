@@ -19,6 +19,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal DragonActor actor;
         internal DragonReins reins;
 
+        protected override void PostStart()
+        {
+            _seatInput.disabledAdjustLock = true;
+            EnabledAdjust = false;
+        }
+
         protected override void OnLocalPlayerMounted()
         {
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
@@ -26,7 +32,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             driver.IsAwake = true;
             driver.enabled = true;
             reins.EnabledInput = true;
-            EnabledAdjustInput = false;
         }
 
         protected override void OnLocalPlayerUnmounted()
