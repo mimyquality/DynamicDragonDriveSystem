@@ -35,7 +35,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _collisionIncidenceAngle = 60.0f;
 
         [UdonSynced]
-        private bool _isGrounded, _isBrakes, _isOverdrive;
+        private bool _isBrakes, _isOverdrive;
         [UdonSynced]
         private byte _state;
         [UdonSynced(UdonSyncMode.Linear)]
@@ -45,8 +45,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private Animator _animator;
         private Rigidbody _rigidbody;
-
         private Quaternion _rotation;
+        private bool _isOwner, _isGrounded;
         private float _pitch, _roll;
         private float _speed, _angularSpeed;
         private bool _randomBool;
@@ -58,6 +58,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int _param_BlinkMembrane = Animator.StringToHash("OnBlinkMembrane");
         private int _param_Collision = Animator.StringToHash("OnCollision");
         // Boolパラメーター
+        private int _param_IsOwner = Animator.StringToHash("IsOwner");
+        private int _param_IsLocal = Animator.StringToHash("IsLocal");
         private int _param_IsMount = Animator.StringToHash("IsMount");
         private int _param_IsGrounded = Animator.StringToHash("IsGrounded");
         private int _param_IsBrakes = Animator.StringToHash("IsBrakes");
@@ -104,6 +106,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Update()
         {
             _rotation = _rigidbody.rotation;
+            _isOwner = Networking.IsOwner(this.gameObject);
             UpdateSyncedParameters();
             CalculateParameters();
             SetAnimatorParameters();
@@ -161,7 +164,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void UpdateSyncedParameters()
         {
-            if (!Networking.IsOwner(this.gameObject)) { return; }
+            if (!_isOwner) { return; }
 
             _isBrakes = driver.IsBrakes;
             _isOverdrive = driver.IsOverdrive;
@@ -198,6 +201,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SetAnimatorParameters()
         {
+            _animator.SetBool(_param_IsOwner, _isOwner);
+            _animator.SetBool(_param_IsLocal, _isOwner);
             _animator.SetBool(_param_IsMount, isMount);
             _animator.SetBool(_param_IsGrounded, _isGrounded);
             _animator.SetBool(_param_IsBrakes, _isBrakes);

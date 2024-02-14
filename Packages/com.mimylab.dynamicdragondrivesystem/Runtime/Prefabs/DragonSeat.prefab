@@ -26,8 +26,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806258426275988792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 0.024999999, y: 0.024999999, z: 0.024999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 966790105098646003}
@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.9}
-  m_SizeDelta: {x: 15, y: 5}
+  m_SizeDelta: {x: 15, y: 6.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &292322496838675775
 MeshRenderer:
@@ -100,6 +100,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '<b>Disable Adjust Input</b>
+
 
     Long press jump button
 
@@ -232,8 +233,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4342002481579944810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 0.024999999, y: 0.024999999, z: 0.024999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 966790105098646003}
@@ -241,7 +242,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.9}
-  m_SizeDelta: {x: 15, y: 5}
+  m_SizeDelta: {x: 15, y: 6.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8883794102824076051
 MeshRenderer:
@@ -306,6 +307,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '<b>Enable Adjust Input</b>
+
 
     Long press jump button
 

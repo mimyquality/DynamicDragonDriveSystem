@@ -4,6 +4,14 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.8.1] - 2024/2/14
+
+- **Added**
+  - DragonActorに `IsOwner` と `IsLocal` を追加
+- **Fixed**
+  - 座席から降りる時に座位置調整機構がトグルしないよう調整
+  - `IsGrounded` 判定をローカルで見るよう修正
+
 ## [0.8.0] - 2024/2/14
 
 - **Changed**
@@ -228,6 +236,7 @@
 - **Added**
   - VPM化
 
+[0.8.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.1
 [0.8.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.0
 [0.7.12]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.12
 [0.7.11]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.11

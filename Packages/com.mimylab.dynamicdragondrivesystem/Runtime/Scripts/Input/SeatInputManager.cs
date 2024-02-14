@@ -66,12 +66,10 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (value)
                 {
                     _inputAdjust = Vector3.zero;
-                    HideTooltipUnlock();
                     ShowTooltipLock();
                 }
                 else
                 {
-                    HideTooltipLock();
                     ShowTooltipUnlock();
                 }
 
@@ -84,8 +82,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             _seat = GetComponent<DragonSeat>();
             _isVR = Networking.LocalPlayer.IsUserInVR();
 
-            HideTooltipLock();
-            HideTooltipUnlock();
+            if (_tooltipLock) { _tooltipLock.SetActive(false); }
+            if (_tooltipUnlock) { _tooltipUnlock.SetActive(false); }
 
             // 未使用警告消す用
             if (_inputDoubleJumpTimer < 0.0f) { }
@@ -137,7 +135,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _inputJump = value;
 
-            if (!_disabledAdjust && value) { LockedAdjust = !LockedAdjust; }
+            if (!_disabledAdjust && !value) { LockedAdjust = !LockedAdjust; }
 
 #if UNITY_ANDROID
             // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
@@ -151,22 +149,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _inputDoubleJumpTimer = 0.0f;
             }
 #endif
-        }
-
-        public void _HideTooltipLockDelayed()
-        {
-            _tooltipLockCount = (_tooltipLockCount > 0) ? _tooltipLockCount - 1 : 0;
-            if (_tooltipLockCount > 0) { return; }
-
-            if (_tooltipLock) { _tooltipLock.SetActive(false); }
-        }
-
-        public void _HideTooltipUnlockDelayed()
-        {
-            _tooltipUnlockCount = (_tooltipUnlockCount > 0) ? _tooltipUnlockCount - 1 : 0;
-            if (_tooltipUnlockCount > 0) { return; }
-
-            if (_tooltipUnlock) { _tooltipUnlock.SetActive(false); }
         }
 
         private void InputKey()
@@ -190,22 +172,30 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void ShowTooltipLock()
         {
             _tooltipLockCount++;
+            if (_tooltipUnlock) { _tooltipUnlock.SetActive(false); }
             if (_tooltipLock) { _tooltipLock.SetActive(true); }
             SendCustomEventDelayedSeconds(nameof(_HideTooltipLockDelayed), TooltipShowTime);
         }
-        private void HideTooltipLock()
+        public void _HideTooltipLockDelayed()
         {
+            _tooltipLockCount = (_tooltipLockCount > 0) ? _tooltipLockCount - 1 : 0;
+            if (_tooltipLockCount > 0) { return; }
+
             if (_tooltipLock) { _tooltipLock.SetActive(false); }
         }
 
         private void ShowTooltipUnlock()
         {
             _tooltipUnlockCount++;
+            if (_tooltipLock) { _tooltipLock.SetActive(false); }
             if (_tooltipUnlock) { _tooltipUnlock.SetActive(true); }
             SendCustomEventDelayedSeconds(nameof(_HideTooltipUnlockDelayed), TooltipShowTime);
         }
-        private void HideTooltipUnlock()
+        public void _HideTooltipUnlockDelayed()
         {
+            _tooltipUnlockCount = (_tooltipUnlockCount > 0) ? _tooltipUnlockCount - 1 : 0;
+            if (_tooltipUnlockCount > 0) { return; }
+
             if (_tooltipUnlock) { _tooltipUnlock.SetActive(false); }
         }
     }
