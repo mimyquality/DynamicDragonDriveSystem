@@ -29,14 +29,13 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
             if (actor) { Networking.SetOwner(Networking.LocalPlayer, actor.gameObject); }
-            driver.IsAwake = true;
-            driver.enabled = true;
+            driver.IsDrive = true;
             reins.EnabledInput = true;
         }
 
         protected override void OnLocalPlayerUnmounted()
         {
-            driver.IsAwake = false;
+            driver.IsDrive = false;
             reins.EnabledInput = false;
         }
 

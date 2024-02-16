@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 3072
     height: 1636.8
   m_ShowMode: 4
-  m_Title: VRChat SDK
+  m_Title: Hierarchy 4
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -39,12 +39,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1850.4
+    x: 1931.2
     y: 0
-    width: 583.9999
+    width: 608
     height: 1056
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -65,9 +65,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1850.4
+    x: 1931.2
     y: 0
-    width: 583.9999
+    width: 608
     height: 530.80005
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
@@ -95,12 +95,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 1056
-    width: 2434.4
+    width: 2539.2
     height: 530.80005
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 109
+  controlID: 180
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 224
+  controlID: 18
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,24 +136,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: VRCSdkControlPanel
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 2434.4
+    x: 2539.2
     y: 0
-    width: 637.6001
+    width: 532.80005
     height: 1586.8
-  m_MinSize: {x: 517, y: 621}
-  m_MaxSize: {x: 517, y: 2021}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
   - {fileID: 14}
   - {fileID: 17}
-  m_Selected: 2
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 2
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1850.4
+    width: 1931.2
     height: 530.80005
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
@@ -272,12 +272,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2434.4
+    width: 2539.2
     height: 1586.8
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 18
+  controlID: 19
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -297,12 +297,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2434.4
+    width: 2539.2
     height: 1056
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 19
+  controlID: 20
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -320,7 +320,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1850.4
+    width: 1931.2
     height: 1056
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
@@ -352,9 +352,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2434.4001
+    x: 2539.2
     y: 73.6
-    width: 636.6001
+    width: 531.80005
     height: 1565.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 1129.6
-    width: 1850.2
+    width: 1849.4
     height: 509.80005
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 5752564
+  m_LastSelectedObjectID: 4580292
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -987,10 +987,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 4a7599f9e62ffc64583a8139471386d9,
+  m_AnimatorController: {fileID: 9100000, guid: 9539e9d1fd2a9f14394adaae3fd27f7e,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 3162725119616036092, guid: 4a7599f9e62ffc64583a8139471386d9,
+  - m_Target: {fileID: 5373010050063083473, guid: 9539e9d1fd2a9f14394adaae3fd27f7e,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_CurrentEditor: 1
+  m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
 --- !u!114 &17
@@ -1024,9 +1024,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2434.4001
+    x: 2539.2
     y: 73.6
-    width: 636.6001
+    width: 531.80005
     height: 1565.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1060,9 +1060,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1850.4
+    x: 1931.2001
     y: 1129.6
-    width: 581.9999
+    width: 606
     height: 509.80005
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1085,7 +1085,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Packages/com.mimylab.dynamicdragondrivesystem/Runtime/Scripts/Debug
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1093,16 +1093,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Packages/com.mimylab.dynamicdragondrivesystem/Runtime/Scripts/Debug
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\VRChatProject\DynamicDragonDriveSystem
   m_LockTracker:
-    m_IsLocked: 1
+    m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: e45f0000
-    m_LastClickedID: 24548
-    m_ExpandedIDs: 00000000be7e0100c07e0100c27e0100c47e0100c67e0100c87e0100ca7e0100cc7e0100ce7e0100d07e0100d27e0100d47e0100d67e0100d87e0100da7e0100dc7e0100de7e0100e07e0100e27e0100ffffff7f
+    scrollPos: {x: 0, y: 314.19995}
+    m_SelectedIDs: 06e54500
+    m_LastClickedID: 4580614
+    m_ExpandedIDs: 000000006e7e0100707e0100727e0100747e0100767e0100787e01007a7e01007c7e01007e7e0100807e0100827e0100847e0100867e0100887e01008a7e01008c7e01008e7e0100907e0100b07e0100be840100ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1130,7 +1130,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000be7e0100c07e0100c27e0100c47e0100c67e0100c87e0100ca7e0100cc7e0100ce7e0100d07e0100d27e0100d47e0100d67e0100d87e0100da7e0100dc7e0100de7e0100e07e0100e27e0100
+    m_ExpandedIDs: 000000006e7e0100707e0100727e0100747e0100767e0100787e01007a7e01007c7e01007e7e0100807e0100827e0100847e0100867e0100887e01008a7e01008c7e01008e7e0100907e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1157,22 +1157,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Interactions
+      m_OriginalName: Interactions
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 4580608
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 3}
     m_CreateAssetUtility:
@@ -1209,7 +1209,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 1129.6
-    width: 1849.4
+    width: 1930.2
     height: 509.80005
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1232,7 +1232,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Packages/com.mimylab.dynamicdragondrivesystem/Samples
+    - Packages/com.mimylab.dynamicdragondrivesystem/Runtime/Scripts/Debug
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1240,16 +1240,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Packages/com.mimylab.dynamicdragondrivesystem/Samples
+  - Packages/com.mimylab.dynamicdragondrivesystem/Runtime/Scripts/Debug
   m_LastFoldersGridSize: 96
   m_LastProjectPath: D:\VRChatProject\DynamicDragonDriveSystem
   m_LockTracker:
-    m_IsLocked: 0
+    m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 191}
-    m_SelectedIDs: 067f0100
-    m_LastClickedID: 98054
-    m_ExpandedIDs: 00000000be7e0100c07e0100c27e0100c47e0100c67e0100c87e0100ca7e0100cc7e0100ce7e0100d07e0100d27e0100d47e0100d67e0100d87e0100da7e0100de7e0100e07e0100e27e0100ffffff7f
+    scrollPos: {x: 0, y: 314.19995}
+    m_SelectedIDs: 06e54500
+    m_LastClickedID: 4580614
+    m_ExpandedIDs: 000000006e7e0100707e0100727e0100747e0100767e0100787e01007a7e01007c7e01007e7e0100807e0100827e0100847e0100867e0100887e01008a7e01008c7e01008e7e0100907e0100b07e0100be840100ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1277,7 +1277,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000be7e0100c07e0100c27e0100c47e0100c67e0100c87e0100ca7e0100cc7e0100ce7e0100d07e0100d27e0100d47e0100d67e0100d87e0100da7e0100dc7e0100de7e0100e07e0100e27e0100
+    m_ExpandedIDs: 000000006e7e0100707e0100727e0100747e0100767e0100787e01007a7e01007c7e01007e7e0100807e0100827e0100847e0100867e0100887e01008a7e01008c7e01008e7e0100907e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1354,9 +1354,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2434.4001
+    x: 2539.2
     y: 73.6
-    width: 636.6001
+    width: 531.80005
     height: 1565.8
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1402,9 +1402,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1850.4
+    x: 1931.2001
     y: 73.6
-    width: 581.9999
+    width: 606
     height: 1035
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1421,7 +1421,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2679e5ff7479e5ffec55ebffd670ebff2471ebff4c4af1ff965ff1ffe65ff1ff463cf7fff88afbff28fafbffb2faffff6ae30000
+      m_ExpandedIDs: 586fdeff8a74deffd874deff3c51e4ffd677e4ff2478e4ff8854eaff869ceaffd49ceaff3879f0ff36a0f0ff84a0f0ffe87cf6ffb2faffff30b900004ce300005ae300006ae3000066a82200c4e34500e6e34500f8e34500
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1468,7 +1468,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73.6
-    width: 1849.4
+    width: 1930.2
     height: 1035
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1815,9 +1815,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -227.52753, y: 2.4347358, z: -217.48233}
+    m_Target: {x: -217.3782, y: 6.536128, z: -221.12428}
     speed: 2
-    m_Value: {x: -227.52753, y: 2.4347358, z: -217.48233}
+    m_Value: {x: -217.3782, y: 6.536128, z: -221.12428}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1863,13 +1863,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2727581, y: 0.19035141, z: -0.055148937, w: 0.94145113}
+    m_Target: {x: 0.0759505, y: 0.5536203, z: -0.05079792, w: 0.8277429}
     speed: 2
-    m_Value: {x: 0.2727578, y: 0.1903512, z: -0.055148877, w: 0.9414501}
+    m_Value: {x: 0.07595041, y: 0.55361956, z: -0.050797854, w: 0.8277418}
   m_Size:
-    m_Target: 3.8347604
+    m_Target: 9.884506
     speed: 2
-    m_Value: 3.8347604
+    m_Value: 9.884506
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1917,7 +1917,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 1129.6
-    width: 1849.4
+    width: 1930.2
     height: 509.80005
   m_SerializedDataModeController:
     m_DataMode: 0

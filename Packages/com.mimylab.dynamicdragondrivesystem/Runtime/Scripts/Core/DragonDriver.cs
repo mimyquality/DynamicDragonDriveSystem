@@ -28,10 +28,15 @@ namespace MimyLab.DynamicDragonDriveSystem
     }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
-    [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync))]
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
+    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider), typeof(VRCObjectSync))]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour
     {
+        [HideInInspector, UdonSynced(UdonSyncMode.Linear)]
+        public Vector3 velocity;
+        [HideInInspector, UdonSynced(UdonSyncMode.Linear)]
+        public Vector3 angularVelocity;
+
         [Header("Speed settings")]
         [SerializeField, Tooltip("m/s^2")]
         private float _acceleration = 5.0f;
@@ -82,22 +87,23 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _jumpSpeed = 8.0f;
         [SerializeField, Min(0.0f)]
         private float _brakePower = 2.0f;
-
-        // Actor渡し用
-        public bool IsGrounded { get => _isGrounded; set => _isGrounded = value; }
-        public bool IsBrakes { get => _isBrakes; }
-        public bool IsOverdrive { get => _isOverdrive; }
-        public int State { get => (int)_state; }
-        public Quaternion NoseRotation { get => _noseRotation; }
-
-        // Saddle受け取り用
-        public bool IsAwake { get => _isAwake; set => _isAwake = value; }
-
-        // CollisionDetector受け取り用
-        internal RaycastHit groundInfo = new RaycastHit();
+        [SerializeField]
+        private LayerMask _groundLayer =
+         (1 << 0) |  // Default
+         (1 << 1) |  // TransparentFX
+         (1 << 2) |  // Ignore Raycast
+         (1 << 4) |  // Water
+         (1 << 8) |  // Interactive
+         (1 << 11) | // Environment
+         (1 << 15) | // StereoLeft
+         (1 << 16) | // StereoRight
+         (1 << 17);  // Walkthrough
+        [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
+        private float _slopeLimit = 45.0f;
 
         // コンポーネント
         private Rigidbody _rigidbody;
+        private SphereCollider _collider;
         private VRCObjectSync _objectSync;
 
         // 計算用
@@ -107,13 +113,49 @@ namespace MimyLab.DynamicDragonDriveSystem
         private DragonDriverStateType _state;
         private bool _isWalking, _isGrounded, _isBrakes, _isOverdrive;
         private float _inertialRoll, _inertialPitch;
+        private Vector3 _colliderCenter;
+        private float _groundCheckRadius, _groundCheckRange;
+        private RaycastHit _groundInfo = new RaycastHit();
 
         // Input
+        private bool _isDrive;
         private Vector3 _throttle;
         private float _elevator, _ladder, _aileron;
         private Vector3 _directRotation = Vector3.zero;
         private Quaternion _gazeRotation = Quaternion.identity;
-        private bool _isAwake;
+
+        // Actor渡し用
+        public bool IsGrounded { get => _isGrounded; }
+        public bool IsBrakes { get => _isBrakes; }
+        public bool IsOverdrive { get => _isOverdrive; }
+        public int State { get => (int)_state; }
+        public Quaternion NoseRotation { get => _noseRotation; }
+
+        // Saddle受け取り用
+        public bool IsDrive
+        {
+            get => _isDrive;
+            set
+            {
+                Initialize();
+
+                if (!value)
+                {
+                    _InputAccelerate(Vector3.zero);
+                    _InputRotate(Vector3.zero);
+                    _InputDirectRotate(Vector3.zero);
+                    _InputGazeRotate(Quaternion.identity);
+                    _InputEmergencyBrakes(false);
+                    _InputOverdrive(false);
+
+                    _targetVelocity = Vector3.zero;
+                    _rigidbody.velocity = Vector3.zero;
+                }
+
+                _noseRotation = _rigidbody.rotation;
+                _isDrive = value;
+            }
+        }
 
         private bool _initialized = false;
         private void Initialize()
@@ -121,6 +163,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<SphereCollider>();
             _objectSync = GetComponent<VRCObjectSync>();
 
             _rigidbody.freezeRotation = true;
@@ -130,71 +173,65 @@ namespace MimyLab.DynamicDragonDriveSystem
             _objectSync.SetGravity(false);
 
             _defaultDrag = _rigidbody.drag;
+            _colliderCenter = _collider.center;
+            _groundCheckRadius = _collider.radius * 0.9f;
+            _groundCheckRange = 2 * (_collider.radius - _groundCheckRadius);
 
             _initialized = true;
         }
-        private void OnEnable()
+        private void Start()
         {
             Initialize();
-
-            _noseRotation = _rigidbody.rotation;
-        }
-
-        private void OnDisable()
-        {
-            _InputAccelerate(Vector3.zero);
-            _InputRotate(Vector3.zero);
-            _InputDirectRotate(Vector3.zero);
-            _InputGazeRotate(Quaternion.identity);
-            _InputEmergencyBrakes(false);
-            _InputOverdrive(false);
-
-            _noseRotation = _rigidbody.rotation;
-
-            _targetVelocity = Vector3.zero;
-            _rigidbody.velocity = Vector3.zero;
         }
 
         private void FixedUpdate()
         {
-            // 現状を算出
-            _velocity = _rigidbody.velocity;
-            _sqrSpeed = _velocity.sqrMagnitude;
-            _rotation = _rigidbody.rotation;
-            // _noseRotation = _noseRotation;
-            if (_isGrounded) { _isWalking = true; }
+            // 接地判定(ローカル処理)
+            _isGrounded = CheckGrounded();
 
-            // 状態に合わせたRigidbodyの計算
-            switch (_state = DecideOnState())
+            if (!Networking.IsOwner(this.gameObject)) { return; }
+
+            if (_isDrive)
             {
-                case DragonDriverStateType.Walking: Walking(); break;
-                case DragonDriverStateType.Hovering: Hovering(); break;
-                case DragonDriverStateType.Flight: Flight(); break;
-                case DragonDriverStateType.Brakes: Brakes(); break;
-                case DragonDriverStateType.Overdrive: Overdrive(); break;
+                // 現状を算出
+                _velocity = _rigidbody.velocity;
+                _sqrSpeed = _velocity.sqrMagnitude;
+                _rotation = _rigidbody.rotation;
+                // _noseRotation = _noseRotation;
+                if (_isGrounded) { _isWalking = true; }
+
+                // 状態に合わせたRigidbodyの計算
+                switch (_state = DecideOnState())
+                {
+                    case DragonDriverStateType.Walking: Walking(); break;
+                    case DragonDriverStateType.Hovering: Hovering(); break;
+                    case DragonDriverStateType.Flight: Flight(); break;
+                    case DragonDriverStateType.Brakes: Brakes(); break;
+                    case DragonDriverStateType.Overdrive: Overdrive(); break;
+                }
+
+                // 計算結果を出力
+                _rigidbody.drag = _drag;
+                _rigidbody.rotation = _rotation;
+                _rigidbody.velocity = _velocity;
             }
 
-            // 計算結果を出力
-            _rigidbody.drag = _drag;
-            _rigidbody.rotation = _rotation;
-            _rigidbody.velocity = _velocity;
-
-            // 搭乗者が居ない時はスリープ
-            this.enabled = IsAwake;
-        }
-
-        public void Summon()
-        {
-            if (Networking.IsOwner(this.gameObject))
-            {
-                _objectSync.Respawn();
-                this.enabled = true;
-            }
+            // 同期
+            velocity = _rigidbody.velocity;
+            angularVelocity = _rigidbody.angularVelocity;
         }
 
         /******************************
          入力操作受付
          ******************************/
+        public void Summon()
+        {
+            if (Networking.IsOwner(this.gameObject))
+            {
+                _objectSync.Respawn();
+            }
+        }
+
         public void _InputAccelerate(Vector3 acc)
         {
             _throttle = Vector3.ClampMagnitude(acc, 1.0f);
@@ -301,9 +338,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             // 進行方向の軸制限
             var relativeDirection = relativeRotation * Vector3.forward;
-            if (_isGrounded && groundInfo.collider)
+            if (_isGrounded && _groundInfo.collider)
             {
-                horizontalRotation = Quaternion.Inverse(_rotation) * Quaternion.FromToRotation(_rotation * Vector3.up, groundInfo.normal) * _rotation;
+                horizontalRotation = Quaternion.Inverse(_rotation) * Quaternion.FromToRotation(_rotation * Vector3.up, _groundInfo.normal) * _rotation;
                 var groundForward = Vector3.ProjectOnPlane(relativeDirection, horizontalRotation * Vector3.up);
                 var groundRotation = Quaternion.FromToRotation(relativeDirection, groundForward) * relativeRotation;
                 relativeRotation = Quaternion.RotateTowards(relativeRotation, groundRotation, Time.deltaTime * _landingSpeed);
@@ -528,6 +565,23 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          その他内部処理
          ******************************/
+        private bool CheckGrounded()
+        {
+            var origin = _rigidbody.position + _rigidbody.rotation * _colliderCenter;
+            if (Physics.SphereCast
+                (
+                    origin,
+                    _groundCheckRadius,
+                    Vector3.down,
+                    out _groundInfo,
+                    _groundCheckRange,
+                    _groundLayer,
+                    QueryTriggerInteraction.Ignore
+                ))
+            { return Vector3.Angle(Vector3.up, _groundInfo.normal) < _slopeLimit; }
+
+            return false;
+        }
         private float SetDrag(float sqrSpeed)
         {
             if (sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)

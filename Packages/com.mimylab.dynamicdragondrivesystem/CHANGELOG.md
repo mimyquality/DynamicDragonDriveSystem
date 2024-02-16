@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.8.2] - 2024/2/16
+
+- **Changed**
+  - 同期周りを最適化、これを受けて一部パラメーターをより適切なコンポーネントに移動
+
 ## [0.8.1] - 2024/2/14
 
 - **Added**
@@ -236,6 +241,7 @@
 - **Added**
   - VPM化
 
+[0.8.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.2
 [0.8.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.1
 [0.8.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.0
 [0.7.12]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.7.12
