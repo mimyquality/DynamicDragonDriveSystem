@@ -6,13 +6,38 @@ https://opensource.org/licenses/mit-license.php
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using System.Globalization;
-
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
     //using VRC.Udon;
     //using VRC.SDK3.Components;
+
+    public enum DragonActorParameterName
+    {
+        // Triggerパラメーター
+        OnBlink, OnBlinkMembrane,
+        OnCollision,
+        // Boolパラメーター
+        IsOwner, IsLocal,
+        IsMount,
+        IsGrounded,
+        IsBrakes,
+        IsOverdrive,
+        RandomBool,
+        // Intパラメーター
+        State,
+        RandomInt,
+        // Floatパラメーター
+        Pitch,
+        Roll,
+        NosePitch,
+        NoseYaw,
+        VelocityX, VelocityY, VelocityZ,
+        VelocityMagnitude, Speed,
+        AngularVelocityX, AngularVelocityY, AngularVelocityZ,
+        AngularVelocityMagnitude, AngularSpeed,
+        RandomFloat
+    }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Actor")]
     [RequireComponent(typeof(Animator))]
@@ -39,7 +64,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced]
         private bool sync_isOverdrive;
         [UdonSynced]
-        private byte sync_state;
+        private int sync_state;
         [UdonSynced]
         private Vector2 sync_noseDirection;
 
@@ -58,37 +83,41 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int _randomInt;
         private float _randomFloat;
 
-        // Triggerパラメーター
-        private int _param_Blink = Animator.StringToHash("OnBlink");
-        private int _param_BlinkMembrane = Animator.StringToHash("OnBlinkMembrane");
-        private int _param_Collision = Animator.StringToHash("OnCollision");
-        // Boolパラメーター
-        private int _param_IsOwner = Animator.StringToHash("IsOwner");
-        private int _param_IsLocal = Animator.StringToHash("IsLocal");
-        private int _param_IsMount = Animator.StringToHash("IsMount");
-        private int _param_IsGrounded = Animator.StringToHash("IsGrounded");
-        private int _param_IsBrakes = Animator.StringToHash("IsBrakes");
-        private int _param_IsOverdrive = Animator.StringToHash("IsOverdrive");
-        private int _param_RandomBool = Animator.StringToHash("RandomBool");
-        // Intパラメーター
-        private int _param_State = Animator.StringToHash("State");
-        private int _param_RandomInt = Animator.StringToHash("RandomInt");
-        // Floatパラメーター
-        private int _param_Pitch = Animator.StringToHash("Pitch");
-        private int _param_Roll = Animator.StringToHash("Roll");
-        private int _param_NosePitch = Animator.StringToHash("NosePitch");
-        private int _param_NoseYaw = Animator.StringToHash("NoseYaw");
-        private int _param_VelocityX = Animator.StringToHash("VelocityX");
-        private int _param_VelocityY = Animator.StringToHash("VelocityY");
-        private int _param_VelocityZ = Animator.StringToHash("VelocityZ");
-        private int _param_VelocityMagnitude = Animator.StringToHash("VelocityMagnitude");
-        private int _param_Speed = Animator.StringToHash("Speed");
-        private int _param_AngularVelocityX = Animator.StringToHash("AngularVelocityX");
-        private int _param_AngularVelocityY = Animator.StringToHash("AngularVelocityY");
-        private int _param_AngularVelocityZ = Animator.StringToHash("AngularVelocityZ");
-        private int _param_AngularVelocityMagnitude = Animator.StringToHash("AngularVelocityMagnitude");
-        private int _param_AngularSpeed = Animator.StringToHash("AngularSpeed");
-        private int _param_RandomFloat = Animator.StringToHash("RandomFloat");
+        private int[] _parametersHash =
+        {
+            // Triggerパラメーター
+            Animator.StringToHash(DragonActorParameterName.OnBlink.ToString()),
+            Animator.StringToHash(DragonActorParameterName.OnBlinkMembrane.ToString()),
+            Animator.StringToHash(DragonActorParameterName.OnCollision.ToString()),
+            // Boolパラメーター
+            Animator.StringToHash(DragonActorParameterName.IsOwner.ToString()),
+            Animator.StringToHash(DragonActorParameterName.IsLocal.ToString()),
+            Animator.StringToHash(DragonActorParameterName.IsMount.ToString()),
+            Animator.StringToHash(DragonActorParameterName.IsGrounded.ToString()),
+            Animator.StringToHash(DragonActorParameterName.IsBrakes.ToString()),
+            Animator.StringToHash(DragonActorParameterName.IsOverdrive.ToString()),
+            Animator.StringToHash(DragonActorParameterName.RandomBool.ToString()),
+            // Intパラメーター
+            Animator.StringToHash(DragonActorParameterName.State.ToString()),
+            Animator.StringToHash(DragonActorParameterName.RandomInt.ToString()),
+            // Floatパラメーター
+            Animator.StringToHash(DragonActorParameterName.Pitch.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Roll.ToString()),
+            Animator.StringToHash(DragonActorParameterName.NosePitch.ToString()),
+            Animator.StringToHash(DragonActorParameterName.NoseYaw.ToString()),
+            Animator.StringToHash(DragonActorParameterName.VelocityX.ToString()),
+            Animator.StringToHash(DragonActorParameterName.VelocityY.ToString()),
+            Animator.StringToHash(DragonActorParameterName.VelocityZ.ToString()),
+            Animator.StringToHash(DragonActorParameterName.VelocityMagnitude.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Speed.ToString()),
+            Animator.StringToHash(DragonActorParameterName.AngularVelocityX.ToString()),
+            Animator.StringToHash(DragonActorParameterName.AngularVelocityY.ToString()),
+            Animator.StringToHash(DragonActorParameterName.AngularVelocityZ.ToString()),
+            Animator.StringToHash(DragonActorParameterName.AngularVelocityMagnitude.ToString()),
+            Animator.StringToHash(DragonActorParameterName.AngularSpeed.ToString()),
+            Animator.StringToHash(DragonActorParameterName.RandomFloat.ToString())
+        };
+        private bool[] _parametersValid;
 
         private bool _initialized = false;
         private void Initialize()
@@ -97,6 +126,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _animator = GetComponent<Animator>();
             _rigidbody = driver.GetComponent<Rigidbody>();
+
+            _parametersValid = ValidateParameters(_parametersHash, _animator);
 
             _initialized = true;
         }
@@ -116,7 +147,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             CalculateParameters();
             SetAnimatorParameters();
         }
-
 
         // Animator.applyRootMotionを強制的にオフにする
         private void OnAnimatorMove() { }
@@ -138,7 +168,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _TriggerBlink()
         {
-            _animator.SetTrigger(_param_Blink);
+            if (!_parametersValid[(int)DragonActorParameterName.OnBlink]) { return; }
+
+            _animator.SetTrigger(_parametersHash[(int)DragonActorParameterName.OnBlink]);
 
             var nextTiming = Random.Range(_blinkRateMin, _blinkRateMax);
             SendCustomEventDelayedSeconds(nameof(_TriggerBlink), nextTiming);
@@ -146,7 +178,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _TriggerBlinkMembrane()
         {
-            _animator.SetTrigger(_param_BlinkMembrane);
+            if (!_parametersValid[(int)DragonActorParameterName.OnBlinkMembrane]) { return; }
+
+            _animator.SetTrigger(_parametersHash[(int)DragonActorParameterName.OnBlinkMembrane]);
 
             var nextTiming = Random.Range(_blinkMembraneRateMin, _blinkMembraneRateMax);
             SendCustomEventDelayedSeconds(nameof(_TriggerBlinkMembrane), nextTiming);
@@ -155,8 +189,29 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _TriggerCollision()
         {
             if (!_initialized) { return; }
+            if (!_parametersValid[(int)DragonActorParameterName.OnCollision]) { return; }
 
-            _animator.SetTrigger(_param_Collision);
+            _animator.SetTrigger(_parametersHash[(int)DragonActorParameterName.OnCollision]);
+        }
+
+        static private bool[] ValidateParameters(int[] parametersHash, Animator animator)
+        {
+            var result = new bool[parametersHash.Length];
+
+            var parameters = animator.parameters;
+            for (int i = 0; i < result.Length; i++)
+            {
+                for (int j = 0; j < parameters.Length; j++)
+                {
+                    if (parametersHash[i] == parameters[j].nameHash)
+                    {
+                        result[i] = true;
+                        break;
+                    }
+                }
+            }
+
+            return result;
         }
 
         private void UpdateSyncParameters()
@@ -174,9 +229,9 @@ namespace MimyLab.DynamicDragonDriveSystem
                 RequestSerialization();
             }
 
-            if (sync_state != (byte)driver.State)
+            if (sync_state != driver.State)
             {
-                sync_state = (byte)driver.State;
+                sync_state = driver.State;
                 RequestSerialization();
             }
 
@@ -220,32 +275,32 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SetAnimatorParameters()
         {
-            _animator.SetBool(_param_IsOwner, _isOwner);
-            _animator.SetBool(_param_IsLocal, _isOwner);
-            _animator.SetBool(_param_IsMount, isMount);
-            _animator.SetBool(_param_IsGrounded, _isGrounded);
-            _animator.SetBool(_param_IsBrakes, sync_isBrakes);
-            _animator.SetBool(_param_IsOverdrive, sync_isOverdrive);
-            _animator.SetBool(_param_RandomBool, _randomBool);
+            if (_parametersValid[(int)DragonActorParameterName.IsOwner]) { _animator.SetBool(_parametersHash[(int)DragonActorParameterName.IsOwner], _isOwner); }
+            if (_parametersValid[(int)DragonActorParameterName.IsLocal]) _animator.SetBool(_parametersHash[(int)DragonActorParameterName.IsLocal], _isOwner);
+            if (_parametersValid[(int)DragonActorParameterName.IsMount]) _animator.SetBool(_parametersHash[(int)DragonActorParameterName.IsMount], isMount);
+            if (_parametersValid[(int)DragonActorParameterName.IsGrounded]) _animator.SetBool(_parametersHash[(int)DragonActorParameterName.IsGrounded], _isGrounded);
+            if (_parametersValid[(int)DragonActorParameterName.IsBrakes]) _animator.SetBool(_parametersHash[(int)DragonActorParameterName.IsBrakes], sync_isBrakes);
+            if (_parametersValid[(int)DragonActorParameterName.IsOverdrive]) _animator.SetBool(_parametersHash[(int)DragonActorParameterName.IsOverdrive], sync_isOverdrive);
+            if (_parametersValid[(int)DragonActorParameterName.RandomBool]) _animator.SetBool(_parametersHash[(int)DragonActorParameterName.RandomBool], _randomBool);
 
-            _animator.SetInteger(_param_State, (int)sync_state);
-            _animator.SetInteger(_param_RandomInt, _randomInt);
+            if (_parametersValid[(int)DragonActorParameterName.State]) _animator.SetInteger(_parametersHash[(int)DragonActorParameterName.State], sync_state);
+            if (_parametersValid[(int)DragonActorParameterName.RandomInt]) _animator.SetInteger(_parametersHash[(int)DragonActorParameterName.RandomInt], _randomInt);
 
-            _animator.SetFloat(_param_NosePitch, _noseDirection.x);
-            _animator.SetFloat(_param_NoseYaw, _noseDirection.y);
-            _animator.SetFloat(_param_Pitch, _pitch);
-            _animator.SetFloat(_param_Roll, _roll);
-            _animator.SetFloat(_param_VelocityX, _relativeVelocity.x);
-            _animator.SetFloat(_param_VelocityY, _relativeVelocity.y);
-            _animator.SetFloat(_param_VelocityZ, _relativeVelocity.z);
-            _animator.SetFloat(_param_VelocityMagnitude, _speed);
-            _animator.SetFloat(_param_Speed, _speed);
-            _animator.SetFloat(_param_AngularVelocityX, _relativeAngularVelocity.x);
-            _animator.SetFloat(_param_AngularVelocityY, _relativeAngularVelocity.y);
-            _animator.SetFloat(_param_AngularVelocityZ, _relativeAngularVelocity.z);
-            _animator.SetFloat(_param_AngularVelocityMagnitude, _angularSpeed);
-            _animator.SetFloat(_param_AngularSpeed, _angularSpeed);
-            _animator.SetFloat(_param_RandomFloat, _randomFloat);
+            if (_parametersValid[(int)DragonActorParameterName.NosePitch]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.NosePitch], _noseDirection.x);
+            if (_parametersValid[(int)DragonActorParameterName.NoseYaw]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.NoseYaw], _noseDirection.y);
+            if (_parametersValid[(int)DragonActorParameterName.Pitch]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Pitch], _pitch);
+            if (_parametersValid[(int)DragonActorParameterName.Roll]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Roll], _roll);
+            if (_parametersValid[(int)DragonActorParameterName.VelocityX]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.VelocityX], _relativeVelocity.x);
+            if (_parametersValid[(int)DragonActorParameterName.VelocityY]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.VelocityY], _relativeVelocity.y);
+            if (_parametersValid[(int)DragonActorParameterName.VelocityZ]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.VelocityZ], _relativeVelocity.z);
+            if (_parametersValid[(int)DragonActorParameterName.VelocityMagnitude]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.VelocityMagnitude], _speed);
+            if (_parametersValid[(int)DragonActorParameterName.Speed]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Speed], _speed);
+            if (_parametersValid[(int)DragonActorParameterName.AngularVelocityX]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularVelocityX], _relativeAngularVelocity.x);
+            if (_parametersValid[(int)DragonActorParameterName.AngularVelocityY]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularVelocityY], _relativeAngularVelocity.y);
+            if (_parametersValid[(int)DragonActorParameterName.AngularVelocityZ]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularVelocityZ], _relativeAngularVelocity.z);
+            if (_parametersValid[(int)DragonActorParameterName.AngularVelocityMagnitude]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularVelocityMagnitude], _angularSpeed);
+            if (_parametersValid[(int)DragonActorParameterName.AngularSpeed]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularSpeed], _angularSpeed);
+            if (_parametersValid[(int)DragonActorParameterName.RandomFloat]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.RandomFloat], _randomFloat);
         }
     }
 }

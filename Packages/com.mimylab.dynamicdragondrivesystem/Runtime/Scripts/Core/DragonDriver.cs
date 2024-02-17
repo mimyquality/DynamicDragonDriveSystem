@@ -28,7 +28,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
-    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider), typeof(VRCObjectSync))]
+    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]   //, typeof(VRCObjectSync)
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour
     {
@@ -107,6 +107,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private VRCObjectSync _objectSync;
 
         // 計算用
+        private bool _wasSleep = true;
         private Vector3 _velocity, _targetVelocity;
         private Quaternion _rotation, _noseRotation;
         private float _drag, _defaultDrag, _sqrSpeed;
@@ -189,7 +190,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             // 接地判定(ローカル処理)
             _isGrounded = CheckGrounded();
 
-            if (!Networking.IsOwner(this.gameObject)) { return; }
+            if (!Networking.IsOwner(this.gameObject))
+            {
+                FallSleep(_rigidbody.IsSleeping());
+                return;
+            }
+            // ここから駆動処理
 
             if (_isDrive)
             {
@@ -492,8 +498,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _rotation = calculateRotation * _rotation;
             _noseRotation = calculateRotation * _noseRotation;
 
-            var antiRollRotation = Quaternion.LookRotation(_rotation * Vector3.forward);
-            var turn = Vector3.Dot(antiRollRotation * Vector3.up, _rotation * Vector3.left);
+            var turn = Vector3.Dot(Vector3.up, _rotation * Vector3.left);
             turn *= Time.deltaTime * _rollSpeed * _rollToTurnRatio;
             // 本体を旋回
             calculateRotation = Quaternion.AngleAxis(sign * turn, Vector3.up);
@@ -582,6 +587,21 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             return false;
         }
+
+        private void FallSleep(bool isSleep)
+        {
+            if (_wasSleep != isSleep)
+            {
+                if (isSleep)
+                {
+                    velocity = Vector3.zero;
+                    angularVelocity = Vector3.zero;
+                }
+
+                _wasSleep = isSleep;
+            }
+        }
+
         private float SetDrag(float sqrSpeed)
         {
             if (sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold)
