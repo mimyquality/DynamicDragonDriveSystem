@@ -4,11 +4,16 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.8.4] - 2024/2/18
+
+- **Fixed**
+  - DragonActorの同期負荷を見直し最適化
+
 ## [0.8.3] - 2024/2/17
 
 - **Fixed**
   - 高速飛行時、真上・真下を向いたときに過剰に横旋回が効くのを修正
-  - Animatorに存在しないパラメーターを無視するように修正
+  - DragonActorがAnimatorに存在しないパラメーターを無視するように修正
 
 ## [0.8.2] - 2024/2/16
 
@@ -248,6 +253,7 @@
 - **Added**
   - VPM化
 
+[0.8.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.4
 [0.8.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.3
 [0.8.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.2
 [0.8.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.1

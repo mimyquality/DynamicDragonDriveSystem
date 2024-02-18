@@ -28,7 +28,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
-    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]   //, typeof(VRCObjectSync)
+    [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync), typeof(SphereCollider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour
     {
@@ -84,7 +84,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("m/s"), Min(0.0f)]
         private float _accelerateLimit = 5.0f;
         [SerializeField, Tooltip("m/s")]
-        private float _jumpSpeed = 8.0f;
+        private float _jumpImpulse = 8.0f;
         [SerializeField, Min(0.0f)]
         private float _brakePower = 2.0f;
         [SerializeField]
@@ -130,6 +130,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
         public int State { get => (int)_state; }
+        public Vector3 NoseDirection { get => Quaternion.Inverse(_rotation) * _noseRotation * Vector3.forward; }
         public Quaternion NoseRotation { get => _noseRotation; }
 
         // Saddle受け取り用
@@ -157,6 +158,19 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _isDrive = value;
             }
         }
+
+        // パラメーター後調整用
+        public float Acceleration { set => _acceleration = Mathf.Max(value, 0.0f); }
+        public float MaxSpeed { set => _maxSpeed = Mathf.Max(value, 0.0f); }
+        public float MaxWalkSpeed { set => _maxWalkSpeed = Mathf.Max(value, 0.0f); }
+        public float HoveringSpeedThreshold { set => _hoveringSpeedThreshold = Mathf.Max(value, 0.0f); }
+        public float UpdownSpeed { set => _updownSpeed = Mathf.Max(value, 0.0f); }
+        public float RollSpeed { set => _rollSpeed = Mathf.Max(value, 0.0f); }
+        public float RollToTurnRatio { set => _rollToTurnRatio = Mathf.Clamp(value, 0.0f, 2.0f); }
+        public float NoseRotateSpeed { set => _noseRotateSpeed = Mathf.Max(value, 0.0f); }
+        public float MaxNosePitch { set => _maxNosePitch = Mathf.Clamp(value, 0.0f, 89.0f); }
+        public float MaxNoseYaw { set => _maxNoseYaw = Mathf.Clamp(value, 0.0f, 89.0f); }
+        public float JumpImpulse { set => _jumpImpulse = Mathf.Max(value, 0.0f); }
 
         private bool _initialized = false;
         private void Initialize()
@@ -274,7 +288,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_isGrounded)
             {
-                _rigidbody.AddForce(_jumpSpeed * Vector3.up, ForceMode.VelocityChange);
+                _rigidbody.AddForce(_jumpImpulse * Vector3.up, ForceMode.VelocityChange);
             }
             else
             {

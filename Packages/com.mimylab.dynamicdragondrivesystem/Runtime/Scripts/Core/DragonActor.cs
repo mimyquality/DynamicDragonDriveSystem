@@ -9,6 +9,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
+    using VRC.Udon.Common;
+
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
@@ -45,7 +47,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonActor : UdonSharpBehaviour
     {
-        private const float SmoothingDuration = 0.1f;
+        private const float SmoothingDuration = 0.1f;   // 単位：sec
+        private const float AngleSyncTolerance = 0.1f; // 単位：°
 
         internal DragonDriver driver;
         internal bool isMount;
@@ -240,7 +243,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             _noseDirection.x = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.left);
             axisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.up);
             _noseDirection.y = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.up);
-            if (sync_noseDirection != _noseDirection)
+            if (!((Mathf.Abs(sync_noseDirection.x - _noseDirection.x) < AngleSyncTolerance)
+               && (Mathf.Abs(sync_noseDirection.y - _noseDirection.y) < AngleSyncTolerance)))
             {
                 sync_noseDirection = _noseDirection;
                 RequestSerialization();
