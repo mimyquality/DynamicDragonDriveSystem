@@ -25,6 +25,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private Vector3 _minSeatAdjustment = new Vector3(0.0f, -0.3f, -0.3f);
 
+        [Space]
+        [SerializeField]
+        private Transform _snapPoint;
+
         [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
         private Vector3 _adjustPoint;
         public Vector3 AdjustPoint
@@ -75,6 +79,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _isMount = false;
         private float _adjustSpeed = 0.5f;  // m/s
         private Vector3 _localAdjustPoint;
+        private Transform _defaultParent;
+        private Vector3 _defaultPosition;
+        private Quaternion _defaultRotation;
 
         private bool _initialized = false;
         private void Initialize()
@@ -86,6 +93,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             _enterPoint = _station.stationEnterPlayerLocation ? _station.stationEnterPlayerLocation : _station.transform;
             _localAdjustPoint = _enterPoint.localPosition;
 
+            _defaultParent = transform.parent;
+            _defaultPosition = transform.localPosition;
+            _defaultRotation = transform.localRotation;
+
             _station.PlayerMobility = VRCStation.Mobility.ImmobilizeForVehicle;
             _station.canUseStationFromStation = false;
             _station.disableStationExit = true;
@@ -94,10 +105,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _initialized = true;
         }
-        private void Start()
+        protected virtual void Start()
         {
             Initialize();
-            PostStart();
         }
 
         public override void Interact()
@@ -119,6 +129,11 @@ namespace MimyLab.DynamicDragonDriveSystem
 
                 OnLocalPlayerMounted();
             }
+            else if (_snapPoint)
+            {
+                transform.SetParent(_snapPoint);
+                transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            }
         }
 
         public override void OnStationExited(VRCPlayerApi player)
@@ -134,6 +149,11 @@ namespace MimyLab.DynamicDragonDriveSystem
                 this.DisableInteractive = false;
 
                 OnLocalPlayerUnmounted();
+            }
+            else if (_snapPoint)
+            {
+                transform.SetParent(_defaultParent);
+                transform.SetLocalPositionAndRotation(_defaultPosition, _defaultRotation);
             }
         }
 

@@ -2,6 +2,7 @@
     "name": "DynamicDragonDriveSystem",
     "rootNamespace": "",
     "references": [
+        "Unity.TextMeshPro",
         "VRC.Udon",
         "VRC.Udon.Serialization.OdinSerializer",
         "UdonSharp.Runtime",

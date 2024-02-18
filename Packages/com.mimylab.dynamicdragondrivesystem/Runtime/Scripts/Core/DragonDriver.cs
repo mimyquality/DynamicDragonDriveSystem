@@ -131,7 +131,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsOverdrive { get => _isOverdrive; }
         public int State { get => (int)_state; }
         public Vector3 NoseDirection { get => Quaternion.Inverse(_rotation) * _noseRotation * Vector3.forward; }
-        public Quaternion NoseRotation { get => _noseRotation; }
 
         // Saddle受け取り用
         public bool IsDrive
@@ -160,17 +159,17 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         // パラメーター後調整用
-        public float Acceleration { set => _acceleration = Mathf.Max(value, 0.0f); }
-        public float MaxSpeed { set => _maxSpeed = Mathf.Max(value, 0.0f); }
-        public float MaxWalkSpeed { set => _maxWalkSpeed = Mathf.Max(value, 0.0f); }
-        public float HoveringSpeedThreshold { set => _hoveringSpeedThreshold = Mathf.Max(value, 0.0f); }
-        public float UpdownSpeed { set => _updownSpeed = Mathf.Max(value, 0.0f); }
-        public float RollSpeed { set => _rollSpeed = Mathf.Max(value, 0.0f); }
-        public float RollToTurnRatio { set => _rollToTurnRatio = Mathf.Clamp(value, 0.0f, 2.0f); }
-        public float NoseRotateSpeed { set => _noseRotateSpeed = Mathf.Max(value, 0.0f); }
-        public float MaxNosePitch { set => _maxNosePitch = Mathf.Clamp(value, 0.0f, 89.0f); }
-        public float MaxNoseYaw { set => _maxNoseYaw = Mathf.Clamp(value, 0.0f, 89.0f); }
-        public float JumpImpulse { set => _jumpImpulse = Mathf.Max(value, 0.0f); }
+        public float Acceleration { get => _acceleration; set => _acceleration = Mathf.Max(value, 0.0f); }
+        public float MaxSpeed { get => _maxSpeed; set => _maxSpeed = Mathf.Max(value, 0.0f); }
+        public float MaxWalkSpeed { get => _maxWalkSpeed; set => _maxWalkSpeed = Mathf.Max(value, 0.0f); }
+        public float HoveringSpeedThreshold { get => _hoveringSpeedThreshold; set => _hoveringSpeedThreshold = Mathf.Max(value, 0.0f); }
+        public float UpdownSpeed { get => _updownSpeed; set => _updownSpeed = Mathf.Max(value, 0.0f); }
+        public float RollSpeed { get => _rollSpeed; set => _rollSpeed = Mathf.Max(value, 0.0f); }
+        public float RollToTurnRatio { get => _rollToTurnRatio; set => _rollToTurnRatio = Mathf.Clamp(value, 0.0f, 2.0f); }
+        public float NoseRotateSpeed { get => _noseRotateSpeed; set => _noseRotateSpeed = Mathf.Max(value, 0.0f); }
+        public float MaxNosePitch { get => _maxNosePitch; set => _maxNosePitch = Mathf.Clamp(value, 0.0f, 89.0f); }
+        public float MaxNoseYaw { get => _maxNoseYaw; set => _maxNoseYaw = Mathf.Clamp(value, 0.0f, 89.0f); }
+        public float JumpImpulse { get => _jumpImpulse; set => _jumpImpulse = Mathf.Max(value, 0.0f); }
 
         private bool _initialized = false;
         private void Initialize()

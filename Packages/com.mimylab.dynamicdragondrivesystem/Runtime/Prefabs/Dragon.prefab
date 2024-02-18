@@ -123,10 +123,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 199909266594195303}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 231703
-  _slopeLimit: 45
+  _collisionTriggerVelocity: 8
+  _collisionIncidenceAngle: 60
 --- !u!114 &199909266594195303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +173,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 7994871193463562907}
+  velocity: {x: 0, y: 0, z: 0}
+  angularVelocity: {x: 0, y: 0, z: 0}
   _acceleration: 5
   _maxSpeed: 56
   _maxWalkSpeed: 16
@@ -193,8 +193,12 @@ MonoBehaviour:
   _landingSpeed: 60
   _enabledState: 15
   _accelerateLimit: 5
-  _jumpSpeed: 8
+  _jumpImpulse: 8
   _brakePower: 2
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 231703
+  _slopeLimit: 45
 --- !u!114 &7994871193463562907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7489349567574465796, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489349567574465796, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -261,6 +270,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7489349567574465799, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
         type: 3}
+    - target: {fileID: 9129634733340733001, guid: 8f245ab94c6e4d447b0bd44df5ba3f07,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -294,7 +308,7 @@ PrefabInstance:
     - target: {fileID: 1993751110710279872, guid: 37a0d0dfb6739e1419edf6aa5095c493,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1993751110710279872, guid: 37a0d0dfb6739e1419edf6aa5095c493,
         type: 3}
@@ -326,6 +340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TandemSeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8439238779504455493, guid: 37a0d0dfb6739e1419edf6aa5095c493,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

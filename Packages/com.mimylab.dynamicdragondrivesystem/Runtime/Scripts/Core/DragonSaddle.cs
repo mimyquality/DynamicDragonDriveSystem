@@ -19,8 +19,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal DragonActor actor;
         internal DragonReins reins;
 
-        protected override void PostStart()
+        protected override void Start()
         {
+            base.Start();
             _seatInput.disabledAdjustLock = true;
             EnabledAdjust = false;
         }

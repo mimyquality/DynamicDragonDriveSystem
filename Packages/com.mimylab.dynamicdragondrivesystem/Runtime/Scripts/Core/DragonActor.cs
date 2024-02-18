@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    using VRC.Udon.Common;
-
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
@@ -238,7 +236,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 RequestSerialization();
             }
 
-            var noseForward = Quaternion.Inverse(_rotation) * driver.NoseRotation * Vector3.forward;
+            var noseForward = driver.NoseDirection;
             var axisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.left);
             _noseDirection.x = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.left);
             axisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.up);
