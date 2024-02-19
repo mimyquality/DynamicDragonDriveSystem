@@ -268,8 +268,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             level = Quaternion.LookRotation(forward) * Vector3.up;
             _roll = Vector3.SignedAngle(level, up, forward);
 
-            _relativeVelocity = Quaternion.Inverse(_rotation) * driver.velocity;
-            _relativeAngularVelocity = Quaternion.Inverse(_rotation) * driver.angularVelocity;
+            _relativeVelocity = Quaternion.Inverse(_rotation) * driver.Velocity;
+            _relativeAngularVelocity = Quaternion.Inverse(_rotation) * driver.AngularVelocity;
 
             _speed = _relativeVelocity.magnitude;
             _angularSpeed = _relativeAngularVelocity.magnitude;

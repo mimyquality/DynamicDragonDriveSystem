@@ -32,11 +32,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour
     {
-        [HideInInspector, UdonSynced(UdonSyncMode.Linear)]
-        public Vector3 velocity;
-        [HideInInspector, UdonSynced(UdonSyncMode.Linear)]
-        public Vector3 angularVelocity;
-
         [Header("Speed settings")]
         [SerializeField, Tooltip("m/s^2")]
         private float _acceleration = 5.0f;
@@ -101,13 +96,19 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
         private float _slopeLimit = 45.0f;
 
+
+        [UdonSynced(UdonSyncMode.Linear)]
+        private Vector3 sync_velocity;
+        [UdonSynced(UdonSyncMode.Linear)]
+        private Vector3 sync_angularVelocity;
+
         // コンポーネント
         private Rigidbody _rigidbody;
         private SphereCollider _collider;
         private VRCObjectSync _objectSync;
 
         // 計算用
-        private bool _wasSleep = true;
+        private bool _isSleeping = true;
         private Vector3 _velocity, _targetVelocity;
         private Quaternion _rotation, _noseRotation;
         private float _drag, _defaultDrag, _sqrSpeed;
@@ -130,6 +131,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
         public int State { get => (int)_state; }
+        public Vector3 Velocity { get => _isSleeping ? Vector3.zero : sync_velocity; }
+        public Vector3 AngularVelocity { get => _isSleeping ? Vector3.zero : sync_angularVelocity; }
         public Vector3 NoseDirection { get => Quaternion.Inverse(_rotation) * _noseRotation * Vector3.forward; }
 
         // Saddle受け取り用
@@ -200,14 +203,11 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void FixedUpdate()
         {
-            // 接地判定(ローカル処理)
+            // ローカル処理
+            _isSleeping = _rigidbody.IsSleeping();
             _isGrounded = CheckGrounded();
 
-            if (!Networking.IsOwner(this.gameObject))
-            {
-                FallSleep(_rigidbody.IsSleeping());
-                return;
-            }
+            if (!Networking.IsOwner(this.gameObject)) { return; }
             // ここから駆動処理
 
             if (_isDrive)
@@ -236,8 +236,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
 
             // 同期
-            velocity = _rigidbody.velocity;
-            angularVelocity = _rigidbody.angularVelocity;
+            sync_velocity = _rigidbody.velocity;
+            sync_angularVelocity = _rigidbody.angularVelocity;
         }
 
         /******************************
@@ -599,20 +599,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             { return Vector3.Angle(Vector3.up, _groundInfo.normal) < _slopeLimit; }
 
             return false;
-        }
-
-        private void FallSleep(bool isSleep)
-        {
-            if (_wasSleep != isSleep)
-            {
-                if (isSleep)
-                {
-                    velocity = Vector3.zero;
-                    angularVelocity = Vector3.zero;
-                }
-
-                _wasSleep = isSleep;
-            }
         }
 
         private float SetDrag(float sqrSpeed)

@@ -41,7 +41,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!Utilities.IsValid(other)) { return; }
             if (!Utilities.IsValid(other.collider)) { return; }
 
-            if (_driver.velocity.sqrMagnitude < _collisionTriggerVelocity * _collisionTriggerVelocity) { return; }
+            if (_driver.Velocity.sqrMagnitude < _collisionTriggerVelocity * _collisionTriggerVelocity) { return; }
             for (int i = 0; i < other.contactCount; i++)
             {
                 if (Vector3.Angle(_rigidbody.rotation * Vector3.up, other.contacts[0].normal) < _collisionIncidenceAngle)
