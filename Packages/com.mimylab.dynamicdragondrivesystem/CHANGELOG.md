@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.9.1] - 2024/2/20
+
+- **Fixed**
+  - velocity/angularVelocityの受け渡し処理を見直し
+  - 誰も乗っていない時にドラゴンの状態が更新されないのを修正
+
 ## [0.9.0] - 2024/2/18
 
 - **Added**
@@ -259,6 +265,7 @@
 - **Added**
   - VPM化
 
+[0.9.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.1
 [0.9.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.0
 [0.8.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.4
 [0.8.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.8.3

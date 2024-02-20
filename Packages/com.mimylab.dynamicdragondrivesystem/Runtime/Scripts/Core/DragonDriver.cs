@@ -152,11 +152,14 @@ namespace MimyLab.DynamicDragonDriveSystem
                     _InputEmergencyBrakes(false);
                     _InputOverdrive(false);
 
+                    var horizontalForward = Vector3.ProjectOnPlane(_rotation * Vector3.forward, Vector3.up);
+                    _rotation = Quaternion.LookRotation(horizontalForward);
+                    _rigidbody.rotation = _rotation;
+
                     _targetVelocity = Vector3.zero;
                     _rigidbody.velocity = Vector3.zero;
                 }
 
-                _noseRotation = _rigidbody.rotation;
                 _isDrive = value;
             }
         }
@@ -208,19 +211,18 @@ namespace MimyLab.DynamicDragonDriveSystem
             _isGrounded = CheckGrounded();
 
             if (!Networking.IsOwner(this.gameObject)) { return; }
-            // ここから駆動処理
+
+            // 現状を算出
+            _velocity = _rigidbody.velocity;
+            _sqrSpeed = _velocity.sqrMagnitude;
+            _rotation = _rigidbody.rotation;
+            // _noseRotation = _noseRotation;
+            _state = DecideOnState();
 
             if (_isDrive)
             {
-                // 現状を算出
-                _velocity = _rigidbody.velocity;
-                _sqrSpeed = _velocity.sqrMagnitude;
-                _rotation = _rigidbody.rotation;
-                // _noseRotation = _noseRotation;
-                if (_isGrounded) { _isWalking = true; }
-
-                // 状態に合わせたRigidbodyの計算
-                switch (_state = DecideOnState())
+                // 状態に合わせた駆動処理
+                switch (_state)
                 {
                     case DragonDriverStateType.Walking: Walking(); break;
                     case DragonDriverStateType.Hovering: Hovering(); break;
@@ -233,6 +235,10 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _rigidbody.drag = _drag;
                 _rigidbody.rotation = _rotation;
                 _rigidbody.velocity = _velocity;
+            }
+            else
+            {
+                _noseRotation = _rotation;
             }
 
             // 同期
@@ -300,39 +306,52 @@ namespace MimyLab.DynamicDragonDriveSystem
          ******************************/
         private DragonDriverStateType DecideOnState()
         {
-            if (_isBrakes) { return DragonDriverStateType.Brakes; }
+            if (_isGrounded) { _isWalking = true; }
+
+            if (_isBrakes)
+            {
+                _drag = _brakePower;
+                _objectSync.SetGravity(false);
+                return DragonDriverStateType.Brakes;
+            }
 
             if (_isOverdrive && ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
             {
+                _drag = _defaultDrag;
+                _objectSync.SetGravity(false);
                 return DragonDriverStateType.Overdrive;
             }
 
             if (_isWalking && (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Landing) > 0))
             {
+                _drag = SetDrag(_sqrSpeed);
+                _objectSync.SetGravity(true);
                 return DragonDriverStateType.Walking;
             }
 
             if ((_sqrSpeed > _hoveringSpeedThreshold * _hoveringSpeedThreshold) &&
                 ((int)_enabledState & (int)DragonDriverEnabledStateSelect.Flight) > 0)
             {
+                _drag = SetDrag(_sqrSpeed);
+                _objectSync.SetGravity(false);
                 if (_gazeRotation != Quaternion.identity) { return DragonDriverStateType.Hovering; }
-
                 return DragonDriverStateType.Flight;
             }
 
             if (((int)_enabledState & (int)DragonDriverEnabledStateSelect.Hovering) > 0)
             {
+                _drag = SetDrag(_sqrSpeed);
+                _objectSync.SetGravity(false);
                 return DragonDriverStateType.Hovering;
             }
 
+            _drag = SetDrag(_sqrSpeed);
+            _objectSync.SetGravity(true);
             return default;
         }
 
         private void Walking()
         {
-            _drag = SetDrag(_sqrSpeed);
-            _objectSync.SetGravity(true);
-
             // 自動バランサー制御
             var horizontalForward = Vector3.ProjectOnPlane(_rotation * Vector3.forward, Vector3.up);
             var horizontalRotation = Quaternion.LookRotation(horizontalForward);
@@ -402,9 +421,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Hovering()
         {
-            _drag = SetDrag(_sqrSpeed);
-            _objectSync.SetGravity(false);
-
             // 自動バランサー制御
             var forward = _rotation * Vector3.forward;
             var noseDirection = _noseRotation * Vector3.forward;
@@ -467,9 +483,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Flight()
         {
-            _drag = SetDrag(_sqrSpeed);
-            _objectSync.SetGravity(false);
-
             // 自動バランサー制御
             var noseDirection = _noseRotation * Vector3.forward;
             var targetRotation = Quaternion.FromToRotation(_rotation * Vector3.forward, noseDirection) * _rotation;
@@ -534,9 +547,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Brakes()
         {
-            _drag = _brakePower;
-            _objectSync.SetGravity(false);
-
             // 自動バランサー制御            
             var forward = _rotation * Vector3.forward;
             var noseDirection = _noseRotation * Vector3.forward;
@@ -572,13 +582,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             //_velocity += Time.deltaTime * _acceleration * (_noseRotation * _targetVelocity - _velocity);
         }
 
-        private void Overdrive()
-        {
-            _drag = _defaultDrag;
-            _objectSync.SetGravity(false);
-
-
-        }
+        private void Overdrive() { }
 
         /******************************
          その他内部処理
