@@ -40,7 +40,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("m/s")]
         private float _maxWalkSpeed = 16.0f;
         [SerializeField, Tooltip("m/s")]
-        private float _hoveringSpeedThreshold = 12.0f;
+        private float _hoveringSpeedThreshold = 15.0f;
         [SerializeField, Tooltip("m/s")]
         private float _stillSpeedThreshold = 3.0f;
         [SerializeField, Min(0.0f)]

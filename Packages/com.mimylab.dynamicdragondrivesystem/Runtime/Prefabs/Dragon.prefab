@@ -173,12 +173,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 7994871193463562907}
-  velocity: {x: 0, y: 0, z: 0}
-  angularVelocity: {x: 0, y: 0, z: 0}
   _acceleration: 5
   _maxSpeed: 56
   _maxWalkSpeed: 16
-  _hoveringSpeedThreshold: 12
+  _hoveringSpeedThreshold: 15
   _stillSpeedThreshold: 3
   _stillDrag: 1
   _updownSpeed: 45
@@ -191,7 +189,7 @@ MonoBehaviour:
   _centerSnapTolerance: 5
   _stateShiftSpeed: 20
   _landingSpeed: 60
-  _enabledState: 15
+  _enabledState: 7
   _accelerateLimit: 5
   _jumpImpulse: 8
   _brakePower: 2

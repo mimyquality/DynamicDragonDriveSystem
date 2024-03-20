@@ -206,7 +206,8 @@
         "com.unity.mathematics": "1.2.6",
         "com.unity.nuget.newtonsoft-json": "3.2.1",
         "com.unity.xr.management": "4.3.3",
-        "com.unity.xr.oculus": "4.0.0"
+        "com.unity.xr.oculus": "4.0.0",
+        "com.unity.postprocessing": "3.2.2"
       }
     },
     "com.vrchat.core.bootstrap": {
@@ -231,7 +232,6 @@
       "source": "embedded",
       "dependencies": {
         "com.unity.cinemachine": "2.9.7",
-        "com.unity.postprocessing": "3.2.2",
         "com.unity.textmeshpro": "3.0.6",
         "com.unity.inputsystem": "1.2.0"
       }
@@ -267,13 +267,6 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
-    },
-    "s-ilent.filamented": {
-      "version": "https://gitlab.com/s-ilent/filamented.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "6031c99ce328714d52a6f49416b3acae9fd255a4"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
