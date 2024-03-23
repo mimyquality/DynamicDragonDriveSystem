@@ -21,14 +21,14 @@
     "dev.onevr.vrworldtoolkit": {
       "version": "3.0.1"
     },
-    "com.mimylab.fukuroudon": {
-      "version": "1.13.3"
-    },
     "jp.whiteflare.unlitwf": {
       "version": "1.12.0"
     },
     "jp.whiteflare.unlitwf.texpack": {
       "version": "1.1.3"
+    },
+    "com.mimylab.fukuroudon": {
+      "version": "1.14.1"
     }
   },
   "locked": {
@@ -67,12 +67,6 @@
       "version": "3.0.1",
       "dependencies": {}
     },
-    "com.mimylab.fukuroudon": {
-      "version": "1.13.3",
-      "dependencies": {
-        "com.vrchat.worlds": "^3.2.2"
-      }
-    },
     "jp.whiteflare.unlitwf": {
       "version": "1.12.0",
       "dependencies": {
@@ -82,6 +76,12 @@
     "jp.whiteflare.unlitwf.texpack": {
       "version": "1.1.3",
       "dependencies": {}
+    },
+    "com.mimylab.fukuroudon": {
+      "version": "1.14.1",
+      "dependencies": {
+        "com.vrchat.worlds": "^3.2.2"
+      }
     }
   }
 }
