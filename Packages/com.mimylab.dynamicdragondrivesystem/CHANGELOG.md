@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.10.0] - 2024/3/31
+
+- **Added**
+  - `Splash Effect by Player` と `Splash Effect by Dragon` を追加
+  - ↑のサンプルプレハブを追加
+
 ## [0.9.2] - 2024/3/20
 
 - **Fixed**
@@ -271,6 +277,7 @@
 - **Added**
   - VPM化
 
+[0.10.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.0
 [0.9.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.2
 [0.9.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.1
 [0.9.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.0
