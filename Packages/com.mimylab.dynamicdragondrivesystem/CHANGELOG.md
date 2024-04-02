@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.10.1] - 2024/4/2
+
+- **Changed**
+  - Splash Effectの法面(Normal)指定をローカル座標からの計算に変更
+
 ## [0.10.0] - 2024/3/31
 
 - **Added**
@@ -277,6 +282,7 @@
 - **Added**
   - VPM化
 
+[0.10.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.1
 [0.10.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.0
 [0.9.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.2
 [0.9.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.1

@@ -85,7 +85,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
 
             // 進入方向と速度のバリデーション
-            if (_isNormalCheck && Vector3.Angle(_normal, collideeVelocity) <= 90.0f) { return; }
+            var worldNormal = this.transform.TransformDirection(_normal);
+            if (_isNormalCheck && Vector3.Angle(worldNormal, collideeVelocity) <= 90.0f) { return; }
 
             var collideeSpeed = collideeVelocity.sqrMagnitude;
             if (_highEffectPrefab && _highSplashSpeed * _highSplashSpeed <= collideeSpeed)
