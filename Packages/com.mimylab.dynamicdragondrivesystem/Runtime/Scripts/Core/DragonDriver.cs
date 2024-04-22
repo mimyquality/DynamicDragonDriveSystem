@@ -96,10 +96,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("degree"), Range(0.0f, 89.9f)]
         private float _slopeLimit = 45.0f;
 
-
-        [UdonSynced(UdonSyncMode.Linear)]
+        [UdonSynced]
         private Vector3 sync_velocity;
-        [UdonSynced(UdonSyncMode.Linear)]
+        [UdonSynced]
         private Vector3 sync_angularVelocity;
 
         // コンポーネント

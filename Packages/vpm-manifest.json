@@ -68,17 +68,17 @@
       }
     },
     "com.vrchat.worlds": {
-      "version": "3.5.1",
+      "version": "3.5.2",
       "dependencies": {
-        "com.vrchat.base": "3.5.1"
+        "com.vrchat.base": "3.5.2"
       }
     },
     "com.vrchat.base": {
-      "version": "3.5.1",
+      "version": "3.5.2",
       "dependencies": {}
     },
     "com.mimylab.fukuroudon": {
-      "version": "1.18.0",
+      "version": "1.18.1",
       "dependencies": {
         "com.vrchat.worlds": "^3.2.2"
       }

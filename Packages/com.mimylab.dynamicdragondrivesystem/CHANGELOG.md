@@ -4,6 +4,14 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.10.3] - 2024/4/22
+
+- **Added**
+  - ワールド設置用の操作手順書Prefabを同梱
+
+- **Fixed**
+  - ドラゴンの設置量が多いと通信負荷が跳ね上がるのを対策
+
 ## [0.10.2] - 2024/4/2
 
 - **Changed**
@@ -283,6 +291,7 @@
 - **Added**
   - VPM化
 
+[0.10.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.3
 [0.10.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.2
 [0.10.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.0
 [0.9.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.9.2
