@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.10.4] - 2024/4/23
+
+- **Fixed**
+  - Input Configのダブり対策
+
 ## [0.10.3] - 2024/4/22
 
 - **Added**
@@ -291,6 +296,7 @@
 - **Added**
   - VPM化
 
+[0.10.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.4
 [0.10.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.3
 [0.10.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.2
 [0.10.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.0
