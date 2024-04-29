@@ -75,7 +75,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private bool _isOwner, _isGrounded;
         private Vector2 _noseDirection;
-        private Vector2 _noseVelocity;
         private float _pitch, _roll;
         private Vector3 _relativeVelocity;
         private Vector3 _relativeAngularVelocity;
@@ -236,11 +235,9 @@ namespace MimyLab.DynamicDragonDriveSystem
                 RequestSerialization();
             }
 
-            var noseForward = driver.NoseDirection;
-            var axisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.left);
-            _noseDirection.x = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.left);
-            axisDirection = Vector3.ProjectOnPlane(noseForward, Vector3.up);
-            _noseDirection.y = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.up);
+            var noseDirection = driver.NoseDirection;
+            _noseDirection.x = -noseDirection.x;
+            _noseDirection.y = noseDirection.y;
             if (!((Mathf.Abs(sync_noseDirection.x - _noseDirection.x) < AngleSyncTolerance)
                && (Mathf.Abs(sync_noseDirection.y - _noseDirection.y) < AngleSyncTolerance)))
             {
@@ -255,7 +252,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (!_isOwner)
             {
-                _noseDirection = Vector2.SmoothDamp(_noseDirection, sync_noseDirection, ref _noseVelocity, SmoothingDuration);
+                _noseDirection = Vector2.MoveTowards(_noseDirection, sync_noseDirection, Time.deltaTime * driver.NoseRotateSpeed);
             }
 
             var forward = _rotation * Vector3.forward;

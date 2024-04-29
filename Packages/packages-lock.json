@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "centauricore.networkdebugger": {
+      "version": "file:centauricore.networkdebugger",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.dreadscripts.controllereditor": {
       "version": "file:com.dreadscripts.controllereditor",
       "depth": 0,

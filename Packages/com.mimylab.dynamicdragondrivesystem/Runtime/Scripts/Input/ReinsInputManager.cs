@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         internal DragonDriver driver;
 
-        protected float _thrust, _lift, _lateral;
+        protected float _thrust, _climb, _strafe;
         protected float _elevator, _ladder, _aileron;
         protected bool _brakes, _turbo;
 
@@ -85,7 +85,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Rotate = Vector3.zero;
             EmergencyBreakes = false;
             Overdrive = false;
-            driver._InputGazeRotate(Quaternion.identity);
+            driver._InputDirectRotate(Vector3.zero);
         }
 
         private void Update()
@@ -94,7 +94,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             InputKey();
 
-            Accelerate = new Vector3(_lateral, _lift, _thrust);
+            Accelerate = new Vector3(_strafe, _climb, _thrust);
             Rotate = new Vector3(_elevator, _ladder, _aileron);
             EmergencyBreakes = _brakes;
             Overdrive = _turbo;

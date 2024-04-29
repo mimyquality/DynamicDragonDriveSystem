@@ -13,7 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class SeatInputManager : UdonSharpBehaviour
     {
         private const float DoubleTapDuration = 0.2f;   // 単位：sec
@@ -75,6 +75,11 @@ namespace MimyLab.DynamicDragonDriveSystem
 
                 _lockedAdjust = value;
             }
+        }
+
+        private void OnDisable()
+        {
+            _inputAdjust = Vector3.zero;
         }
 
         private void Start()

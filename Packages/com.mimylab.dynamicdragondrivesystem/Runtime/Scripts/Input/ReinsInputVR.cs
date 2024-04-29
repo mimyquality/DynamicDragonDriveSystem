@@ -82,8 +82,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             //_turbo = 
 
             _thrust = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.z : _rightGrabMove.z;
-            //_lift = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.y : _rightGrabMove.y;
-            //_lateral = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.x : _rightGrabMove.x;
+            //_climb = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.y : _rightGrabMove.y;
+            //_strafe = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.x : _rightGrabMove.x;
 
             _elevator = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
             _elevator = Mathf.Clamp(_elevator / _rotateRatio, -1.0f, 1.0f);
