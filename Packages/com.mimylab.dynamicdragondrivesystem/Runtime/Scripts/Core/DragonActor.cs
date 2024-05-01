@@ -45,8 +45,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonActor : UdonSharpBehaviour
     {
-        private const float SmoothingDuration = 0.1f;   // 単位：sec
         private const float AngleSyncTolerance = 0.1f; // 単位：°
+        private const float SmoothingDuration = 0.07f;   // 単位：sec
 
         internal DragonDriver driver;
         internal bool isMount;
@@ -67,14 +67,16 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced]
         private int sync_state;
         [UdonSynced]
-        private Vector2 sync_noseDirection;
+        private Vector3 sync_noseAngles;
 
         private Animator _animator;
         private Rigidbody _rigidbody;
         private Quaternion _rotation;
 
         private bool _isOwner, _isGrounded;
-        private Vector2 _noseDirection;
+        private Vector3 _noseAngles;
+        private float _groundedNoseAngle;
+        private float _groundedAngleVelocity;
         private float _pitch, _roll;
         private Vector3 _relativeVelocity;
         private Vector3 _relativeAngularVelocity;
@@ -235,13 +237,14 @@ namespace MimyLab.DynamicDragonDriveSystem
                 RequestSerialization();
             }
 
-            var noseDirection = driver.NoseDirection;
-            _noseDirection.x = -noseDirection.x;
-            _noseDirection.y = noseDirection.y;
-            if (!((Mathf.Abs(sync_noseDirection.x - _noseDirection.x) < AngleSyncTolerance)
-               && (Mathf.Abs(sync_noseDirection.y - _noseDirection.y) < AngleSyncTolerance)))
+            var noseAngles = driver.NoseAngles;
+            // Animator向けに反転
+            _noseAngles.x = (sync_state == (int)DragonDriverStateType.Walking) ? 0.0f : -noseAngles.x;
+            _noseAngles.y = noseAngles.y;
+            if (!((Mathf.Abs(sync_noseAngles.x - _noseAngles.x) < AngleSyncTolerance)
+               && (Mathf.Abs(sync_noseAngles.y - _noseAngles.y) < AngleSyncTolerance)))
             {
-                sync_noseDirection = _noseDirection;
+                sync_noseAngles = _noseAngles;
                 RequestSerialization();
             }
         }
@@ -250,16 +253,41 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _isGrounded = driver.IsGrounded;
 
+            var noseRotateSpeed = driver.NoseRotateSpeed;
             if (!_isOwner)
             {
-                _noseDirection = Vector2.MoveTowards(_noseDirection, sync_noseDirection, Time.deltaTime * driver.NoseRotateSpeed);
+                _noseAngles.x = Mathf.MoveTowards(_noseAngles.x, sync_noseAngles.x, Time.deltaTime * noseRotateSpeed);
+                _noseAngles.y = Mathf.MoveTowards(_noseAngles.y, sync_noseAngles.y, Time.deltaTime * noseRotateSpeed);
+            }
+
+            if (sync_state == (int)DragonDriverStateType.Walking)
+            {
+                var pitch = 0.0f;
+                if (_isGrounded)
+                {
+                    var groundNormal = driver.GroundNormal;
+                    var noseRotation = Quaternion.Euler(_groundedNoseAngle, _noseAngles.y, 0.0f) * _rotation;
+                    var noseDirection = noseRotation * Vector3.forward;
+                    var noseLeft = noseRotation * Vector3.left;
+                    var horizontalLeft = Vector3.ProjectOnPlane(noseLeft, groundNormal);
+                    var tiltCorrection = Mathf.Abs(Vector3.Dot(noseLeft, horizontalLeft));
+                    var groundForward = Vector3.ProjectOnPlane(noseDirection, groundNormal);
+                    pitch = tiltCorrection * Vector3.SignedAngle(noseDirection, groundForward, noseLeft);
+                }
+
+                _groundedNoseAngle = Mathf.SmoothDamp(_groundedNoseAngle, pitch, ref _groundedAngleVelocity, SmoothingDuration, noseRotateSpeed);
+                _noseAngles.x = _groundedNoseAngle;
+            }
+            else
+            {
+                _groundedNoseAngle = _noseAngles.x;
             }
 
             var forward = _rotation * Vector3.forward;
-            var left = _rotation * Vector3.left;
             var up = _rotation * Vector3.up;
 
             var level = Vector3.ProjectOnPlane(forward, Vector3.up);
+            var left = Quaternion.LookRotation(level) * Vector3.left;
             _pitch = Vector3.SignedAngle(level, forward, left);
 
             level = Quaternion.LookRotation(forward) * Vector3.up;
@@ -285,8 +313,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_parametersValid[(int)DragonActorParameterName.State]) _animator.SetInteger(_parametersHash[(int)DragonActorParameterName.State], sync_state);
             if (_parametersValid[(int)DragonActorParameterName.RandomInt]) _animator.SetInteger(_parametersHash[(int)DragonActorParameterName.RandomInt], _randomInt);
 
-            if (_parametersValid[(int)DragonActorParameterName.NosePitch]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.NosePitch], _noseDirection.x);
-            if (_parametersValid[(int)DragonActorParameterName.NoseYaw]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.NoseYaw], _noseDirection.y);
+            if (_parametersValid[(int)DragonActorParameterName.NosePitch]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.NosePitch], _noseAngles.x);
+            if (_parametersValid[(int)DragonActorParameterName.NoseYaw]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.NoseYaw], _noseAngles.y);
             if (_parametersValid[(int)DragonActorParameterName.Pitch]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Pitch], _pitch);
             if (_parametersValid[(int)DragonActorParameterName.Roll]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Roll], _roll);
             if (_parametersValid[(int)DragonActorParameterName.VelocityX]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.VelocityX], _relativeVelocity.x);

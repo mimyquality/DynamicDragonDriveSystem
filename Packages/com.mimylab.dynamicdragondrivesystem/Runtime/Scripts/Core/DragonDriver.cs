@@ -134,7 +134,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         public int State { get => (int)_state; }
         public Vector3 Velocity { get => _isSleeping ? Vector3.zero : sync_velocity; }
         public Vector3 AngularVelocity { get => _isSleeping ? Vector3.zero : sync_angularVelocity; }
-        public Vector3 NoseDirection { get => _noseAngles; }
+        public Vector3 NoseAngles { get => _noseAngles; }
+        public Vector3 GroundNormal { get => _isGrounded ? _groundInfo.normal : Vector3.up; }
 
         // Saddle受け取り用
         public bool IsDrive
@@ -399,7 +400,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 noseDirection = noseRotation * Vector3.forward;
                 var noseRight = noseRotation * Vector3.right;
-                var horizontalRight = Vector3.ProjectOnPlane(noseRight, Vector3.up);
+                var horizontalRight = Vector3.ProjectOnPlane(noseRight, _groundInfo.normal);
                 var tiltCorrection = Mathf.Abs(Vector3.Dot(noseRight, horizontalRight));
                 var groundForward = Vector3.ProjectOnPlane(noseDirection, _groundInfo.normal);
                 pitch = tiltCorrection * Vector3.SignedAngle(noseDirection, groundForward, noseRight);

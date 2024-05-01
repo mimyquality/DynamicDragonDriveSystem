@@ -4,6 +4,15 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.10.5] - 2024/4/30
+
+- **Fixed**
+  - ネットワーク同期がスパム状態になっていたのを修正
+  - 首振り周りの処理を全体的に見直し
+    - VRHandsの首振り入力を等速に変更
+    - 他人(ドラゴンの非Owner)視点の首振りのスムージング処理改善
+    - 地上走行時の首の縦振り挙動改善
+
 ## [0.10.4] - 2024/4/23
 
 - **Fixed**
@@ -296,6 +305,7 @@
 - **Added**
   - VPM化
 
+[0.10.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.5
 [0.10.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.4
 [0.10.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.3
 [0.10.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.2
