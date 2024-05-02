@@ -32,6 +32,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour
     {
+        private const float VelocitySmoothingDuration = 0.05f;
+
         [Header("Speed settings")]
         [SerializeField, Tooltip("m/s^2")]
         private float _acceleration = 5.0f;
@@ -108,6 +110,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private VRCObjectSync _objectSync;
 
         // 計算用
+        private bool _isOwner;
         private bool _isSleeping = true;
         private Vector3 _velocity, _targetVelocity;
         private Quaternion _rotation;
@@ -119,6 +122,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _colliderCenter;
         private float _groundCheckRadius, _groundCheckRange;
         private RaycastHit _groundInfo = new RaycastHit();
+        private Vector3 _currentVelocity;
+        private Vector3 _currentAngularVelocity;
+        private Vector3 _currentAcceleration;
+        private Vector3 _currentAngularAcceleration;
 
         // Input
         private bool _isDrive;
@@ -132,8 +139,20 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsBrakes { get => _isBrakes; }
         public bool IsOverdrive { get => _isOverdrive; }
         public int State { get => (int)_state; }
-        public Vector3 Velocity { get => _isSleeping ? Vector3.zero : sync_velocity; }
-        public Vector3 AngularVelocity { get => _isSleeping ? Vector3.zero : sync_angularVelocity; }
+        public Vector3 Velocity
+        {
+            get =>
+                _isSleeping ? Vector3.zero :
+                _isOwner ? _currentVelocity :
+                sync_velocity;
+        }
+        public Vector3 AngularVelocity
+        {
+            get =>
+                _isSleeping ? Vector3.zero :
+                _isOwner ? _currentAngularVelocity :
+                sync_angularVelocity;
+        }
         public Vector3 NoseAngles { get => _noseAngles; }
         public Vector3 GroundNormal { get => _isGrounded ? _groundInfo.normal : Vector3.up; }
 
@@ -198,6 +217,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             _groundCheckRadius = _collider.radius * 0.9f;
             _groundCheckRange = 2 * (_collider.radius - _groundCheckRadius);
 
+            _isOwner = Networking.IsOwner(this.gameObject);
+
             _initialized = true;
         }
         private void Start()
@@ -211,7 +232,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             _isSleeping = _rigidbody.IsSleeping();
             _isGrounded = CheckGrounded();
 
-            if (!Networking.IsOwner(this.gameObject)) { return; }
+            if (!_isOwner) { return; }
+            // 以下Ownerの処理
 
             // 現状を算出
             _velocity = _rigidbody.velocity;
@@ -245,6 +267,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             // 同期
             sync_velocity = _rigidbody.velocity;
             sync_angularVelocity = _rigidbody.angularVelocity;
+
+            // なんかハンチングするのでOwnerはスムージング処理
+            _currentVelocity = Vector3.SmoothDamp(_currentVelocity, sync_velocity, ref _currentAcceleration, VelocitySmoothingDuration);
+            _currentAngularVelocity = Vector3.SmoothDamp(_currentAngularVelocity, sync_angularVelocity, ref _currentAngularAcceleration, VelocitySmoothingDuration);
+        }
+
+        public override void OnOwnershipTransferred(VRCPlayerApi player)
+        {
+            _isOwner = player.isLocal;
         }
 
         /******************************

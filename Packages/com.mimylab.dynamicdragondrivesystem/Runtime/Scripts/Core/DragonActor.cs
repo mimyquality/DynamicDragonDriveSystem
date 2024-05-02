@@ -46,7 +46,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class DragonActor : UdonSharpBehaviour
     {
         private const float AngleSyncTolerance = 0.1f; // 単位：°
-        private const float SmoothingDuration = 0.07f;   // 単位：sec
+        private const float SmoothingDuration = 0.05f;   // 単位：sec
+        private const float GroundedSmoothingDuration = 0.08f;   // 単位：sec
 
         internal DragonDriver driver;
         internal bool isMount;
@@ -75,6 +76,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private bool _isOwner, _isGrounded;
         private Vector3 _noseAngles;
+        private Vector3 _angleVelocity;
         private float _groundedNoseAngle;
         private float _groundedAngleVelocity;
         private float _pitch, _roll;
@@ -253,11 +255,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _isGrounded = driver.IsGrounded;
 
-            var noseRotateSpeed = driver.NoseRotateSpeed;
             if (!_isOwner)
             {
-                _noseAngles.x = Mathf.MoveTowards(_noseAngles.x, sync_noseAngles.x, Time.deltaTime * noseRotateSpeed);
-                _noseAngles.y = Mathf.MoveTowards(_noseAngles.y, sync_noseAngles.y, Time.deltaTime * noseRotateSpeed);
+                _noseAngles.x = Mathf.SmoothDamp(_noseAngles.x, sync_noseAngles.x, ref _angleVelocity.x, SmoothingDuration);
+                _noseAngles.y = Mathf.SmoothDamp(_noseAngles.y, sync_noseAngles.y, ref _angleVelocity.y, SmoothingDuration);
             }
 
             if (sync_state == (int)DragonDriverStateType.Walking)
@@ -266,7 +267,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (_isGrounded)
                 {
                     var groundNormal = driver.GroundNormal;
-                    var noseRotation = Quaternion.Euler(_groundedNoseAngle, _noseAngles.y, 0.0f) * _rotation;
+                    var noseRotation = Quaternion.Euler(pitch, _noseAngles.y, 0.0f) * _rotation;
                     var noseDirection = noseRotation * Vector3.forward;
                     var noseLeft = noseRotation * Vector3.left;
                     var horizontalLeft = Vector3.ProjectOnPlane(noseLeft, groundNormal);
@@ -274,8 +275,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                     var groundForward = Vector3.ProjectOnPlane(noseDirection, groundNormal);
                     pitch = tiltCorrection * Vector3.SignedAngle(noseDirection, groundForward, noseLeft);
                 }
-
-                _groundedNoseAngle = Mathf.SmoothDamp(_groundedNoseAngle, pitch, ref _groundedAngleVelocity, SmoothingDuration, noseRotateSpeed);
+                _groundedNoseAngle = Mathf.SmoothDamp(_groundedNoseAngle, pitch, ref _groundedAngleVelocity, GroundedSmoothingDuration);
                 _noseAngles.x = _groundedNoseAngle;
             }
             else
