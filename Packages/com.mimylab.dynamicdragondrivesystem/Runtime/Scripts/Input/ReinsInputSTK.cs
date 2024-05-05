@@ -23,7 +23,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
         {
             if (_throttleInputHand == HandType.LEFT) { _thrust = value; }
-            if (_elevatorInputHand == HandType.LEFT) { _elevator = -value; }
+            if (_elevatorInputHand == HandType.LEFT) { _elevator = value; }
         }
 
         public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
@@ -37,7 +37,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public override void InputLookVertical(float value, UdonInputEventArgs args)
         {
             if (_throttleInputHand == HandType.RIGHT) { _thrust = value; }
-            if (_elevatorInputHand == HandType.RIGHT) { _elevator = -value; }
+            if (_elevatorInputHand == HandType.RIGHT) { _elevator = value; }
         }
 
         public override void InputLookHorizontal(float value, UdonInputEventArgs args)

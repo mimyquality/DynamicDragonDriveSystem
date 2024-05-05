@@ -114,7 +114,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _isSleeping = true;
         private Vector3 _velocity, _targetVelocity;
         private Quaternion _rotation;
-        private Vector3 _noseAngles, _targetNoseAngles;  // _rotationからの相対EularAngle
+        private Vector3 _noseAngles, _targetNoseAngles;
+        private Vector3 _baseNoseAngles;
         private float _drag, _defaultDrag, _sqrSpeed;
         private DragonDriverStateType _state;
         private bool _isWalking, _isGrounded, _isBrakes, _isOverdrive;
@@ -254,7 +255,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                     case DragonDriverStateType.Overdrive: Overdrive(); break;
                 }
 
-                // 計算結果を出力
+                // 計算結果を出力                
+                if (_directRotation == Vector3.zero) _baseNoseAngles = _targetNoseAngles;
                 _rigidbody.drag = _drag;
                 _rigidbody.rotation = _rotation;
                 _rigidbody.velocity = _velocity;
@@ -401,7 +403,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
             else if (_directRotation != Vector3.zero)
             {
-                _targetNoseAngles.y += Mathf.Approximately(_directRotation.y, 0.0f) ? 0.0f : _directRotation.y;
+                _targetNoseAngles.y = _baseNoseAngles.y + _directRotation.y;
             }
             else
             {
@@ -478,8 +480,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
             else if (_directRotation != Vector3.zero)
             {
-                _targetNoseAngles.x += Mathf.Approximately(_directRotation.x, 0.0f) ? 0.0f : _directRotation.x;
-                _targetNoseAngles.y += Mathf.Approximately(_directRotation.y, 0.0f) ? 0.0f : _directRotation.y;
+                _targetNoseAngles.x = _baseNoseAngles.x + _directRotation.x;
+                _targetNoseAngles.y = _baseNoseAngles.y + _directRotation.y;
             }
             else
             {
@@ -512,13 +514,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             _rotation = fixedRotation;
             _noseAngles = new Vector3(pitch, yaw, 0.0f);
 
-            // 速度の再計算
+            // 静止判定
             if (CheckStill(_targetVelocity.sqrMagnitude))
             {
                 _targetVelocity = Vector3.zero;
                 return;
             }
 
+            // 速度の再計算
             var noseRotation = fixedRotation * Quaternion.Euler(_noseAngles);
             var relativeVelocity = Quaternion.Inverse(noseRotation) * _velocity;
             _targetVelocity = CalculateTargetVelocity(_targetVelocity, relativeVelocity, _maxSpeed);

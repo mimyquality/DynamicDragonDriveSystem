@@ -37,7 +37,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private Vector3 _leftGrgabMove, _rightGrabMove;
         private Vector3 _leftGrabRotate, _rightGrabRotate;
-        private Vector3 _leftHandRotate, _rightHandRotate;
+        //private Vector3 _leftHandRotate, _rightHandRotate;
         private bool _prevGrabJump;
 
         private void Start()
@@ -56,8 +56,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             _leftGrabRotate = ConvertQuaternionToAngle3(GetLeftGrabRotate());
             _rightGrabRotate = ConvertQuaternionToAngle3(GetRightGrabRotate());
 
-            _leftHandRotate = ConvertQuaternionToAngle3(GetLeftHandRotate());
-            _rightHandRotate = ConvertQuaternionToAngle3(GetRightHandRotate());
+            //_leftHandRotate = ConvertQuaternionToAngle3(GetLeftHandRotate());
+            //_rightHandRotate = ConvertQuaternionToAngle3(GetRightHandRotate());
 
             _flagGrabLeft = false;
             _flagGrabRight = false;
@@ -85,17 +85,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             //_climb = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.y : _rightGrabMove.y;
             //_strafe = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.x : _rightGrabMove.x;
 
-            _elevator = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
-            _elevator = Mathf.Clamp(_elevator / _rotateRatio, -1.0f, 1.0f);
-            _ladder = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
-            _ladder = Mathf.Clamp(_ladder / _rotateRatio, -1.0f, 1.0f);
-            _aileron = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
-            _aileron = Mathf.Clamp(_aileron / _rotateRatio, -1.0f, 1.0f);
-
-            var pitch = (_elevatorInputHand == HandType.LEFT) ? _leftHandRotate.x : _rightHandRotate.x;
-            var yaw = (_turningInputHand == HandType.LEFT) ? _leftHandRotate.y : _rightHandRotate.y;
-            var roll = (_turningInputHand == HandType.LEFT) ? _leftHandRotate.z : _rightHandRotate.z;
+            var pitch = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
+            var yaw = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
+            var roll = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
             driver._InputDirectRotate(new Vector3(pitch, yaw, roll));
+
+            _elevator = Mathf.Clamp(pitch / _rotateRatio, -1.0f, 1.0f);
+            _ladder = Mathf.Clamp(yaw / _rotateRatio, -1.0f, 1.0f);
+            _aileron = Mathf.Clamp(roll / _rotateRatio, -1.0f, 1.0f);
         }
 
         private void ActivateGrabLeft(bool value)

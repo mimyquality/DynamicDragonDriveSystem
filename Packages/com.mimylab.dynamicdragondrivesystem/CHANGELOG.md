@@ -4,6 +4,15 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.10.7] - 2024/5/6
+
+- **Changed**
+  - Legacy, Thumbsticksのデフォルトの上下入力設定を反転
+
+- **Fixed**
+  - 上記に合わせてインプットメニューの上下入力の表記を修正
+  - VRHandsの首振り入力の挙動を改善
+
 ## [0.10.6] - 2024/5/2
 
 - **Fixed**
@@ -311,6 +320,7 @@
 - **Added**
   - VPM化
 
+[0.10.7]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.7
 [0.10.6]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.6
 [0.10.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.5
 [0.10.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.4
