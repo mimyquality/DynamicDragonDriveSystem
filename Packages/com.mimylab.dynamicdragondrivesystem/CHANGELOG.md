@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.11.0] - 2024/5/12
+
+- **Changed**
+  - iOS版に対応 (recommend VRCSDK 3.5.2)
+    - 副次的に、プレイヤーの入力デバイスに応じた入力モード選択が増えるようになった
+
 ## [0.10.7] - 2024/5/6
 
 - **Changed**
@@ -314,12 +320,13 @@
 
 - **Changed**
   - Animator Controller更新
-
+Custo
 ## [0.0.1] - 2023/10/1
 
 - **Added**
   - VPM化
 
+[0.11.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.11.0
 [0.10.7]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.7
 [0.10.6]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.6
 [0.10.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.5

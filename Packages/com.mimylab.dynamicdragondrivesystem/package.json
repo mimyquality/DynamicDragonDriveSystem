@@ -1,7 +1,7 @@
 {
   "name": "com.mimylab.dynamicdragondrivesystem",
   "displayName": "Dynamic Dragon Drive System",
-  "version": "0.10.7",
+  "version": "0.11.0",
   "description": "Riding gimmick encompassing ground driving, hovering, and flight functions. Utilizes VRChat's Udonsharp.",
   "unity": "2022.3",
   "author": {
@@ -12,7 +12,7 @@
   "dependencies": {},
   "gitDependencies": {},
   "vpmDependencies": {
-    "com.vrchat.worlds": "^3.5.0"
+    "com.vrchat.worlds": "^3.5.2"
   },
   "legacyFolders": {},
   "legacyFiles": {}

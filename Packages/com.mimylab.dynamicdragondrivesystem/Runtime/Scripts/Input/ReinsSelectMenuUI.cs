@@ -43,32 +43,39 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void OnEnable()
         {
+            SetChangedInput(reins.ChangedInput);
             SetSelectInput(reins.SelectedImput);
         }
 
-        private void Start()
+        public override void OnInputMethodChanged(VRCInputMethod inputMethod)
         {
-            var platform = reins.Platform;
-            if (platform == PlatformType.VR)
+            switch (inputMethod)
             {
-                _button_Gaze.gameObject.SetActive(false);
-            }
-            else if (platform == PlatformType.Desktop)
-            {
-                _button_VRHands.gameObject.SetActive(false);
-                _button_Legacy.gameObject.SetActive(false);
-            }
-            else if (platform == PlatformType.Quest)
-            {
-                _button_Keyboard.gameObject.SetActive(false);
-                _button_Gaze.gameObject.SetActive(false);
-                _button_Legacy.gameObject.SetActive(false);
-            }
-            else if (platform == PlatformType.Android)
-            {
-                _button_VRHands.gameObject.SetActive(false);
-                _button_Keyboard.gameObject.SetActive(false);
-                _button_Legacy.gameObject.SetActive(false);
+                case VRCInputMethod.Keyboard:
+                    _button_Keyboard.gameObject.SetActive(true);
+                    break;
+                case VRCInputMethod.Mouse:
+                case VRCInputMethod.Touch:
+                    _button_Gaze.gameObject.SetActive(true);
+                    break;
+                case VRCInputMethod.Controller:
+                    _button_Thumbsticks.gameObject.SetActive(true);
+                    break;
+                case VRCInputMethod.Vive:
+                    _button_Legacy.gameObject.SetActive(false);
+                    break;
+                case VRCInputMethod.Oculus:
+                case VRCInputMethod.ViveXr:
+                case VRCInputMethod.Index:
+                case VRCInputMethod.HPMotionController:
+                case VRCInputMethod.QuestHands:
+                case VRCInputMethod.OpenXRGeneric:
+                case VRCInputMethod.Pico:
+                    _button_VRHands.gameObject.SetActive(true);
+                    break;
+                default:
+                    _button_Thumbsticks.gameObject.SetActive(true);
+                    break;
             }
         }
 
@@ -110,6 +117,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             _menu_VRHands.SetActive(selectInput == DragonReinsInputType.VRHands);
             _menu_Gaze.SetActive(selectInput == DragonReinsInputType.Gaze);
             _menu_Legacy.SetActive(selectInput == DragonReinsInputType.Legacy);
+        }
+
+        private void SetChangedInput(int changedInput)
+        {
+            _button_Keyboard.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Keyboard));
+            _button_Thumbsticks.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Thumbsticks));
+            _button_VRHands.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.VRHands));
+            _button_Gaze.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Gaze));
+            _button_Legacy.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Legacy));
         }
     }
 }

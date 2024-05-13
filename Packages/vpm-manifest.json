@@ -12,9 +12,6 @@
     "net.kaikoga.pen": {
       "version": "1.0.0"
     },
-    "com.dreadscripts.controllereditor": {
-      "version": "3.2.0"
-    },
     "dev.onevr.vrworldtoolkit": {
       "version": "3.0.1"
     },
@@ -49,10 +46,6 @@
         "com.vrchat.worlds": "^3.0.0"
       }
     },
-    "com.dreadscripts.controllereditor": {
-      "version": "3.2.1",
-      "dependencies": {}
-    },
     "dev.onevr.vrworldtoolkit": {
       "version": "3.1.0",
       "dependencies": {}
@@ -68,13 +61,13 @@
       }
     },
     "com.vrchat.worlds": {
-      "version": "3.5.1",
+      "version": "3.6.0",
       "dependencies": {
-        "com.vrchat.base": "3.5.1"
+        "com.vrchat.base": "3.6.0"
       }
     },
     "com.vrchat.base": {
-      "version": "3.5.1",
+      "version": "3.6.0",
       "dependencies": {}
     },
     "com.mimylab.fukuroudon": {

@@ -12,22 +12,14 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    public enum PlatformType
-    {
-        Unknown,
-        VR,
-        Desktop,
-        Quest,
-        Android
-    }
-
     public enum DragonReinsInputType
     {
-        Keyboard,
-        Thumbsticks,
-        VRHands,
-        Gaze,
-        Legacy
+        None = 0,
+        Keyboard = 1 << 0,
+        Thumbsticks = 1 << 1,
+        VRHands = 1 << 2,
+        Gaze = 1 << 3,
+        Legacy = 1 << 4
     }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Reins")]
@@ -60,11 +52,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        private DragonReinsInputType _selectedInput = default;
+        private DragonReinsInputType _selectedInput = DragonReinsInputType.Thumbsticks;
         public DragonReinsInputType SelectedImput { get => _selectedInput; }
 
-        private PlatformType _platform = default;
-        public PlatformType Platform { get => _platform; }
+        private int _changedInput = (int)DragonReinsInputType.Thumbsticks;
+        public int ChangedInput { get => _changedInput; }
 
         private bool _initialized = false;
         private void Initialize()
@@ -89,18 +81,101 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-#if UNITY_STANDALONE_WIN
-            _platform = (Networking.LocalPlayer.IsUserInVR()) ? PlatformType.VR : PlatformType.Desktop;
-#elif UNITY_ANDROID
-            _platform = (Networking.LocalPlayer.IsUserInVR()) ? PlatformType.Quest : PlatformType.Android;
-#endif
+            // OnInputMethodChangedが最初に1回発火しないバグ回避
+            SelectPlatform();
+            EnabledInput = EnabledInput;
+        }
 
-            switch (_platform)
+        private bool _initializedInputType = false;
+        public override void OnInputMethodChanged(VRCInputMethod inputMethod)
+        {
+            switch (inputMethod)
             {
-                case PlatformType.VR: _SetThumbsticks(); break;
-                case PlatformType.Desktop: _SetKeyboard(); break;
-                case PlatformType.Quest: _SetThumbsticks(); break;
-                case PlatformType.Android: _SetGaze(); break;
+                case VRCInputMethod.Keyboard:
+                    _changedInput |= (int)DragonReinsInputType.Keyboard;
+                    break;
+                case VRCInputMethod.Mouse:
+                case VRCInputMethod.Touch:
+                    _changedInput |= (int)DragonReinsInputType.Gaze;
+                    break;
+                case VRCInputMethod.Controller:
+                    _changedInput |= (int)DragonReinsInputType.Thumbsticks;
+                    break;
+                case VRCInputMethod.Vive:
+                    _changedInput |= (int)DragonReinsInputType.Legacy;
+                    _changedInput |= (int)DragonReinsInputType.VRHands;
+                    break;
+                case VRCInputMethod.Oculus:
+                case VRCInputMethod.ViveXr:
+                case VRCInputMethod.Index:
+                case VRCInputMethod.HPMotionController:
+                case VRCInputMethod.QuestHands:
+                case VRCInputMethod.OpenXRGeneric:
+                case VRCInputMethod.Pico:
+                    _changedInput |= (int)DragonReinsInputType.Thumbsticks;
+                    _changedInput |= (int)DragonReinsInputType.VRHands;
+                    break;
+                default:
+                    _changedInput |= (int)DragonReinsInputType.Thumbsticks;
+                    break;
+            }
+
+            if (!_initializedInputType)
+            {
+                switch (inputMethod)
+                {
+                    case VRCInputMethod.Keyboard:
+                    case VRCInputMethod.Mouse:
+                        _SetKeyboard();
+                        break;
+                    case VRCInputMethod.Touch:
+                        _SetGaze();
+                        break;
+                    case VRCInputMethod.Vive:
+                        _SetLegacy();
+                        break;
+                    default:
+                        _SetThumbsticks();
+                        break;
+                }
+                _initializedInputType = true;
+            }
+        }
+
+        private void SelectPlatform()
+        {
+            var isPC = false;
+#if UNITY_STANDALONE_WIN
+            isPC = true;
+#endif
+            if (isPC)
+            {
+                if (Networking.LocalPlayer.IsUserInVR())
+                {
+                    _changedInput |= (int)DragonReinsInputType.Thumbsticks;
+                    _changedInput |= (int)DragonReinsInputType.VRHands;
+                    _changedInput |= (int)DragonReinsInputType.Legacy;
+                    _SetThumbsticks();
+                }
+                else
+                {
+                    _changedInput |= (int)DragonReinsInputType.Keyboard;
+                    _SetKeyboard();
+                }
+            }
+            else
+            {
+                if (Networking.LocalPlayer.IsUserInVR())
+                {
+                    _changedInput |= (int)DragonReinsInputType.Thumbsticks;
+                    _changedInput |= (int)DragonReinsInputType.VRHands;
+                    _SetThumbsticks();
+                }
+                else
+                {
+                    _changedInput |= (int)DragonReinsInputType.Gaze;
+                    _SetGaze();
+                }
             }
         }
 
