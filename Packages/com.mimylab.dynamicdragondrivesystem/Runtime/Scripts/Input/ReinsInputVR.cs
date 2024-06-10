@@ -16,16 +16,16 @@ namespace MimyLab.DynamicDragonDriveSystem
     [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput VRHands")]
     public class ReinsInputVR : ReinsInputManager
     {
-        [Tooltip("meter"), SerializeField]
+        [SerializeField, Tooltip("meter")]
         private float _moveScale = 0.2f;
-        [Tooltip("radius"), SerializeField]
+        [SerializeField, Tooltip("radius")]
         private float _rotateRatio = 60.0f;
 
         [Space]
-        [Range(0.0f, 1.0f), SerializeField]
+        [SerializeField, Range(0.0f, 1.0f)]
         private float _jumpAcceptanceThreshold = 0.9f;
-        [Range(0.0f, 1.0f), SerializeField]
-        private float _brakesAcceptanceThreshold = 0.9f;
+        [SerializeField, Range(0.0f, 1.0f)]
+        private float _brakesAcceptanceThreshold = 0.95f;
 
         private VRCPlayerApi _localPlayer;
         private bool _isGrabLeft, _isGrabRight;
@@ -47,8 +47,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void PostLateUpdate()
         {
-            if (!this.enabled) { return; }
-
             _originPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).position;
             _originRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
             _leftGrgabMove = GetLeftGrabMove();

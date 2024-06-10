@@ -16,8 +16,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput Gaze")]
     public class ReinsInputGZ : ReinsInputManager
     {
-        [Range(0.0f, 1.0f), SerializeField]
-        private float _brakesAcceptanceThreshold = 0.9f;
+        [SerializeField, Range(0.0f, 1.0f)]
+        private float _brakesAcceptanceThreshold = 0.95f;
 
         private VRCPlayerApi _localPlayer;
         private Vector3 _gazeAngles;
@@ -29,8 +29,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void PostLateUpdate()
         {
-            if (!this.enabled) { return; }
-
             _gazeAngles = GetGazeAngles();
         }
 

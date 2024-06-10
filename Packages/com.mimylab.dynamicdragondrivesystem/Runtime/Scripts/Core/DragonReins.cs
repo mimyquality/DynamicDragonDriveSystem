@@ -19,7 +19,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         Thumbsticks = 1 << 1,
         VRHands = 1 << 2,
         Gaze = 1 << 3,
-        Legacy = 1 << 4
+        Legacy = 1 << 4,
+        VRHands2 = 1 << 5,
     }
 
     [AddComponentMenu("Dynamic Dragon Drive System/Dragon Reins")]
@@ -30,6 +31,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputKB keyboard;
         public ReinsInputSTK thumbsticks;
         public ReinsInputVR vrHands;
+        public ReinsInputVR2 vrHands2;
         public ReinsInputGZ gaze;
         public ReinsInputLGC legacy;
 
@@ -47,6 +49,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (keyboard) keyboard.enabled = (_selectedInput == DragonReinsInputType.Keyboard) && value;
                 if (thumbsticks) thumbsticks.enabled = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
                 if (vrHands) vrHands.enabled = (_selectedInput == DragonReinsInputType.VRHands) && value;
+                if (vrHands2) vrHands2.enabled = (_selectedInput == DragonReinsInputType.VRHands2) && value;
                 if (gaze) gaze.enabled = (_selectedInput == DragonReinsInputType.Gaze) && value;
                 if (legacy) legacy.enabled = (_selectedInput == DragonReinsInputType.Legacy) && value;
             }
@@ -66,12 +69,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!keyboard) keyboard = GetComponentInChildren<ReinsInputKB>(true);
             if (!thumbsticks) thumbsticks = GetComponentInChildren<ReinsInputSTK>(true);
             if (!vrHands) vrHands = GetComponentInChildren<ReinsInputVR>(true);
+            if (!vrHands2) vrHands2 = GetComponentInChildren<ReinsInputVR2>(true);
             if (!gaze) gaze = GetComponentInChildren<ReinsInputGZ>(true);
             if (!legacy) legacy = GetComponentInChildren<ReinsInputLGC>(true);
 
             if (keyboard) keyboard.driver = driver;
             if (thumbsticks) thumbsticks.driver = driver;
             if (vrHands) vrHands.driver = driver;
+            if (vrHands2) vrHands2.driver = driver;
             if (gaze) gaze.driver = driver;
             if (legacy) legacy.driver = driver;
 
@@ -104,6 +109,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 case VRCInputMethod.Vive:
                     _changedInput |= (int)DragonReinsInputType.Legacy;
                     _changedInput |= (int)DragonReinsInputType.VRHands;
+                    _changedInput |= (int)DragonReinsInputType.VRHands2;
                     break;
                 case VRCInputMethod.Oculus:
                 case VRCInputMethod.ViveXr:
@@ -114,6 +120,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 case VRCInputMethod.Pico:
                     _changedInput |= (int)DragonReinsInputType.Thumbsticks;
                     _changedInput |= (int)DragonReinsInputType.VRHands;
+                    _changedInput |= (int)DragonReinsInputType.VRHands2;
                     break;
                 default:
                     _changedInput |= (int)DragonReinsInputType.Thumbsticks;
@@ -154,6 +161,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 {
                     _changedInput |= (int)DragonReinsInputType.Thumbsticks;
                     _changedInput |= (int)DragonReinsInputType.VRHands;
+                    _changedInput |= (int)DragonReinsInputType.VRHands2;
                     _changedInput |= (int)DragonReinsInputType.Legacy;
                     _SetThumbsticks();
                 }
@@ -169,6 +177,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 {
                     _changedInput |= (int)DragonReinsInputType.Thumbsticks;
                     _changedInput |= (int)DragonReinsInputType.VRHands;
+                    _changedInput |= (int)DragonReinsInputType.VRHands2;
                     _SetThumbsticks();
                 }
                 else
@@ -194,6 +203,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _SetVRHands()
         {
             _selectedInput = DragonReinsInputType.VRHands;
+            EnabledInput = EnabledInput;
+        }
+
+        public void _SetVRHands2()
+        {
+            _selectedInput = DragonReinsInputType.VRHands2;
             EnabledInput = EnabledInput;
         }
 

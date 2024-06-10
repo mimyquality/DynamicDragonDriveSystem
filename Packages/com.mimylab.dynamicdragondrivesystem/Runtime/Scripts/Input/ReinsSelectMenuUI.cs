@@ -26,6 +26,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private Button _button_VRHands;
         [SerializeField]
+        private Button _button_VRHands2;
+        [SerializeField]
         private Button _button_Gaze;
         [SerializeField]
         private Button _button_Legacy;
@@ -36,6 +38,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private GameObject _menu_Thumbsticks;
         [SerializeField]
         private GameObject _menu_VRHands;
+        [SerializeField]
+        private GameObject _menu_VRHands2;
         [SerializeField]
         private GameObject _menu_Gaze;
         [SerializeField]
@@ -72,6 +76,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 case VRCInputMethod.OpenXRGeneric:
                 case VRCInputMethod.Pico:
                     _button_VRHands.gameObject.SetActive(true);
+                    _button_VRHands2.gameObject.SetActive(true);
                     break;
                 default:
                     _button_Thumbsticks.gameObject.SetActive(true);
@@ -94,6 +99,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             SetSelectInput(DragonReinsInputType.VRHands);
         }
 
+        public void _SetVRHands2()
+        {
+            SetSelectInput(DragonReinsInputType.VRHands2);
+        }
+
+
         public void _SetGaze()
         {
             SetSelectInput(DragonReinsInputType.Gaze);
@@ -109,12 +120,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             _button_Keyboard.interactable = selectInput != DragonReinsInputType.Keyboard;
             _button_Thumbsticks.interactable = selectInput != DragonReinsInputType.Thumbsticks;
             _button_VRHands.interactable = selectInput != DragonReinsInputType.VRHands;
+            _button_VRHands2.interactable = selectInput != DragonReinsInputType.VRHands2;
             _button_Gaze.interactable = selectInput != DragonReinsInputType.Gaze;
             _button_Legacy.interactable = selectInput != DragonReinsInputType.Legacy;
 
             _menu_Keyboard.SetActive(selectInput == DragonReinsInputType.Keyboard);
             _menu_Thumbsticks.SetActive(selectInput == DragonReinsInputType.Thumbsticks);
             _menu_VRHands.SetActive(selectInput == DragonReinsInputType.VRHands);
+            _menu_VRHands2.SetActive(selectInput == DragonReinsInputType.VRHands2);
             _menu_Gaze.SetActive(selectInput == DragonReinsInputType.Gaze);
             _menu_Legacy.SetActive(selectInput == DragonReinsInputType.Legacy);
         }
@@ -124,6 +137,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _button_Keyboard.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Keyboard));
             _button_Thumbsticks.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Thumbsticks));
             _button_VRHands.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.VRHands));
+            _button_VRHands2.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.VRHands2));
             _button_Gaze.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Gaze));
             _button_Legacy.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Legacy));
         }

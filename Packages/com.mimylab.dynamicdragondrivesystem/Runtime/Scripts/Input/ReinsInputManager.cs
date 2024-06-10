@@ -27,8 +27,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         protected HandType _turningInputHand = HandType.RIGHT;
         protected HandType _elevatorInputHand = HandType.RIGHT;
 
-        private Vector3 _accelerateSign = Vector3.one;
-        private Vector3 _rotateSign = Vector3.one;
+        protected Vector3 _accelerateSign = Vector3.one;
+        protected Vector3 _rotateSign = Vector3.one;
 
         private Vector3 _accelerate = Vector3.zero;
         private Vector3 Accelerate
@@ -90,8 +90,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Update()
         {
-            if (!this.enabled) { return; }
-
             InputKey();
 
             Accelerate = new Vector3(_strafe, _climb, _thrust);
