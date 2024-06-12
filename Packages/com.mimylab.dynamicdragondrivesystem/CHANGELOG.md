@@ -326,7 +326,7 @@
 
 - **Changed**
   - Animator Controller更新
-Custo
+
 ## [0.0.1] - 2023/10/1
 
 - **Added**
