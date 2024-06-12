@@ -278,8 +278,8 @@ Transform:
   m_Children:
   - {fileID: 8058172037843410876}
   - {fileID: 8058172036853151375}
-  - {fileID: 8058172038777351429}
   - {fileID: 6824549918648649968}
+  - {fileID: 8058172038777351429}
   - {fileID: 5804849046053201976}
   - {fileID: 6530314328261796044}
   m_Father: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 9201177619479585731}
   - component: {fileID: 5958516703628250022}
   m_Layer: 0
-  m_Name: VRHands
+  m_Name: VRLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 6865046405534832322}
   - component: {fileID: 2585186483272949548}
   m_Layer: 0
-  m_Name: VRHands2
+  m_Name: VRHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,10 +561,52 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 2585186483272949548}
   _moveScale: 0.2
-  _rotateRatio: 60
-  _rotateDirection: 0.5
+  _rotatePivotDirection: 0.5
+  _throttleDeadzone: 0.15
   _jumpAcceptanceThreshold: 0.95
   _brakesAcceptanceThreshold: 0.95
+  _throttleInputCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 1
+      inSlope: 0
+      outSlope: -1.1764705
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: -0.15
+      value: 0
+      inSlope: -1.1764705
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.15
+      value: 0
+      inSlope: -0
+      outSlope: 1.1764705
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.1764705
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2585186483272949548
 MonoBehaviour:
   m_ObjectHideFlags: 0

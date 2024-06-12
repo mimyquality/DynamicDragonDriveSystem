@@ -13,13 +13,13 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput VRHands")]
+    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput VR Lever")]
     public class ReinsInputVR : ReinsInputManager
     {
-        [SerializeField, Tooltip("meter")]
+        [SerializeField, Min(0.01f), Tooltip("meter")]
         private float _moveScale = 0.2f;
-        [SerializeField, Tooltip("radius")]
-        private float _rotateRatio = 60.0f;
+        [SerializeField, Range(1.0f, 180.0f), Tooltip("radius")]
+        private float _rotateScale = 60.0f;
 
         [Space]
         [SerializeField, Range(0.0f, 1.0f)]
@@ -88,9 +88,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             var roll = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
             driver._InputDirectRotate(new Vector3(pitch, yaw, roll));
 
-            _elevator = Mathf.Clamp(pitch / _rotateRatio, -1.0f, 1.0f);
-            _ladder = Mathf.Clamp(yaw / _rotateRatio, -1.0f, 1.0f);
-            _aileron = Mathf.Clamp(roll / _rotateRatio, -1.0f, 1.0f);
+            _elevator = Mathf.Clamp(pitch / _rotateScale, -1.0f, 1.0f);
+            _ladder = Mathf.Clamp(yaw / _rotateScale, -1.0f, 1.0f);
+            _aileron = Mathf.Clamp(roll / _rotateScale, -1.0f, 1.0f);
         }
 
         private void ActivateGrabLeft(bool value)

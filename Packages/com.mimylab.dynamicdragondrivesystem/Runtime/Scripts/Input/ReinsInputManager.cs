@@ -90,6 +90,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Update()
         {
+            if (!this.enabled) { return; }
+
             InputKey();
 
             Accelerate = new Vector3(_strafe, _climb, _thrust);

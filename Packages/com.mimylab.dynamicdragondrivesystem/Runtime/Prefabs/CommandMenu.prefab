@@ -5116,7 +5116,7 @@ GameObject:
   - component: {fileID: 1749149507824709922}
   - component: {fileID: 4113105200998616980}
   m_Layer: 0
-  m_Name: Button_VRHands
+  m_Name: Button_VRLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5139,8 +5139,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -24}
-  m_SizeDelta: {x: 100, y: 48}
+  m_AnchoredPosition: {x: 375, y: -24}
+  m_SizeDelta: {x: 250, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4891584450066821570
 CanvasRenderer:
@@ -8655,8 +8655,8 @@ RectTransform:
   m_Children:
   - {fileID: 1015767210604136785}
   - {fileID: 4687647782993455843}
-  - {fileID: 4904787274138805676}
   - {fileID: 1056923762869293927}
+  - {fileID: 4904787274138805676}
   - {fileID: 3194072307341246214}
   - {fileID: 9176852333449707015}
   m_Father: {fileID: 2575632887230649451}
@@ -10324,7 +10324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VR Hands 2
+  m_text: VR Handle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12255,7 +12255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 730c0788eefe3144d887b57da4824a9c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6515e5b0052c53b4da331e8a4c5b35a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16721,7 +16721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8148933824219634653}
   m_Layer: 0
-  m_Name: SubMenu_VRHands
+  m_Name: SubMenu_VRLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20644,7 +20644,7 @@ GameObject:
   - component: {fileID: 738647912796896024}
   - component: {fileID: 5596578153111912544}
   m_Layer: 0
-  m_Name: Button_VRHands2
+  m_Name: Button_VRHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20667,8 +20667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -24}
-  m_SizeDelta: {x: 250, y: 48}
+  m_AnchoredPosition: {x: 250, y: -24}
+  m_SizeDelta: {x: 166.66667, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &898230462901084874
 CanvasRenderer:
@@ -22036,8 +22036,8 @@ RectTransform:
   - {fileID: 2819188527722232603}
   - {fileID: 6175353494941178792}
   - {fileID: 1896405106351616542}
-  - {fileID: 8148933824219634653}
   - {fileID: 8684224052727227350}
+  - {fileID: 8148933824219634653}
   - {fileID: 4026245738693611723}
   - {fileID: 6138448215869906145}
   - {fileID: 7830426900619755033}
@@ -22927,7 +22927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VR Hands
+  m_text: VR Lever
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27769,7 +27769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8684224052727227350}
   m_Layer: 0
-  m_Name: SubMenu_VRHands2
+  m_Name: SubMenu_VRHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29090,7 +29090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6515e5b0052c53b4da331e8a4c5b35a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 730c0788eefe3144d887b57da4824a9c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

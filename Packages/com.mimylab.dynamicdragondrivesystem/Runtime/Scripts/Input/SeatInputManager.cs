@@ -96,6 +96,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Update()
         {
+            if (!this.enabled) { return; }
+            
             InputKey();
 
             _inputJumpTimer = _inputJump ? _inputJumpTimer + Time.deltaTime : 0.0f;

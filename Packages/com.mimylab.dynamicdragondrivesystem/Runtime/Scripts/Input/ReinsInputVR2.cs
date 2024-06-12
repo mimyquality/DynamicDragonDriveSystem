@@ -8,26 +8,32 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
+    using UnityEditor;
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput VRHands2")]
+    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput VR Handle")]
     public class ReinsInputVR2 : ReinsInputManager
     {
-        [SerializeField, Tooltip("meter")]
+        [SerializeField, Min(0.01f), Tooltip("meter")]
         private float _moveScale = 0.2f;
-        [SerializeField, Tooltip("radius")]
-        private float _rotateRatio = 90.0f;
+        //[SerializeField, Tooltip("radius")]
+        private float _rotateScale = 90.0f;
         [SerializeField, Range(0.0f, 1.0f)]
-        private float _rotateDirection = 0.5f;
+        private float _rotateAxisTilt = 0.5f;
 
         [Space]
+        [SerializeField, Range(0.0f, 1.0f)]
+        private float _throttleDeadzone = 0.15f;
         [SerializeField, Range(0.0f, 1.0f)]
         private float _jumpAcceptanceThreshold = 0.95f;
         [SerializeField, Range(0.0f, 1.0f)]
         private float _brakesAcceptanceThreshold = 0.95f;
+
+        [SerializeField, HideInInspector]
+        private AnimationCurve _throttleInputCurve;
 
         private VRCPlayerApi _localPlayer;
         private bool _isGrabLeft, _isGrabRight, _isGrabBoth;
@@ -43,10 +49,45 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _centerGrabAngle;
         private bool _prevGrabJump;
 
+#if !COMPILER_UDONSHARP && UNITY_EDITOR 
+        private void Reset()
+        {
+            _throttleInputCurve = new AnimationCurve
+            (
+                new Keyframe(-1.0f, 1.0f),
+                new Keyframe(-_throttleDeadzone, 0.0f),
+                new Keyframe(_throttleDeadzone, 0.0f),
+                new Keyframe(1.0f, 1.0f)
+            );
+            var keys = _throttleInputCurve.keys;
+            for (int i = 0; i < keys.Length; i++)
+            {
+                AnimationUtility.SetKeyLeftTangentMode(_throttleInputCurve, i, AnimationUtility.TangentMode.Linear);
+                AnimationUtility.SetKeyRightTangentMode(_throttleInputCurve, i, AnimationUtility.TangentMode.Linear);
+            }
+        }
+
+        private void OnValidate()
+        {
+            _throttleDeadzone = Mathf.Clamp01(_throttleDeadzone);
+            if ((0.0f < _throttleDeadzone) && (_throttleDeadzone < 1.0f))
+            {
+                var keys = _throttleInputCurve.keys;
+                keys[1].time = -_throttleDeadzone;
+                _throttleInputCurve.MoveKey(1, keys[1]);
+                keys[2].time = _throttleDeadzone;
+                _throttleInputCurve.MoveKey(2, keys[2]);
+            }
+        }
+#endif
+
         private void Start()
         {
             _localPlayer = Networking.LocalPlayer;
-            _centerGrabRotateAxis = Vector3.Slerp(Vector3.forward, Vector3.down, _rotateDirection);
+            _centerGrabRotateAxis = Vector3.Slerp(Vector3.forward, Vector3.down, _rotateAxisTilt);
+
+            // 警告避け
+            var trash = _throttleDeadzone;
         }
 
         public override void PostLateUpdate()
@@ -78,19 +119,19 @@ namespace MimyLab.DynamicDragonDriveSystem
             _brakes = _centerGrabMove.z < -_brakesAcceptanceThreshold;
             //_turbo = 
 
-            _thrust = _centerGrabMove.z;
+            _thrust = _throttleInputCurve.Evaluate(_centerGrabMove.z);
 
             var angle = -Mathf.Clamp(_centerGrabAngle, -90.0f, 90.0f);
             var directRotation = new Vector3
             (
-                _centerGrabMove.y * 90.0f,
+                -_centerGrabMove.y * 90.0f,
                 angle,
                 angle
             );
             driver._InputDirectRotate(Vector3.Scale(_rotateSign, directRotation));
 
-            angle = Mathf.Clamp(_centerGrabAngle / _rotateRatio, -1.0f, 1.0f);
-            _elevator = _centerGrabMove.y;
+            angle = Mathf.Clamp(_centerGrabAngle / _rotateScale, -1.0f, 1.0f);
+            _elevator = -_centerGrabMove.y;
             _ladder = angle;
             _aileron = angle;
         }
