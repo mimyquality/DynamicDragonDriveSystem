@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.12.1] - 2024/6/13
+
+- **Fixed**
+  - VR Handleの後方加速入力が前方加速になっていたのを修正
+
 ## [0.12.0] - 2024/6/12
 
 - **Added**
@@ -332,6 +337,7 @@
 - **Added**
   - VPM化
 
+[0.12.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.1
 [0.12.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.0
 [0.11.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.11.0
 [0.10.7]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.10.7

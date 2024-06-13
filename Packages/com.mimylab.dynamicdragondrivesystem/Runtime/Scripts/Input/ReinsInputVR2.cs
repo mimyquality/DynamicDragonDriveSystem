@@ -54,7 +54,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _throttleInputCurve = new AnimationCurve
             (
-                new Keyframe(-1.0f, 1.0f),
+                new Keyframe(-1.0f, -1.0f),
                 new Keyframe(-_throttleDeadzone, 0.0f),
                 new Keyframe(_throttleDeadzone, 0.0f),
                 new Keyframe(1.0f, 1.0f)

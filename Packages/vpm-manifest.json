@@ -55,7 +55,7 @@
       "dependencies": {}
     },
     "jp.whiteflare.unlitwf": {
-      "version": "2.0.0",
+      "version": "2.1.0",
       "dependencies": {
         "jp.whiteflare.unlitwf.texpack": "^1.1.0"
       }
