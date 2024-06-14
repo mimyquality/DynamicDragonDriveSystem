@@ -394,7 +394,7 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 5958516703628250022}
   _moveScale: 0.2
-  _rotateRatio: 60
+  _rotateScale: 60
   _jumpAcceptanceThreshold: 0.9
   _brakesAcceptanceThreshold: 0.95
 --- !u!114 &5958516703628250022
@@ -561,7 +561,7 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 2585186483272949548}
   _moveScale: 0.2
-  _rotatePivotDirection: 0.5
+  _rotateAxisTilt: 0.5
   _throttleDeadzone: 0.15
   _jumpAcceptanceThreshold: 0.95
   _brakesAcceptanceThreshold: 0.95
@@ -570,9 +570,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -1
-      value: 1
+      value: -1
       inSlope: 0
-      outSlope: -1.1764705
+      outSlope: 1.1764705
       tangentMode: 69
       weightedMode: 0
       inWeight: 0
@@ -580,7 +580,7 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.15
       value: 0
-      inSlope: -1.1764705
+      inSlope: 1.1764705
       outSlope: 0
       tangentMode: 69
       weightedMode: 0
