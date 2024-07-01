@@ -29,6 +29,13 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         protected Vector3 _accelerateSign = Vector3.one;
         protected Vector3 _rotateSign = Vector3.one;
+        
+        public virtual HandType ThrottleInputHand { get => _throttleInputHand; }
+        public virtual HandType TurnInputHand { get => _turningInputHand; }
+        public virtual HandType ElevatorInputHand { get => _elevatorInputHand; }
+        public virtual float Thrust { get => _thrust; }
+        public virtual float Turn { get => (driver.State == (int)DragonDriverStateType.Flight) ? -_aileron : _ladder; }
+        public virtual float Elevator { get => -_elevator; }
 
         private Vector3 _accelerate = Vector3.zero;
         private Vector3 Accelerate

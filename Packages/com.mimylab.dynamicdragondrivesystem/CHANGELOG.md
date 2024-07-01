@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.12.3] - 2024/7/1
+
+- **Added**
+  - VR HandleとVR Lever入力選択時にUI表示を追加
+
 ## [0.12.2] - 2024/6/14
 
 - **Fixed**
@@ -337,6 +342,7 @@
 - **Added**
   - VPM化
 
+[0.12.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.3
 [0.12.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.2
 [0.12.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.0
 [0.11.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.11.0

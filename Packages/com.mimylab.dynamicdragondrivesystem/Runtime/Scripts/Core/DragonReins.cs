@@ -46,12 +46,43 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _enabledInput = value;
 
-                if (keyboard) keyboard.enabled = (_selectedInput == DragonReinsInputType.Keyboard) && value;
-                if (thumbsticks) thumbsticks.enabled = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
-                if (vrHands) vrHands.enabled = (_selectedInput == DragonReinsInputType.VRHands) && value;
-                if (vrHands2) vrHands2.enabled = (_selectedInput == DragonReinsInputType.VRHands2) && value;
-                if (gaze) gaze.enabled = (_selectedInput == DragonReinsInputType.Gaze) && value;
-                if (legacy) legacy.enabled = (_selectedInput == DragonReinsInputType.Legacy) && value;
+                bool enableSelect;
+                if (keyboard)
+                {
+                    enableSelect = (_selectedInput == DragonReinsInputType.Keyboard) && value;
+                    keyboard.enabled = enableSelect;
+                    keyboard.gameObject.SetActive(enableSelect);
+                }
+                if (thumbsticks)
+                {
+                    enableSelect = (_selectedInput == DragonReinsInputType.Thumbsticks) && value;
+                    thumbsticks.enabled = enableSelect;
+                    thumbsticks.gameObject.SetActive(enableSelect);
+                }
+                if (vrHands)
+                {
+                    enableSelect = (_selectedInput == DragonReinsInputType.VRHands) && value;
+                    vrHands.enabled = enableSelect;
+                    vrHands.gameObject.SetActive(enableSelect);
+                }
+                if (vrHands2)
+                {
+                    enableSelect = (_selectedInput == DragonReinsInputType.VRHands2) && value;
+                    vrHands2.enabled = enableSelect;
+                    vrHands2.gameObject.SetActive(enableSelect);
+                }
+                if (gaze)
+                {
+                    enableSelect = (_selectedInput == DragonReinsInputType.Gaze) && value;
+                    gaze.enabled = enableSelect;
+                    gaze.gameObject.SetActive(enableSelect);
+                }
+                if (legacy)
+                {
+                    enableSelect = (_selectedInput == DragonReinsInputType.Legacy) && value;
+                    legacy.enabled = enableSelect;
+                    legacy.gameObject.SetActive(enableSelect);
+                }
             }
         }
 

@@ -49,6 +49,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _centerGrabAngle;
         private bool _prevGrabJump;
 
+        public override float Turn { get => -_ladder; }  // _ladder == _aileron なので
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR 
         private void Reset()
         {
