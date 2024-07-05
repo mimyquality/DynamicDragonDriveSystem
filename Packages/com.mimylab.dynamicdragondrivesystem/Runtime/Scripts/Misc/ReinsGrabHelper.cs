@@ -89,7 +89,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SnapRightGrabHand(VRCPlayerApi grabPlayer)
         {
-            if (_rightGrabPoint) { return; }
+            if (!_rightGrabPoint) { return; }
 
             var rightHandPosition = grabPlayer.GetBonePosition(HumanBodyBones.RightHand);
             if (!rightHandPosition.Equals(Vector3.zero))
