@@ -6,6 +6,8 @@ https://opensource.org/licenses/mit-license.php
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
+    using System.CodeDom;
+
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
@@ -36,6 +38,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         VelocityMagnitude, Speed,
         AngularVelocityX, AngularVelocityY, AngularVelocityZ,
         AngularVelocityMagnitude, AngularSpeed,
+        Throttle,
+        Turn,
+        Elevator,
         RandomFloat
     }
 
@@ -50,6 +55,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float GroundedSmoothingDuration = 0.08f;   // 単位：sec
 
         internal DragonDriver driver;
+        internal DragonReins reins;
         internal bool isMount;
 
         [SerializeField, Min(0.0f), Tooltip("sec")]
@@ -83,6 +89,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _relativeVelocity;
         private Vector3 _relativeAngularVelocity;
         private float _speed, _angularSpeed;
+        private float _throttle, _turn, _elevator;
         private bool _randomBool;
         private int _randomInt;
         private float _randomFloat;
@@ -119,6 +126,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             Animator.StringToHash(DragonActorParameterName.AngularVelocityZ.ToString()),
             Animator.StringToHash(DragonActorParameterName.AngularVelocityMagnitude.ToString()),
             Animator.StringToHash(DragonActorParameterName.AngularSpeed.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Throttle.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Turn.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Elevator.ToString()),
             Animator.StringToHash(DragonActorParameterName.RandomFloat.ToString())
         };
         private bool[] _parametersValid;
@@ -298,6 +308,20 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _speed = _relativeVelocity.magnitude;
             _angularSpeed = _relativeAngularVelocity.magnitude;
+
+            ReinsInputManager reinsInput;
+            if (reinsInput = reins._GetEnabledInput())
+            {
+                _throttle = reinsInput.Thrust;
+                _turn = reinsInput.Turn;
+                _elevator = reinsInput.Elevator;
+            }
+            else
+            {
+                _throttle = 0.0f;
+                _turn = 0.0f;
+                _elevator = 0.0f;
+            }
         }
 
         private void SetAnimatorParameters()
@@ -327,6 +351,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_parametersValid[(int)DragonActorParameterName.AngularVelocityZ]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularVelocityZ], _relativeAngularVelocity.z);
             if (_parametersValid[(int)DragonActorParameterName.AngularVelocityMagnitude]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularVelocityMagnitude], _angularSpeed);
             if (_parametersValid[(int)DragonActorParameterName.AngularSpeed]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.AngularSpeed], _angularSpeed);
+            if (_parametersValid[(int)DragonActorParameterName.Throttle]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Throttle], _throttle);
+            if (_parametersValid[(int)DragonActorParameterName.Turn]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Turn], _turn);
+            if (_parametersValid[(int)DragonActorParameterName.Elevator]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.Elevator], _elevator);
             if (_parametersValid[(int)DragonActorParameterName.RandomFloat]) _animator.SetFloat(_parametersHash[(int)DragonActorParameterName.RandomFloat], _randomFloat);
         }
     }

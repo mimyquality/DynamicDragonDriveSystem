@@ -174,7 +174,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (index >= sound.Length) { return; }
             if (!sound[index]) { return; }
 
-            target.PlayOneShot(sound[index]);
+            target.PlayOneShot(sound[index], target.volume);
         }
     }
 }

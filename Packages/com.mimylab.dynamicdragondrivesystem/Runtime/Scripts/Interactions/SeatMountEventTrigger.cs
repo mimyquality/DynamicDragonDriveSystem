@@ -45,44 +45,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private GameObject[] _inactivateObjects = new GameObject[0];
 
-        [Header("Emit particle")]
-        [SerializeField]
-        private ParticleSystem _particleSystem;
-        [SerializeField]
-        private int _emit = 0;
-
-        [Header("Play sound one shot")]
-        [SerializeField]
-        private AudioSource _audioSource;
-        [SerializeField]
-        private AudioClip _audioClip;
-
         [Header("Execute SendCustomEvent to other UdonBehaviour")]
         [SerializeField,]
         private UdonBehaviour _udonBehaviour;
         [SerializeField]
         private string _eventName = "";
 
-        private bool _initialized = false;
-        private void Initialize()
-        {
-            if (_initialized) { return; }
-
-            if (!_particleSystem) { _particleSystem = GetComponent<ParticleSystem>(); }
-            if (!_audioSource) { _audioSource = GetComponent<AudioSource>(); }
-            if (_audioSource) { if (!_audioClip) { _audioClip = _audioSource.clip; } }
-
-            _initialized = true;
-        }
-        private void Start()
-        {
-            Initialize();
-        }
-
         public override void OnStationEntered(VRCPlayerApi player)
         {
-            Initialize();
-
             if (_eventType == SeatMountEventType.OnEntered)
             {
                 if (ValidateMountedPlayer(player)) { EventAction(_togetherSetOwner && player.isLocal); }
@@ -91,8 +61,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnStationExited(VRCPlayerApi player)
         {
-            Initialize();
-
             if (_eventType == SeatMountEventType.OnExited)
             {
                 if (ValidateMountedPlayer(player)) { EventAction(_togetherSetOwner && player.isLocal); }
@@ -140,8 +108,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 }
             }
 
-            if (_particleSystem && _emit > 0) { _particleSystem.Emit(_emit); }
-            if (_audioSource && _audioClip) { _audioSource.PlayOneShot(_audioClip); }
             if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
         }
     }

@@ -4,6 +4,18 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.13.0] - 2024/7/5
+
+- **Added**
+  - 手綱用ギミック、`Reins Grab Helper` 追加
+  - DragonActorのパラメーターに Throttle, Turn, Elevator 追加
+
+- **Fixed**
+  - DragonSong, ReactiveTriggerToDragonから鳴らす音がAudioSourceの音量を見るように修正
+
+- **Deleted**
+  - SeatMountEventTriggerからパーティクルと音を鳴らす機能を削除
+
 ## [0.12.3] - 2024/7/1
 
 - **Added**
@@ -342,6 +354,7 @@
 - **Added**
   - VPM化
 
+[0.13.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.0
 [0.12.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.3
 [0.12.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.2
 [0.12.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.0

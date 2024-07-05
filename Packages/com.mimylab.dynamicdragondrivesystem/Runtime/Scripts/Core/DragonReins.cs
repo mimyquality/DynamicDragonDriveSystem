@@ -10,6 +10,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     //using VRC.Udon;
+    using VRC.Udon.Common;
     //using VRC.SDK3.Components;
 
     public enum DragonReinsInputType
@@ -87,7 +88,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         private DragonReinsInputType _selectedInput = DragonReinsInputType.Thumbsticks;
-        public DragonReinsInputType SelectedImput { get => _selectedInput; }
+        public DragonReinsInputType SelectedInput { get => _selectedInput; }
 
         private int _changedInput = (int)DragonReinsInputType.Thumbsticks;
         public int ChangedInput { get => _changedInput; }
@@ -217,6 +218,24 @@ namespace MimyLab.DynamicDragonDriveSystem
                     _SetGaze();
                 }
             }
+        }
+
+        public ReinsInputManager _GetEnabledInput()
+        {
+            ReinsInputManager result = null;
+
+            if (!EnabledInput) return result;
+            switch (_selectedInput)
+            {
+                case DragonReinsInputType.Keyboard: result = keyboard; break;
+                case DragonReinsInputType.Thumbsticks: result = thumbsticks; break;
+                case DragonReinsInputType.VRHands: result = vrHands; break;
+                case DragonReinsInputType.Gaze: result = gaze; break;
+                case DragonReinsInputType.Legacy: result = legacy; break;
+                case DragonReinsInputType.VRHands2: result = vrHands2; break;
+            }
+
+            return result;
         }
 
         public void _SetKeyboard()

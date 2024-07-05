@@ -48,7 +48,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void OnEnable()
         {
             SetChangedInput(reins.ChangedInput);
-            SetSelectInput(reins.SelectedImput);
+            SetSelectInput(reins.SelectedInput);
         }
 
         public override void OnInputMethodChanged(VRCInputMethod inputMethod)
