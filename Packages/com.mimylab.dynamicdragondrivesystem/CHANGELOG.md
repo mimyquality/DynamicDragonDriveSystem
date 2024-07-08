@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.13.2] - 2024/7/8
+
+- **Fixed**
+  - ドラゴンに乗ったまま退室されても騎乗状態のままのバグを修正
+  - VR Handleの回転入力の最大角度を調整、更にInspectorからも調整可能に修正
+
 ## [0.13.1] - 2024/7/5
 
 - **Fixed**
@@ -359,6 +365,7 @@
 - **Added**
   - VPM化
 
+[0.13.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.2
 [0.13.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.1
 [0.13.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.0
 [0.12.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.12.3

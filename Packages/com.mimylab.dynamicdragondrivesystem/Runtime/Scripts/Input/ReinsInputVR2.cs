@@ -19,8 +19,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         [SerializeField, Min(0.01f), Tooltip("meter")]
         private float _moveScale = 0.2f;
-        //[SerializeField, Tooltip("radius")]
-        private float _rotateScale = 90.0f;
+        [SerializeField, Range(1.0f, 180.0f), Tooltip("radius")]
+        private float _rotateScale = 75.0f;
         [SerializeField, Range(0.0f, 1.0f)]
         private float _rotateAxisTilt = 0.5f;
 
