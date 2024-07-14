@@ -28,6 +28,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _brakesAcceptanceThreshold = 0.95f;
 
         private VRCPlayerApi _localPlayer;
+        private bool _isToggleGrab;
         private bool _isGrabLeft, _isGrabRight;
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
@@ -72,6 +73,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
+        public bool _GetGrabMode() { return _isToggleGrab; }
+        public void _SetGrabModeHold() { _isToggleGrab = false; }
+        public void _SetGrabModeToggle() { _isToggleGrab = true; }
+
         protected override void InputKey()
         {
             InputGrabJump();
@@ -95,14 +100,36 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void ActivateGrabLeft(bool value)
         {
-            if (value & !_isGrabLeft) { _flagGrabLeft = true; }
-            _isGrabLeft = value;
+            if (_isToggleGrab)
+            {
+                if (value)
+                {
+                    if (!_isGrabLeft) { _flagGrabLeft = true; }
+                    _isGrabLeft = !_isGrabLeft;
+                }
+            }
+            else
+            {
+                if (value & !_isGrabLeft) { _flagGrabLeft = true; }
+                _isGrabLeft = value;
+            }
         }
 
         private void ActivateGrabRight(bool value)
         {
-            if (value & !_isGrabRight) { _flagGrabRight = true; }
-            _isGrabRight = value;
+            if (_isToggleGrab)
+            {
+                if (value)
+                {
+                    if (!_isGrabRight) { _flagGrabRight = true; }
+                    _isGrabRight = !_isGrabRight;
+                }
+            }
+            else
+            {
+                if (value & !_isGrabRight) { _flagGrabRight = true; }
+                _isGrabRight = value;
+            }
         }
 
         private Vector3 GetLeftGrabMove()

@@ -36,6 +36,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private AnimationCurve _throttleInputCurve;
 
         private VRCPlayerApi _localPlayer;
+        private bool _isToggleGrab;
         private bool _isGrabLeft, _isGrabRight, _isGrabBoth;
         private bool _flagGrabBoth;
         private Vector3 _originPosition, _leftHandPosition, _rightHandPosition;
@@ -111,8 +112,12 @@ namespace MimyLab.DynamicDragonDriveSystem
                 case HandType.RIGHT: _isGrabRight = value; break;
                 case HandType.LEFT: _isGrabLeft = value; break;
             }
-            if (_isGrabBoth = _isGrabLeft & _isGrabRight) { _flagGrabBoth = true; }
+            ActivateGrab(_isGrabLeft & _isGrabRight);
         }
+
+        public bool _GetGrabMode() { return _isToggleGrab; }
+        public void _SetGrabModeHold() { _isToggleGrab = false; }
+        public void _SetGrabModeToggle() { _isToggleGrab = true; }
 
         protected override void InputKey()
         {
@@ -136,6 +141,23 @@ namespace MimyLab.DynamicDragonDriveSystem
             _elevator = -_centerGrabMove.y;
             _ladder = angle;
             _aileron = angle;
+        }
+
+        private void ActivateGrab(bool value)
+        {
+            if (_isToggleGrab)
+            {
+                if (value)
+                {
+                    if (!_isGrabBoth) { _flagGrabBoth = true; }
+                    _isGrabBoth = !_isGrabBoth;
+                }
+            }
+            else
+            {
+                if (value & !_isGrabBoth) { _flagGrabBoth = true; }
+                _isGrabBoth = value;
+            }
         }
 
         private Vector3 GetCenterGrabMove()
