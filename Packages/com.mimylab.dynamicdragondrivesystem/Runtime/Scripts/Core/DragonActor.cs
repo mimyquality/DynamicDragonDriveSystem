@@ -310,7 +310,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _angularSpeed = _relativeAngularVelocity.magnitude;
 
             ReinsInputManager reinsInput;
-            if (reinsInput = reins._GetEnabledInput())
+            if (reinsInput = reins._GetEnabledInputType())
             {
                 _throttle = reinsInput.Thrust;
                 _turn = reinsInput.Turn;

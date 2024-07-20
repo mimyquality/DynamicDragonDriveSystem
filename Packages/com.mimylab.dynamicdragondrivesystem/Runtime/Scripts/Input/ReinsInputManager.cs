@@ -29,7 +29,13 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         protected Vector3 _accelerateSign = Vector3.one;
         protected Vector3 _rotateSign = Vector3.one;
-        
+
+        public virtual bool ThrustIsInvert { get => _accelerateSign.z < 0; }
+        public virtual bool ClimbIsInvert { get => _accelerateSign.y < 0; }
+        public virtual bool StrafeIsInvert { get => _accelerateSign.x < 0; }
+        public virtual bool ElevatorIsInvert { get => _rotateSign.x < 0; }
+        public virtual bool LadderIsInvert { get => _rotateSign.y < 0; }
+        public virtual bool AileronIsInvert { get => _rotateSign.z < 0; }
         public virtual HandType ThrottleInputHand { get => _throttleInputHand; }
         public virtual HandType TurnInputHand { get => _turningInputHand; }
         public virtual HandType ElevatorInputHand { get => _elevatorInputHand; }
@@ -112,39 +118,30 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!value) { driver._InputJump(); }
         }
 
-        public int _GetThrustSign() { return (_accelerateSign.z > 0.0f) ? 1 : -1; }
         public void _InvertThrust() { _accelerateSign.z = -1.0f; }
         public void _NormalThrust() { _accelerateSign.z = 1.0f; }
 
-        public int _GetLiftSign() { return (_accelerateSign.y > 0.0f) ? 1 : -1; }
-        public void _InvertLift() { _accelerateSign.y = -1.0f; }
-        public void _NormalLift() { _accelerateSign.y = 1.0f; }
+        public void _InvertClimb() { _accelerateSign.y = -1.0f; }
+        public void _NormalClimb() { _accelerateSign.y = 1.0f; }
 
-        public int _GetLateralSign() { return (_accelerateSign.x > 0.0f) ? 1 : -1; }
-        public void _InvertLateral() { _accelerateSign.x = -1.0f; }
-        public void _NormalLateral() { _accelerateSign.x = 1.0f; }
+        public void _InvertStrafe() { _accelerateSign.x = -1.0f; }
+        public void _NormalStrafe() { _accelerateSign.x = 1.0f; }
 
-        public int _GetElevatorSign() { return (_rotateSign.x > 0.0f) ? 1 : -1; }
         public void _InvertElevator() { _rotateSign.x = -1.0f; }
         public void _NormalElevator() { _rotateSign.x = 1.0f; }
 
-        public int _GetLadderSign() { return (_rotateSign.y > 0.0f) ? 1 : -1; }
         public void _InvertLadder() { _rotateSign.y = -1.0f; }
         public void _NormalLadder() { _rotateSign.y = 1.0f; }
 
-        public int _GetAileronSign() { return (_rotateSign.z > 0.0f) ? 1 : -1; }
         public void _InvertAileron() { _rotateSign.z = -1.0f; }
         public void _NormalAileron() { _rotateSign.z = 1.0f; }
 
-        public HandType _GetThrottleHand() { return _throttleInputHand; }
         public void _SetThrottleRightHand() { _throttleInputHand = HandType.RIGHT; }
         public void _SetThrottleLeftHand() { _throttleInputHand = HandType.LEFT; }
 
-        public HandType _GetTurningHand() { return _turningInputHand; }
         public void _SetTurningRightHand() { _turningInputHand = HandType.RIGHT; }
         public void _SetTurningLeftHand() { _turningInputHand = HandType.LEFT; }
 
-        public HandType _GetElevatorHand() { return _elevatorInputHand; }
         public void _SetElevatorRightHand() { _elevatorInputHand = HandType.RIGHT; }
         public void _SetElevatorLeftHand() { _elevatorInputHand = HandType.LEFT; }
 

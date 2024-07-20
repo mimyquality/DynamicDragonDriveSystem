@@ -38,14 +38,14 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         internal DragonDriver driver;
 
-        [FieldChangeCallback(nameof(EnabledInput))]
-        private bool _enabledInput = false;
-        public bool EnabledInput
+        [FieldChangeCallback(nameof(InputEnabled))]
+        private bool _inputEnabled = false;
+        public bool InputEnabled
         {
-            get => _enabledInput;
+            get => _inputEnabled;
             set
             {
-                _enabledInput = value;
+                _inputEnabled = value;
 
                 bool enableSelect;
                 if (keyboard)
@@ -118,12 +118,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-            // OnInputMethodChangedが最初に1回発火しないバグ回避
             SelectPlatform();
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
-        private bool _initializedInputType = false;
         public override void OnInputMethodChanged(VRCInputMethod inputMethod)
         {
             switch (inputMethod)
@@ -157,27 +155,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 default:
                     _changedInput |= (int)DragonReinsInputType.Thumbsticks;
                     break;
-            }
-
-            if (!_initializedInputType)
-            {
-                switch (inputMethod)
-                {
-                    case VRCInputMethod.Keyboard:
-                    case VRCInputMethod.Mouse:
-                        _SetKeyboard();
-                        break;
-                    case VRCInputMethod.Touch:
-                        _SetGaze();
-                        break;
-                    case VRCInputMethod.Vive:
-                        _SetLegacy();
-                        break;
-                    default:
-                        _SetThumbsticks();
-                        break;
-                }
-                _initializedInputType = true;
             }
         }
 
@@ -220,11 +197,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public ReinsInputManager _GetEnabledInput()
+        public ReinsInputManager _GetEnabledInputType()
         {
             ReinsInputManager result = null;
 
-            if (!EnabledInput) return result;
+            if (!InputEnabled) return result;
             switch (_selectedInput)
             {
                 case DragonReinsInputType.Keyboard: result = keyboard; break;
@@ -241,47 +218,47 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _SetKeyboard()
         {
             _selectedInput = DragonReinsInputType.Keyboard;
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
         public void _SetThumbsticks()
         {
             _selectedInput = DragonReinsInputType.Thumbsticks;
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
         public void _SetVRHands()
         {
             _selectedInput = DragonReinsInputType.VRHands;
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
         public void _SetVRHands2()
         {
             _selectedInput = DragonReinsInputType.VRHands2;
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
         public void _SetGaze()
         {
             _selectedInput = DragonReinsInputType.Gaze;
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
         public void _SetLegacy()
         {
             _selectedInput = DragonReinsInputType.Legacy;
-            EnabledInput = EnabledInput;
+            InputEnabled = InputEnabled;
         }
 
         public void _EnableDragonControl()
         {
-            EnabledInput = true;
+            InputEnabled = true;
         }
 
         public void _DisableDragonControl()
         {
-            EnabledInput = false;
+            InputEnabled = false;
         }
     }
 }

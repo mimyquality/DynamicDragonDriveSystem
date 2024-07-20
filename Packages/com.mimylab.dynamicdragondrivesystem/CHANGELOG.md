@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.15.0] - 2024/7/20
+
+- **Changed**
+  - ReinsInputのUI周りを整理
+
 ## [0.14.0] - 2024/7/14
 
 - **Added**
@@ -370,6 +375,7 @@
 - **Added**
   - VPM化
 
+[0.15.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.15.0
 [0.14.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.14.0
 [0.13.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.2
 [0.13.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.1
