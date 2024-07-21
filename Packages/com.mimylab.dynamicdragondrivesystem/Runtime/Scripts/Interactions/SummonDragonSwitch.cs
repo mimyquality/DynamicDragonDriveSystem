@@ -55,7 +55,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _isCoolDown = true;
             ToggleInteractive();
             SendCustomEventDelayedSeconds(nameof(_ResetInteractInterval), _interval);
-            _driver.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(DragonDriver.Summon));
+            _driver.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(DragonDriver.Respawn));
         }
 
         private void OnTriggerEnter(Collider other)

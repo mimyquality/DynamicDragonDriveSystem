@@ -4,6 +4,15 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.16.0] - 2024/7/21
+
+- **Added**
+  - 接触したドラゴンをテレポートさせるギミックを追加
+
+- **Fixed**
+  - VR HandleとVR Leverの不具合修正
+  - 入力方法を減らしても機能するよう修正
+
 ## [0.15.0] - 2024/7/20
 
 - **Changed**
@@ -375,6 +384,7 @@
 - **Added**
   - VPM化
 
+[0.16.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.16.0
 [0.15.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.15.0
 [0.14.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.14.0
 [0.13.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.13.2

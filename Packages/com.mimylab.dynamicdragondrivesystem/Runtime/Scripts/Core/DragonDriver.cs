@@ -283,11 +283,19 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          入力操作受付
          ******************************/
-        public void Summon()
+        public void Respawn()
         {
             if (Networking.IsOwner(this.gameObject))
             {
                 _objectSync.Respawn();
+            }
+        }
+
+        public void TeleportTo(Transform target)
+        {
+            if (Networking.IsOwner(this.gameObject))
+            {
+                _objectSync.TeleportTo(target);
             }
         }
 
