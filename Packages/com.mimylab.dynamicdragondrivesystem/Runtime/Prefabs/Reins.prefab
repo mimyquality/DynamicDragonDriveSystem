@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5804849046053201976
 Transform:
   m_ObjectHideFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8058172036853151375
 Transform:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8058172037843410876
 Transform:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8058172038777351429
 Transform:
   m_ObjectHideFlags: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 5958516703628250022}
-  _moveScale: 0.2
+  _moveScale: 0.16
   _rotateScale: 60
   _jumpAcceptanceThreshold: 0.9
   _brakesAcceptanceThreshold: 0.95
@@ -441,7 +441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6530314328261796044
 Transform:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6824549918648649968
 Transform:
   m_ObjectHideFlags: 0
@@ -562,7 +562,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 2585186483272949548}
-  _moveScale: 0.2
+  _moveScale: 0.16
+  _rotateScale: 75
   _rotateAxisTilt: 0.5
   _throttleDeadzone: 0.15
   _jumpAcceptanceThreshold: 0.95

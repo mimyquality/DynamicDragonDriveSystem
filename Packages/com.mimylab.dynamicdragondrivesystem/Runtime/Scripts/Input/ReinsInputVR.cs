@@ -17,7 +17,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class ReinsInputVR : ReinsInputManager
     {
         [SerializeField, Min(0.01f), Tooltip("meter")]
-        private float _moveScale = 0.2f;
+        private float _moveScale = 0.16f;
         [SerializeField, Range(1.0f, 180.0f), Tooltip("radius")]
         private float _rotateScale = 60.0f;
 
