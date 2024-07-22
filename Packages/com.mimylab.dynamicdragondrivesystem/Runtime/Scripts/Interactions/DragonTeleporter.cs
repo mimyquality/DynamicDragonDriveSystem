@@ -12,9 +12,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Call Dragon Trigger")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Teleporter")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class CallDragonTrigger : UdonSharpBehaviour
+    public class DragonTeleporter : UdonSharpBehaviour
     {
         [SerializeField]
         private Transform _target = null;
@@ -24,10 +24,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!Utilities.IsValid(other)) { return; }
 
-            Call(other.GetComponent<DragonDriver>());
+            Teleport(other.GetComponent<DragonDriver>());
         }
 
-        public void Call(DragonDriver driver)
+        public void Teleport(DragonDriver driver)
         {
             if (!driver) { return; }
             if (!Networking.IsOwner(driver.gameObject)) { return; }
