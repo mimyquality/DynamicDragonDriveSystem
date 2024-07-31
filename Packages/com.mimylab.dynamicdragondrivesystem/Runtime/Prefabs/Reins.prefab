@@ -55,6 +55,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1971251491974881431}
+  _throttleInputHand: 1
+  _turningInputHand: 0
+  _elevatorInputHand: 0
   _brakesAcceptanceThreshold: 0.95
 --- !u!114 &1971251491974881431
 MonoBehaviour:
@@ -137,6 +140,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 4063400235932195412}
+  _throttleInputHand: 1
+  _turningInputHand: 0
+  _elevatorInputHand: 0
   _brakesAcceptanceThreshold: 0.95
 --- !u!114 &4063400235932195412
 MonoBehaviour:
@@ -219,6 +225,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 8058172037843410877}
+  _throttleInputHand: 0
+  _turningInputHand: 1
+  _elevatorInputHand: 1
 --- !u!114 &8058172037843410877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +403,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 5958516703628250022}
+  _throttleInputHand: 1
+  _turningInputHand: 0
+  _elevatorInputHand: 0
   _moveScale: 0.16
   _rotateScale: 60
   _jumpAcceptanceThreshold: 0.9
@@ -479,6 +491,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 8593270195558651346}
+  _throttleInputHand: 0
+  _turningInputHand: 1
+  _elevatorInputHand: 1
   _brakesAcceptanceThreshold: 0.9
 --- !u!114 &8593270195558651346
 MonoBehaviour:
@@ -562,6 +577,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 2585186483272949548}
+  _throttleInputHand: 1
+  _turningInputHand: 0
+  _elevatorInputHand: 0
   _moveScale: 0.16
   _rotateScale: 75
   _rotateAxisTilt: 0.5

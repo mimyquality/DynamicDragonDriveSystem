@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Collision Detector")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Collision Detector")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class DragonCollisionDetector : UdonSharpBehaviour
     {

@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Reins Grab Helper")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Misc/Reins Grab Helper")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsGrabHelper : UdonSharpBehaviour
     {

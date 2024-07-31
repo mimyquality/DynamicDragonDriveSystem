@@ -44,7 +44,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         RandomFloat
     }
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Actor")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Actor")]
     [RequireComponent(typeof(Animator))]
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
@@ -309,7 +309,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _speed = _relativeVelocity.magnitude;
             _angularSpeed = _relativeAngularVelocity.magnitude;
 
-            ReinsInputManager reinsInput;
+            ReinsController reinsInput;
             if (reinsInput = reins._GetEnabledInput())
             {
                 _throttle = reinsInput.Thrust;

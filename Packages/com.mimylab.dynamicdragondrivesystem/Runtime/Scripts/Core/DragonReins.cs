@@ -23,7 +23,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         VRHands2 = 1 << 5,
     }
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Reins")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Reins")]
     [DefaultExecutionOrder(-200)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonReins : UdonSharpBehaviour
@@ -114,22 +114,39 @@ namespace MimyLab.DynamicDragonDriveSystem
             InputEnabled = InputEnabled;
         }
 
+        private bool _isFirstInputMethodChanged = true;
         public override void OnInputMethodChanged(VRCInputMethod inputMethod)
         {
             switch (inputMethod)
             {
                 case VRCInputMethod.Keyboard:
-                    if (keyboard) { _changeableInput |= (int)DragonReinsInputType.Keyboard; }
+                    if (keyboard)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Keyboard;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Keyboard; }
+                    }
                     break;
                 case VRCInputMethod.Mouse:
                 case VRCInputMethod.Touch:
-                    if (gaze) { _changeableInput |= (int)DragonReinsInputType.Gaze; }
+                    if (gaze)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Gaze;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Gaze; }
+                    }
                     break;
                 case VRCInputMethod.Controller:
-                    if (thumbsticks) { _changeableInput |= (int)DragonReinsInputType.Thumbsticks; }
+                    if (thumbsticks)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Thumbsticks; }
+                    }
                     break;
                 case VRCInputMethod.Vive:
-                    if (legacy) { _changeableInput |= (int)DragonReinsInputType.Legacy; }
+                    if (legacy)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Legacy;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Legacy; }
+                    }
                     if (vrHands) { _changeableInput |= (int)DragonReinsInputType.VRHands; }
                     if (vrHands2) { _changeableInput |= (int)DragonReinsInputType.VRHands2; }
                     break;
@@ -140,105 +157,47 @@ namespace MimyLab.DynamicDragonDriveSystem
                 case VRCInputMethod.QuestHands:
                 case VRCInputMethod.OpenXRGeneric:
                 case VRCInputMethod.Pico:
-                    if (thumbsticks) { _changeableInput |= (int)DragonReinsInputType.Thumbsticks; }
+                    if (thumbsticks)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Thumbsticks; }
+                    }
                     if (vrHands) { _changeableInput |= (int)DragonReinsInputType.VRHands; }
                     if (vrHands2) { _changeableInput |= (int)DragonReinsInputType.VRHands2; }
                     break;
                 default:
-                    if (thumbsticks) { _changeableInput |= (int)DragonReinsInputType.Thumbsticks; }
+                    if (thumbsticks)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Thumbsticks; }
+                    }
                     break;
             }
+
+            _isFirstInputMethodChanged = false;
         }
 
         private void SelectFromPlatform()
         {
-            var isPC = false;
-#if UNITY_STANDALONE_WIN
-            isPC = true;
-#endif
+            // General
+            if (thumbsticks) { _changeableInput |= (int)DragonReinsInputType.Thumbsticks; }
 
-            if (isPC)
+            if (Networking.LocalPlayer.IsUserInVR())
             {
-                if (Networking.LocalPlayer.IsUserInVR())
-                {
-                    // PCVR
-                    if (legacy)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Legacy;
-                        _selectedInput = DragonReinsInputType.Legacy;
-                    }
-                    if (vrHands)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.VRHands;
-                        _selectedInput = DragonReinsInputType.VRHands;
-                    }
-                    if (vrHands2)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.VRHands2;
-                        _selectedInput = DragonReinsInputType.VRHands2;
-                    }
-                    if (thumbsticks)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
-                        _selectedInput = DragonReinsInputType.Thumbsticks;
-                    }
-                }
-                else
-                {
-                    // Desktop
-                    if (thumbsticks)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
-                        _selectedInput = DragonReinsInputType.Thumbsticks;
-                    }
-                    if (keyboard)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Keyboard;
-                        _selectedInput = DragonReinsInputType.Keyboard;
-                    }
-                }
+                // VR
+                if (vrHands) { _changeableInput |= (int)DragonReinsInputType.VRHands; }
+                if (vrHands2) { _changeableInput |= (int)DragonReinsInputType.VRHands2; }
             }
             else
             {
-                if (Networking.LocalPlayer.IsUserInVR())
-                {
-                    // StandaloneVR
-                    if (vrHands)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.VRHands;
-                        _selectedInput = DragonReinsInputType.VRHands;
-                    }
-                    if (vrHands2)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.VRHands2;
-                        _selectedInput = DragonReinsInputType.VRHands2;
-                    }
-                    if (thumbsticks)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
-                        _selectedInput = DragonReinsInputType.Thumbsticks;
-                    }
-                }
-                else
-                {
-                    // Android, iOS
-                    if (thumbsticks)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Thumbsticks;
-                        _selectedInput = DragonReinsInputType.Thumbsticks;
-                    }
-                    if (gaze)
-                    {
-                        _changeableInput |= (int)DragonReinsInputType.Gaze;
-                        _selectedInput = DragonReinsInputType.Gaze;
-                    }
-                }
+                // Desktop, Mobile
+                if (gaze) { _changeableInput |= (int)DragonReinsInputType.Gaze; }
             }
         }
 
-        public ReinsInputManager _GetEnabledInput()
+        public ReinsController _GetEnabledInput()
         {
-            ReinsInputManager result = null;
+            ReinsController result = null;
 
             if (!InputEnabled) return result;
             switch (_selectedInput)

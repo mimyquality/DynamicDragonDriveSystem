@@ -13,7 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Song")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Song")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class DragonSong : UdonSharpBehaviour
     {

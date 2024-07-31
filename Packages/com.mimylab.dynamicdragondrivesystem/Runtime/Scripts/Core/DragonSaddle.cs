@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Saddle")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Saddle")]
     public class DragonSaddle : DragonSeat
     {
         internal DragonDriver driver;

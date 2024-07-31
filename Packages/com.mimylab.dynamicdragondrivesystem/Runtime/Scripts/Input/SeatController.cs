@@ -11,10 +11,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-    public class SeatInputManager : UdonSharpBehaviour
+    public class SeatController : UdonSharpBehaviour
     {
         private const float DoubleTapDuration = 0.2f;   // 単位：sec
         private const float TooltipShowTime = 5.0f; // 単位：sec

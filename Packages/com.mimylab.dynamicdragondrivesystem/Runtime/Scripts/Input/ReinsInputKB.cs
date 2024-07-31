@@ -11,16 +11,15 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput Keyboard")]
-    public class ReinsInputKB : ReinsInputManager
+    [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput Keyboard")]
+    public class ReinsInputKB : ReinsController
     {
-        private void Start()
+        private void Reset()
         {
-            _SetThrottleRightHand();
-            _SetElevatorLeftHand();
-            _SetTurningLeftHand();
+            _throttleInputHand = HandType.RIGHT;
+            _turningInputHand = HandType.LEFT;
+            _elevatorInputHand = HandType.LEFT;
         }
 
         // W・Sキー

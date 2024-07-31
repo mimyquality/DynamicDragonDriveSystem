@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Snap to Parent Switch")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Misc/Snap to Parent Switch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SnapToParentSwitch : UdonSharpBehaviour
     {

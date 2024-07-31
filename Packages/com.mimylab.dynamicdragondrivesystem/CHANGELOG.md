@@ -4,6 +4,14 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.17.0] - 2024/7/31
+
+- **Added**
+  - 乗り捨てられたドラゴンを自動帰還させるPrefabを追加
+
+- **Changed**
+  - 各スクリプトの名称、メニュー階層を変更整理
+
 ## [0.16.1] - 2024/7/22
 
 - **Changed**
@@ -389,6 +397,7 @@
 - **Added**
   - VPM化
 
+[0.17.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.0
 [0.16.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.16.1
 [0.16.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.16.0
 [0.15.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.15.0

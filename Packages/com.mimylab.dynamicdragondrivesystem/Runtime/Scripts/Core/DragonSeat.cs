@@ -13,8 +13,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
     using VRCStation = VRC.SDK3.Components.VRCStation;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Seat")]
-    [RequireComponent(typeof(VRCStation), typeof(SeatInputManager))]
+    [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Seat")]
+    [RequireComponent(typeof(VRCStation), typeof(SeatController))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour
     {
@@ -64,7 +64,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsMount { get => _isMount; }
 
         protected VRCStation _station;
-        protected SeatInputManager _seatInput;
+        protected SeatController _seatInput;
         private Transform _enterPoint;
         private bool _isMount = false;
         private int _mountedPlayerId = -1;
@@ -80,7 +80,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             _station = GetComponent<VRCStation>();
-            _seatInput = GetComponent<SeatInputManager>();
+            _seatInput = GetComponent<SeatController>();
             _enterPoint = _station.stationEnterPlayerLocation ? _station.stationEnterPlayerLocation : _station.transform;
             _localAdjustPoint = _enterPoint.localPosition;
 

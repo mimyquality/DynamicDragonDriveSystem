@@ -12,10 +12,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput VR Handle")]
-    public class ReinsInputVR2 : ReinsInputManager
+    [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput VRHandle")]
+    public class ReinsInputVR2 : ReinsController
     {
         [SerializeField, Min(0.01f), Tooltip("meter")]
         private float _moveScale = 0.16f;

@@ -11,20 +11,19 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput Legacy")]
-    public class ReinsInputLGC : ReinsInputManager
+    [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput Legacy")]
+    public class ReinsInputLGC : ReinsController
     {
         [SerializeField, Range(0.0f, 1.0f)]
         private float _brakesAcceptanceThreshold = 0.9f;
         private bool _InputBrakeLeft, _InputBrakeRight;
 
-        private void Start()
+        private void Reset()
         {
-            _SetThrottleRightHand();
-            _SetElevatorLeftHand();
-            _SetTurningLeftHand();
+            _throttleInputHand = HandType.RIGHT;
+            _turningInputHand = HandType.LEFT;
+            _elevatorInputHand = HandType.LEFT;
         }
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)

@@ -11,10 +11,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput Thumbsticks")]
-    public class ReinsInputSTK : ReinsInputManager
+    [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput Thumbsticks")]
+    public class ReinsInputSTK : ReinsController
     {
         [SerializeField, Range(0.0f, 1.0f)]
         private float _brakesAcceptanceThreshold = 0.95f;

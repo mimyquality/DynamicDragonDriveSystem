@@ -13,8 +13,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
     using TMPro;
-    using UnityEngine.PlayerLoop;
 
+    [AddComponentMenu("Dynamic Dragon Drive System/Debug/Dragon Conditioner")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonConditioner : UdonSharpBehaviour
     {

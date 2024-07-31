@@ -11,13 +11,12 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/ReinsInput Menu UI")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput Menu UI")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputMenuUI : UdonSharpBehaviour
     {
-        public ReinsInputManager reinsInput;
+        public ReinsController reinsInput;
 
         [Space]
         [SerializeField] private GameObject _menu_thrust_normal;

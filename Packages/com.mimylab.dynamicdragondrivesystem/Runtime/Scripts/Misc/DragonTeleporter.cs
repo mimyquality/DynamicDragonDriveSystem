@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Teleporter")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Misc/Dragon Teleporter")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonTeleporter : UdonSharpBehaviour
     {

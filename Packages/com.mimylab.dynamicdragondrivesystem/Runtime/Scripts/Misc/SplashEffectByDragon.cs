@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Splash Effect by Dragon")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Misc/SplashEffect by Dragon")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SplashEffectByDragon : SplashEffect
     {

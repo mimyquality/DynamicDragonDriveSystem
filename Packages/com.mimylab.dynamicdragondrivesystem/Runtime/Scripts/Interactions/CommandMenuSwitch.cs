@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/CommandMenu Switch")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/CommandMenu Switch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class CommandMenuSwitch : UdonSharpBehaviour
     {

@@ -10,9 +10,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     //using VRC.SDKBase;
     //using VRC.Udon;
-    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/DDDS Descriptor")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Core/DDDS Descriptor")]
     [DefaultExecutionOrder(-1000)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DDDSDescriptor : UdonSharpBehaviour

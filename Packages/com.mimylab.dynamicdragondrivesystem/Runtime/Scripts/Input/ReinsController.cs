@@ -11,21 +11,23 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
     [DefaultExecutionOrder(-100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class ReinsInputManager : UdonSharpBehaviour
+    public class ReinsController : UdonSharpBehaviour
     {
         internal DragonDriver driver;
+
+        [SerializeField, HideInInspector]
+        protected HandType _throttleInputHand = HandType.LEFT;
+        [SerializeField, HideInInspector]
+        protected HandType _turningInputHand = HandType.RIGHT;
+        [SerializeField, HideInInspector]
+        protected HandType _elevatorInputHand = HandType.RIGHT;
 
         protected float _thrust, _climb, _strafe;
         protected float _elevator, _ladder, _aileron;
         protected bool _brakes, _turbo;
-
-        protected HandType _throttleInputHand = HandType.LEFT;
-        protected HandType _turningInputHand = HandType.RIGHT;
-        protected HandType _elevatorInputHand = HandType.RIGHT;
 
         protected Vector3 _accelerateSign = Vector3.one;
         protected Vector3 _rotateSign = Vector3.one;

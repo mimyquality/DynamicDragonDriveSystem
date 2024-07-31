@@ -27,7 +27,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         Flight = 1 << 2
     }
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Dragon Driver")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Driver")]
     [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync), typeof(SphereCollider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour

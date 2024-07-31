@@ -10,10 +10,10 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     //using VRC.Udon;
-    //using VRC.SDK3.Components;
     using VRC.Udon.Common.Interfaces;
+    //using VRC.SDK3.Components;
 
-    [AddComponentMenu("Dynamic Dragon Drive System/Summon Dragon Switch")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/SummonDragon Switch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SummonDragonSwitch : UdonSharpBehaviour
     {
@@ -22,7 +22,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private float _interval = 5.0f;
         [SerializeField]
-        private bool _wakeOnUninteractive = true;
+        private bool _UninteractiveOnAwake = true;
 
         private GameObject[] _children;
         private DragonDriver _driver;
@@ -41,7 +41,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _driver = saddle.driver;
             _collider = _driver.GetComponent<Collider>();
 
-            if (_wakeOnUninteractive)
+            if (_UninteractiveOnAwake)
             {
                 _isStay = true;
                 ToggleInteractive();
