@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.17.1] - 2024/8/1
+
+- **Fixed**
+  - ReinsInput各種のブレーキ閾値を調整
+
 ## [0.17.0] - 2024/7/31
 
 - **Added**
