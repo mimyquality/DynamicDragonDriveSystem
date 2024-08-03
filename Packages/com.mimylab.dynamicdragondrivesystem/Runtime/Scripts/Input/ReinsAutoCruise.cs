@@ -9,7 +9,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    using VRC.Udon;
+    //using VRC.Udon;
 
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Reins AutoCruise")]
     public class ReinsAutoCruise : ReinsController
@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public float targetSpeed = 60.0f;
 
         [SerializeField, Min(0.0f), Tooltip("meter")]
-        private float _stoppingDistance = 2.0f;
+        private float _stoppingDistance = 10.0f;
 
         private Transform _dragonTF;
 
@@ -45,19 +45,22 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             var direction = targetPoint.position - _dragonTF.position;
             // 加速指示
-            _thrust = Accelerate(direction.sqrMagnitude);
+            _thrust = Accelerate(direction);
             // 方向指示
             driver._InputDirectRotate(Focus(direction), true);
         }
 
-        private float Accelerate(float sqrDistance)
+        private float Accelerate(Vector3 direction)
         {
+            _brakes = false;
+
             var sqrCurrentSpeed = driver.Velocity.sqrMagnitude;
-            if (sqrDistance < _stoppingDistance * _stoppingDistance)
+            if (direction.sqrMagnitude < _stoppingDistance * _stoppingDistance)
             {
                 if (sqrCurrentSpeed > _stillSpeedThreshold * _stillSpeedThreshold)
                 {
-                    return -1.0f;
+                    _brakes = true;
+                    return 0.0f;
                 }
             }
             else

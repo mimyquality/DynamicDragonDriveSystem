@@ -16,6 +16,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsGrabHelper : UdonSharpBehaviour
     {
+        public DragonSaddle saddle;
+
         [SerializeField]
         private Transform _leftGrabPoint;
         [SerializeField]
@@ -24,7 +26,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _vrOnly = true;
 
         private DragonDriver _driver;
-        private DragonSaddle _saddle;
 
         private Vector3 _defaultLeftReinsPosition, _defaultRightReinsPosition;
         private readonly float _returnSpeed = 1.0f;
@@ -34,12 +35,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _defaultLeftReinsPosition = _leftGrabPoint.localPosition;
             _defaultRightReinsPosition = _rightGrabPoint.localPosition;
 
-            var ddds = GetComponentInParent<DDDSDescriptor>();
-            if (ddds)
-            {
-                _driver = ddds.driver;
-                _saddle = ddds.saddle;
-            }
+            _driver = saddle.driver;
         }
 
         private void OnDisable()
@@ -52,7 +48,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!gameObject.activeInHierarchy || !enabled) { return; }
 
-            if (_saddle.IsMount)
+            if (saddle.IsMount)
             {
                 var owner = Networking.GetOwner(_driver.gameObject);
                 if (Utilities.IsValid(owner) && !(_vrOnly && !owner.IsUserInVR()))

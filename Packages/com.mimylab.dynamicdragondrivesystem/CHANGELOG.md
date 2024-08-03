@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.17.2] - 2024/8/3
+
+- **Fixed**
+  - 自動帰還を移動モーション成しでも使えるように修正
+  - 自動操縦の減速処理をブレーキで行うよう修正
+
 ## [0.17.1] - 2024/8/1
 
 - **Fixed**
@@ -406,6 +412,8 @@
 - **Added**
   - VPM化
 
+[0.17.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.2
+[0.17.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.1
 [0.17.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.0
 [0.16.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.16.1
 [0.16.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.16.0

@@ -60,7 +60,7 @@ MonoBehaviour:
   _elevatorInputHand: 0
   targetPoint: {fileID: 1305010147695312805}
   targetSpeed: 60
-  _stoppingDistance: 2
+  _stoppingDistance: 10
 --- !u!114 &6075903283232892257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +176,10 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 766143053284553943}
   saddle: {fileID: 0}
-  _motionController: {fileID: 3465723012692417220}
   _delayTime: 60
-  _motionTime: 15
   _stayDragonIsGrounded: 1
+  _motionController: {fileID: 3465723012692417220}
+  _motionTime: 15
 --- !u!114 &766143053284553943
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    using VRC.Udon;
+    //using VRC.Udon;
     //using VRC.SDK3.Components;
 
     [AddComponentMenu("Dynamic Dragon Drive System/Misc/Dragon Auto Returner")]
@@ -19,19 +19,18 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         public DragonSaddle saddle;
 
-        internal DragonDriver driver;
-
-        [SerializeField]
-        private ReinsAutoCruise _motionController;
-
-        [Space]
-        [SerializeField, Min(1.0f)]
+        [SerializeField, Min(0.0f)]
         private float _delayTime = 60.0f;
-        [SerializeField, Min(1.0f)]
-        private float _motionTime = 15.0f;
-
         [SerializeField]
         private bool _stayDragonIsGrounded = true;
+
+        [Header("Option")]
+        [SerializeField]
+        private ReinsAutoCruise _motionController;
+        [SerializeField, Min(0.0f)]
+        private float _motionTime = 15.0f;
+
+        internal DragonDriver driver;
 
         private SphereCollider _collider;
         private float _currentDelayTime;
@@ -44,7 +43,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             get => _isReturning;
             set
             {
-                if (_isReturning != value)
+                if ((_isReturning != value) && _motionController)
                 {
                     _motionController.enabled = value;
                     _motionController.gameObject.SetActive(value);
@@ -61,8 +60,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             driver = saddle.driver;
-            _motionController.driver = driver;
             _collider = driver.GetComponent<SphereCollider>();
+            if (_motionController) { _motionController.driver = driver; }
 
             _currentMotionTime = _delayTime + 10.0f;
             IsReturning = false;
@@ -95,7 +94,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             // リターン処理済み判定
             if (_isReturned) { return; }
 
-            // リターン処理のカウントスタート
+            // リターン判定のカウントスタート
             _currentDelayTime += Time.deltaTime;
             if (_currentDelayTime < _delayTime)
             {
@@ -103,12 +102,15 @@ namespace MimyLab.DynamicDragonDriveSystem
                 return;
             }
 
-            // リターン処理中
-            _currentMotionTime += Time.deltaTime;
-            if (_currentMotionTime < _motionTime)
+            // リターン移動中
+            if (_motionController)
             {
-                IsReturning = true;
-                return;
+                _currentMotionTime += Time.deltaTime;
+                if (_currentMotionTime < _motionTime)
+                {
+                    IsReturning = true;
+                    return;
+                }
             }
 
             // リターン移動完了、リスポーンする
