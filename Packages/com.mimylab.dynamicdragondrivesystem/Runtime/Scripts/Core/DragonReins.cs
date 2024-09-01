@@ -127,6 +127,13 @@ namespace MimyLab.DynamicDragonDriveSystem
                     }
                     break;
                 case VRCInputMethod.Mouse:
+                    if (gaze) { _changeableInput |= (int)DragonReinsInputType.Gaze; }
+                    if (keyboard)
+                    {
+                        _changeableInput |= (int)DragonReinsInputType.Keyboard;
+                        if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Keyboard; }
+                    }
+                    break;
                 case VRCInputMethod.Touch:
                     if (gaze)
                     {

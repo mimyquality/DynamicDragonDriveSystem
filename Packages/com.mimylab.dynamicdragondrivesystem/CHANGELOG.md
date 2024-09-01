@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.17.3] - 2024/9/1
+
+- **Fixed**
+  - デスクトップモードで入力操作がKeyboardかGazeか安定しなかったのを修正
+  - ジャンプした時に後ろに飛ぶ事があるのを修正
+
 ## [0.17.2] - 2024/8/3
 
 - **Fixed**
@@ -412,6 +418,7 @@
 - **Added**
   - VPM化
 
+[0.17.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.3
 [0.17.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.2
 [0.17.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.1
 [0.17.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.0

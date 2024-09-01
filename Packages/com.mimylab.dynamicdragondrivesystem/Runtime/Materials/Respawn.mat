@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENABLE_GEOMETRIC_SPECULAR_AA
   - _GLOSSYREFLECTIONS_OFF
   m_InvalidKeywords:
   - _BAKERY_NONE
@@ -83,6 +84,7 @@ Material:
     - _AlphaToMaskMode: 0
     - _Bakery: 0
     - _BakeryVertexLM: 0
+    - _Bicubic: 0
     - _BumpScale: 1
     - _BumpShadowHardness: 50
     - _BumpShadowHeightScale: 0.2
@@ -91,6 +93,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableEmission: 0
+    - _EnableGeometricSpecularAA: 1
     - _ExposureOcclusion: 0.2
     - _GlossMapScale: 1
     - _Glossiness: 0.1
@@ -98,12 +101,15 @@ Material:
     - _LTCGI: 0
     - _LightmapSpecular: 1
     - _LightmapSpecularMaxSmoothness: 0.9
+    - _LightmapType: 0
     - _Metallic: 0
     - _Mode: 0
     - _NormalMapShadows: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
+    - _SpecularAAScreenSpaceVariance: 0.1
+    - _SpecularAAThreshold: 0.2
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0

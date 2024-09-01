@@ -336,7 +336,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_isGrounded)
             {
-                _rigidbody.AddForce(_jumpImpulse * Vector3.up, ForceMode.VelocityChange);
+                // 垂直ジャンプだとなんか後ろに飛ぶので
+                var jumpDirection = Quaternion.LookRotation(Vector3.up, _rigidbody.rotation * Vector3.forward) * new Vector3(0.0f, 0.001f, 1.0f);
+                _rigidbody.AddForce(_jumpImpulse * jumpDirection, ForceMode.VelocityChange);
             }
             else
             {
