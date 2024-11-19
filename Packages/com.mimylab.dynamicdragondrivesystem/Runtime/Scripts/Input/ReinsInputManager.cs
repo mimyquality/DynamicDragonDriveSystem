@@ -12,9 +12,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     using VRC.Udon.Common;
 
-    [DefaultExecutionOrder(-100)]
+    [Icon(ComponentIconPath.DDDSystem)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class ReinsController : UdonSharpBehaviour
+    public class ReinsInputManager : UdonSharpBehaviour
     {
         internal DragonDriver driver;
 

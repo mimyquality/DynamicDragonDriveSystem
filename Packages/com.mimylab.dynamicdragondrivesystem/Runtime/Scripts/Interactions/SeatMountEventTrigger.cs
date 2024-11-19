@@ -28,6 +28,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         //Moderator
     }
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Seat Mount EventTrigger")]
     [RequireComponent(typeof(VRCStation))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
@@ -53,17 +54,19 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnStationEntered(VRCPlayerApi player)
         {
+            Debug.Log($"OnStationEnter : {this.name}");
             if (_eventType == SeatMountEventType.OnEntered)
             {
-                if (ValidateMountedPlayer(player)) { EventAction(_togetherSetOwner && player.isLocal); }
+                if (ValidateMountedPlayer(player)) { Debug.Log($"ValidionEnterPlayer = true"); EventAction(_togetherSetOwner && player.isLocal); }
             }
         }
 
         public override void OnStationExited(VRCPlayerApi player)
         {
+            Debug.Log($"OnStationExit : {this.name}");
             if (_eventType == SeatMountEventType.OnExited)
             {
-                if (ValidateMountedPlayer(player)) { EventAction(_togetherSetOwner && player.isLocal); }
+                if (ValidateMountedPlayer(player)) { Debug.Log($"ValidionExitPlayer = true"); EventAction(_togetherSetOwner && player.isLocal); }
             }
         }
 

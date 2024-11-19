@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Debug/ReinsInput VRHandle Gizmo")]
     [RequireComponent(typeof(Animator))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

@@ -23,8 +23,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         VRHands2 = 1 << 5,
     }
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Reins")]
-    [DefaultExecutionOrder(-200)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonReins : UdonSharpBehaviour
     {
@@ -36,6 +36,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputLGC legacy;
 
         internal DragonDriver driver;
+
+        [Space]
+        [SerializeField]
+        private bool _debugMode = false;
 
         [FieldChangeCallback(nameof(InputEnabled))]
         private bool _inputEnabled = false;
@@ -97,6 +101,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
+            if (!driver) { driver = GetComponentInParent<DDDSDescriptor>(true).driver; }
+
             if (keyboard) keyboard.driver = driver;
             if (thumbsticks) thumbsticks.driver = driver;
             if (vrHands) vrHands.driver = driver;
@@ -117,6 +123,13 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _isFirstInputMethodChanged = true;
         public override void OnInputMethodChanged(VRCInputMethod inputMethod)
         {
+            if (_debugMode)
+            {
+                _changeableInput = 0b11111111;
+
+                return;
+            }
+
             switch (inputMethod)
             {
                 case VRCInputMethod.Keyboard:
@@ -202,9 +215,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public ReinsController _GetEnabledInput()
+        public ReinsInputManager _GetEnabledInput()
         {
-            ReinsController result = null;
+            ReinsInputManager result = null;
 
             if (!InputEnabled) return result;
             switch (_selectedInput)

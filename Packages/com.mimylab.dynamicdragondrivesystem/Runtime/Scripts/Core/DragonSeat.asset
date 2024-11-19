@@ -419,7 +419,7 @@ MonoBehaviour:
       Data: 26|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.SeatController, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.SeatInputManager, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

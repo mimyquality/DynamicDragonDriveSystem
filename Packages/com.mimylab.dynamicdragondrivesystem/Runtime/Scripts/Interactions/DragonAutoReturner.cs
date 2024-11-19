@@ -12,12 +12,13 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Misc/Dragon Auto Returner")]
-    [DefaultExecutionOrder(-200)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonAutoReturner : UdonSharpBehaviour
     {
-        public DragonSaddle saddle;
+        [SerializeField]
+        private DDDSDescriptor _target;
 
         [SerializeField, Min(0.0f)]
         private float _delayTime = 60.0f;
@@ -30,8 +31,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Min(0.0f)]
         private float _motionTime = 15.0f;
 
-        internal DragonDriver driver;
-
+        private DragonDriver _driver;
+        private DragonSaddle _saddle;
         private SphereCollider _collider;
         private float _currentDelayTime;
         private float _currentMotionTime;
@@ -48,7 +49,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                     _motionController.enabled = value;
                     _motionController.gameObject.SetActive(value);
                     _collider.enabled = !value;
-                    driver.IsDrive = value;
+                    _driver.IsDrive = value;
                 }
                 _isReturning = value;
             }
@@ -59,9 +60,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
-            driver = saddle.driver;
-            _collider = driver.GetComponent<SphereCollider>();
-            if (_motionController) { _motionController.driver = driver; }
+            _driver = _target.driver;
+            _saddle = _target.saddle;
+            _collider = _driver.GetComponent<SphereCollider>();
+            if (_motionController) { _motionController.driver = _driver; }
 
             _currentMotionTime = _delayTime + 10.0f;
             IsReturning = false;
@@ -75,14 +77,14 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Update()
         {
-            if (!Networking.IsOwner(driver.gameObject))
+            if (!Networking.IsOwner(_driver.gameObject))
             {
                 IsReturning = false;
                 return;
             }
 
             // 条件を満たしている間はリターン処理をリセット
-            if (saddle.IsMount || (_stayDragonIsGrounded && driver.IsGrounded))
+            if (_saddle.IsMount || (_stayDragonIsGrounded && _driver.IsGrounded))
             {
                 _currentDelayTime = 0.0f;
                 _currentMotionTime = 0.0f;
@@ -116,7 +118,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             // リターン移動完了、リスポーンする
             IsReturning = false;
             _isReturned = true;
-            driver.Respawn();
+            _driver.Respawn();
         }
     }
 }

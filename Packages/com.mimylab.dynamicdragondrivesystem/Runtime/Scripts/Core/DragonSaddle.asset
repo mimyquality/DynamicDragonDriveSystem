@@ -419,7 +419,7 @@ MonoBehaviour:
       Data: 26|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.SeatController, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.SeatInputManager, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -971,19 +971,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: actor
+      Data: reins
     - Name: $v
       Entry: 7
       Data: 53|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: actor
+      Data: reins
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 54|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonActor, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonReins, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -1025,19 +1025,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: reins
+      Data: actor
     - Name: $v
       Entry: 7
       Data: 56|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: reins
+      Data: actor
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 57|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonReins, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonActor, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

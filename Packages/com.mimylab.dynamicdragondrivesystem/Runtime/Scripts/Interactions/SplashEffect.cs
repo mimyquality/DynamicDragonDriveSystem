@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [RequireComponent(typeof(Collider))]
     public class SplashEffect : UdonSharpBehaviour
     {

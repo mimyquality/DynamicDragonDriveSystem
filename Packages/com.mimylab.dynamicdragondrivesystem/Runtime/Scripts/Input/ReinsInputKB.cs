@@ -12,8 +12,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     using VRC.Udon.Common;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput Keyboard")]
-    public class ReinsInputKB : ReinsController
+    public class ReinsInputKB : ReinsInputManager
     {
         private void Reset()
         {

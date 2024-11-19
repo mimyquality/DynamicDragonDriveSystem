@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Collision Detector")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     public class DragonCollisionDetector : UdonSharpBehaviour
@@ -27,13 +28,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Start()
         {
-            var descriptor = GetComponentInParent<DDDSDescriptor>();
-            if (descriptor)
-            {
-                _driver = descriptor.driver;
-                _actor = descriptor.actor;
-                if (_driver) { _rigidbody = _driver.GetComponent<Rigidbody>(); }
-            }
+            var ddds = GetComponentInParent<DDDSDescriptor>(true);
+            _driver = ddds.driver;
+            _actor = ddds.actor;
+            _rigidbody = _driver.GetComponent<Rigidbody>();
         }
 
         private void OnCollisionEnter(Collision other)

@@ -12,8 +12,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     using VRC.Udon.Common;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput Legacy")]
-    public class ReinsInputLGC : ReinsController
+    public class ReinsInputLGC : ReinsInputManager
     {
         [SerializeField, Range(0.0f, 1.0f)]
         private float _brakesAcceptanceThreshold = 0.9f;

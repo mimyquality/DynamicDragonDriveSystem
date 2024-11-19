@@ -12,16 +12,26 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Saddle")]
     public class DragonSaddle : DragonSeat
     {
         internal DragonDriver driver;
-        internal DragonActor actor;
         internal DragonReins reins;
+        internal DragonActor actor;
 
         protected override void Start()
         {
             base.Start();
+
+            if (!driver || !reins)
+            {
+                var ddds = GetComponentInParent<DDDSDescriptor>(true);
+                driver = ddds.driver;
+                reins = ddds.reins;
+            }
+            if (!actor) { actor = GetComponentInParent<DDDSDescriptor>(true).actor; }
+
             _seatInput.disabledAdjustLock = true;
             EnabledAdjust = false;
         }

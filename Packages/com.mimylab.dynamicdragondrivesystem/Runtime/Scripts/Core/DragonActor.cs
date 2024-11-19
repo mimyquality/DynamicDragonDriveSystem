@@ -44,9 +44,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         RandomFloat
     }
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Actor")]
     [RequireComponent(typeof(Animator))]
-    [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonActor : UdonSharpBehaviour
     {
@@ -138,6 +138,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
+            if (!driver || !reins)
+            {
+                var ddds = GetComponentInParent<DDDSDescriptor>(true);
+                driver = ddds.driver;
+                reins = ddds.reins;
+            }
             _animator = GetComponent<Animator>();
             _rigidbody = driver.GetComponent<Rigidbody>();
 
@@ -309,7 +315,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _speed = _relativeVelocity.magnitude;
             _angularSpeed = _relativeAngularVelocity.magnitude;
 
-            ReinsController reinsInput;
+            ReinsInputManager reinsInput;
             if (reinsInput = reins._GetEnabledInput())
             {
                 _throttle = reinsInput.Thrust;

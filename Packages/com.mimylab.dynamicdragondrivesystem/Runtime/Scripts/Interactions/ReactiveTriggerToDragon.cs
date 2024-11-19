@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Misc/ReactiveTrigger to Dragon")]
     [RequireComponent(typeof(Collider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

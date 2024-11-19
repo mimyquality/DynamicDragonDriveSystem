@@ -12,6 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     //using VRC.SDK3.Components;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Misc/SplashEffect by Dragon")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SplashEffectByDragon : SplashEffect
@@ -23,10 +24,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             var rb = other.attachedRigidbody;
             if (!rb) { return; }
 
-            var dd = rb.GetComponent<DragonDriver>();
-            if (!dd) { return; }
+            var driver = rb.GetComponent<DragonDriver>();
+            if (!driver) { return; }
 
-            PlayEffect(rb.position, dd.Velocity);
+            PlayEffect(rb.position, driver.Velocity);
         }
     }
 }

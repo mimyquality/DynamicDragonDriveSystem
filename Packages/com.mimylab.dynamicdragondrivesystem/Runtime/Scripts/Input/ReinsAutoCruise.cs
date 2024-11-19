@@ -11,8 +11,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
 
+    [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Reins AutoCruise")]
-    public class ReinsAutoCruise : ReinsController
+    public class ReinsAutoCruise : ReinsInputManager
     {
         public Transform targetPoint = null;
         [Min(0.0f)]

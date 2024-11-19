@@ -23,6 +23,12 @@
     },
     "com.mimylab.fukuroudon": {
       "version": "1.18.0"
+    },
+    "net.narazaka.vrchat.tmp-fallback-fonts-jp": {
+      "version": "1.0.0"
+    },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "3.2.0"
     }
   },
   "locked": {
@@ -31,7 +37,7 @@
       "dependencies": {}
     },
     "jp.whiteflare.worldtools": {
-      "version": "1.11.0",
+      "version": "1.12.0",
       "dependencies": {
         "com.vrchat.worlds": "^3.1.13"
       }
@@ -44,30 +50,40 @@
       }
     },
     "jp.whiteflare.unlitwf.texpack": {
-      "version": "1.1.3",
+      "version": "1.2.0",
       "dependencies": {}
     },
     "jp.whiteflare.unlitwf": {
-      "version": "2.2.1",
+      "version": "2.4.0",
       "dependencies": {
         "jp.whiteflare.unlitwf.texpack": "^1.1.0"
       }
     },
     "com.vrchat.worlds": {
-      "version": "3.7.0",
+      "version": "3.7.4-persistence-beta.1",
       "dependencies": {
-        "com.vrchat.base": "3.7.0"
+        "com.vrchat.base": "3.7.4-persistence-beta.1"
       }
     },
     "com.vrchat.base": {
-      "version": "3.7.0",
+      "version": "3.7.4-persistence-beta.1",
       "dependencies": {}
     },
     "com.mimylab.fukuroudon": {
-      "version": "2.0.0-beta",
+      "version": "2.0.1",
       "dependencies": {
         "com.vrchat.worlds": "^3.5.0"
       }
+    },
+    "net.narazaka.vrchat.tmp-fallback-fonts-jp": {
+      "version": "1.0.1",
+      "dependencies": {
+        "com.vrchat.worlds": ">=3.0.9"
+      }
+    },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "3.2.0",
+      "dependencies": {}
     }
   }
 }
