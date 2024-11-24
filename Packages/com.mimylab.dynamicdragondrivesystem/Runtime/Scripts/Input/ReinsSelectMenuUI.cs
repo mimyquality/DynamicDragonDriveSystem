@@ -36,49 +36,49 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void OnEnable()
         {
-            SetChangedInput(reins.ChangedInput);
+            SetChangeableInput(reins.ChangeableInput);
             SetSelectInput(reins.SelectedInput);
         }
 
         public override void OnInputMethodChanged(VRCInputMethod inputMethod)
         {
-            SetChangedInput(reins.ChangedInput);
+            SetChangeableInput(reins.ChangeableInput);
         }
 
         public void _SetKeyboard()
         {
-            reins._SetKeyboard();
+            reins.SelectedInput = DragonReinsInputType.Keyboard;
             SetSelectInput(DragonReinsInputType.Keyboard);
         }
 
         public void _SetThumbsticks()
         {
-            reins._SetThumbsticks();
+            reins.SelectedInput = DragonReinsInputType.Thumbsticks;
             SetSelectInput(DragonReinsInputType.Thumbsticks);
         }
 
         public void _SetVRHands()
         {
-            reins._SetVRHands();
+            reins.SelectedInput = DragonReinsInputType.VRHands;
             SetSelectInput(DragonReinsInputType.VRHands);
         }
 
         public void _SetVRHands2()
         {
-            reins._SetVRHands2();
+            reins.SelectedInput = DragonReinsInputType.VRHands2;
             SetSelectInput(DragonReinsInputType.VRHands2);
         }
 
 
         public void _SetGaze()
         {
-            reins._SetGaze();
+            reins.SelectedInput = DragonReinsInputType.Gaze;
             SetSelectInput(DragonReinsInputType.Gaze);
         }
 
         public void _SetLegacy()
         {
-            reins._SetLegacy();
+            reins.SelectedInput = DragonReinsInputType.Legacy;
             SetSelectInput(DragonReinsInputType.Legacy);
         }
 
@@ -99,14 +99,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_menu_Legacy) { _menu_Legacy.SetActive(selectInput == DragonReinsInputType.Legacy); }
         }
 
-        private void SetChangedInput(int changedInput)
+        private void SetChangeableInput(int changeableInput)
         {
-            if (_button_Keyboard) { _button_Keyboard.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Keyboard)); }
-            if (_button_Thumbsticks) { _button_Thumbsticks.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Thumbsticks)); }
-            if (_button_VRHands) { _button_VRHands.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.VRHands)); }
-            if (_button_VRHands2) { _button_VRHands2.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.VRHands2)); }
-            if (_button_Gaze) { _button_Gaze.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Gaze)); }
-            if (_button_Legacy) { _button_Legacy.gameObject.SetActive(changedInput == (changedInput | (int)DragonReinsInputType.Legacy)); }
+            if (_button_Keyboard) { _button_Keyboard.gameObject.SetActive(changeableInput == (changeableInput | (int)DragonReinsInputType.Keyboard)); }
+            if (_button_Thumbsticks) { _button_Thumbsticks.gameObject.SetActive(changeableInput == (changeableInput | (int)DragonReinsInputType.Thumbsticks)); }
+            if (_button_VRHands) { _button_VRHands.gameObject.SetActive(changeableInput == (changeableInput | (int)DragonReinsInputType.VRHands)); }
+            if (_button_VRHands2) { _button_VRHands2.gameObject.SetActive(changeableInput == (changeableInput | (int)DragonReinsInputType.VRHands2)); }
+            if (_button_Gaze) { _button_Gaze.gameObject.SetActive(changeableInput == (changeableInput | (int)DragonReinsInputType.Gaze)); }
+            if (_button_Legacy) { _button_Legacy.gameObject.SetActive(changeableInput == (changeableInput | (int)DragonReinsInputType.Legacy)); }
         }
     }
 }

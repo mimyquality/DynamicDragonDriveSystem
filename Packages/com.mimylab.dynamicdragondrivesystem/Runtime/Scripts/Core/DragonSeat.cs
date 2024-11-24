@@ -19,6 +19,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour
     {
+        internal DragonRider rider;
+
         [SerializeField]
         private bool _enabledAdjust = true;
         [SerializeField]
@@ -32,6 +34,19 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
         private Vector3 _adjustPoint;
+
+        protected VRCStation _station;
+        protected SeatInputManager _seatInput;
+        private Transform _enterPoint;
+        private bool _isRide = false;
+        private bool _isMount = false;
+        private int _mountedPlayerId = -1;
+        private float _adjustSpeed = 0.5f;  // m/s
+        private Vector3 _localAdjustPoint;
+        private Transform _defaultParent;
+        private Vector3 _defaultPosition;
+        private Quaternion _defaultRotation;
+
         public Vector3 AdjustPoint
         {
             get => _adjustPoint;
@@ -54,31 +69,23 @@ namespace MimyLab.DynamicDragonDriveSystem
             get => _enabledAdjust;
             set
             {
-                if (value && !_enabledAdjust) { OnEnableAdjust(); }
-                if (!value && _enabledAdjust) { OnDisableAdjust(); }
-
-                _enabledAdjust = value;
-                _seatInput.DisabledAdjust = !value;
+                if (_enabledAdjust != value)
+                {
+                    _seatInput.disableInput = !value;
+                    _enabledAdjust = value;
+                }
             }
         }
 
+        public bool IsRide { get => _isRide; }
         public bool IsMount { get => _isMount; }
-
-        protected VRCStation _station;
-        protected SeatInputManager _seatInput;
-        private Transform _enterPoint;
-        private bool _isMount = false;
-        private int _mountedPlayerId = -1;
-        private float _adjustSpeed = 0.5f;  // m/s
-        private Vector3 _localAdjustPoint;
-        private Transform _defaultParent;
-        private Vector3 _defaultPosition;
-        private Quaternion _defaultRotation;
 
         private bool _initialized = false;
         private void Initialize()
         {
             if (_initialized) { return; }
+
+            if (!rider) { rider = GetComponentInParent<DDDSDescriptor>(true).rider; }
 
             _station = GetComponent<VRCStation>();
             _seatInput = GetComponent<SeatInputManager>();
@@ -94,6 +101,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.disableStationExit = true;
 
             _seatInput.enabled = false;
+            _seatInput.disableInput = !_enabledAdjust;
 
             _initialized = true;
         }
@@ -113,7 +121,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (player.playerId == _mountedPlayerId)
             {
-                Unmount(player);
+                OnPlayerUnmount(player);
             }
         }
 
@@ -121,14 +129,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-            Mount(player);
+            OnPlayerMount(player);
         }
 
         public override void OnStationExited(VRCPlayerApi player)
         {
             Initialize();
 
-            Unmount(player);
+            OnPlayerUnmount(player);
         }
 
         public void _Ride()
@@ -153,41 +161,21 @@ namespace MimyLab.DynamicDragonDriveSystem
             AdjustPoint += Time.deltaTime * _adjustSpeed * input;
         }
 
-        public void _EnableSeatAdjust()
+        protected virtual void OnPlayerMount(VRCPlayerApi player)
         {
-            Initialize();
-
-            EnabledAdjust = true;
-        }
-
-        public void _DisableSeatAdjust()
-        {
-            Initialize();
-
-            EnabledAdjust = false;
-        }
-
-        protected virtual void PostStart() { }
-        protected virtual void OnLocalPlayerMounted() { }
-        protected virtual void OnLocalPlayerUnmounted() { }
-        protected virtual void OnMount() { }
-        protected virtual void OnUnmount() { }
-        protected virtual void OnEnableAdjust() { }
-        protected virtual void OnDisableAdjust() { }
-
-        private void Mount(VRCPlayerApi player)
-        {
-            if (!_isMount) { OnMount(); }
             _isMount = true;
             _mountedPlayerId = player.playerId;
+            rider._SetIsMount(true);
 
             if (player.isLocal)
             {
+                _isRide = true;
                 AdjustPoint = _localAdjustPoint;
                 _seatInput.enabled = true;
                 this.DisableInteractive = true;
+                rider._SetIsRide(true);
 
-                OnLocalPlayerMounted();
+                OnLocalPlayerMount();
             }
             else if (_snapPoint)
             {
@@ -196,19 +184,21 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        private void Unmount(VRCPlayerApi player)
+        protected virtual void OnPlayerUnmount(VRCPlayerApi player)
         {
-            if (_isMount) { OnUnmount(); }
             _isMount = false;
             _mountedPlayerId = -1;
+            rider._SetIsMount(false);
 
             if (player.isLocal)
             {
+                _isRide = false;
                 _localAdjustPoint = AdjustPoint;
                 _seatInput.enabled = false;
                 this.DisableInteractive = false;
+                rider._SetIsRide(false);
 
-                OnLocalPlayerUnmounted();
+                OnLocalPlayerUnmount();
             }
             else if (_snapPoint)
             {
@@ -216,5 +206,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                 transform.SetLocalPositionAndRotation(_defaultPosition, _defaultRotation);
             }
         }
+
+        protected virtual void OnLocalPlayerMount() { }
+        protected virtual void OnLocalPlayerUnmount() { }
     }
 }

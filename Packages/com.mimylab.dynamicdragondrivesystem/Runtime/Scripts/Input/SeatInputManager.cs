@@ -19,11 +19,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float DoubleTapDuration = 0.2f;   // 単位：sec
         private const float TooltipShowTime = 5.0f; // 単位：sec
 
-        [Tooltip("sec"), Min(0.2f)]
-        public float exitAcceptance = 0.8f;
+        internal bool disableInput;
 
-        internal bool disabledAdjustLock = false;
-
+        [SerializeField, Tooltip("sec"), Min(0.2f)]
+        private float _exitAcceptance = 0.8f;
         [SerializeField]
         private GameObject _tooltipLock;
         [SerializeField]
@@ -36,33 +35,16 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _inputJumpTimer;
         private float _inputDoubleJumpTimer = DoubleTapDuration;
 
-        private Vector3 _inputAdjust;
+        private Vector3 _inputAdjust = Vector3.zero;
 
         private int _tooltipLockCount, _tooltipUnlockCount;
 
-        private bool _disabledAdjust;
-        public bool DisabledAdjust
+        private bool _lockAdjust = false;
+        private bool LockAdjust
         {
-            get => _disabledAdjust;
+            get => _lockAdjust;
             set
             {
-                if (value)
-                {
-                    _inputAdjust = Vector3.zero;
-                }
-
-                _disabledAdjust = value;
-            }
-        }
-
-        private bool _lockedAdjust;
-        private bool LockedAdjust
-        {
-            get => _lockedAdjust;
-            set
-            {
-                if (disabledAdjustLock) { return; }
-
                 if (value)
                 {
                     _inputAdjust = Vector3.zero;
@@ -73,7 +55,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                     ShowTooltipUnlock();
                 }
 
-                _lockedAdjust = value;
+                _lockAdjust = value;
             }
         }
 
@@ -97,11 +79,11 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Update()
         {
             if (!this.enabled) { return; }
-            
+
             InputKey();
 
             _inputJumpTimer = _inputJump ? _inputJumpTimer + Time.deltaTime : 0.0f;
-            if (_inputJumpTimer > exitAcceptance) { SeatExit(); }
+            if (_inputJumpTimer > _exitAcceptance) { SeatExit(); }
 #if UNITY_ANDROID
             // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
             if (!_inputJump && _inputDoubleJumpTimer < DoubleTapDuration) { _inputDoubleJumpTimer += Time.deltaTime; }
@@ -115,16 +97,16 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
         {
-            if (_disabledAdjust) { return; }
-            if (_lockedAdjust) { return; }
+            if (disableInput) { return; }
+            if (_lockAdjust) { return; }
 
             _inputAdjust.z = value;
         }
 
         public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
         {
-            if (_disabledAdjust) { return; }
-            if (_lockedAdjust) { return; }
+            if (disableInput) { return; }
+            if (_lockAdjust) { return; }
 
             _inputAdjust.y = -value;
         }
@@ -132,8 +114,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         public override void InputLookHorizontal(float value, UdonInputEventArgs args)
         {
             if (!_isVR) { return; }
-            if (_disabledAdjust) { return; }
-            if (_lockedAdjust) { return; }
+            if (disableInput) { return; }
+            if (_lockAdjust) { return; }
 
             _inputAdjust.x = value;
         }
@@ -142,7 +124,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _inputJump = value;
 
-            if (!_disabledAdjust && !value) { LockedAdjust = !LockedAdjust; }
+            if (!disableInput && !value) { LockAdjust = !LockAdjust; }
 
 #if UNITY_ANDROID
             // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
@@ -161,8 +143,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void InputKey()
         {
             if (_isVR) { return; }
-            if (_disabledAdjust) { return; }
-            if (_lockedAdjust) { return; }
+            if (disableInput) { return; }
+            if (_lockAdjust) { return; }
 
             _inputAdjust.x = Input.GetKey(KeyCode.RightArrow) ? 1.0f :
                              Input.GetKey(KeyCode.LeftArrow) ? -1.0f : 0.0f;
@@ -185,7 +167,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
         public void _HideTooltipLockDelayed()
         {
-            _tooltipLockCount = (_tooltipLockCount > 0) ? _tooltipLockCount - 1 : 0;
+            if (_tooltipLockCount > 0) _tooltipLockCount--;
             if (_tooltipLockCount > 0) { return; }
 
             if (_tooltipLock) { _tooltipLock.SetActive(false); }
@@ -200,7 +182,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
         public void _HideTooltipUnlockDelayed()
         {
-            _tooltipUnlockCount = (_tooltipUnlockCount > 0) ? _tooltipUnlockCount - 1 : 0;
+            if (_tooltipUnlockCount > 0) _tooltipUnlockCount--;
             if (_tooltipUnlockCount > 0) { return; }
 
             if (_tooltipUnlock) { _tooltipUnlock.SetActive(false); }

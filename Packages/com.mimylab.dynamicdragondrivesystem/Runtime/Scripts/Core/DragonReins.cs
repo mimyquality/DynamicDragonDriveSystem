@@ -25,6 +25,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Reins")]
+    [DefaultExecutionOrder(-20)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonReins : UdonSharpBehaviour
     {
@@ -90,18 +91,25 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
+        [FieldChangeCallback(nameof(SelectedInput))]
         private DragonReinsInputType _selectedInput = DragonReinsInputType.None;
-        public DragonReinsInputType SelectedInput { get => _selectedInput; }
+        public DragonReinsInputType SelectedInput
+        {
+            get => _selectedInput;
+            set
+            {
+                _selectedInput = value;
+                InputEnabled = InputEnabled;
+            }
+        }
 
         private int _changeableInput = 0;
-        public int ChangedInput { get => _changeableInput; }
+        public int ChangeableInput { get => _changeableInput; }
 
         private bool _initialized = false;
         private void Initialize()
         {
             if (_initialized) { return; }
-
-            if (!driver) { driver = GetComponentInParent<DDDSDescriptor>(true).driver; }
 
             if (keyboard) keyboard.driver = driver;
             if (thumbsticks) thumbsticks.driver = driver;
@@ -125,7 +133,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_debugMode)
             {
-                _changeableInput = 0b11111111;
+                _changeableInput = 0xFF;
 
                 return;
             }
@@ -217,80 +225,18 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public ReinsInputManager _GetEnabledInput()
         {
-            ReinsInputManager result = null;
+            if (!InputEnabled) { return null; }
 
-            if (!InputEnabled) return result;
             switch (_selectedInput)
             {
-                case DragonReinsInputType.Keyboard: result = keyboard; break;
-                case DragonReinsInputType.Thumbsticks: result = thumbsticks; break;
-                case DragonReinsInputType.VRHands: result = vrHands; break;
-                case DragonReinsInputType.Gaze: result = gaze; break;
-                case DragonReinsInputType.Legacy: result = legacy; break;
-                case DragonReinsInputType.VRHands2: result = vrHands2; break;
+                case DragonReinsInputType.Keyboard: return keyboard;
+                case DragonReinsInputType.Thumbsticks: return thumbsticks;
+                case DragonReinsInputType.VRHands: return vrHands;
+                case DragonReinsInputType.Gaze: return gaze;
+                case DragonReinsInputType.Legacy: return legacy;
+                case DragonReinsInputType.VRHands2: return vrHands2;
+                default: return null;
             }
-
-            return result;
-        }
-
-        public bool _SetKeyboard()
-        {
-            if (!keyboard) { return false; }
-
-            _selectedInput = DragonReinsInputType.Keyboard;
-            InputEnabled = InputEnabled;
-
-            return true;
-        }
-
-        public bool _SetThumbsticks()
-        {
-            if (!thumbsticks) { return false; }
-
-            _selectedInput = DragonReinsInputType.Thumbsticks;
-            InputEnabled = InputEnabled;
-
-            return true;
-        }
-
-        public bool _SetVRHands()
-        {
-            if (!vrHands) { return false; }
-
-            _selectedInput = DragonReinsInputType.VRHands;
-            InputEnabled = InputEnabled;
-
-            return true;
-        }
-
-        public bool _SetVRHands2()
-        {
-            if (!vrHands2) { return false; }
-
-            _selectedInput = DragonReinsInputType.VRHands2;
-            InputEnabled = InputEnabled;
-
-            return true;
-        }
-
-        public bool _SetGaze()
-        {
-            if (!gaze) { return false; }
-
-            _selectedInput = DragonReinsInputType.Gaze;
-            InputEnabled = InputEnabled;
-
-            return true;
-        }
-
-        public bool _SetLegacy()
-        {
-            if (!legacy) { return false; }
-
-            _selectedInput = DragonReinsInputType.Legacy;
-            InputEnabled = InputEnabled;
-
-            return true;
         }
 
         public void _EnableDragonControl()

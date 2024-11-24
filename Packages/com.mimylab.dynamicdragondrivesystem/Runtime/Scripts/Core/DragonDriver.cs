@@ -30,6 +30,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Driver")]
     [RequireComponent(typeof(Rigidbody), typeof(VRCObjectSync), typeof(SphereCollider))]
+    [DefaultExecutionOrder(0)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Continuous)]
     public class DragonDriver : UdonSharpBehaviour
     {
@@ -215,9 +216,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             _objectSync.SetGravity(false);
 
             _defaultDrag = _rigidbody.drag;
-            _colliderCenter = _collider.center;
-            _groundCheckRadius = _collider.radius * 0.9f;
-            _groundCheckRange = 2 * (_collider.radius - _groundCheckRadius);
+
+            var scale = transform.lossyScale;
+            _colliderCenter = Vector3.Scale(_collider.center, scale);
+            var radius = Mathf.Max(scale.x, scale.y, scale.z) * _collider.radius;
+            _groundCheckRadius = 0.9f * radius;
+            _groundCheckRange = 0.2f * radius;
 
             _isOwner = Networking.IsOwner(this.gameObject);
 

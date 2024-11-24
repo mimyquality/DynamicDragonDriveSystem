@@ -23,13 +23,13 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         [Space]
         [SerializeField]
-        private bool _enableLink = false;
+        private bool _enableSympathy = false;
         [SerializeField]
-        private int _linkNumber = 0;
+        private int _sympathyNumber = 0;
 
         private DragonRider _rider;
 
-        public int LinkNumber { get => _linkNumber; }
+        public int SympathyNumber { get => _sympathyNumber; }
 
         private bool _initialized = false;
         private void Initialize()
@@ -39,7 +39,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _rider = _target.rider;
             if (Networking.IsOwner(this.gameObject))
             {
-                _rider._Remind(this);
+                _rider._Bond(this);
             }
 
             _initialized = true;
@@ -48,5 +48,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
         }
+
+        public void Memorize() { }
     }
 }
