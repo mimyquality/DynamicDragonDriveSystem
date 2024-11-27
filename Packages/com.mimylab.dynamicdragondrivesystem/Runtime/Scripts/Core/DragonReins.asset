@@ -50,19 +50,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: keyboard
+      Data: thumbsticks
     - Name: $v
       Entry: 7
       Data: 2|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: keyboard
+      Data: thumbsticks
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputKB, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputSTK, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 
@@ -110,19 +110,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: thumbsticks
+      Data: keyboard
     - Name: $v
       Entry: 7
       Data: 6|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: thumbsticks
+      Data: keyboard
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 7|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputSTK, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.ReinsInputKB, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

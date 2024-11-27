@@ -13,7 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Misc/SplashEffect by Player")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/SplashEffect by Player")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SplashEffectByPlayer : SplashEffect
     {

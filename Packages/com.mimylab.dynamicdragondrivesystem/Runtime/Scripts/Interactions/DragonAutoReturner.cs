@@ -13,7 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Misc/Dragon Auto Returner")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Auto Returner")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonAutoReturner : UdonSharpBehaviour
     {

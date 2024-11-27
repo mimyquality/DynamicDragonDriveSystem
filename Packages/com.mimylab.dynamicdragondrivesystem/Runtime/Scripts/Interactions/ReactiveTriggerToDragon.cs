@@ -13,15 +13,15 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Misc/ReactiveTrigger to Dragon")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/ReactiveTrigger to Dragon")]
     [RequireComponent(typeof(Collider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReactiveTriggerToDragon : UdonSharpBehaviour
     {
         [SerializeField, Header("Activate/Inactivate GameObject")]
-        private GameObject _ActivateObject;
+        private GameObject _activateObject;
         [SerializeField]
-        private GameObject _InactivateObject;
+        private GameObject _inactivateObject;
         [SerializeField, Tooltip("Reactivate after specified time if Duration > 0")]
         private float _duration = 0.0f;
 
@@ -66,12 +66,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (_dragonOwnerOnly && !Networking.IsOwner(dragon.gameObject)) { return; }
 
-            if (_ActivateObject || _InactivateObject)
+            if (_activateObject || _inactivateObject)
             {
                 ++_triggerCount;
 
-                if (_ActivateObject) { _ActivateObject.SetActive(true); }
-                if (_InactivateObject) { _InactivateObject.SetActive(false); }
+                if (_activateObject) { _activateObject.SetActive(true); }
+                if (_inactivateObject) { _inactivateObject.SetActive(false); }
 
                 if (_duration > 0.0f) { SendCustomEventDelayedSeconds(nameof(_ReactivateGameObject), _duration); }
             }
@@ -80,12 +80,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
         }
 
-        public void _ReactivateGameObject()
+        internal void _ReactivateGameObject()
         {
             if (--_triggerCount > 0) { return; }
 
-            if (_ActivateObject) { _ActivateObject.SetActive(false); }
-            if (_InactivateObject) { _InactivateObject.SetActive(true); }
+            if (_activateObject) { _activateObject.SetActive(false); }
+            if (_inactivateObject) { _inactivateObject.SetActive(true); }
         }
     }
 }

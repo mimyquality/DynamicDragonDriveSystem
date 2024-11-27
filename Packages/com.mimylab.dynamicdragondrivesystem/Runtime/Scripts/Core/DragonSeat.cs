@@ -154,7 +154,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.ExitStation(Networking.LocalPlayer);
         }
 
-        public void _SetAdjustPosition(Vector3 input)
+        internal void _SetAdjustPosition(Vector3 input)
         {
             Initialize();
 

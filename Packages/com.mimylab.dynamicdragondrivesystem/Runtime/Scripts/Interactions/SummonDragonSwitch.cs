@@ -80,7 +80,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             ToggleInteractive();
         }
 
-        public void _ResetInteractInterval()
+        internal void _ResetInteractInterval()
         {
             _isCoolDown = false;
             ToggleInteractive();

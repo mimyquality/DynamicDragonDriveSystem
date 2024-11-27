@@ -10,7 +10,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     //using VRC.Udon;
-    //using VRC.SDK3.Components;
 
     public enum DragonActorParameterName
     {
