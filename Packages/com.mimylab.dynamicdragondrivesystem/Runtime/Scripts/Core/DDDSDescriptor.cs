@@ -40,7 +40,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (actor)
             {
                 actor.driver = driver;
-                actor.saddle = saddle;
                 actor.reins = reins;
                 actor.rider = rider;
             }

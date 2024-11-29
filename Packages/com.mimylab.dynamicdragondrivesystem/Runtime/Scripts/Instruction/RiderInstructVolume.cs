@@ -15,24 +15,24 @@ namespace MimyLab.DynamicDragonDriveSystem
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider Volume")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class RiderVolume : UdonSharpBehaviour
+    public class RiderInstructVolume : UdonSharpBehaviour
     {
         internal DragonRider rider;
 
         [SerializeField]
-        private DragonRiderVolumeType _volumeType;
+        private DragonRiderVolumeInstruction _instruction;
         [SerializeField]
         private float _volume = 0.0f;
 
         [Space]
         [SerializeField]
-        private RiderVolumeSwitch[] _switches = new RiderVolumeSwitch[0];
+        private RiderInstructVolumeSwitch[] _switches = new RiderInstructVolumeSwitch[0];
 
         private Slider _uiSlider;
         private float _currentVolume = 0.0f;
 
-        public DragonRiderVolumeType VolumeType { get => _volumeType; }
-        public float Volume { get => _volume; }
+        public DragonRiderVolumeInstruction Instruction { get => _instruction; }
+        public float Volume { get => _currentVolume; }
 
         private bool _initialized = false;
         private void Initialize()
@@ -66,7 +66,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Change(float value)
         {
-            _OnValueChanged(value);
+            _currentVolume = value;
             rider._OnVolumeChanged(this);
         }
 

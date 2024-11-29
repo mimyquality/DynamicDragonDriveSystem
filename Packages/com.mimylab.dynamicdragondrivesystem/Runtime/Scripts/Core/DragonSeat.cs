@@ -165,7 +165,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _isMount = true;
             _mountedPlayerId = player.playerId;
-            rider._SetIsMount(true);
+            rider._OnSeatMounted(true);
 
             if (player.isLocal)
             {
@@ -173,7 +173,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 AdjustPoint = _localAdjustPoint;
                 _seatInput.enabled = true;
                 this.DisableInteractive = true;
-                rider._SetIsRide(true);
+                rider._OnSeatRided(true);
 
                 OnLocalPlayerMount();
             }
@@ -188,7 +188,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _isMount = false;
             _mountedPlayerId = -1;
-            rider._SetIsMount(false);
+            rider._OnSeatMounted(false);
 
             if (player.isLocal)
             {
@@ -196,7 +196,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _localAdjustPoint = AdjustPoint;
                 _seatInput.enabled = false;
                 this.DisableInteractive = false;
-                rider._SetIsRide(false);
+                rider._OnSeatRided(false);
 
                 OnLocalPlayerUnmount();
             }

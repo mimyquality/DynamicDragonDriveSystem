@@ -51,7 +51,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float GroundedSmoothingDuration = 0.08f;   // 単位：sec
 
         internal DragonDriver driver;
-        internal DragonSaddle saddle;
         internal DragonReins reins;
         internal DragonRider rider;
 
@@ -253,7 +252,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void CalculateParameters()
         {
-            _isPilot = saddle.IsRide;
+            _isPilot = rider.IsRide;
             _isRide = rider.IsRide;
             _isMount = rider.IsMount;
 

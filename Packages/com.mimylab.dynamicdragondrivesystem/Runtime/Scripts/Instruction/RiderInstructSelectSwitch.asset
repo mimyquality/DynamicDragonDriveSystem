@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: RiderSelectSwitch
+  m_Name: RiderInstructSelectSwitch
   m_EditorClassIdentifier: 
   serializedUdonProgramAsset: {fileID: 11400000, guid: e479c9f83f59a8447b108349a47ff88c,
     type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 1
   hasInteractEvent: 1
-  scriptID: 5614966106827297160
+  scriptID: 771569919836209730
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -116,7 +116,7 @@ MonoBehaviour:
       Data: 6|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.RiderSelect, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.RiderInstructSelect, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

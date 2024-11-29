@@ -15,25 +15,27 @@ namespace MimyLab.DynamicDragonDriveSystem
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider Toggle")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class RiderToggle : UdonSharpBehaviour
+    public class RiderInstructToggle : UdonSharpBehaviour
     {
         internal DragonRider rider;
+        [SerializeField]
+        internal DragonReinsInputType reinsInputType;
 
         [SerializeField]
-        private DragonRiderToggleType _toggleType;
+        private DragonRiderToggleInstruction _instruction;
         [SerializeField]
         private bool _isOn = false;
 
         [Space]
         [SerializeField]
-        private RiderToggleSwitch _switch_ON;
+        private RiderInstructToggleSwitch _switch_ON;
         [SerializeField]
-        private RiderToggleSwitch _switch_OFF;
+        private RiderInstructToggleSwitch _switch_OFF;
 
         private Toggle _uiToggle;
         private bool _currentOn = false;
 
-        public DragonRiderToggleType ToggleType { get => _toggleType; }
+        public DragonRiderToggleInstruction Instruction { get => _instruction; }
         public bool IsOn { get => _currentOn; }
 
         private bool _initialized = false;
@@ -70,7 +72,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Change(bool value)
         {
-            _OnValueChanged(value);
+            _currentOn = value;
             rider._OnToggleChanged(this);
         }
 

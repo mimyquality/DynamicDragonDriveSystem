@@ -12,16 +12,18 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider SelectSwitch")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider VolumeSwitch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class RiderSelectSwitch : RiderUISwitchManager
+    public class RiderInstructVolumeSwitch : RiderInstructSwitchBase
     {
-        internal RiderSelect selector;
-        internal int number;
+        internal RiderInstructVolume volumer;
+
+        [SerializeField]
+        private float _volume = 0.0f;
 
         public override void Interact()
         {
-            if (selector) { selector._Change(number); }
+            if (volumer) { volumer._Change(_volume); }
         }
     }
 }

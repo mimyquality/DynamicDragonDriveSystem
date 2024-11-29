@@ -15,23 +15,25 @@ namespace MimyLab.DynamicDragonDriveSystem
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider Select")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class RiderSelect : UdonSharpBehaviour
+    public class RiderInstructSelect : UdonSharpBehaviour
     {
         internal DragonRider rider;
+        [SerializeField]
+        internal DragonReinsInputType reinsInputType;
 
         [SerializeField]
-        private DragonRiderSelectType _selectType;
+        private DragonRiderSelectInstruction _instruction;
         [SerializeField, Min(0)]
         private int _number = 0;
 
         [Space]
         [SerializeField]
-        private RiderSelectSwitch[] _switches = new RiderSelectSwitch[0];
+        private RiderInstructSelectSwitch[] _switches = new RiderInstructSelectSwitch[0];
 
         private Slider _uiSlider;
         private int _select = 0;
 
-        public DragonRiderSelectType SelectType { get => _selectType; }
+        public DragonRiderSelectInstruction Instruction { get => _instruction; }
         public int Select { get => _select; }
 
 
@@ -67,7 +69,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Change(int value)
         {
-            _OnValueChanged(value);
+            _select = value;
             rider._OnSelectChanged(this);
         }
 

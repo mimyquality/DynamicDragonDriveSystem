@@ -15,7 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     [Icon(ComponentIconPath.DDDSystem)]
     [RequireComponent(typeof(Button))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class RiderUISwitchManager : UdonSharpBehaviour
+    public class RiderInstructSwitchBase : UdonSharpBehaviour
     {
         private Button _button;
         private Button Button { get => _button ?? (_button = GetComponent<Button>()); }

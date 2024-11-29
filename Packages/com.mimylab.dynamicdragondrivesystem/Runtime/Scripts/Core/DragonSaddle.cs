@@ -24,12 +24,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         protected override void OnLocalPlayerMount()
         {
-            rider._OnRideSaddle();
+            rider._OnSaddleRided();
         }
 
         protected override void OnLocalPlayerUnmount()
         {
-            rider._OnExitSaddle();
+            rider._OnSaddleExited();
         }
     }
 }

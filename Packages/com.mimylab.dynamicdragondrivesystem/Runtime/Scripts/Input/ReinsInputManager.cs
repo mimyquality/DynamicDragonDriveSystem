@@ -33,15 +33,52 @@ namespace MimyLab.DynamicDragonDriveSystem
         protected Vector3 _accelerateSign = Vector3.one;
         protected Vector3 _rotateSign = Vector3.one;
 
-        public virtual bool ThrustIsInvert { get => _accelerateSign.z < 0; }
-        public virtual bool ClimbIsInvert { get => _accelerateSign.y < 0; }
-        public virtual bool StrafeIsInvert { get => _accelerateSign.x < 0; }
-        public virtual bool ElevatorIsInvert { get => _rotateSign.x < 0; }
-        public virtual bool LadderIsInvert { get => _rotateSign.y < 0; }
-        public virtual bool AileronIsInvert { get => _rotateSign.z < 0; }
-        public virtual HandType ThrottleInputHand { get => _throttleInputHand; }
-        public virtual HandType TurnInputHand { get => _turningInputHand; }
-        public virtual HandType ElevatorInputHand { get => _elevatorInputHand; }
+        public bool ThrustIsInvert
+        {
+            get => _accelerateSign.z < 0;
+            set => _accelerateSign.z = value ? -1.0f : 1.0f;
+        }
+        public bool ClimbIsInvert
+        {
+            get => _accelerateSign.y < 0;
+            set => _accelerateSign.y = value ? -1.0f : 1.0f;
+        }
+        public bool StrafeIsInvert
+        {
+            get => _accelerateSign.x < 0;
+            set => _accelerateSign.x = value ? -1.0f : 1.0f;
+        }
+        public bool ElevatorIsInvert
+        {
+            get => _rotateSign.x < 0;
+            set => _rotateSign.x = value ? -1.0f : 1.0f;
+        }
+        public bool LadderIsInvert
+        {
+            get => _rotateSign.y < 0;
+            set => _rotateSign.y = value ? -1.0f : 1.0f;
+        }
+        public bool AileronIsInvert
+        {
+            get => _rotateSign.z < 0;
+            set => _rotateSign.z = value ? -1.0f : 1.0f;
+        }
+        public HandType ThrottleInputHand
+        {
+            get => _throttleInputHand;
+            set => _throttleInputHand = value;
+        }
+        public HandType TurnInputHand
+        {
+            get => _turningInputHand;
+            set => _turningInputHand = value;
+        }
+        public HandType ElevatorInputHand
+        {
+            get => _elevatorInputHand;
+            set => _elevatorInputHand = value;
+        }
+
         public virtual float Thrust { get => _thrust; }
         public virtual float Turn { get => (driver.State == (int)DragonDriverStateType.Flight) ? -_aileron : _ladder; }
         public virtual float Elevator { get => -_elevator; }
@@ -120,33 +157,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!value) { driver._InputJump(); }
         }
-
-        public void _InvertThrust() { _accelerateSign.z = -1.0f; }
-        public void _NormalThrust() { _accelerateSign.z = 1.0f; }
-
-        public void _InvertClimb() { _accelerateSign.y = -1.0f; }
-        public void _NormalClimb() { _accelerateSign.y = 1.0f; }
-
-        public void _InvertStrafe() { _accelerateSign.x = -1.0f; }
-        public void _NormalStrafe() { _accelerateSign.x = 1.0f; }
-
-        public void _InvertElevator() { _rotateSign.x = -1.0f; }
-        public void _NormalElevator() { _rotateSign.x = 1.0f; }
-
-        public void _InvertLadder() { _rotateSign.y = -1.0f; }
-        public void _NormalLadder() { _rotateSign.y = 1.0f; }
-
-        public void _InvertAileron() { _rotateSign.z = -1.0f; }
-        public void _NormalAileron() { _rotateSign.z = 1.0f; }
-
-        public void _SetThrottleRightHand() { _throttleInputHand = HandType.RIGHT; }
-        public void _SetThrottleLeftHand() { _throttleInputHand = HandType.LEFT; }
-
-        public void _SetTurningRightHand() { _turningInputHand = HandType.RIGHT; }
-        public void _SetTurningLeftHand() { _turningInputHand = HandType.LEFT; }
-
-        public void _SetElevatorRightHand() { _elevatorInputHand = HandType.RIGHT; }
-        public void _SetElevatorLeftHand() { _elevatorInputHand = HandType.LEFT; }
 
         protected virtual void InputKey() { }
     }

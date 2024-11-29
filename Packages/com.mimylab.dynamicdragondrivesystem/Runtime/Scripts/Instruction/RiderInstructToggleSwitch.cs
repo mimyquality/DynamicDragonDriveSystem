@@ -14,9 +14,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider ToggleSwitch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class RiderToggleSwitch : RiderUISwitchManager
+    public class RiderInstructToggleSwitch : RiderInstructSwitchBase
     {
-        internal RiderToggle toggler;
+        internal RiderInstructToggle toggler;
         internal bool isOn;
 
         public override void Interact()
