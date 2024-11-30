@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         internal DragonRider rider;
         [SerializeField]
-        internal DragonReinsInputType reinsInputType;
+        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         [SerializeField]
         private DragonRiderToggleInstruction _instruction;
@@ -48,12 +48,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_switch_ON)
             {
                 _switch_ON.toggler = this;
-                _switch_ON.isOn = true;
             }
             if (_switch_OFF)
             {
                 _switch_OFF.toggler = this;
-                _switch_OFF.isOn = false;
             }
 
             _initialized = true;

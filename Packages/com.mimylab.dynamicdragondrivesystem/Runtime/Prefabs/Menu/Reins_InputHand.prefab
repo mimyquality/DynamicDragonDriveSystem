@@ -308,6 +308,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _instruction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _sequentialMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
     - target: {fileID: 3039644680391630825, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_Name
@@ -318,6 +334,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reins_InputHand_R
       objectReference: {fileID: 0}
+    - target: {fileID: 5185718927102034092, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5185718927102034092, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+    - target: {fileID: 6087927101052760971, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6087927101052760971, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
     - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -12,6 +12,12 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
     using VRC.Udon.Common;
 
+    public enum ReinsInputVRGrabMode
+    {
+        Hold,
+        Toggle,
+    }
+
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput VRLever")]
     public class ReinsInputVR : ReinsInputManager
@@ -28,7 +34,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _brakesAcceptanceThreshold = 0.95f;
 
         private VRCPlayerApi _localPlayer;
-        private bool _isToggleGrab;
+        private ReinsInputVRGrabMode _vrGrabMode;
         private bool _isGrabLeft, _isGrabRight;
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
@@ -40,6 +46,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _leftGrabRotate, _rightGrabRotate;
         //private Vector3 _leftHandRotate, _rightHandRotate;
         private bool _prevGrabJump;
+
+        public ReinsInputVRGrabMode VRGrabMode
+        {
+            get => _vrGrabMode;
+            set => _vrGrabMode = value;
+        }
 
         private void Start()
         {
@@ -73,10 +85,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public bool _GetGrabMode() { return _isToggleGrab; }
-        public void _SetGrabModeHold() { _isToggleGrab = false; }
-        public void _SetGrabModeToggle() { _isToggleGrab = true; }
-
         protected override void InputKey()
         {
             InputGrabJump();
@@ -100,35 +108,37 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void ActivateGrabLeft(bool value)
         {
-            if (_isToggleGrab)
+            switch (_vrGrabMode)
             {
-                if (value)
-                {
-                    if (!_isGrabLeft) { _flagGrabLeft = true; }
-                    _isGrabLeft = !_isGrabLeft;
-                }
-            }
-            else
-            {
-                if (value & !_isGrabLeft) { _flagGrabLeft = true; }
-                _isGrabLeft = value;
+                case ReinsInputVRGrabMode.Hold:
+                    if (value & !_isGrabLeft) { _flagGrabLeft = true; }
+                    _isGrabLeft = value;
+                    break;
+                case ReinsInputVRGrabMode.Toggle:
+                    if (value)
+                    {
+                        if (!_isGrabLeft) { _flagGrabLeft = true; }
+                        _isGrabLeft = !_isGrabLeft;
+                    }
+                    break;
             }
         }
 
         private void ActivateGrabRight(bool value)
         {
-            if (_isToggleGrab)
+            switch (_vrGrabMode)
             {
-                if (value)
-                {
-                    if (!_isGrabRight) { _flagGrabRight = true; }
-                    _isGrabRight = !_isGrabRight;
-                }
-            }
-            else
-            {
-                if (value & !_isGrabRight) { _flagGrabRight = true; }
-                _isGrabRight = value;
+                case ReinsInputVRGrabMode.Hold:
+                    if (value & !_isGrabRight) { _flagGrabRight = true; }
+                    _isGrabRight = value;
+                    break;
+                case ReinsInputVRGrabMode.Toggle:
+                    if (value)
+                    {
+                        if (!_isGrabRight) { _flagGrabRight = true; }
+                        _isGrabRight = !_isGrabRight;
+                    }
+                    break;
             }
         }
 

@@ -13,6 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     public enum DragonReinsInputType
     {
+        None = -1,
         Thumbsticks,
         Keyboard,
         VRHands,
@@ -101,7 +102,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         [FieldChangeCallback(nameof(SelectedInput))]
-        private DragonReinsInputType _selectedInput = default;
+        private DragonReinsInputType _selectedInput = DragonReinsInputType.None;
         public DragonReinsInputType SelectedInput
         {
             get => _selectedInput;

@@ -10,6 +10,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     using VRC.Udon;
+    using VRC.Udon.Common;
 
     public enum DragonRiderToggleInstruction
     {
@@ -20,7 +21,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         InvertElevator,
         InvertLadder,
         InvertAileron,
-        VRGrabMode,
         ShowCanopy,
     }
 
@@ -30,6 +30,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         ThrottleInputHand,
         TurningInputHand,
         ElevatorInputHand,
+        VRGrabMode,
     }
 
     public enum DragonRiderVolumeInstruction
@@ -61,26 +62,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Saddle
         private bool _isPilot = false;
         private bool _seatAdjust = false;
-        private Vector3 _seatPosition = Vector3.zero;
 
         // Seat
         private bool _isRide = false;
         private int _rideCount = 0;
         private bool _isMount = false;
         private int _mountCount = 0;
-
-        // Reins
-        private DragonReinsInputType _selectedInput = default;
-        private byte[] _throttleInputHand = new byte[6];
-        private byte[] _turningInputHand = new byte[6];
-        private byte[] _elevatorInputHand = new byte[6];
-        private bool[] _invertThrust = new bool[6];
-        private bool[] _invertClimb = new bool[6];
-        private bool[] _invertStrafe = new bool[6];
-        private bool[] _invertElevator = new bool[6];
-        private bool[] _invertLadder = new bool[6];
-        private bool[] _invertAileron = new bool[6];
-        private bool[] _vrGrabMode = new bool[2];
 
         // Canopy
         private bool _canopyIndication = false;
@@ -129,7 +116,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
             if (actor) { Networking.SetOwner(Networking.LocalPlayer, actor.gameObject); }
             _isPilot = true;
-            driver.IsDrive = true;
+            driver.IsDrive = _isPilot;
             SeatAdjust(false);
             ShowCanopy(_canopyIndication);
 
@@ -139,7 +126,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal void _OnSaddleExited()
         {
             _isPilot = false;
-            driver.IsDrive = false;
+            driver.IsDrive = _isPilot;
             SeatAdjust(false);
             ShowCanopy(_canopyIndication);
 
@@ -162,15 +149,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             var instruction = toggler.Instruction;
             switch (instruction)
             {
-                case DragonRiderToggleInstruction.SeatAdjust: SeatAdjust(toggler.IsOn); break;
-                case DragonRiderToggleInstruction.InvertThrust: break;
-                case DragonRiderToggleInstruction.InvertClimb: break;
-                case DragonRiderToggleInstruction.InvertStrafe: break;
-                case DragonRiderToggleInstruction.InvertElevator: break;
-                case DragonRiderToggleInstruction.InvertLadder: break;
-                case DragonRiderToggleInstruction.InvertAileron: break;
-                case DragonRiderToggleInstruction.VRGrabMode: break;
-                case DragonRiderToggleInstruction.ShowCanopy: ShowCanopy(toggler.IsOn); break;
+                case DragonRiderToggleInstruction.SeatAdjust: SeatAdjust(toggler); break;
+                case DragonRiderToggleInstruction.InvertThrust: InvertThrust(toggler); break;
+                case DragonRiderToggleInstruction.InvertClimb: InvertClimb(toggler); break;
+                case DragonRiderToggleInstruction.InvertStrafe: InvertStrafe(toggler); break;
+                case DragonRiderToggleInstruction.InvertElevator: InvertElevator(toggler); break;
+                case DragonRiderToggleInstruction.InvertLadder: InvertLadder(toggler); break;
+                case DragonRiderToggleInstruction.InvertAileron: InvertAileron(toggler); break;
+                case DragonRiderToggleInstruction.ShowCanopy: ShowCanopy(toggler); break;
             }
 
             FeedbackToggles(instruction);
@@ -181,10 +167,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             var instruction = selector.Instruction;
             switch (instruction)
             {
-                case DragonRiderSelectInstruction.ReinsInput: break;
-                case DragonRiderSelectInstruction.ThrottleInputHand: break;
-                case DragonRiderSelectInstruction.TurningInputHand: break;
-                case DragonRiderSelectInstruction.ElevatorInputHand: break;
+                case DragonRiderSelectInstruction.ReinsInput: SelectReinsInput(selector); break;
+                case DragonRiderSelectInstruction.ThrottleInputHand: ThrottleInputHand(selector); break;
+                case DragonRiderSelectInstruction.TurningInputHand: TurnInputHand(selector); break;
+                case DragonRiderSelectInstruction.ElevatorInputHand: ElevatorInputHand(selector); break;
+                case DragonRiderSelectInstruction.VRGrabMode: VRGrabMode(selector); break;
             }
 
             FeedbackSelects(instruction);
@@ -196,7 +183,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         /******************************
-         その他メソッド
+         その他イベント
          ******************************/
         internal void _OnSeatRided(bool value)
         {
@@ -222,21 +209,127 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          private メソッド
          ******************************/
+        private void SeatAdjust(RiderInstructToggle toggler)
+        {
+            SeatAdjust(toggler.IsOn);
+        }
         private void SeatAdjust(bool value)
         {
-            saddle.EnabledAdjust = value & _isPilot;
-            reins.InputEnabled = !value & _isPilot;
             _seatAdjust = value;
+            saddle.EnabledAdjust = _seatAdjust & _isPilot;
+            reins.InputEnabled = !_seatAdjust & _isPilot;
         }
 
+        private void SelectReinsInput(RiderInstructSelect selector)
+        {
+            reins.SelectedInput = (DragonReinsInputType)selector.Select;
+        }
 
+        private void InvertThrust(RiderInstructToggle toggler)
+        {
+            var reinsInput = reins._GetInput(toggler.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.ThrustIsInvert = toggler.IsOn;
+            }
+        }
 
+        private void InvertClimb(RiderInstructToggle toggler)
+        {
+            var reinsInput = reins._GetInput(toggler.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.ClimbIsInvert = toggler.IsOn;
+            }
+        }
+
+        private void InvertStrafe(RiderInstructToggle toggler)
+        {
+            var reinsInput = reins._GetInput(toggler.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.StrafeIsInvert = toggler.IsOn;
+            }
+        }
+
+        private void InvertElevator(RiderInstructToggle toggler)
+        {
+            var reinsInput = reins._GetInput(toggler.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.ElevatorIsInvert = toggler.IsOn;
+            }
+        }
+
+        private void InvertLadder(RiderInstructToggle toggler)
+        {
+
+            var reinsInput = reins._GetInput(toggler.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.LadderIsInvert = toggler.IsOn;
+            }
+        }
+
+        private void InvertAileron(RiderInstructToggle toggler)
+        {
+
+            var reinsInput = reins._GetInput(toggler.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.AileronIsInvert = toggler.IsOn;
+            }
+        }
+
+        private void ThrottleInputHand(RiderInstructSelect selector)
+        {
+            var reinsInput = reins._GetInput(selector.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.ThrottleInputHand = (HandType)selector.Select;
+            }
+        }
+
+        private void TurnInputHand(RiderInstructSelect selector)
+        {
+            var reinsInput = reins._GetInput(selector.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.TurnInputHand = (HandType)selector.Select;
+            }
+        }
+
+        private void ElevatorInputHand(RiderInstructSelect selector)
+        {
+            var reinsInput = reins._GetInput(selector.targetReinsInput);
+            if (reinsInput)
+            {
+                reinsInput.ElevatorInputHand = (HandType)selector.Select;
+            }
+        }
+
+        private void VRGrabMode(RiderInstructSelect selector)
+        {
+            switch (selector.targetReinsInput)
+            {
+                case DragonReinsInputType.VRHands: reins.vrHands.VRGrabMode = (ReinsInputVRGrabMode)selector.Select; break;
+                case DragonReinsInputType.VRHands2: reins.vrHands2.VRGrabMode = (ReinsInputVRGrabMode)selector.Select; break;
+            }
+        }
+
+        private void ShowCanopy(RiderInstructToggle toggler)
+        {
+            ShowCanopy(toggler.IsOn);
+        }
         private void ShowCanopy(bool value)
         {
-            _canopy.SetActive(value & _isPilot);
             _canopyIndication = value;
+            _canopy.SetActive(_canopyIndication & _isPilot);
         }
 
+        /******************************
+         Feedback 関連
+         ******************************/
         private void FeedbackAll()
         {
             FeedbackToggles();
@@ -266,13 +359,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             switch (_togglesInstruction[index])
             {
                 case DragonRiderToggleInstruction.SeatAdjust: _toggles[index]._OnValueChanged(_seatAdjust); break;
-                case DragonRiderToggleInstruction.InvertThrust: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).ThrustIsInvert); break;
-                case DragonRiderToggleInstruction.InvertClimb: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).ClimbIsInvert); break;
-                case DragonRiderToggleInstruction.InvertStrafe: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).StrafeIsInvert); break;
-                case DragonRiderToggleInstruction.InvertElevator: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).ElevatorIsInvert); break;
-                case DragonRiderToggleInstruction.InvertLadder: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).LadderIsInvert); break;
-                case DragonRiderToggleInstruction.InvertAileron: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).AileronIsInvert); break;
-                case DragonRiderToggleInstruction.VRGrabMode: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].reinsInputType).ThrustIsInvert); break;
+                case DragonRiderToggleInstruction.InvertThrust: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].targetReinsInput).ThrustIsInvert); break;
+                case DragonRiderToggleInstruction.InvertClimb: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].targetReinsInput).ClimbIsInvert); break;
+                case DragonRiderToggleInstruction.InvertStrafe: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].targetReinsInput).StrafeIsInvert); break;
+                case DragonRiderToggleInstruction.InvertElevator: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].targetReinsInput).ElevatorIsInvert); break;
+                case DragonRiderToggleInstruction.InvertLadder: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].targetReinsInput).LadderIsInvert); break;
+                case DragonRiderToggleInstruction.InvertAileron: _toggles[index]._OnValueChanged(reins._GetInput(_toggles[index].targetReinsInput).AileronIsInvert); break;
                 case DragonRiderToggleInstruction.ShowCanopy: _toggles[index]._OnValueChanged(_canopyIndication); break;
             }
         }
@@ -299,9 +391,16 @@ namespace MimyLab.DynamicDragonDriveSystem
             switch (_selectsInstruction[index])
             {
                 case DragonRiderSelectInstruction.ReinsInput: _selects[index]._OnValueChanged((int)reins.SelectedInput); break;
-                case DragonRiderSelectInstruction.ThrottleInputHand: _selects[index]._OnValueChanged((int)reins._GetInput(_selects[index].reinsInputType).ThrottleInputHand); break;
-                case DragonRiderSelectInstruction.TurningInputHand: _selects[index]._OnValueChanged((int)reins._GetInput(_selects[index].reinsInputType).TurnInputHand); break;
-                case DragonRiderSelectInstruction.ElevatorInputHand: _selects[index]._OnValueChanged((int)reins._GetInput(_selects[index].reinsInputType).ElevatorInputHand); break;
+                case DragonRiderSelectInstruction.ThrottleInputHand: _selects[index]._OnValueChanged((int)reins._GetInput(_selects[index].targetReinsInput).ThrottleInputHand); break;
+                case DragonRiderSelectInstruction.TurningInputHand: _selects[index]._OnValueChanged((int)reins._GetInput(_selects[index].targetReinsInput).TurnInputHand); break;
+                case DragonRiderSelectInstruction.ElevatorInputHand: _selects[index]._OnValueChanged((int)reins._GetInput(_selects[index].targetReinsInput).ElevatorInputHand); break;
+                case DragonRiderSelectInstruction.VRGrabMode:
+                    switch (_toggles[index].targetReinsInput)
+                    {
+                        case DragonReinsInputType.VRHands: _selects[index]._OnValueChanged((int)reins.vrHands.VRGrabMode); break;
+                        case DragonReinsInputType.VRHands2: _selects[index]._OnValueChanged((int)reins.vrHands2.VRGrabMode); break;
+                    }
+                    break;
             }
         }
 

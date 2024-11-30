@@ -36,7 +36,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private AnimationCurve _throttleInputCurve;
 
         private VRCPlayerApi _localPlayer;
-        private bool _isToggleGrab;
+        private ReinsInputVRGrabMode _vrGrabMode;
         private bool _isGrabLeft, _isGrabRight, _isGrabBoth;
         private bool _flagGrabBoth;
         private Vector3 _originPosition, _leftHandPosition, _rightHandPosition;
@@ -51,6 +51,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _prevGrabJump;
 
         public override float Turn { get => -_ladder; }  // _ladder == _aileron なので
+
+        public ReinsInputVRGrabMode VRGrabMode
+        {
+            get => _vrGrabMode;
+            set => _vrGrabMode = value;
+        }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR 
         private void Reset()
@@ -115,10 +121,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             ActivateGrab(_isGrabLeft & _isGrabRight);
         }
 
-        public bool _GetGrabMode() { return _isToggleGrab; }
-        public void _SetGrabModeHold() { _isToggleGrab = false; }
-        public void _SetGrabModeToggle() { _isToggleGrab = true; }
-
         protected override void InputKey()
         {
             InputGrabJump();
@@ -145,18 +147,19 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void ActivateGrab(bool value)
         {
-            if (_isToggleGrab)
+            switch (_vrGrabMode)
             {
-                if (value)
-                {
-                    if (!_isGrabBoth) { _flagGrabBoth = true; }
-                    _isGrabBoth = !_isGrabBoth;
-                }
-            }
-            else
-            {
-                if (value & !_isGrabBoth) { _flagGrabBoth = true; }
-                _isGrabBoth = value;
+                case ReinsInputVRGrabMode.Hold:
+                    if (value & !_isGrabBoth) { _flagGrabBoth = true; }
+                    _isGrabBoth = value;
+                    break;
+                case ReinsInputVRGrabMode.Toggle:
+                    if (value)
+                    {
+                        if (!_isGrabBoth) { _flagGrabBoth = true; }
+                        _isGrabBoth = !_isGrabBoth;
+                    }
+                    break;
             }
         }
 

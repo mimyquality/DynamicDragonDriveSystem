@@ -11,13 +11,25 @@ PrefabInstance:
     - target: {fileID: 170054568662961024, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Name
-      value: Turn_Invert
+      value: Turn_Normal
       objectReference: {fileID: 0}
     - target: {fileID: 940780206917131229, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Name
       value: Turn_Reversible
       objectReference: {fileID: 0}
+    - target: {fileID: 2143483659099405442, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2143483659099405442, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+    - target: {fileID: 2338495053548666993, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2338495053548666993, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
     - target: {fileID: 2580219306686158442, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Sprite
@@ -61,10 +73,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 4403228560668719351, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4403228560668719351, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
     - target: {fileID: 4582140417904555891, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Name
-      value: Turn_Normal
+      value: Turn_Invert
       objectReference: {fileID: 0}
     - target: {fileID: 6222653387269101548, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}

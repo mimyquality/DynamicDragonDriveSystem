@@ -17,11 +17,13 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class RiderInstructToggleSwitch : RiderInstructSwitchBase
     {
         internal RiderInstructToggle toggler;
-        internal bool isOn;
+
+        [SerializeField]
+        private bool _isOn;
 
         public override void Interact()
         {
-            if (toggler) { toggler._Change(isOn); }
+            if (toggler) { toggler._Change(_isOn); }
         }
     }
 }

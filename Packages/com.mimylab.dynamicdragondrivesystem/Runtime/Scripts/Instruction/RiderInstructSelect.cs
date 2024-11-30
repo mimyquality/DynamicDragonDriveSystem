@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         internal DragonRider rider;
         [SerializeField]
-        internal DragonReinsInputType reinsInputType;
+        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         [SerializeField]
         private DragonRiderSelectInstruction _instruction;
@@ -29,6 +29,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Space]
         [SerializeField]
         private RiderInstructSelectSwitch[] _switches = new RiderInstructSelectSwitch[0];
+        [SerializeField]
+        private bool _sequentialMode = false;
 
         private Slider _uiSlider;
         private int _select = 0;
@@ -49,7 +51,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (_switches[i])
                 {
                     _switches[i].selector = this;
-                    _switches[i].number = i;
                 }
             }
 
@@ -80,12 +81,26 @@ namespace MimyLab.DynamicDragonDriveSystem
             _select = value;
             if (_uiSlider) { _uiSlider.SetValueWithoutNotify(value); }
 
-            // 非選択状態のスイッチだけ入力を受け付ける
-            for (int i = 0; i < _switches.Length; i++)
+            if (_sequentialMode)
             {
-                if (_switches[i])
+                // 選択中のスイッチ以外非表示
+                for (int i = 0; i < _switches.Length; i++)
                 {
-                    _switches[i].Interactable = i != value;
+                    if (_switches[i])
+                    {
+                        _switches[i].gameObject.SetActive(i == value);
+                    }
+                }
+            }
+            else
+            {
+                // 非選択状態のスイッチだけ入力を受け付ける
+                for (int i = 0; i < _switches.Length; i++)
+                {
+                    if (_switches[i])
+                    {
+                        _switches[i].Interactable = i != value;
+                    }
                 }
             }
         }

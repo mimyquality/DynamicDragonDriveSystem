@@ -8,11 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1830884866012275704}
     m_Modifications:
+    - target: {fileID: 579873595210130021, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 579873595210130021, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+    - target: {fileID: 1541205385781009123, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1541205385781009123, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
     - target: {fileID: 2699430475229149641, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
         type: 3}
       propertyPath: m_Name
       value: Elevator_Reversible
       objectReference: {fileID: 0}
+    - target: {fileID: 3875118927308611222, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3875118927308611222, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
     - target: {fileID: 9089197960526853624, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,6 +80,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 433921617984778216, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 433921617984778216, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
     - target: {fileID: 969381651912236930, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       propertyPath: m_Pivot.x
@@ -162,6 +186,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553302047230434511, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1553302047230434511, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
     - target: {fileID: 2489436413790600254, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       propertyPath: m_text
@@ -177,6 +207,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator_InputHand
       objectReference: {fileID: 0}
+    - target: {fileID: 5193791306993069020, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: _instruction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193791306993069020, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5193791306993069020, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
     - target: {fileID: 7772151040883929261, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       propertyPath: m_Name
@@ -220,11 +261,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 784587888701083871}
     m_Modifications:
+    - target: {fileID: 579873595210130021, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 579873595210130021, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+    - target: {fileID: 1541205385781009123, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1541205385781009123, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
     - target: {fileID: 2699430475229149641, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
         type: 3}
       propertyPath: m_Name
       value: Elevator_Reversible
       objectReference: {fileID: 0}
+    - target: {fileID: 3875118927308611222, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3875118927308611222, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
+        type: 3}
     - target: {fileID: 9089197960526853624, guid: c9cc5e7237272cb4f9faa77e115a9c0d,
         type: 3}
       propertyPath: m_LocalPosition.x

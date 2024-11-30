@@ -27,6 +27,25 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private int _sympathyNumber = 0;
 
+        // Saddle
+        private Vector3 _seatPosition;
+
+        // Reins
+        private DragonReinsInputType _selectedInput;
+        private byte[] _throttleInputHand = new byte[6];
+        private byte[] _turningInputHand = new byte[6];
+        private byte[] _elevatorInputHand = new byte[6];
+        private bool[] _invertThrust = new bool[6];
+        private bool[] _invertClimb = new bool[6];
+        private bool[] _invertStrafe = new bool[6];
+        private bool[] _invertElevator = new bool[6];
+        private bool[] _invertLadder = new bool[6];
+        private bool[] _invertAileron = new bool[6];
+        private bool[] _vrGrabMode = new bool[2];
+
+        // Canopy
+        private bool _canopyIndication;
+
         private DragonRider _rider;
 
         public int SympathyNumber { get => _sympathyNumber; }

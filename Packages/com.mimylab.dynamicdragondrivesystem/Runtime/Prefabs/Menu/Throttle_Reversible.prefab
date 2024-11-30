@@ -11,13 +11,25 @@ PrefabInstance:
     - target: {fileID: 170054568662961024, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Name
-      value: Throttle_Invert
+      value: Throttle_Normal
       objectReference: {fileID: 0}
     - target: {fileID: 940780206917131229, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Name
       value: Throttle_Reversible
       objectReference: {fileID: 0}
+    - target: {fileID: 2143483659099405442, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2143483659099405442, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+    - target: {fileID: 2338495053548666993, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2338495053548666993, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
     - target: {fileID: 2580219306686158442, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Sprite
@@ -36,10 +48,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f727049c06a84a74eb3fbd0568257cac,
         type: 3}
+    - target: {fileID: 4403228560668719351, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4403228560668719351, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
+        type: 3}
     - target: {fileID: 4582140417904555891, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
       propertyPath: m_Name
-      value: Throttle_Normal
+      value: Throttle_Invert
       objectReference: {fileID: 0}
     - target: {fileID: 6222653387269101548, guid: 4cc60859d0131f44f8aa1c2a3ad0c7f1,
         type: 3}
