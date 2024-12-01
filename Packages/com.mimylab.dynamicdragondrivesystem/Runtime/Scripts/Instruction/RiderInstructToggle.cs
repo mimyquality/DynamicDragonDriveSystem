@@ -13,12 +13,11 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider Toggle")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Toggle")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructToggle : UdonSharpBehaviour
     {
         internal DragonRider rider;
-        [SerializeField]
         internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         [SerializeField]

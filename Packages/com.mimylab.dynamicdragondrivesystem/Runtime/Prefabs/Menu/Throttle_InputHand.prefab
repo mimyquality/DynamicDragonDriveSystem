@@ -6,13 +6,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 784587888701083871}
+    m_TransformParent: {fileID: 5530227646718969603}
     m_Modifications:
+    - target: {fileID: 1541205385781009123, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1541205385781009123, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
     - target: {fileID: 2699430475229149641, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
         type: 3}
       propertyPath: m_Name
       value: Throttle_Reversible
       objectReference: {fileID: 0}
+    - target: {fileID: 5666069150722186775, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5666069150722186775, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+    - target: {fileID: 8422771522419968090, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8422771522419968090, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
     - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22,6 +40,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
         type: 3}
@@ -60,13 +93,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1830884866012275704}
+    m_TransformParent: {fileID: 2584951344681781231}
     m_Modifications:
+    - target: {fileID: 1541205385781009123, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1541205385781009123, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
     - target: {fileID: 2699430475229149641, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
         type: 3}
       propertyPath: m_Name
       value: Throttle_Reversible
       objectReference: {fileID: 0}
+    - target: {fileID: 5666069150722186775, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5666069150722186775, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+    - target: {fileID: 8422771522419968090, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8422771522419968090, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
     - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,6 +127,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9089197960526853624, guid: 9c8eda0d71aa3a64785d732e27ea14a9,
         type: 3}
@@ -116,6 +182,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 777987470627241259, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: m_text
+      value: Throttle
+      objectReference: {fileID: 0}
     - target: {fileID: 969381651912236930, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       propertyPath: m_Pivot.x
@@ -216,53 +287,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2489436413790600254, guid: 58dc5acd1d11e8a4f8a863d970503244,
-        type: 3}
-      propertyPath: m_text
-      value: Throttle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3532994366501015321, guid: 58dc5acd1d11e8a4f8a863d970503244,
-        type: 3}
-      propertyPath: m_text
-      value: Throttle
-      objectReference: {fileID: 0}
     - target: {fileID: 3963385672643309519, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       propertyPath: m_Name
       value: Throttle_InputHand
       objectReference: {fileID: 0}
-    - target: {fileID: 7772151040883929261, guid: 58dc5acd1d11e8a4f8a863d970503244,
+    - target: {fileID: 4379107564203604456, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
-      propertyPath: m_Name
-      value: Throttle_InputHand_R
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671624610171011978, guid: 58dc5acd1d11e8a4f8a863d970503244,
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4379107564203604456, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
-      propertyPath: m_Name
-      value: Throttle_InputHand_L
+    - target: {fileID: 5193791306993069020, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5193791306993069020, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+    - target: {fileID: 6027346903770036484, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6027346903770036484, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+    - target: {fileID: 7326002306366275015, guid: 58dc5acd1d11e8a4f8a863d970503244,
+        type: 3}
+      propertyPath: m_text
+      value: Throttle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7925231854176616283, guid: 58dc5acd1d11e8a4f8a863d970503244,
+    - targetCorrespondingSourceObject: {fileID: 6290156459345795916, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3863712669261211394}
-    - targetCorrespondingSourceObject: {fileID: 9113001905798794364, guid: 58dc5acd1d11e8a4f8a863d970503244,
+    - targetCorrespondingSourceObject: {fileID: 4047567056247774112, guid: 58dc5acd1d11e8a4f8a863d970503244,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4514110745080391807}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58dc5acd1d11e8a4f8a863d970503244, type: 3}
---- !u!224 &784587888701083871 stripped
+--- !u!224 &2584951344681781231 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9113001905798794364, guid: 58dc5acd1d11e8a4f8a863d970503244,
+  m_CorrespondingSourceObject: {fileID: 6290156459345795916, guid: 58dc5acd1d11e8a4f8a863d970503244,
     type: 3}
   m_PrefabInstance: {fileID: 8400489238788988067}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1830884866012275704 stripped
+--- !u!224 &5530227646718969603 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7925231854176616283, guid: 58dc5acd1d11e8a4f8a863d970503244,
+  m_CorrespondingSourceObject: {fileID: 4047567056247774112, guid: 58dc5acd1d11e8a4f8a863d970503244,
     type: 3}
   m_PrefabInstance: {fileID: 8400489238788988067}
   m_PrefabAsset: {fileID: 0}

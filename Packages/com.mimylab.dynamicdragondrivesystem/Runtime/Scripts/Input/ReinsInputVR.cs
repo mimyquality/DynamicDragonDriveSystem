@@ -212,20 +212,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             return _rightHandRotation * Quaternion.Inverse(_rightGrabRotation);
         }
 
-        private Quaternion GetLeftHandRotate()
-        {
-            if (!_isGrabLeft) { return Quaternion.identity; }
-
-            return _leftHandRotation * Quaternion.Inverse(_prevLeftHandRotation);
-        }
-
-        private Quaternion GetRightHandRotate()
-        {
-            if (!_isGrabRight) { return Quaternion.identity; }
-
-            return _rightHandRotation * Quaternion.Inverse(_prevRightHandRotation);
-        }
-
         private Vector3 ConvertQuaternionToAngle3(Quaternion rotation)
         {
             var result = Vector3.zero;

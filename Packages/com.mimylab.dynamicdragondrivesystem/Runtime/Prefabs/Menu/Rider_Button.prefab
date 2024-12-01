@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2685252165466132281}
   - component: {fileID: 2837152735498262624}
   m_Layer: 0
-  m_Name: Reins_Button
+  m_Name: Rider_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

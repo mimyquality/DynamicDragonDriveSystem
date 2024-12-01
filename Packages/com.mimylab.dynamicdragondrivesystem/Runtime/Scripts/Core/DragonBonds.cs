@@ -48,7 +48,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private DragonRider _rider;
 
-        public int SympathyNumber { get => _sympathyNumber; }
+        internal int SympathyNumber { get => _sympathyNumber; }
 
         private bool _initialized = false;
         private void Initialize()
@@ -68,6 +68,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
         }
 
-        public void Memorize() { }
+        internal void Memorize() { }
     }
 }

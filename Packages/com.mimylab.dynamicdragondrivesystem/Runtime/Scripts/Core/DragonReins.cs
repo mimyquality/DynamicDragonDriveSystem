@@ -59,7 +59,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             get => _inputEnabled;
             set
             {
-                _inputEnabled = value;
+                Initialize();
 
                 bool enableSelect;
                 if (thumbsticks)
@@ -98,6 +98,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                     legacy.enabled = enableSelect;
                     legacy.gameObject.SetActive(enableSelect);
                 }
+
+                _inputEnabled = value;
             }
         }
 
@@ -134,7 +136,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-            //SelectFromPlatform();
+            _changeableInput |= SetChangeableInputFromPlatform();
             InputEnabled = InputEnabled;
         }
 
@@ -144,8 +146,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_debugMode)
             {
                 _changeableInput = 0xFF;
-
-                return;
             }
 
             int inputMethodInt = (int)inputMethod;
@@ -153,12 +153,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 case (int)VRCInputMethod.Keyboard:
                 case (int)VRCInputMethod.Mouse:
-                    if (gaze) { _changeableInput |= (int)DragonReinsChangeableInputType.Gaze; }
                     if (keyboard)
                     {
                         _changeableInput |= (int)DragonReinsChangeableInputType.Keyboard;
                         if (_isFirstInputMethodChanged) { _selectedInput = DragonReinsInputType.Keyboard; }
                     }
+                    if (gaze) { _changeableInput |= (int)DragonReinsChangeableInputType.Gaze; }
                     break;
                 case (int)VRCInputMethod.Controller:
                     if (thumbsticks)
@@ -241,23 +241,26 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        private void SelectFromPlatform()
+        private int SetChangeableInputFromPlatform()
         {
+            var result = 0;
+
             // General
-            if (thumbsticks) { _changeableInput |= (int)DragonReinsChangeableInputType.Thumbsticks; }
+            if (thumbsticks) { result |= (int)DragonReinsChangeableInputType.Thumbsticks; }
 
             if (Networking.LocalPlayer.IsUserInVR())
             {
                 // VR
-                if (vrHands) { _changeableInput |= (int)DragonReinsChangeableInputType.VRHands; }
-                if (vrHands2) { _changeableInput |= (int)DragonReinsChangeableInputType.VRHands2; }
-                if (legacy) { _changeableInput |= (int)DragonReinsChangeableInputType.Legacy; }
+                if (vrHands) { result |= (int)DragonReinsChangeableInputType.VRHands; }
+                if (vrHands2) { result |= (int)DragonReinsChangeableInputType.VRHands2; }
             }
             else
             {
                 // Desktop, Mobile
-                if (gaze) { _changeableInput |= (int)DragonReinsChangeableInputType.Gaze; }
+                if (gaze) { result |= (int)DragonReinsChangeableInputType.Gaze; }
             }
+
+            return result;
         }
     }
 }

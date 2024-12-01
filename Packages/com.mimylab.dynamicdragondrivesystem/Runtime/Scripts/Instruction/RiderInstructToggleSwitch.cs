@@ -12,7 +12,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider ToggleSwitch")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider ToggleSwitch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructToggleSwitch : RiderInstructSwitchBase
     {

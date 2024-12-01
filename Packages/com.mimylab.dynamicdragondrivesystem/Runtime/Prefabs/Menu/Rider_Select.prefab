@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1904246068975253439}
   - component: {fileID: 4512448670305057019}
   m_Layer: 0
-  m_Name: Reins_Select
+  m_Name: Rider_Select
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +30,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4577104699981816632}
-  - {fileID: 3174706697062649887}
+  - {fileID: 374414366533879599}
+  - {fileID: 7661441905168320451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -61,12 +61,11 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 4512448670305057019}
-  targetReinsInput: -1
   _instruction: 0
   _number: 0
   _switches:
-  - {fileID: 6087927101052760971}
-  - {fileID: 5185718927102034092}
+  - {fileID: 7979401315010061707}
+  - {fileID: 134052508285936999}
   _sequentialMode: 0
 --- !u!114 &4512448670305057019
 MonoBehaviour:
@@ -94,7 +93,7 @@ MonoBehaviour:
   serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgEAAAAAAAAAAi8CAAAAAUkAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAGAAMQBbAFsAUwB5AHMAdABlAG0ALgBJAG4AdAAzADIALAAgAG0AcwBjAG8AcgBsAGkAYgBdAF0ALAAgAFYAUgBDAC4AVQBkAG8AbgAuAEMAbwBtAG0AbwBuAAIAAAAGAgAAAAAAAAAnAQQAAAB0AHkAcABlAAEXAAAAUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwAsACAAbQBzAGMAbwByAGwAaQBiACcBCgAAAFMAeQBtAGIAbwBsAE4AYQBtAGUAAR8AAABfAF8AXwBVAGQAbwBuAFMAaABhAHIAcABCAGUAaABhAHYAaQBvAHUAcgBWAGUAcgBzAGkAbwBuAF8AXwBfACcBBAAAAHQAeQBwAGUAARYAAABTAHkAcwB0AGUAbQAuAEkAbgB0ADMAMgAsACAAbQBzAGMAbwByAGwAaQBiABcBBQAAAFYAYQBsAHUAZQACAAAABwUHBQcF
   publicVariablesUnityEngineObjects: []
   publicVariablesSerializationDataFormat: 0
---- !u!1001 &7240685825996795851
+--- !u!1001 &1280054352004698224
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -102,63 +101,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6848531791593325537}
     m_Modifications:
-    - target: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: _number
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+      objectReference: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 5431948675826726572, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Rider_SelectSwitch_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6762470730388882181, guid: f111326153141954b8161f3b40db4908,
-        type: 3}
-      propertyPath: m_Name
-      value: Reins_SelectButton_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f111326153141954b8161f3b40db4908, type: 3}
---- !u!224 &3174706697062649887 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
-    type: 3}
-  m_PrefabInstance: {fileID: 7240685825996795851}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5185718927102034092 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea, type: 3}
+--- !u!114 &134052508285936999 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+  m_CorrespondingSourceObject: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
     type: 3}
-  m_PrefabInstance: {fileID: 7240685825996795851}
+  m_PrefabInstance: {fileID: 1280054352004698224}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -166,7 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fc63fe86a21684d9456fa9d466548e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &8644628662758956268
+--- !u!224 &7661441905168320451 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1280054352004698224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9125257758255960220
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -174,58 +173,68 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6848531791593325537}
     m_Modifications:
-    - target: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+      objectReference: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 5431948675826726572, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Rider_SelectSwitch_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+    - target: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6762470730388882181, guid: f111326153141954b8161f3b40db4908,
-        type: 3}
-      propertyPath: m_Name
-      value: Reins_SelectButton_00
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f111326153141954b8161f3b40db4908, type: 3}
---- !u!224 &4577104699981816632 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea, type: 3}
+--- !u!224 &374414366533879599 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5220454334747623380, guid: f111326153141954b8161f3b40db4908,
+  m_CorrespondingSourceObject: {fileID: 8903971007102408627, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
     type: 3}
-  m_PrefabInstance: {fileID: 8644628662758956268}
+  m_PrefabInstance: {fileID: 9125257758255960220}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6087927101052760971 stripped
+--- !u!114 &7979401315010061707 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561222755803557735, guid: f111326153141954b8161f3b40db4908,
+  m_CorrespondingSourceObject: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
     type: 3}
-  m_PrefabInstance: {fileID: 8644628662758956268}
+  m_PrefabInstance: {fileID: 9125257758255960220}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

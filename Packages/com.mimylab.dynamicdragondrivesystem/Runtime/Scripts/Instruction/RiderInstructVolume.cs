@@ -13,11 +13,12 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Input/Rider Volume")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Volume")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructVolume : UdonSharpBehaviour
     {
-        internal DragonRider rider;
+        internal DragonRider rider;        
+        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         [SerializeField]
         private DragonRiderVolumeInstruction _instruction;
