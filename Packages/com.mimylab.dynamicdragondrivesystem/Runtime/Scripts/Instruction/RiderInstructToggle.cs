@@ -47,10 +47,12 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_switch_ON)
             {
                 _switch_ON.toggler = this;
+                _switch_ON.isOn = false;
             }
             if (_switch_OFF)
             {
                 _switch_OFF.toggler = this;
+                _switch_OFF.isOn = true;
             }
 
             _initialized = true;

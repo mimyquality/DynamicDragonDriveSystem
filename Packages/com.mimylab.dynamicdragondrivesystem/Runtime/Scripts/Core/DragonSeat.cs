@@ -22,7 +22,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal DragonRider rider;
 
         [SerializeField]
-        private bool _enabledAdjust = true;
+        private bool _enableAdjust = true;
         [SerializeField]
         private Vector3 _maxSeatAdjustment = new Vector3(0.0f, 0.7f, 0.3f);
         [SerializeField]
@@ -64,15 +64,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        public bool EnabledAdjust
+        public bool EnableAdjust
         {
-            get => _enabledAdjust;
+            get => _enableAdjust;
             set
             {
-                if (_enabledAdjust != value)
+                if (_enableAdjust != value)
                 {
                     _seatInput.disableInput = !value;
-                    _enabledAdjust = value;
+                    _enableAdjust = value;
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.disableStationExit = true;
 
             _seatInput.enabled = false;
-            _seatInput.disableInput = !_enabledAdjust;
+            _seatInput.disableInput = !_enableAdjust;
 
             _initialized = true;
         }

@@ -17,13 +17,11 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class RiderInstructSelectSwitch : RiderInstructSwitchBase
     {
         internal RiderInstructSelect selector;
-
-        [SerializeField]
-        private int _number;
+        internal int number;
 
         public override void Interact()
         {
-            if (selector) { selector._Change(_number); }
+            if (selector) { selector._Change(number); }
         }
     }
 }

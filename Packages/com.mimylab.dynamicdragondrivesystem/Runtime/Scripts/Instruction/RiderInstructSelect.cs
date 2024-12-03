@@ -49,7 +49,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_switches[i])
                 {
+                    var next = i + 1 < _switches.Length ? i + 1 : 0;
+
                     _switches[i].selector = this;
+                    _switches[i].number = _sequentialMode ? next : i;
                 }
             }
 

@@ -155,7 +155,7 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
-  m_isRichText: 1
+  m_isRichText: 0
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
-  m_isRichText: 1
+  m_isRichText: 0
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
@@ -520,9 +520,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 6630009392426912582}
-  _enabledAdjust: 1
+  _enableAdjust: 1
   _maxSeatAdjustment: {x: 0, y: 0.7, z: 0.3}
   _minSeatAdjustment: {x: 0, y: -0.3, z: -0.3}
+  _snapPoint: {fileID: 0}
 --- !u!114 &6630009392426912582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +572,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 6623902088187868251}
-  exitAcceptance: 0.8
+  _exitAcceptance: 0.8
   _tooltipLock: {fileID: 806258426275988792}
   _tooltipUnlock: {fileID: 4342002481579944810}
 --- !u!114 &6623902088187868251

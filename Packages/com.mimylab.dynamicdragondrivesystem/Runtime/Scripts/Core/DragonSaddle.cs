@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             base.Start();
 
-            EnabledAdjust = false;
+            EnableAdjust = false;
         }
 
         protected override void OnLocalPlayerMount()

@@ -17,7 +17,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructVolume : UdonSharpBehaviour
     {
-        internal DragonRider rider;        
+        internal DragonRider rider;
         internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         [SerializeField]

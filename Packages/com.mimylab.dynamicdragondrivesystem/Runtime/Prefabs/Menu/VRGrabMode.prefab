@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7444863309634062807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 134052508285936999, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 134052508285936999, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _instruction
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _sequentialMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+    - target: {fileID: 3873453154506335792, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_Name
+      value: GrabHold
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022277763179618724, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_text
+      value: Grab Hold
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022277763179618724, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022277763179618724, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391390050861556040, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_text
+      value: Grab Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391390050861556040, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391390050861556040, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530644063587198684, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_Name
+      value: GrabToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312146353015468972, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: m_Name
+      value: VRGrabMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979401315010061707, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7979401315010061707, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9, type: 3}
