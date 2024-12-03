@@ -13,6 +13,7 @@
 # Ignore the entire asset folder because it is for Packages
 /[Aa]ssets/
 /[Pp]roject[Ss]ettings/
+/[Cc]lient[Ss]im[Ss]torage/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
