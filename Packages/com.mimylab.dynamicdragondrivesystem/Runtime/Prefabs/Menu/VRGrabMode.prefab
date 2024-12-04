@@ -21,24 +21,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
-      propertyPath: _sequentialMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
-        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _activeWhenSelect.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _activeWhenSelect.Array.data[0]
+      value: 
+      objectReference: {fileID: 4463337231707483915}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _activeWhenSelect.Array.data[1]
+      value: 
+      objectReference: {fileID: 5949310785236021223}
     - target: {fileID: 3873453154506335792, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_Name
-      value: GrabHold
+      value: GrabToggle
       objectReference: {fileID: 0}
     - target: {fileID: 4022277763179618724, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_text
-      value: Grab Hold
+      value: Grab Toggle
       objectReference: {fileID: 0}
     - target: {fileID: 4022277763179618724, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
@@ -53,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 6391390050861556040, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_text
-      value: Grab Toggle
+      value: Grab Hold
       objectReference: {fileID: 0}
     - target: {fileID: 6391390050861556040, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
@@ -68,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 6530644063587198684, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_Name
-      value: GrabToggle
+      value: GrabHold
       objectReference: {fileID: 0}
     - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
@@ -111,3 +121,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9, type: 3}
+--- !u!1 &4463337231707483915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6530644063587198684, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7444863309634062807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5949310785236021223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3873453154506335792, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7444863309634062807}
+  m_PrefabAsset: {fileID: 0}

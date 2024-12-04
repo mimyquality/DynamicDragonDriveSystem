@@ -66,7 +66,7 @@ MonoBehaviour:
   _switches:
   - {fileID: 7979401315010061707}
   - {fileID: 134052508285936999}
-  _sequentialMode: 0
+  _activeWhenSelect: []
 --- !u!114 &4512448670305057019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,11 +101,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6848531791593325537}
     m_Modifications:
-    - target: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
-        type: 3}
-      propertyPath: _number
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1161905259678594327, guid: 8bf2af9a61ac08c48a3e5ffee63b78ea,
         type: 3}
       propertyPath: serializationData.Prefab

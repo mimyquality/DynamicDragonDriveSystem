@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41565952, g: 0.107063815, b: 0.592, a: 0.34901962}
+  m_Color: {r: 0.5176471, g: 0.13523702, b: 0.739, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5176471, g: 0.13523702, b: 0.739, a: 1}
+  m_Color: {r: 0.41565952, g: 0.107063815, b: 0.592, a: 0.34901962}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41565952, g: 0.107063815, b: 0.592, a: 0.34901962}
+  m_Color: {r: 0.5176471, g: 0.13523702, b: 0.739, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5176471, g: 0.13523702, b: 0.739, a: 1}
+  m_Color: {r: 0.41565952, g: 0.107063815, b: 0.592, a: 0.34901962}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -335,15 +335,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _activeWhenSelect.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _activeWhenSelect.Array.data[0]
+      value: 
+      objectReference: {fileID: 637455284289256127}
+    - target: {fileID: 1904246068975253439, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+        type: 3}
+      propertyPath: _activeWhenSelect.Array.data[1]
+      value: 
+      objectReference: {fileID: 7473852257911847507}
     - target: {fileID: 3873453154506335792, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_Name
-      value: InputHand_R
+      value: InputHand_L
       objectReference: {fileID: 0}
     - target: {fileID: 6530644063587198684, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
       propertyPath: m_Name
-      value: InputHand_L
+      value: InputHand_R
       objectReference: {fileID: 0}
     - target: {fileID: 6848531791593325537, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
         type: 3}
@@ -407,6 +422,12 @@ PrefabInstance:
       addedObject: {fileID: 5449173890620630195}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9, type: 3}
+--- !u!1 &637455284289256127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6530644063587198684, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5942834066836511843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4047567056247774112 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7661441905168320451, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
@@ -416,6 +437,12 @@ RectTransform:
 --- !u!224 &6290156459345795916 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 374414366533879599, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5942834066836511843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7473852257911847507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3873453154506335792, guid: 9f60a7b485eb29c44be27fe2b9f7a8b9,
     type: 3}
   m_PrefabInstance: {fileID: 5942834066836511843}
   m_PrefabAsset: {fileID: 0}

@@ -262,7 +262,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 8470687192700267873}
-  _isOn: 1
 --- !u!114 &8470687192700267873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +374,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 504795137478396772}
-  _isOn: 0
 --- !u!114 &504795137478396772
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -82,9 +82,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             _currentOn = value;
             if (_uiToggle) { _uiToggle.SetIsOnWithoutNotify(value); }
 
-            // オン状態ならオフにするスイッチを、オフ状態ならオンにするスイッチを表示
-            if (_switch_ON) { _switch_ON.gameObject.SetActive(!value); }
-            if (_switch_OFF) { _switch_OFF.gameObject.SetActive(value); }
+            if (_switch_ON) { _switch_ON.gameObject.SetActive(value); }
+            if (_switch_OFF) { _switch_OFF.gameObject.SetActive(!value); }
         }
     }
 }

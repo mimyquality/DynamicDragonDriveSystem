@@ -29,7 +29,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private RiderInstructSelectSwitch[] _switches = new RiderInstructSelectSwitch[0];
         [SerializeField]
-        private bool _sequentialMode = false;
+        private GameObject[] _activeWhenSelect = new GameObject[0];
 
         private Slider _uiSlider;
         private int _select = 0;
@@ -49,10 +49,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_switches[i])
                 {
-                    var next = i + 1 < _switches.Length ? i + 1 : 0;
-
                     _switches[i].selector = this;
-                    _switches[i].number = _sequentialMode ? next : i;
+                    _switches[i].number = i;
                 }
             }
 
@@ -83,26 +81,16 @@ namespace MimyLab.DynamicDragonDriveSystem
             _select = value;
             if (_uiSlider) { _uiSlider.SetValueWithoutNotify(value); }
 
-            if (_sequentialMode)
+            // 非選択状態のスイッチだけ入力を受け付ける
+            for (int i = 0; i < _switches.Length; i++)
             {
-                // 選択中のスイッチ以外非表示
-                for (int i = 0; i < _switches.Length; i++)
+                if (_switches[i])
                 {
-                    if (_switches[i])
-                    {
-                        _switches[i].gameObject.SetActive(i == value);
-                    }
+                    _switches[i].Interactable = i != value;
                 }
-            }
-            else
-            {
-                // 非選択状態のスイッチだけ入力を受け付ける
-                for (int i = 0; i < _switches.Length; i++)
+                if (_activeWhenSelect.Length > i && _activeWhenSelect[i])
                 {
-                    if (_switches[i])
-                    {
-                        _switches[i].Interactable = i != value;
-                    }
+                    _activeWhenSelect[i].SetActive(i == value);
                 }
             }
         }

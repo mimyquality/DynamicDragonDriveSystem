@@ -256,17 +256,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SelectReinsInput(RiderInstructSelect selector)
         {
-            SelectReinsInput(selector.Select);
+            reins.SelectedInput = (DragonReinsInputType)selector.Select;
         }
-        private void SelectReinsInput(int value)
-        {
-            reins.SelectedInput = (DragonReinsInputType)value;
-            for (int i = 0; i < _reinsInputMenu.Length; i++)
-            {
-                _reinsInputMenu[i].SetActive(i == value);
-            }
-        }
-
+        
         private void InvertThrust(RiderInstructToggle toggler)
         {
             var reinsInput = reins._GetInput(toggler.targetReinsInput);
