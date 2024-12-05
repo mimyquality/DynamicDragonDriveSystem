@@ -70,6 +70,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Change(int value)
         {
+            Initialize();
+
             _select = value;
             rider._OnSelectChanged(this);
         }

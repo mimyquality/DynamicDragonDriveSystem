@@ -39,8 +39,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
         private Quaternion _originRotation, _leftGrabRotation, _rightGrabRotation;
-        private Quaternion _leftHandRotation, _prevLeftHandRotation;
-        private Quaternion _rightHandRotation, _prevRightHandRotation;
+        private Quaternion _leftHandRotation;
+        private Quaternion _rightHandRotation;
 
         private Vector3 _leftGrgabMove, _rightGrabMove;
         private Vector3 _leftGrabRotate, _rightGrabRotate;
@@ -72,8 +72,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _flagGrabLeft = false;
             _flagGrabRight = false;
-            _prevLeftHandRotation = _leftHandRotation;
-            _prevRightHandRotation = _rightHandRotation;
         }
 
         public override void InputGrab(bool value, UdonInputEventArgs args)
@@ -190,7 +188,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_flagGrabLeft)
             {
                 _leftGrabRotation = _leftHandRotation;
-                _prevLeftHandRotation = _leftHandRotation;
             }
 
             return _leftHandRotation * Quaternion.Inverse(_leftGrabRotation);
@@ -206,7 +203,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_flagGrabRight)
             {
                 _rightGrabRotation = _rightHandRotation;
-                _prevRightHandRotation = _rightHandRotation;
             }
 
             return _rightHandRotation * Quaternion.Inverse(_rightGrabRotation);

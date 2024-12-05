@@ -67,6 +67,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Change(float value)
         {
+            Initialize();
+            
             _currentVolume = value;
             rider._OnVolumeChanged(this);
         }

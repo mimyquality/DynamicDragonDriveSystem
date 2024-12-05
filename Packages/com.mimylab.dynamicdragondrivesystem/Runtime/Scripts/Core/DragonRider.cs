@@ -49,9 +49,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal DragonActor actor;
 
         [SerializeField]
-        private Transform _menu;
-        [SerializeField]
-        private GameObject[] _reinsInputMenu;
+        private GameObject _menu;
         [SerializeField]
         private GameObject _canopy;
 
@@ -127,13 +125,15 @@ namespace MimyLab.DynamicDragonDriveSystem
                 {
                     volume.targetReinsInput = reinsInput;
                 }
-            }
+            }            
 
             _initialized = true;
         }
         private void Start()
         {
             Initialize();
+
+            _menu.SetActive(false);
         }
 
         /******************************
@@ -146,6 +146,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Networking.SetOwner(Networking.LocalPlayer, driver.gameObject);
             if (actor) { Networking.SetOwner(Networking.LocalPlayer, actor.gameObject); }
             _isPilot = true;
+            _menu.SetActive(_isPilot);
             driver.IsDrive = _isPilot;
             SeatAdjust(false);
             ShowCanopy(_canopyIndication);
@@ -156,6 +157,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal void _OnSaddleExited()
         {
             _isPilot = false;
+            _menu.SetActive(_isPilot);
             driver.IsDrive = _isPilot;
             SeatAdjust(false);
             ShowCanopy(_canopyIndication);
@@ -175,7 +177,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          UI からのイベント
          ******************************/
-        [RecursiveMethod]
         internal void _OnToggleChanged(RiderInstructToggle toggler)
         {
             var instruction = toggler.Instruction;
@@ -194,7 +195,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             FeedbackToggles(instruction);
         }
 
-        [RecursiveMethod]
         internal void _OnSelectChanged(RiderInstructSelect selector)
         {
             var instruction = selector.Instruction;
@@ -210,7 +210,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             FeedbackSelects(instruction);
         }
 
-        [RecursiveMethod]
         internal void _OnVolumeChanged(RiderInstructVolume volumer)
         {
             // 未使用
@@ -258,7 +257,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             reins.SelectedInput = (DragonReinsInputType)selector.Select;
         }
-        
+
         private void InvertThrust(RiderInstructToggle toggler)
         {
             var reinsInput = reins._GetInput(toggler.targetReinsInput);
@@ -439,7 +438,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                     if (reinsInput) { _selects[index]._OnValueChanged((int)reinsInput.ElevatorInputHand); }
                     break;
                 case DragonRiderSelectInstruction.VRGrabMode:
-                    switch (_toggles[index].targetReinsInput)
+                    switch (_selects[index].targetReinsInput)
                     {
                         case DragonReinsInputType.VRHands:
                             var vrHands = reins.vrHands;

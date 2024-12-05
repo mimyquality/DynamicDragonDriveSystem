@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8184524139949344216}
   - component: {fileID: 4063400235932195412}
   m_Layer: 0
-  m_Name: Joysticks
+  m_Name: Thumbsticks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,10 +285,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8058172037843410876}
   - {fileID: 8058172036853151375}
-  - {fileID: 6824549918648649968}
+  - {fileID: 8058172037843410876}
   - {fileID: 8058172038777351429}
+  - {fileID: 6824549918648649968}
   - {fileID: 5804849046053201976}
   - {fileID: 6530314328261796044}
   m_Father: {fileID: 0}
@@ -315,12 +315,13 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1574988484191546126}
-  keyboard: {fileID: 8058172037843410878}
   thumbsticks: {fileID: 8184524139949344216}
+  keyboard: {fileID: 8058172037843410878}
   vrHands: {fileID: 9201177619479585731}
   vrHands2: {fileID: 6865046405534832322}
   gaze: {fileID: 4828904194936193374}
   legacy: {fileID: 4777134144503905305}
+  _debugMode: 0
 --- !u!114 &1574988484191546126
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -71,6 +71,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public void _Change(bool value)
         {
+            Initialize();
+            
             _currentOn = value;
             rider._OnToggleChanged(this);
         }
