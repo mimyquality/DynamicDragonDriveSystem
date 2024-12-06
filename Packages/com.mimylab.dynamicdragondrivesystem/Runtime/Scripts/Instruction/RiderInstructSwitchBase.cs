@@ -17,13 +17,13 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructSwitchBase : UdonSharpBehaviour
     {
-        private Button _button;
-        private Button Button { get => _button ?? (_button = GetComponent<Button>()); }
+        private Button _button = null;
+        private Button UIButton { get => _button ?? (_button = GetComponent<Button>()); }
 
         internal bool Interactable
         {
-            get => Button.interactable;
-            set => Button.interactable = value;
+            get => UIButton.interactable;
+            set => UIButton.interactable = value;
         }
     }
 }
