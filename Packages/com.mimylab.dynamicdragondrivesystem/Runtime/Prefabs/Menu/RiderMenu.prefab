@@ -414,7 +414,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 5439278559368324762}
-  _commandMenu: {fileID: 479315272440036306}
+  _menu: {fileID: 479315272440036306}
+  _isOpen: 1
+  _parameter_IsOpen: IsOpen
+  _delayToClose: 1
 --- !u!114 &5439278559368324762
 MonoBehaviour:
   m_ObjectHideFlags: 0
