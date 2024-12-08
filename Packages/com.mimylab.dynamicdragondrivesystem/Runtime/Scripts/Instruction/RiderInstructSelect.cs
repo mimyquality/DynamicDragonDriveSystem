@@ -88,7 +88,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_switches[i])
                 {
-                    _switches[i].Interactable = i != value;
+                    _switches[i]._SetInteractable(i != value);
                 }
                 if (_activeWhenSelect.Length > i && _activeWhenSelect[i])
                 {

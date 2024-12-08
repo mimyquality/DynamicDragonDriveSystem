@@ -80,7 +80,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
         }
 
-        internal void _ReactivateGameObject()
+        public void _ReactivateGameObject()
         {
             if (--_triggerCount > 0) { return; }
 

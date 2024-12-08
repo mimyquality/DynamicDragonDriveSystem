@@ -30,19 +30,21 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Animator _animator;
         private int _parameterHash_IsOpen;
 
+        private void OnEnable()
+        {
+            if (_animator)
+            {
+                _SetAnimatorParams();
+            }
+        }
+
         private void Start()
         {
             _animator = _menu.GetComponent<Animator>();
             if (_animator)
             {
                 _parameterHash_IsOpen = Animator.StringToHash(_parameter_IsOpen);
-                _animator.SetBool(_parameterHash_IsOpen, _isOpen);
-
-                if (!_isOpen)
-                {
-                    SendCustomEventDelayedSeconds(nameof(_CloseDelayed), _delayToClose);
-                }
-
+                _SetAnimatorParams();
                 return;
             }
 
@@ -55,18 +57,22 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (_animator)
             {
-                _animator.enabled = true;
-                _animator.SetBool(_parameterHash_IsOpen, _isOpen);
-
-                if (!_isOpen)
-                {
-                    SendCustomEventDelayedSeconds(nameof(_CloseDelayed), _delayToClose);
-                }
-
+                _SetAnimatorParams();
                 return;
             }
 
             _menu.SetActive(_isOpen);
+        }
+
+        public void _SetAnimatorParams()
+        {
+            _animator.enabled = true;
+            _animator.SetBool(_parameterHash_IsOpen, _isOpen);
+
+            if (!_isOpen)
+            {
+                SendCustomEventDelayedSeconds(nameof(_CloseDelayed), _delayToClose);
+            }
         }
 
         public void _CloseDelayed()

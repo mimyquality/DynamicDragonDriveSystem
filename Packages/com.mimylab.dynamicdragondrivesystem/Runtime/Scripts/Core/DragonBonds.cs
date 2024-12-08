@@ -68,6 +68,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
         }
 
-        internal void Memorize() { }
+        internal void _Memorize() { }
     }
 }

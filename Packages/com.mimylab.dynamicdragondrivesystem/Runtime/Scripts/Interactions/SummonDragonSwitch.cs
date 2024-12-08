@@ -15,7 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/SummonDragon Switch")]
-    [DefaultExecutionOrder(0)]
+    [RequireComponent(typeof(Collider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SummonDragonSwitch : UdonSharpBehaviour
     {
@@ -23,12 +23,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         private DDDSDescriptor _target;
         [SerializeField]
         private float _interval = 5.0f;
-        [SerializeField]
-        private bool _UninteractiveOnAwake = true;
 
         private GameObject[] _children;
         private DragonDriver _driver;
         private DragonSaddle _saddle;
+        private Collider _dragonCollider;
+
         private Collider _collider;
         private bool _isCoolDown;
         private bool _isStay;
@@ -43,13 +43,33 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _driver = _target.driver;
             _saddle = _target.saddle;
-            _collider = _driver.GetComponent<Collider>();
+            _dragonCollider = _driver.GetComponent<Collider>();
 
-            if (_UninteractiveOnAwake)
-            {
-                _isStay = true;
-                ToggleInteractive();
-            }
+            _collider = GetComponent<Collider>();
+            _collider.enabled = false;
+            SendCustomEventDelayedFrames(nameof(_EnableColliderDelayed), 2);
+        }
+        public void _EnableColliderDelayed()
+        {
+            _collider.enabled = true;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!Utilities.IsValid(other)) { return; }
+            if (other != _dragonCollider) { return; }
+
+            _isStay = true;
+            ToggleInteractive();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!Utilities.IsValid(other)) { return; }
+            if (other != _dragonCollider) { return; }
+
+            _isStay = false;
+            ToggleInteractive();
         }
 
         public override void Interact()
@@ -61,26 +81,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             SendCustomEventDelayedSeconds(nameof(_ResetInteractInterval), _interval);
             _driver.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(DragonDriver.Respawn));
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (!Utilities.IsValid(other)) { return; }
-            if (other != _collider) { return; }
-
-            _isStay = true;
-            ToggleInteractive();
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (!Utilities.IsValid(other)) { return; }
-            if (other != _collider) { return; }
-
-            _isStay = false;
-            ToggleInteractive();
-        }
-
-        internal void _ResetInteractInterval()
+        public void _ResetInteractInterval()
         {
             _isCoolDown = false;
             ToggleInteractive();

@@ -83,7 +83,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297948652430462442}
-  m_Text: Respawn
+  m_Text: Summon
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -261,7 +261,6 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 6303892525074706001}
   _target: {fileID: 0}
   _interval: 5
-  _UninteractiveOnAwake: 1
 --- !u!114 &6303892525074706001
 MonoBehaviour:
   m_ObjectHideFlags: 0
