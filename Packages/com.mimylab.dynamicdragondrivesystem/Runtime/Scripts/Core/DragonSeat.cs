@@ -154,11 +154,21 @@ namespace MimyLab.DynamicDragonDriveSystem
             _station.ExitStation(Networking.LocalPlayer);
         }
 
-        internal void _SetAdjustPosition(Vector3 input)
+        internal void _InputAdjustPoint(Vector3 input)
         {
             Initialize();
 
             AdjustPoint += Time.deltaTime * _adjustSpeed * input;
+        }
+
+        internal void _SetLocalAdjustPoint(Vector3 position)
+        {
+            _localAdjustPoint = position;
+
+            if (Networking.IsOwner(this.gameObject))
+            {
+                AdjustPoint = _localAdjustPoint;
+            }
         }
 
         protected virtual void OnPlayerMount(VRCPlayerApi player)

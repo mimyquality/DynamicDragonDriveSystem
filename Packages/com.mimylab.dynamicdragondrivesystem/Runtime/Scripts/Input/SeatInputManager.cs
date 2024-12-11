@@ -30,6 +30,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private DragonSeat _seat;
         private bool _isVR = true;
+        private bool _isTouch = false;
 
         private bool _inputJump;
         private float _inputJumpTimer;
@@ -84,15 +85,22 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _inputJumpTimer = _inputJump ? _inputJumpTimer + Time.deltaTime : 0.0f;
             if (_inputJumpTimer > _exitAcceptance) { SeatExit(); }
-#if UNITY_ANDROID
-            // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
-            if (!_inputJump && _inputDoubleJumpTimer < DoubleTapDuration) { _inputDoubleJumpTimer += Time.deltaTime; }
-#endif
+
+            // スマホはJumpボタン長押しが出来ないのでダブルタップ処理
+            if (_isTouch)
+            {
+                if (!_inputJump && _inputDoubleJumpTimer < DoubleTapDuration) { _inputDoubleJumpTimer += Time.deltaTime; }
+            }
 
             if (_inputAdjust != Vector3.zero)
             {
-                _seat._SetAdjustPosition(_inputAdjust);
+                _seat._InputAdjustPoint(_inputAdjust);
             }
+        }
+
+        public override void OnInputMethodChanged(VRCInputMethod inputMethod)
+        {
+            if ((int)inputMethod == (int)VRCInputMethod.Touch) { _isTouch = true; }
         }
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
@@ -126,18 +134,19 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (!disableInput && !value) { LockAdjust = !LockAdjust; }
 
-#if UNITY_ANDROID
-            // AndroidスマホはJumpボタン長押しが出来ないのでダブルタップ処理
-            if (!_isVR && value)
+            // スマホはJumpボタン長押しが出来ないのでダブルタップ処理
+            if (_isTouch)
             {
-                if (_inputDoubleJumpTimer < DoubleTapDuration)
+                if (!_isVR && value)
                 {
-                    SeatExit();
-                    return;
+                    if (_inputDoubleJumpTimer < DoubleTapDuration)
+                    {
+                        SeatExit();
+                        return;
+                    }
+                    _inputDoubleJumpTimer = 0.0f;
                 }
-                _inputDoubleJumpTimer = 0.0f;
             }
-#endif
         }
 
         private void InputKey()

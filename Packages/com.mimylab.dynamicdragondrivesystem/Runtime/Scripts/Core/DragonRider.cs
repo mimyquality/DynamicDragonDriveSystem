@@ -6,10 +6,11 @@ https://opensource.org/license/mit
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
+    using BestHTTP.SecureProtocol.Org.BouncyCastle.Asn1.X509;
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    using VRC.Udon;
+    //using VRC.Udon;
     using VRC.Udon.Common;
 
     public enum DragonRiderToggleInstruction
@@ -79,6 +80,11 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsRide { get => _isRide; }
         public bool IsMount { get => _isMount; }
 
+        public static HandType IntToHandType(int value)
+        {
+            return value == 1 ? HandType.LEFT : HandType.RIGHT;
+        }
+
         private bool _initialized = false;
         private void Initialize()
         {
@@ -125,7 +131,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 {
                     volume.targetReinsInput = reinsInput;
                 }
-            }            
+            }
 
             _initialized = true;
         }
@@ -162,16 +168,99 @@ namespace MimyLab.DynamicDragonDriveSystem
             SeatAdjust(false);
             ShowCanopy(_canopyIndication);
 
+            if (_bonds)
+            {
+                _bonds.seatPosition = saddle.AdjustPoint;
+                _bonds._Memorize();
+            }
+
             FeedbackAll();
         }
 
         /******************************
          Bonds からのイベント
          ******************************/
+        internal void _Bond(DragonBonds bonds)
+        {
+            Initialize();
+
+            _bonds = bonds;
+
+            // Saddle
+            _bonds.seatPosition = saddle.AdjustPoint;
+
+            // Reins
+            _bonds.selectedInput[0] = reins.SelectedInput;
+
+            for (int i = 0; i < (int)DragonReinsInputType.count; i++)
+            {
+                var reinsInput = reins._GetInput((DragonReinsInputType)i);
+                if (!reinsInput) { continue; }
+
+                _bonds.throttleInputHand[i] = (int)reinsInput.ThrottleInputHand;
+                _bonds.turningInputHand[i] = (int)reinsInput.TurnInputHand;
+                _bonds.elevatorInputHand[i] = (int)reinsInput.ElevatorInputHand;
+
+                _bonds.invertThrust[i] = reinsInput.ThrustIsInvert;
+                _bonds.invertClimb[i] = reinsInput.ClimbIsInvert;
+                _bonds.invertStrafe[i] = reinsInput.StrafeIsInvert;
+                _bonds.invertElevator[i] = reinsInput.ElevatorIsInvert;
+                _bonds.invertLadder[i] = reinsInput.LadderIsInvert;
+                _bonds.invertAileron[i] = reinsInput.AileronIsInvert;
+
+                switch ((DragonReinsInputType)i)
+                {
+                    case DragonReinsInputType.VRHands:
+                        var vrHands = reins.vrHands;
+                        if (vrHands) { _bonds.vrGrabMode[0] = vrHands.VRGrabMode; }
+                        break;
+                    case DragonReinsInputType.VRHands2:
+                        var vrHands2 = reins.vrHands2;
+                        if (vrHands2) { _bonds.vrGrabMode[1] = vrHands2.VRGrabMode; }
+                        break;
+                }
+            }
+
+            // Canopy
+            _bonds.canopyIndication = _canopyIndication;
+        }
+
         internal void _OnRemind(DragonBonds bonds)
         {
             Initialize();
 
+            // Saddle
+            saddle._SetLocalAdjustPoint(bonds.seatPosition);
+
+            // Reins
+            reins.SelectedInput = bonds.selectedInput[0];
+
+            for (int i = 0; i < (int)DragonReinsInputType.count; i++)
+            {
+                var reinsInput = reins._GetInput((DragonReinsInputType)i);
+                if (!reinsInput) { continue; }
+
+                reinsInput.ThrottleInputHand = IntToHandType(bonds.throttleInputHand[i]);
+                reinsInput.TurnInputHand = IntToHandType(bonds.turningInputHand[i]);
+                reinsInput.ElevatorInputHand = IntToHandType(bonds.elevatorInputHand[i]);
+
+                reinsInput.ThrustIsInvert = bonds.invertThrust[i];
+                reinsInput.ClimbIsInvert = bonds.invertClimb[i];
+                reinsInput.StrafeIsInvert = bonds.invertStrafe[i];
+                reinsInput.ElevatorIsInvert = bonds.invertElevator[i];
+                reinsInput.LadderIsInvert = bonds.invertLadder[i];
+                reinsInput.AileronIsInvert = bonds.invertAileron[i];
+            }
+
+            var vrHands = reins.vrHands;
+            if (vrHands) { vrHands.VRGrabMode = bonds.vrGrabMode[0]; }
+            var vrHands2 = reins.vrHands2;
+            if (vrHands2) { vrHands2.VRGrabMode = bonds.vrGrabMode[1]; }
+
+            // Canopy
+            ShowCanopy(bonds.canopyIndication);
+
+            FeedbackAll();
         }
 
         /******************************
@@ -193,6 +282,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
 
             FeedbackToggles(instruction);
+
+            if (_bonds) { _bonds._Memorize(); }
         }
 
         internal void _OnSelectChanged(RiderInstructSelect selector)
@@ -208,6 +299,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
 
             FeedbackSelects(instruction);
+
+            if (_bonds) { _bonds._Memorize(); }
         }
 
         internal void _OnVolumeChanged(RiderInstructVolume volumer)
@@ -234,17 +327,18 @@ namespace MimyLab.DynamicDragonDriveSystem
             _isMount = _mountCount > 0;
         }
 
-        internal void _Bond(DragonBonds bonds)
-        {
-            _bonds = bonds;
-        }
-
         /******************************
          private メソッド
          ******************************/
         private void SeatAdjust(RiderInstructToggle toggler)
         {
-            SeatAdjust(toggler.IsOn);
+            var isOn = toggler.IsOn;
+            SeatAdjust(isOn);
+
+            if (!isOn && _bonds)
+            {
+                _bonds.seatPosition = saddle.AdjustPoint;
+            }
         }
         private void SeatAdjust(bool value)
         {
@@ -255,76 +349,116 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SelectReinsInput(RiderInstructSelect selector)
         {
-            reins.SelectedInput = (DragonReinsInputType)selector.Select;
+            var select = (DragonReinsInputType)selector.Select;
+            reins.SelectedInput = select;
+
+            if (_bonds) { _bonds.selectedInput[0] = select; }
         }
 
         private void InvertThrust(RiderInstructToggle toggler)
         {
-            var reinsInput = reins._GetInput(toggler.targetReinsInput);
-            if (reinsInput) { reinsInput.ThrustIsInvert = toggler.IsOn; }
+            var invert = toggler.IsOn;
+            var target = toggler.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.ThrustIsInvert = invert; }
+
+            if (_bonds) { _bonds.invertThrust[(int)target] = invert; }
         }
 
         private void InvertClimb(RiderInstructToggle toggler)
         {
-            var reinsInput = reins._GetInput(toggler.targetReinsInput);
-            if (reinsInput) { reinsInput.ClimbIsInvert = toggler.IsOn; }
+            var invert = toggler.IsOn;
+            var target = toggler.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.ClimbIsInvert = invert; }
+
+            if (_bonds) { _bonds.invertClimb[(int)target] = invert; }
         }
 
         private void InvertStrafe(RiderInstructToggle toggler)
         {
-            var reinsInput = reins._GetInput(toggler.targetReinsInput);
-            if (reinsInput) { reinsInput.StrafeIsInvert = toggler.IsOn; }
+            var invert = toggler.IsOn;
+            var target = toggler.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.StrafeIsInvert = invert; }
+
+            if (_bonds) { _bonds.invertStrafe[(int)target] = invert; }
         }
 
         private void InvertElevator(RiderInstructToggle toggler)
         {
-            var reinsInput = reins._GetInput(toggler.targetReinsInput);
-            if (reinsInput) { reinsInput.ElevatorIsInvert = toggler.IsOn; }
+            var invert = toggler.IsOn;
+            var target = toggler.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.ElevatorIsInvert = invert; }
+
+            if (_bonds) { _bonds.invertElevator[(int)target] = invert; }
         }
 
         private void InvertLadder(RiderInstructToggle toggler)
         {
+            var invert = toggler.IsOn;
+            var target = toggler.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.LadderIsInvert = invert; }
 
-            var reinsInput = reins._GetInput(toggler.targetReinsInput);
-            if (reinsInput) { reinsInput.LadderIsInvert = toggler.IsOn; }
+            if (_bonds) { _bonds.invertLadder[(int)target] = invert; }
         }
 
         private void InvertAileron(RiderInstructToggle toggler)
         {
+            var invert = toggler.IsOn;
+            var target = toggler.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.AileronIsInvert = invert; }
 
-            var reinsInput = reins._GetInput(toggler.targetReinsInput);
-            if (reinsInput) { reinsInput.AileronIsInvert = toggler.IsOn; }
+            if (_bonds) { _bonds.invertAileron[(int)target] = invert; }
         }
 
         private void ThrottleInputHand(RiderInstructSelect selector)
         {
-            var reinsInput = reins._GetInput(selector.targetReinsInput);
-            if (reinsInput) { reinsInput.ThrottleInputHand = IntToHandType(selector.Select); }
+            var select = selector.Select;
+            var target = selector.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.ThrottleInputHand = IntToHandType(select); }
+
+            if (_bonds) { _bonds.throttleInputHand[(int)target] = select; }
         }
 
         private void TurnInputHand(RiderInstructSelect selector)
         {
-            var reinsInput = reins._GetInput(selector.targetReinsInput);
-            if (reinsInput) { reinsInput.TurnInputHand = IntToHandType(selector.Select); }
+            var select = selector.Select;
+            var target = selector.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.TurnInputHand = IntToHandType(select); }
+
+            if (_bonds) { _bonds.turningInputHand[(int)target] = select; }
         }
 
         private void ElevatorInputHand(RiderInstructSelect selector)
         {
-            var reinsInput = reins._GetInput(selector.targetReinsInput);
-            if (reinsInput) { reinsInput.ElevatorInputHand = IntToHandType(selector.Select); }
+            var select = selector.Select;
+            var target = selector.targetReinsInput;
+            var reinsInput = reins._GetInput(target);
+            if (reinsInput) { reinsInput.ElevatorInputHand = IntToHandType(select); }
+
+            if (_bonds) { _bonds.elevatorInputHand[(int)target] = select; }
         }
 
         private void VRGrabMode(RiderInstructSelect selector)
         {
+            var select = (ReinsInputVRGrabMode)selector.Select;
             switch (selector.targetReinsInput)
             {
                 case DragonReinsInputType.VRHands:
                     var vrHands = reins.vrHands;
-                    if (vrHands) { vrHands.VRGrabMode = (ReinsInputVRGrabMode)selector.Select; }
+                    if (vrHands) { vrHands.VRGrabMode = select; }
+                    if (_bonds) { _bonds.vrGrabMode[0] = select; }
                     break;
                 case DragonReinsInputType.VRHands2:
                     var vrHands2 = reins.vrHands2;
-                    if (vrHands2) { vrHands2.VRGrabMode = (ReinsInputVRGrabMode)selector.Select; }
+                    if (vrHands2) { vrHands2.VRGrabMode = select; }
+                    if (_bonds) { _bonds.vrGrabMode[1] = select; }
                     break;
             }
         }
@@ -332,16 +466,13 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void ShowCanopy(RiderInstructToggle toggler)
         {
             ShowCanopy(toggler.IsOn);
+
+            if (_bonds) { _bonds.canopyIndication = _canopyIndication; }
         }
         private void ShowCanopy(bool value)
         {
             _canopyIndication = value;
             if (_canopy) { _canopy.SetActive(_canopyIndication & _isPilot); }
-        }
-
-        private HandType IntToHandType(int value)
-        {
-            return value == 1 ? HandType.LEFT : HandType.RIGHT;
         }
 
         /******************************

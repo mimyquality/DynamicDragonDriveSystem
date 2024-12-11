@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2622093041043583617}
   - component: {fileID: 3373827401965178137}
+  - component: {fileID: 1445014472772277098}
   - component: {fileID: 3142239905484942403}
   - component: {fileID: 783784525006028383}
   m_Layer: 0
@@ -46,6 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 1658641376, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1445014472772277098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009001885816050722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1864912870, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3142239905484942403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,9 +81,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 783784525006028383}
-  _target: {fileID: 0}
-  _enableSympathy: 0
-  _sympathyNumber: 0
+  enableSympathy: 0
+  sympathyNumber: 0
 --- !u!114 &783784525006028383
 MonoBehaviour:
   m_ObjectHideFlags: 0

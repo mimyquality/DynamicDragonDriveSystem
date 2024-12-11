@@ -20,6 +20,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         VRHands2,
         Gaze,
         Legacy,
+        count
     }
 
     public enum DragonReinsChangeableInputType
