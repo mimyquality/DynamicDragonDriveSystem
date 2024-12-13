@@ -4,6 +4,19 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.18.0] - 2024/12/14
+
+- **Added**
+  - DragonRiderコンポーネント追加し、メニューの内部構造を大幅見直し
+  - DragonBondsコンポーネント追加し、Persistence対応
+  - DragonActorにパラメーター追加
+
+- **Fixed**
+  - メニュー操作周りの細かいバグフィックス
+  
+- **Changed**
+  - DragonActorから乱数パラメーター要素を撤去
+
 ## [0.17.3] - 2024/9/1
 
 - **Fixed**
@@ -418,6 +431,7 @@
 - **Added**
   - VPM化
 
+[0.18.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.0
 [0.17.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.3
 [0.17.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.2
 [0.17.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.1
