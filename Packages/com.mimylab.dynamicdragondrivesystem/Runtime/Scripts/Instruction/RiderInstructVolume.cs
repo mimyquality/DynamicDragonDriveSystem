@@ -17,9 +17,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructVolume : UdonSharpBehaviour
     {
-        internal DragonRider rider;
-        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
-
         [SerializeField]
         private DragonRiderVolumeInstruction _instruction;
         [SerializeField]
@@ -28,6 +25,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Space]
         [SerializeField]
         private RiderInstructVolumeSwitch[] _switches = new RiderInstructVolumeSwitch[0];
+
+        internal DragonRider rider;
+        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         private Slider _uiSlider;
         private float _currentVolume = 0.0f;

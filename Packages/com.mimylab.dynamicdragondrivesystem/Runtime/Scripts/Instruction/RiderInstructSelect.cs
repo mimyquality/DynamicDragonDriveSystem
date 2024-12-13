@@ -17,9 +17,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructSelect : UdonSharpBehaviour
     {
-        internal DragonRider rider;
-        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
-
         [SerializeField]
         private DragonRiderSelectInstruction _instruction;
         [SerializeField, Min(0)]
@@ -31,12 +28,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private GameObject[] _activeWhenSelect = new GameObject[0];
 
+        internal DragonRider rider;
+        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
+
         private Slider _uiSlider;
         private int _select = 0;
 
         public DragonRiderSelectInstruction Instruction { get => _instruction; }
         public int Select { get => _select; }
-
 
         private bool _initialized = false;
         private void Initialize()

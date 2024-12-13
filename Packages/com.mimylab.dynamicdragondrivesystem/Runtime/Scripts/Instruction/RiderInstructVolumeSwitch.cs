@@ -16,10 +16,10 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructVolumeSwitch : RiderInstructSwitchBase
     {
-        internal RiderInstructVolume volumer;
-
         [SerializeField]
         private float _volume = 0.0f;
+
+        internal RiderInstructVolume volumer;
 
         public override void Interact()
         {

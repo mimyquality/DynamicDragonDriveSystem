@@ -17,9 +17,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructToggle : UdonSharpBehaviour
     {
-        internal DragonRider rider;
-        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
-
         [SerializeField]
         private DragonRiderToggleInstruction _instruction;
         [SerializeField]
@@ -30,6 +27,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private RiderInstructToggleSwitch _switch_ON;
         [SerializeField]
         private RiderInstructToggleSwitch _switch_OFF;
+
+        internal DragonRider rider;
+        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
 
         private Toggle _uiToggle;
         private bool _currentOn = false;

@@ -19,8 +19,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float DoubleTapDuration = 0.2f;   // 単位：sec
         private const float TooltipShowTime = 5.0f; // 単位：sec
 
-        internal bool disableInput;
-
         [SerializeField, Tooltip("sec"), Min(0.2f)]
         private float _exitAcceptance = 0.8f;
         [SerializeField]
@@ -28,6 +26,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private GameObject _tooltipUnlock;
 
+        internal bool disableInput;
+        
         private DragonSeat _seat;
         private bool _isVR = true;
         private bool _isTouch = false;

@@ -19,8 +19,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonSeat : UdonSharpBehaviour
     {
-        internal DragonRider rider;
-
         [SerializeField]
         private bool _enableAdjust = true;
         [SerializeField]
@@ -35,6 +33,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
         private Vector3 _adjustPoint;
 
+        internal DragonRider rider;
+        
         protected VRCStation _station;
         protected SeatInputManager _seatInput;
         private Transform _enterPoint;

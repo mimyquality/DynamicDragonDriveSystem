@@ -50,10 +50,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float SmoothingDuration = 0.05f;   // 単位：sec
         private const float GroundedSmoothingDuration = 0.08f;   // 単位：sec
 
-        internal DragonDriver driver;
-        internal DragonReins reins;
-        internal DragonRider rider;
-
         [SerializeField, Min(0.0f), Tooltip("sec")]
         private float _blinkRateMin = 20.0f;
         [SerializeField, Min(0.0f), Tooltip("sec")]
@@ -71,6 +67,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int sync_state;
         [UdonSynced]
         private Vector3 sync_noseAngles;
+
+        internal DragonDriver driver;
+        internal DragonReins reins;
+        internal DragonRider rider;
 
         private Animator _animator;
         private Rigidbody _rigidbody;

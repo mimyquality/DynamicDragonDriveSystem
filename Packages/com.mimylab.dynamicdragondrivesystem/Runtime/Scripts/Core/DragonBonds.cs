@@ -18,45 +18,48 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonBonds : UdonSharpBehaviour
     {
+        private const float RememberWaitTime = 2.0f;
+
         [SerializeField]
         internal bool enableSympathy = false;
         [SerializeField]
         internal int sympathyNumber = 0;
 
+        [UdonSynced] private Vector3 sync_seatPosition;
+        [UdonSynced] private byte[] sync_selectedInput = new byte[2];
+        [UdonSynced] private byte[] sync_throttleInputHand = new byte[(int)DragonReinsInputType.Count];
+        [UdonSynced] private byte[] sync_turningInputHand = new byte[(int)DragonReinsInputType.Count];
+        [UdonSynced] private byte[] sync_elevatorInputHand = new byte[(int)DragonReinsInputType.Count];
+        [UdonSynced] private bool[] sync_invertThrust = new bool[(int)DragonReinsInputType.Count];
+        [UdonSynced] private bool[] sync_invertClimb = new bool[(int)DragonReinsInputType.Count];
+        [UdonSynced] private bool[] sync_invertStrafe = new bool[(int)DragonReinsInputType.Count];
+        [UdonSynced] private bool[] sync_invertElevator = new bool[(int)DragonReinsInputType.Count];
+        [UdonSynced] private bool[] sync_invertLadder = new bool[(int)DragonReinsInputType.Count];
+        [UdonSynced] private bool[] sync_invertAileron = new bool[(int)DragonReinsInputType.Count];
+        [UdonSynced] private byte[] sync_vrGrabMode = new byte[2];
+        [UdonSynced] private bool sync_canopyIndication;
+        
         // Saddle
         internal Vector3 seatPosition;
         // Reins
         internal DragonReinsInputType[] selectedInput = new DragonReinsInputType[2];
         // HandType[]が扱いにくいのでint[]でやりとりする
-        internal int[] throttleInputHand = new int[(int)DragonReinsInputType.count];
-        internal int[] turningInputHand = new int[(int)DragonReinsInputType.count];
-        internal int[] elevatorInputHand = new int[(int)DragonReinsInputType.count];
-        internal bool[] invertThrust = new bool[(int)DragonReinsInputType.count];
-        internal bool[] invertClimb = new bool[(int)DragonReinsInputType.count];
-        internal bool[] invertStrafe = new bool[(int)DragonReinsInputType.count];
-        internal bool[] invertElevator = new bool[(int)DragonReinsInputType.count];
-        internal bool[] invertLadder = new bool[(int)DragonReinsInputType.count];
-        internal bool[] invertAileron = new bool[(int)DragonReinsInputType.count];
+        internal int[] throttleInputHand = new int[(int)DragonReinsInputType.Count];
+        internal int[] turningInputHand = new int[(int)DragonReinsInputType.Count];
+        internal int[] elevatorInputHand = new int[(int)DragonReinsInputType.Count];
+        internal bool[] invertThrust = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] invertClimb = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] invertStrafe = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] invertElevator = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] invertLadder = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] invertAileron = new bool[(int)DragonReinsInputType.Count];
         internal ReinsInputVRGrabMode[] vrGrabMode = new ReinsInputVRGrabMode[2];
         // Canopy
         internal bool canopyIndication;
 
-        [UdonSynced] private Vector3 sync_seatPosition;
-        [UdonSynced] private byte[] sync_selectedInput = new byte[2];
-        [UdonSynced] private byte[] sync_throttleInputHand = new byte[(int)DragonReinsInputType.count];
-        [UdonSynced] private byte[] sync_turningInputHand = new byte[(int)DragonReinsInputType.count];
-        [UdonSynced] private byte[] sync_elevatorInputHand = new byte[(int)DragonReinsInputType.count];
-        [UdonSynced] private bool[] sync_invertThrust = new bool[(int)DragonReinsInputType.count];
-        [UdonSynced] private bool[] sync_invertClimb = new bool[(int)DragonReinsInputType.count];
-        [UdonSynced] private bool[] sync_invertStrafe = new bool[(int)DragonReinsInputType.count];
-        [UdonSynced] private bool[] sync_invertElevator = new bool[(int)DragonReinsInputType.count];
-        [UdonSynced] private bool[] sync_invertLadder = new bool[(int)DragonReinsInputType.count];
-        [UdonSynced] private bool[] sync_invertAileron = new bool[(int)DragonReinsInputType.count];
-        [UdonSynced] private byte[] sync_vrGrabMode = new byte[2];
-        [UdonSynced] private bool sync_canopyIndication;
-
         private DragonRider _rider;
         private DragonBonds[] _sympathizedBonds;
+        private bool _waitingToRemember = false;
 
         private bool _initialized = false;
         private void Initialize()
@@ -85,7 +88,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             select = Mathf.Max((int)selectedInput[1], 0);
             sync_selectedInput[1] = (byte)select;
 
-            for (int i = 0; i < (int)DragonReinsInputType.count; i++)
+            for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
                 select = throttleInputHand[i];
                 sync_throttleInputHand[i] = (byte)select;
@@ -121,7 +124,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             tmp_selectedInput = (int)sync_selectedInput[1];
             selectedInput[1] = (DragonReinsInputType)tmp_selectedInput;
 
-            for (int i = 0; i < (int)DragonReinsInputType.count; i++)
+            for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
                 throttleInputHand[i] = (int)sync_throttleInputHand[i];
                 turningInputHand[i] = (int)sync_turningInputHand[i];
@@ -147,8 +150,16 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         // Riderの方から一通り変更値を書き込み後、最後に実行(RequestSerialization()感覚で使う)
-        internal void _Memorize()
+        internal void _Remember()
         {
+            if (_waitingToRemember) { return; }
+
+            _waitingToRemember = true;
+            SendCustomEventDelayedSeconds(nameof(_KeepInMind), RememberWaitTime);
+        }
+        public void _KeepInMind()
+        {
+            _waitingToRemember = false;
             RequestSerialization();
 
             if (enableSympathy)

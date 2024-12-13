@@ -6,7 +6,6 @@ https://opensource.org/license/mit
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using BestHTTP.SecureProtocol.Org.BouncyCastle.Asn1.X509;
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
@@ -59,6 +58,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private DragonRiderToggleInstruction[] _togglesInstruction;
         private RiderInstructSelect[] _selects;
         private DragonRiderSelectInstruction[] _selectsInstruction;
+        private RiderInstructSelectable[] _selectables;
+        private DragonRiderSelectInstruction[] _selectablesInstruction;
         private RiderInstructVolume[] _volumes;
         private DragonRiderVolumeInstruction[] _volumesInstruction;
 
@@ -71,6 +72,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private int _rideCount = 0;
         private bool _isMount = false;
         private int _mountCount = 0;
+
+        //Reins
+        private bool _isInitialSelect = true;
 
         // Canopy
         private bool _canopyIndication = false;
@@ -103,6 +107,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _selects[j].rider = this;
                 _selectsInstruction[j] = _selects[j].Instruction;
+            }
+            _selectables = _menu.GetComponentsInChildren<RiderInstructSelectable>(true);
+            _selectablesInstruction = new DragonRiderSelectInstruction[_selectables.Length];
+            for (int k = 0; k < _selectables.Length; k++)
+            {
+                _selectables[k].rider = this;
+                _selectablesInstruction[k] = _selectables[k].Instruction;
             }
             _volumes = _menu.GetComponentsInChildren<RiderInstructVolume>(true);
             _volumesInstruction = new DragonRiderVolumeInstruction[_volumes.Length];
@@ -142,6 +153,56 @@ namespace MimyLab.DynamicDragonDriveSystem
             _menu.SetActive(false);
         }
 
+        public override void OnInputMethodChanged(VRCInputMethod inputMethod)
+        {
+            int inputMethodInt = (int)inputMethod;
+            switch (inputMethodInt)
+            {
+                case (int)VRCInputMethod.Keyboard:
+                case (int)VRCInputMethod.Mouse:
+                    reins.SetChangeableInput(DragonReinsInputType.Keyboard);
+                    reins.SetChangeableInput(DragonReinsInputType.Gaze);
+                    if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Keyboard; }
+                    break;
+                case (int)VRCInputMethod.Controller:
+                    reins.SetChangeableInput(DragonReinsInputType.Thumbsticks);
+                    if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Thumbsticks; }
+                    break;
+                case (int)VRCInputMethod.Vive:
+                    reins.SetChangeableInput(DragonReinsInputType.Legacy);
+                    reins.SetChangeableInput(DragonReinsInputType.VRHands);
+                    reins.SetChangeableInput(DragonReinsInputType.VRHands2);
+                    if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Legacy; }
+                    break;
+                case (int)VRCInputMethod.Oculus:
+                case (int)VRCInputMethod.ViveXr:
+                case (int)VRCInputMethod.Index:
+                case (int)VRCInputMethod.HPMotionController:
+                case (int)VRCInputMethod.QuestHands:
+                case (int)VRCInputMethod.OpenXRGeneric:
+                case (int)VRCInputMethod.Pico:
+                case (int)VRCInputMethod.SteamVR2:
+                    reins.SetChangeableInput(DragonReinsInputType.Thumbsticks);
+                    reins.SetChangeableInput(DragonReinsInputType.VRHands);
+                    reins.SetChangeableInput(DragonReinsInputType.VRHands2);
+                    if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Thumbsticks; }
+                    break;
+                case (int)VRCInputMethod.Touch:
+                    reins.SetChangeableInput(DragonReinsInputType.Gaze);
+                    if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Gaze; }
+                    break;
+                default:
+                    reins.SetChangeableInput(DragonReinsInputType.Thumbsticks);
+                    if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Thumbsticks; }
+                    break;
+            }
+
+            if (_isInitialSelect) { FeedbackSelects(DragonRiderSelectInstruction.ReinsInput); }
+            FeedbackSelectables(DragonRiderSelectInstruction.ReinsInput);
+
+            _isInitialSelect = false;
+        }
+
         /******************************
          Saddle からのイベント
          ******************************/
@@ -168,13 +229,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             SeatAdjust(false);
             ShowCanopy(_canopyIndication);
 
+            FeedbackAll();
+
             if (_bonds)
             {
                 _bonds.seatPosition = saddle.AdjustPoint;
-                _bonds._Memorize();
+                _bonds._Remember();
             }
-
-            FeedbackAll();
         }
 
         /******************************
@@ -190,9 +251,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             _bonds.seatPosition = saddle.AdjustPoint;
 
             // Reins
-            _bonds.selectedInput[0] = reins.SelectedInput;
+            var isVR = Networking.LocalPlayer.IsUserInVR();
+            _bonds.selectedInput[isVR ? 0 : 1] = reins.SelectedInput;
 
-            for (int i = 0; i < (int)DragonReinsInputType.count; i++)
+            for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
                 var reinsInput = reins._GetInput((DragonReinsInputType)i);
                 if (!reinsInput) { continue; }
@@ -233,23 +295,34 @@ namespace MimyLab.DynamicDragonDriveSystem
             saddle._SetLocalAdjustPoint(bonds.seatPosition);
 
             // Reins
-            reins.SelectedInput = bonds.selectedInput[0];
+            var isVR = Networking.LocalPlayer.IsUserInVR();
+            reins.SelectedInput = bonds.selectedInput[isVR ? 0 : 1];
+            _isInitialSelect = false;
 
-            for (int i = 0; i < (int)DragonReinsInputType.count; i++)
+            var throttleInputHand = bonds.throttleInputHand;
+            var turningInputHand = bonds.turningInputHand;
+            var elevatorInputHand = bonds.elevatorInputHand;
+            var invertThrust = bonds.invertThrust;
+            var invertClimb = bonds.invertClimb;
+            var invertStrafe = bonds.invertStrafe;
+            var invertElevator = bonds.invertElevator;
+            var invertLadder = bonds.invertLadder;
+            var invertAileron = bonds.invertAileron;
+            for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
                 var reinsInput = reins._GetInput((DragonReinsInputType)i);
                 if (!reinsInput) { continue; }
 
-                reinsInput.ThrottleInputHand = IntToHandType(bonds.throttleInputHand[i]);
-                reinsInput.TurnInputHand = IntToHandType(bonds.turningInputHand[i]);
-                reinsInput.ElevatorInputHand = IntToHandType(bonds.elevatorInputHand[i]);
+                reinsInput.ThrottleInputHand = IntToHandType(throttleInputHand[i]);
+                reinsInput.TurnInputHand = IntToHandType(turningInputHand[i]);
+                reinsInput.ElevatorInputHand = IntToHandType(elevatorInputHand[i]);
 
-                reinsInput.ThrustIsInvert = bonds.invertThrust[i];
-                reinsInput.ClimbIsInvert = bonds.invertClimb[i];
-                reinsInput.StrafeIsInvert = bonds.invertStrafe[i];
-                reinsInput.ElevatorIsInvert = bonds.invertElevator[i];
-                reinsInput.LadderIsInvert = bonds.invertLadder[i];
-                reinsInput.AileronIsInvert = bonds.invertAileron[i];
+                reinsInput.ThrustIsInvert = invertThrust[i];
+                reinsInput.ClimbIsInvert = invertClimb[i];
+                reinsInput.StrafeIsInvert = invertStrafe[i];
+                reinsInput.ElevatorIsInvert = invertElevator[i];
+                reinsInput.LadderIsInvert = invertLadder[i];
+                reinsInput.AileronIsInvert = invertAileron[i];
             }
 
             var vrHands = reins.vrHands;
@@ -283,7 +356,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             FeedbackToggles(instruction);
 
-            if (_bonds) { _bonds._Memorize(); }
+            if (_bonds) { _bonds._Remember(); }
         }
 
         internal void _OnSelectChanged(RiderInstructSelect selector)
@@ -300,7 +373,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             FeedbackSelects(instruction);
 
-            if (_bonds) { _bonds._Memorize(); }
+            if (_bonds) { _bonds._Remember(); }
         }
 
         internal void _OnVolumeChanged(RiderInstructVolume volumer)
@@ -352,7 +425,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             var select = (DragonReinsInputType)selector.Select;
             reins.SelectedInput = select;
 
-            if (_bonds) { _bonds.selectedInput[0] = select; }
+            if (_bonds)
+            {
+                var isVR = Networking.LocalPlayer.IsUserInVR();
+                _bonds.selectedInput[isVR ? 0 : 1] = select;
+            }
         }
 
         private void InvertThrust(RiderInstructToggle toggler)
@@ -482,6 +559,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             FeedbackToggles();
             FeedbackSelects();
+            FeedbackSelectables();
             //FeedbackVolumes();
         }
 
@@ -580,6 +658,33 @@ namespace MimyLab.DynamicDragonDriveSystem
                             if (vrHands2) { _selects[index]._OnValueChanged((int)vrHands2.VRGrabMode); }
                             break;
                     }
+                    break;
+            }
+        }
+
+        private void FeedbackSelectables()
+        {
+            for (int i = 0; i < _selectables.Length; i++)
+            {
+                FeedbackSelectable(i);
+            }
+        }
+        private void FeedbackSelectables(DragonRiderSelectInstruction instruction)
+        {
+            var index = 0;
+            while ((index = System.Array.IndexOf(_selectablesInstruction, instruction, index)) > -1)
+            {
+                FeedbackSelectable(index++);
+
+                if (index >= _selectablesInstruction.Length) { break; }
+            }
+        }
+        private void FeedbackSelectable(int index)
+        {
+            switch (_selectablesInstruction[index])
+            {
+                case DragonRiderSelectInstruction.ReinsInput:
+                    _selectables[index]._OnValueChanged(reins.ChangeableInput);
                     break;
             }
         }
