@@ -10,7 +10,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     //using VRC.Udon;
-    //using VRC.SDK3.Components;
+    using VRC.Udon.Common.Interfaces;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Collision Detector")]
@@ -26,29 +26,40 @@ namespace MimyLab.DynamicDragonDriveSystem
         private DragonActor _actor;
         private Rigidbody _rigidbody;
 
-        private void Start()
+        private bool _initialized = false;
+        private void Initialize()
         {
+            if (_initialized) { return; }
+
             var ddds = GetComponentInParent<DDDSDescriptor>(true);
             _driver = ddds.driver;
             _actor = ddds.actor;
             _rigidbody = _driver.GetComponent<Rigidbody>();
+
+            _initialized = true;
         }
 
         private void OnCollisionEnter(Collision other)
         {
+            Initialize();
+
             if (!Utilities.IsValid(other)) { return; }
             if (!Utilities.IsValid(other.collider)) { return; }
+            if (!Networking.IsOwner(_driver.gameObject)) { return; }
 
             if (_driver.Velocity.sqrMagnitude < _collisionTriggerVelocity * _collisionTriggerVelocity) { return; }
+            var noCollision = true;
             for (int i = 0; i < other.contactCount; i++)
             {
-                if (Vector3.Angle(_rigidbody.rotation * Vector3.up, other.contacts[0].normal) < _collisionIncidenceAngle)
+                if (Vector3.Angle(_rigidbody.rotation * Vector3.up, other.contacts[i].normal) > _collisionIncidenceAngle)
                 {
-                    return;
+                    noCollision = false;
+                    break;
                 }
             }
+            if (noCollision) { return; }
 
-            if (_actor) { _actor._TriggerCollision(); }
+            if (_actor) { _actor.SendCustomNetworkEvent(NetworkEventTarget.All, nameof(_actor._TriggerCollision)); }
         }
     }
 }

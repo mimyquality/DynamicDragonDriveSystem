@@ -1217,6 +1217,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3411580547727095037, guid: 77c714b114442054da9a4e9092045a44,
         type: 3}
+    - target: {fileID: 3509552173695700116, guid: 77c714b114442054da9a4e9092045a44,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3509552173695700116, guid: 77c714b114442054da9a4e9092045a44,
+        type: 3}
     - target: {fileID: 3527232051307333340, guid: 77c714b114442054da9a4e9092045a44,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -2045,11 +2051,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5141539493334766288}
     m_Modifications:
-    - target: {fileID: 354308816293394486, guid: 5276143d6a4248542bbce112b347a943,
-        type: 3}
-      propertyPath: m_text
-      value: Other Menu ON
-      objectReference: {fileID: 0}
     - target: {fileID: 472099025032140942, guid: 5276143d6a4248542bbce112b347a943,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2139,11 +2140,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_OtherMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7195182086583031490, guid: 5276143d6a4248542bbce112b347a943,
-        type: 3}
-      propertyPath: m_text
-      value: Other Menu OFF
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

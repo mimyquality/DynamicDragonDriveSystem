@@ -23,7 +23,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         [Header("Animator Options")]
         [SerializeField]
-        private string _parameter_IsOpen = "IsOpen";
+        private string _parameterNameIsOpen = "IsOpen";
         [SerializeField]
         private float _delayToClose = 1f;
 
@@ -43,7 +43,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator = _menu.GetComponent<Animator>();
             if (_animator)
             {
-                _parameterHash_IsOpen = Animator.StringToHash(_parameter_IsOpen);
+                _parameterHash_IsOpen = Animator.StringToHash(_parameterNameIsOpen);
                 _SetAnimatorParams();
                 return;
             }

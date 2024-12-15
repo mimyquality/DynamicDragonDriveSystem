@@ -26,10 +26,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Intパラメーター
         State,
         // Floatパラメーター
-        Pitch,
-        Roll,
         NosePitch,
         NoseYaw,
+        Pitch,
+        Roll,
         VelocityX, VelocityY, VelocityZ,
         VelocityMagnitude, Speed,
         AngularVelocityX, AngularVelocityY, AngularVelocityZ,
@@ -111,10 +111,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             // Intパラメーター
             Animator.StringToHash(DragonActorParameterName.State.ToString()),
             // Floatパラメーター
-            Animator.StringToHash(DragonActorParameterName.Pitch.ToString()),
-            Animator.StringToHash(DragonActorParameterName.Roll.ToString()),
             Animator.StringToHash(DragonActorParameterName.NosePitch.ToString()),
             Animator.StringToHash(DragonActorParameterName.NoseYaw.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Pitch.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Roll.ToString()),
             Animator.StringToHash(DragonActorParameterName.VelocityX.ToString()),
             Animator.StringToHash(DragonActorParameterName.VelocityY.ToString()),
             Animator.StringToHash(DragonActorParameterName.VelocityZ.ToString()),
@@ -252,7 +252,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void CalculateParameters()
         {
-            _isPilot = rider.IsRide;
+            _isPilot = rider.IsPilot;
             _isRide = rider.IsRide;
             _isMount = rider.IsMount;
 

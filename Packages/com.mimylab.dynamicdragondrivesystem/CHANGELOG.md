@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.18.1] - 2024/12/15
+
+- **Fixed**
+  - `Dragon Actor` のIsPilotがIsRideと同じになっていたのを修正
+  - `Dragon Collision Detection` が同期するよう修正
+
 ## [0.18.0] - 2024/12/14
 
 - **Added**
@@ -431,6 +437,7 @@
 - **Added**
   - VPM化
 
+[0.18.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.1
 [0.18.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.0
 [0.17.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.3
 [0.17.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.2

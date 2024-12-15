@@ -55,6 +55,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1125127799512558129, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
+        type: 3}
+      propertyPath: m_text
+      value: Menu Call
+      objectReference: {fileID: 0}
     - target: {fileID: 2685252165466132281, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
         type: 3}
       propertyPath: m_Color.b
@@ -224,6 +229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OtherMenu_OFF
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125127799512558129, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
+        type: 3}
+      propertyPath: m_text
+      value: Menu Call
       objectReference: {fileID: 0}
     - target: {fileID: 2685252165466132281, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
         type: 3}

@@ -41,14 +41,16 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_throttleInputHand == HandType.RIGHT)
             {
-                _thrust = Input.GetKey(KeyCode.E) ? 1.0f :
-                          Input.GetKey(KeyCode.Q) ? -1.0f : 0.0f;
+                _thrust =
+                    Input.GetKey(KeyCode.E) ? 1.0f :
+                    Input.GetKey(KeyCode.Q) ? -1.0f : 0.0f;
             }
 
             if (_elevatorInputHand == HandType.RIGHT)
             {
-                _elevator = Input.GetKey(KeyCode.E) ? -1.0f :
-                            Input.GetKey(KeyCode.Q) ? 1.0f : 0.0f;
+                _elevator =
+                    Input.GetKey(KeyCode.E) ? -1.0f :
+                    Input.GetKey(KeyCode.Q) ? 1.0f : 0.0f;
             }
 
             _brakes = Input.GetKey(KeyCode.F);

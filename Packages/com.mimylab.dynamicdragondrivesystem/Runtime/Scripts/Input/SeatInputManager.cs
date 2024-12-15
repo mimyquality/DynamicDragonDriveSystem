@@ -27,7 +27,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private GameObject _tooltipUnlock;
 
         internal bool disableInput;
-        
+
         private DragonSeat _seat;
         private bool _isVR = true;
         private bool _isTouch = false;
@@ -155,8 +155,9 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (disableInput) { return; }
             if (_lockAdjust) { return; }
 
-            _inputAdjust.x = Input.GetKey(KeyCode.RightArrow) ? 1.0f :
-                             Input.GetKey(KeyCode.LeftArrow) ? -1.0f : 0.0f;
+            _inputAdjust.x =
+                Input.GetKey(KeyCode.E) ? 1.0f :
+                Input.GetKey(KeyCode.Q) ? -1.0f : 0.0f;
         }
 
         private void SeatExit()

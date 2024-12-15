@@ -21,9 +21,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float RememberWaitTime = 2.0f;
 
         [SerializeField]
-        internal bool enableSympathy = false;
+        internal bool enableSympathize = false;
         [SerializeField]
-        internal int sympathyNumber = 0;
+        internal int sympathyCircuit = 0;
 
         [UdonSynced] private Vector3 sync_seatPosition;
         [UdonSynced] private byte[] sync_selectedInput = new byte[2];
@@ -162,7 +162,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _waitingToRemember = false;
             RequestSerialization();
 
-            if (enableSympathy)
+            if (enableSympathize)
             {
                 if (_sympathizedBonds == null) { _sympathizedBonds = GetSympathizedBonds(); }
 
@@ -209,8 +209,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                 var dragonBonds = playerObject.GetComponent<DragonBonds>();
                 if (dragonBonds &&
                     dragonBonds != this &&
-                    dragonBonds.enableSympathy &&
-                    dragonBonds.sympathyNumber == sympathyNumber)
+                    dragonBonds.enableSympathize &&
+                    dragonBonds.sympathyCircuit == sympathyCircuit)
                 {
                     sympathizedBonds[count++] = dragonBonds;
                 }
