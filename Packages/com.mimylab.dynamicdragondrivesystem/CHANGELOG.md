@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.18.2] - 2024/12/18
+
+- **Fixed**
+  - 高速飛行中、ロール傾斜に応じて昇降量減衰するよう調整
+
 ## [0.18.1] - 2024/12/15
 
 - **Fixed**
@@ -437,6 +442,7 @@
 - **Added**
   - VPM化
 
+[0.18.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.2
 [0.18.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.1
 [0.18.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.0
 [0.17.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.17.3
