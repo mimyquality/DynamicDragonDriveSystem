@@ -56,7 +56,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("deg/s")]
         private float _rollSpeed = 45.0f;
         [SerializeField, Range(0.0f, 2.0f)]
-        private float _rollToTurnRatio = 1.0f;
+        private float _updownToTurnRatio = 1.0f;
         [SerializeField, Tooltip("sec"), Min(0.0f)]
         private float _inertialInputDuration = 0.3f;
         [SerializeField, Tooltip("deg/s")]
@@ -68,7 +68,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("degree"), Range(0.0f, 89.0f)]
         private float _centerSnapTolerance = 5.0f;
         [SerializeField, Tooltip("deg/s")]
-        private float _stateShiftSpeed = 20.0f;
+        private float _stateShiftSpeed = 40.0f;
         [SerializeField, Tooltip("deg/s")]
         private float _landingSpeed = 60.0f;
 
@@ -194,7 +194,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public float HoveringSpeedThreshold { get => _hoveringSpeedThreshold; set => _hoveringSpeedThreshold = Mathf.Max(value, 0.0f); }
         public float UpdownSpeed { get => _updownSpeed; set => _updownSpeed = Mathf.Max(value, 0.0f); }
         public float RollSpeed { get => _rollSpeed; set => _rollSpeed = Mathf.Max(value, 0.0f); }
-        public float RollToTurnRatio { get => _rollToTurnRatio; set => _rollToTurnRatio = Mathf.Clamp(value, 0.0f, 2.0f); }
+        public float RollToTurnRatio { get => _updownToTurnRatio; set => _updownToTurnRatio = Mathf.Clamp(value, 0.0f, 2.0f); }
         public float NoseRotateSpeed { get => _noseRotateSpeed; set => _noseRotateSpeed = Mathf.Max(value, 0.0f); }
         public float MaxNosePitch { get => _maxNosePitch; set => _maxNosePitch = Mathf.Clamp(value, 0.0f, 89.0f); }
         public float MaxNoseYaw { get => _maxNoseYaw; set => _maxNoseYaw = Mathf.Clamp(value, 0.0f, 89.0f); }
@@ -571,18 +571,21 @@ namespace MimyLab.DynamicDragonDriveSystem
             // 自動バランサー制御
             var fixedRotation = _rotation;
 
-            // 入力を本体に反映
+            //入力を本体に反映
             var calculateRotation = Quaternion.AngleAxis(roll, Vector3.forward);
             fixedRotation = fixedRotation * calculateRotation;
 
-            var horizontalRotation = Quaternion.LookRotation(fixedRotation * Vector3.forward);
-            var axis = (Vector3.Dot(fixedRotation * Vector3.up, Vector3.up) < 0.0f) ? Vector3.left : Vector3.right;
-            calculateRotation = Quaternion.AngleAxis(pitch, horizontalRotation * axis);
+            var fixedUp = fixedRotation * Vector3.up;
+            var upAxis = (Vector3.Dot(fixedUp, Vector3.up) < 0.0f) ? Vector3.down : Vector3.up;
+            var horizontalRotation = Quaternion.LookRotation(fixedRotation * Vector3.forward, upAxis);
+            var horizontalDot = 1 - Vector3.Dot(fixedUp, horizontalRotation * Vector3.up);
+            var pitchCorrection = 1 - horizontalDot * horizontalDot;
+            calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, horizontalRotation * Vector3.right);
             fixedRotation = calculateRotation * fixedRotation;
 
-            // 本体を旋回
-            var turn = Vector3.Dot(Vector3.up, fixedRotation * Vector3.left);
-            turn *= Time.deltaTime * _rollSpeed * _rollToTurnRatio;
+            // 本体を横旋回
+            var turn = Vector3.Dot(fixedRotation * Vector3.left, Vector3.up);
+            turn *= Time.deltaTime * _updownToTurnRatio * _updownSpeed;
             calculateRotation = Quaternion.AngleAxis(sign * turn, Vector3.up);
             fixedRotation = calculateRotation * fixedRotation;
 

@@ -140,8 +140,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializedProgramAsset
       value: 
-      objectReference: {fileID: 11400000, guid: d958b6502f351a0498cee2d0a012fa69,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4378862887451017678, guid: b3684232108a5fc43a04b170de948ff5,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -164,20 +163,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializedProgramAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 139102f978752034eb98612633f25f64,
-        type: 2}
-    - target: {fileID: 6079511842127709318, guid: b3684232108a5fc43a04b170de948ff5,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 6079511842127709318, guid: b3684232108a5fc43a04b170de948ff5,
-        type: 3}
-    - target: {fileID: 6443778687114532717, guid: b3684232108a5fc43a04b170de948ff5,
-        type: 3}
-      propertyPath: serializedProgramAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4d1c5f6ab2cc0894b9e22bc23fd5d20a,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6689863330898052754, guid: b3684232108a5fc43a04b170de948ff5,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -199,7 +185,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializedProgramAsset
       value: 
-      objectReference: {fileID: 11400000, guid: e9d7435cf90d6c0489ff4e9e70e8367b,
+      objectReference: {fileID: 11400000, guid: 488aa5eb15cf53641a0adf222d96724d,
         type: 2}
     - target: {fileID: 8058172037843410878, guid: b3684232108a5fc43a04b170de948ff5,
         type: 3}
@@ -1175,12 +1161,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6466732873896457122, guid: ce19b514e4e22364b963ec9819ca42ef,
         type: 3}
-    - target: {fileID: 6534080971810655666, guid: ce19b514e4e22364b963ec9819ca42ef,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 6534080971810655666, guid: ce19b514e4e22364b963ec9819ca42ef,
-        type: 3}
     - target: {fileID: 6624763524410528688, guid: ce19b514e4e22364b963ec9819ca42ef,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -1746,11 +1726,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bonds
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009001885816050722, guid: fd35542ee68fc8249a9c0fc22beb784c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

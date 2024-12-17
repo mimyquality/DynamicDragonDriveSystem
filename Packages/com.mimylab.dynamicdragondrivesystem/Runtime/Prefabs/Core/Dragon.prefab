@@ -185,7 +185,7 @@ MonoBehaviour:
   _maxNosePitch: 89
   _maxNoseYaw: 45
   _centerSnapTolerance: 5
-  _stateShiftSpeed: 20
+  _stateShiftSpeed: 40
   _landingSpeed: 60
   _enabledState: 7
   _accelerateLimit: 5
