@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 479315272440036306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -416,7 +416,7 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 5439278559368324762}
   _menu: {fileID: 479315272440036306}
   _isOpen: 1
-  _parameter_IsOpen: IsOpen
+  _parameterNameIsOpen: IsOpen
   _delayToClose: 1
 --- !u!114 &5439278559368324762
 MonoBehaviour:
@@ -471,7 +471,7 @@ Transform:
   m_GameObject: {fileID: 7420120637120710770}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.258819, z: -0, w: 0.9659259}
-  m_LocalPosition: {x: -0.3, y: 0.2, z: 0.12}
+  m_LocalPosition: {x: -0.3, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

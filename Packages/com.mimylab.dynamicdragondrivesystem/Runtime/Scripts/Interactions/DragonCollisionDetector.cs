@@ -59,7 +59,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
             if (noCollision) { return; }
 
-            if (_actor) { _actor.SendCustomNetworkEvent(NetworkEventTarget.All, nameof(_actor._TriggerCollision)); }
+            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(TriggerCollision));
+        }
+
+        public void TriggerCollision()
+        {
+            Initialize();
+
+            if (_actor) { _actor._TriggerCollision(); }
         }
     }
 }

@@ -575,12 +575,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             var calculateRotation = Quaternion.AngleAxis(roll, Vector3.forward);
             fixedRotation = fixedRotation * calculateRotation;
 
+            var fixedForward = fixedRotation * Vector3.forward;
             var fixedUp = fixedRotation * Vector3.up;
             var upAxis = (Vector3.Dot(fixedUp, Vector3.up) < 0.0f) ? Vector3.down : Vector3.up;
-            var horizontalRotation = Quaternion.LookRotation(fixedRotation * Vector3.forward, upAxis);
-            var horizontalDot = 1 - Vector3.Dot(fixedUp, horizontalRotation * Vector3.up);
-            var pitchCorrection = 1 - horizontalDot * horizontalDot;
-            calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, horizontalRotation * Vector3.right);
+            var horizontalRotation = Quaternion.LookRotation(fixedForward, upAxis);
+            var horizontalDot = Vector3.Dot(fixedUp, horizontalRotation * Vector3.up);
+            var verticalDot = Mathf.Abs(Vector3.Dot(fixedForward, Vector3.up));
+            var pitchCorrection = Mathf.Clamp01(verticalDot + horizontalDot);
+            var pitchAxis = Vector3.Slerp(horizontalRotation * Vector3.right, fixedRotation * Vector3.right, verticalDot);
+            calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, pitchAxis);
             fixedRotation = calculateRotation * fixedRotation;
 
             // 本体を横旋回

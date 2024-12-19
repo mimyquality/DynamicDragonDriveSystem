@@ -4,6 +4,12 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.18.3] - 2024/12/19
+
+- **Fixed**
+  - CollisionDetectorが機能しなくなっていたのを修正
+  - 高速飛行時の昇降操作チューニング
+
 ## [0.18.2] - 2024/12/18
 
 - **Fixed**
@@ -442,6 +448,7 @@
 - **Added**
   - VPM化
 
+[0.18.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.3
 [0.18.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.2
 [0.18.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.1
 [0.18.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.0
