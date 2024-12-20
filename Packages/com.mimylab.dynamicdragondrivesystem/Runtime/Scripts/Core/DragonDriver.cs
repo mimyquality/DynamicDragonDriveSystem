@@ -545,11 +545,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Flight()
         {
-            // 前後判定
-            var noseDirection = _rotation * Quaternion.Euler(_noseAngles) * Vector3.forward;
-            var velocityFront = Vector3.Project(_velocity, noseDirection);
-            var sign = (Vector3.Dot(noseDirection, velocityFront) < 0.0f) ? -1.0f : 1.0f;
-
             // 入力値計算
             if (_inertialInputDuration > 0.0f)
             {
@@ -579,17 +574,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             var fixedUp = fixedRotation * Vector3.up;
             var upAxis = (Vector3.Dot(fixedUp, Vector3.up) < 0.0f) ? Vector3.down : Vector3.up;
             var horizontalRotation = Quaternion.LookRotation(fixedForward, upAxis);
-            var horizontalDot = Vector3.Dot(fixedUp, horizontalRotation * Vector3.up);
             var verticalDot = Mathf.Abs(Vector3.Dot(fixedForward, Vector3.up));
-            var pitchCorrection = Mathf.Clamp01(verticalDot + horizontalDot);
             var pitchAxis = Vector3.Slerp(horizontalRotation * Vector3.right, fixedRotation * Vector3.right, verticalDot);
+            var sidewaysDot = Vector3.Dot(fixedRotation * Vector3.right, upAxis);
+            var pitchCorrection = 1.0f - sidewaysDot * sidewaysDot;
             calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, pitchAxis);
             fixedRotation = calculateRotation * fixedRotation;
 
             // 本体を横旋回
             var turn = Vector3.Dot(fixedRotation * Vector3.left, Vector3.up);
             turn *= Time.deltaTime * _updownToTurnRatio * _updownSpeed;
-            calculateRotation = Quaternion.AngleAxis(sign * turn, Vector3.up);
+            calculateRotation = Quaternion.AngleAxis(turn, Vector3.up);
             fixedRotation = calculateRotation * fixedRotation;
 
             // 回転の確定と再補正
