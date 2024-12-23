@@ -15,6 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     public enum SeatMountEventType
     {
+        OnEnteredAndExited,
         OnEntered,
         OnExited
     }
@@ -39,12 +40,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private MountedPlayerType _mountedPlayerType;
 
-        [SerializeField, Header("Activate/Inactivate GameObject")]
-        private GameObject[] _activateObjects = new GameObject[0];
+        [SerializeField, Header("Activate GameObjects")]
+        private GameObject[] _gameObjects = new GameObject[0];
         [SerializeField]
-        private bool _togetherSetOwner = false;
+        private bool _invert = false;
         [SerializeField]
-        private GameObject[] _inactivateObjects = new GameObject[0];
+        private bool _withSetOwner = false;
 
         [Header("Execute SendCustomEvent to other UdonBehaviour")]
         [SerializeField,]
@@ -54,19 +55,35 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnStationEntered(VRCPlayerApi player)
         {
-            Debug.Log($"OnStationEnter : {this.name}");
-            if (_eventType == SeatMountEventType.OnEntered)
+            if (_eventType == SeatMountEventType.OnEnteredAndExited ||
+                _eventType == SeatMountEventType.OnEntered)
             {
-                if (ValidateMountedPlayer(player)) { Debug.Log($"ValidionEnterPlayer = true"); EventAction(_togetherSetOwner && player.isLocal); }
+                if (ValidateMountedPlayer(player))
+                {
+                    EventAction(!_invert);
+
+                    if (_withSetOwner && !_invert && player.isLocal)
+                    {
+                        SetObjectsOwner(player);
+                    }
+                }
             }
         }
 
         public override void OnStationExited(VRCPlayerApi player)
         {
-            Debug.Log($"OnStationExit : {this.name}");
-            if (_eventType == SeatMountEventType.OnExited)
+            if (_eventType == SeatMountEventType.OnEnteredAndExited ||
+                _eventType == SeatMountEventType.OnExited)
             {
-                if (ValidateMountedPlayer(player)) { Debug.Log($"ValidionExitPlayer = true"); EventAction(_togetherSetOwner && player.isLocal); }
+                if (ValidateMountedPlayer(player))
+                {
+                    EventAction(_invert);
+
+                    if (_withSetOwner && _invert && player.isLocal)
+                    {
+                        SetObjectsOwner(player);
+                    }
+                }
             }
         }
 
@@ -93,25 +110,22 @@ namespace MimyLab.DynamicDragonDriveSystem
             return false;
         }
 
-        private void EventAction(bool togetherSetOwner)
+        private void EventAction(bool objectActive)
         {
-            for (int i = 0; i < _activateObjects.Length; i++)
+            for (int i = 0; i < _gameObjects.Length; i++)
             {
-                if (_activateObjects[i])
-                {
-                    _activateObjects[i].SetActive(true);
-                    if (togetherSetOwner) { Networking.SetOwner(Networking.LocalPlayer, _activateObjects[i]); }
-                }
-            }
-            for (int i = 0; i < _inactivateObjects.Length; i++)
-            {
-                if (_inactivateObjects[i])
-                {
-                    _inactivateObjects[i].SetActive(false);
-                }
+                if (_gameObjects[i]) { _gameObjects[i].SetActive(objectActive); }
             }
 
             if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
+        }
+
+        private void SetObjectsOwner(VRCPlayerApi player)
+        {
+            for (int i = 0; i < _gameObjects.Length; i++)
+            {
+                if (_gameObjects[i]) { Networking.SetOwner(player, _gameObjects[i]); }
+            }
         }
     }
 }

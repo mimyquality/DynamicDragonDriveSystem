@@ -21,13 +21,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!Utilities.IsValid(other)) { return; }
 
-            var rb = other.attachedRigidbody;
-            if (!rb) { return; }
-
-            var driver = rb.GetComponent<DragonDriver>();
+            var driver = other.GetComponent<DragonDriver>();
             if (!driver) { return; }
 
-            PlayEffect(rb.position, driver.Velocity);
+            PlayEffect(driver.transform.position, driver.Velocity);
         }
     }
 }

@@ -14,10 +14,10 @@ namespace MimyLab.DynamicDragonDriveSystem
     //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
-    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/SummonDragon Switch")]
+    [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Respawn Switch")]
     [RequireComponent(typeof(Collider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class SummonDragonSwitch : UdonSharpBehaviour
+    public class DragonRespawnSwitch : UdonSharpBehaviour
     {
         [SerializeField]
         private DDDSDescriptor _target;

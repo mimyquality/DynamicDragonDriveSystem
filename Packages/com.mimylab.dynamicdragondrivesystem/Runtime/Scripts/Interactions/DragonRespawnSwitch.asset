@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: SummonDragonSwitch
+  m_Name: DragonRespawnSwitch
   m_EditorClassIdentifier: 
   serializedUdonProgramAsset: {fileID: 11400000, guid: be08506ea0516db4fba061578311ba6e,
     type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 1
   hasInteractEvent: 1
-  scriptID: -5127900461097342656
+  scriptID: -7848215656558368979
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 

@@ -4,6 +4,13 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.18.5]
+
+- **Changed**
+  - SeatMountEventTriggerの仕様変更
+  - SummonDragonSwitchをDragonRespawnSwitchにリネーム
+  - SplashEffectByDragonの衝突判定をDragonDriverと一緒に付いてるコライダーとのみに制限
+
 ## [0.18.4] - 2024/12/20
 
 - **Fixed**
@@ -453,6 +460,7 @@
 - **Added**
   - VPM化
 
+[0.18.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.5
 [0.18.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.4
 [0.18.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.3
 [0.18.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.2
