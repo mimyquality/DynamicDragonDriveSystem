@@ -25,6 +25,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         IsOverdrive,
         // Intパラメーター
         State,
+        Location,
         // Floatパラメーター
         NosePitch,
         NoseYaw,
@@ -59,6 +60,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Min(0.0f), Tooltip("sec")]
         private float _blinkMembraneRateMax = 20.0f;
 
+        [Header("Options")]
+        [SerializeField, Tooltip("Required if you want to use the Location parameter.")]
+        private WorldMap _worldMap;
+
         [UdonSynced]
         private bool sync_isBrakes;
         [UdonSynced]
@@ -89,9 +94,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _relativeAngularVelocity;
         private float _speed, _angularSpeed;
         private float _throttle, _turn, _elevator;
-        private bool _randomBool;
-        private int _randomInt;
-        private float _randomFloat;
+        private int _location;
 
         private int[] _parameterHashes =
         {
@@ -110,6 +113,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Animator.StringToHash(DragonActorParameterName.IsOverdrive.ToString()),
             // Intパラメーター
             Animator.StringToHash(DragonActorParameterName.State.ToString()),
+            Animator.StringToHash(DragonActorParameterName.Location.ToString()),
             // Floatパラメーター
             Animator.StringToHash(DragonActorParameterName.NosePitch.ToString()),
             Animator.StringToHash(DragonActorParameterName.NoseYaw.ToString()),
@@ -196,16 +200,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             var result = new bool[parametersHash.Length];
 
             var parameters = animator.parameters;
-            for (int i = 0; i < result.Length; i++)
+            for (int i = 0; i < parameters.Length; i++)
             {
-                for (int j = 0; j < parameters.Length; j++)
-                {
-                    if (parametersHash[i] == parameters[j].nameHash)
-                    {
-                        result[i] = true;
-                        break;
-                    }
-                }
+                var validIndex = System.Array.IndexOf(parametersHash, parameters[i].nameHash);
+                if (validIndex > -1) { result[validIndex] = true; }
             }
 
             return result;
@@ -309,6 +307,11 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _turn = 0.0f;
                 _elevator = 0.0f;
             }
+
+            if (_worldMap)
+            {
+                _location = _worldMap.GetLocation(driver.transform);
+            }
         }
 
         private void SetAnimatorParameters()
@@ -323,6 +326,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_validParameters[(int)DragonActorParameterName.IsOverdrive]) _animator.SetBool(_parameterHashes[(int)DragonActorParameterName.IsOverdrive], sync_isOverdrive);
 
             if (_validParameters[(int)DragonActorParameterName.State]) _animator.SetInteger(_parameterHashes[(int)DragonActorParameterName.State], sync_state);
+            if (_validParameters[(int)DragonActorParameterName.Location]) _animator.SetInteger(_parameterHashes[(int)DragonActorParameterName.Location], _location);
 
             if (_validParameters[(int)DragonActorParameterName.NosePitch]) _animator.SetFloat(_parameterHashes[(int)DragonActorParameterName.NosePitch], _noseAngles.x);
             if (_validParameters[(int)DragonActorParameterName.NoseYaw]) _animator.SetFloat(_parameterHashes[(int)DragonActorParameterName.NoseYaw], _noseAngles.y);

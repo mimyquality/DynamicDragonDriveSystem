@@ -9,8 +9,8 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using UnityEngine.UI;
-    using VRC.SDKBase;
-    using VRC.Udon;
+    //using VRC.SDKBase;
+    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [RequireComponent(typeof(Button))]

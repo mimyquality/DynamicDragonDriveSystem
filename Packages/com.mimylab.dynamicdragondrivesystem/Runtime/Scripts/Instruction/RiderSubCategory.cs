@@ -8,8 +8,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    using VRC.SDKBase;
-    using VRC.Udon;
+    //using VRC.SDKBase;
+    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Sub Category")]

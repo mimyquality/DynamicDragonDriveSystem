@@ -4,12 +4,18 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
-## [0.18.6]
+## [0.19.0] - 2024/12/25
+
+- **Added**
+  - ドラゴンその他の座標を Location という概念で区切って管理できるギミックを追加
+  - Dragon Actor に `Location` パラメーターを追加
+
+## [0.18.6] - 2024/12/23
 
 - **Changed**
-  - SeatMountEventTriggerの仕様変更
-  - SummonDragonSwitchをDragonRespawnSwitchにリネーム
-  - SplashEffectByDragonの衝突判定をDragonDriverと一緒に付いてるコライダーとのみに制限
+  - SeatMount EventTrigger の仕様変更
+  - SummonDragonSwitch を DragonRespawnSwitch にリネーム
+  - SplashEffect By Dragon の衝突判定を Dragon Driver と一緒に付いてるコライダーとのみに制限
 
 ## [0.18.4] - 2024/12/20
 
@@ -30,8 +36,8 @@
 ## [0.18.1] - 2024/12/15
 
 - **Fixed**
-  - `Dragon Actor` のIsPilotがIsRideと同じになっていたのを修正
-  - `Dragon Collision Detection` が同期するよう修正
+  - Dragon Actor の `IsPilot` が `IsRide` と同じになっていたのを修正
+  - Dragon Collision Detection が同期するよう修正
 
 ## [0.18.0] - 2024/12/14
 
@@ -460,6 +466,7 @@
 - **Added**
   - VPM化
 
+[0.19.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.19.0
 [0.18.6]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.6
 [0.18.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.4
 [0.18.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.18.3
