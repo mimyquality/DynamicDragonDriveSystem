@@ -17,7 +17,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class ReinsInputGZ : ReinsInputManager
     {
         [SerializeField, Range(0.0f, 1.0f)]
-        private float _brakesAcceptanceThreshold = 0.9f;
+        private float _brakesAcceptanceThreshold = 0.7f;
 
         private VRCPlayerApi _localPlayer;
         private Vector3 _gazeAngles;

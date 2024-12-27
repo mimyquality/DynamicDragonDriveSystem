@@ -58,7 +58,7 @@ MonoBehaviour:
   _throttleInputHand: 1
   _turningInputHand: 0
   _elevatorInputHand: 0
-  _brakesAcceptanceThreshold: 0.9
+  _brakesAcceptanceThreshold: 0.7
 --- !u!114 &1971251491974881431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   _throttleInputHand: 1
   _turningInputHand: 0
   _elevatorInputHand: 0
-  _brakesAcceptanceThreshold: 0.9
+  _brakesAcceptanceThreshold: 0.7
 --- !u!114 &4063400235932195412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   _throttleInputHand: 0
   _turningInputHand: 1
   _elevatorInputHand: 1
-  _brakesAcceptanceThreshold: 0.9
+  _brakesAcceptanceThreshold: 0.7
 --- !u!114 &8593270195558651346
 MonoBehaviour:
   m_ObjectHideFlags: 0

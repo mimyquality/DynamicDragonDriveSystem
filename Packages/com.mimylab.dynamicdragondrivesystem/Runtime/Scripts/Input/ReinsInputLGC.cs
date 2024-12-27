@@ -17,7 +17,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class ReinsInputLGC : ReinsInputManager
     {
         [SerializeField, Range(0.0f, 1.0f)]
-        private float _brakesAcceptanceThreshold = 0.9f;
+        private float _brakesAcceptanceThreshold = 0.7f;
         private bool _InputBrakeLeft, _InputBrakeRight;
 
         private void Reset()

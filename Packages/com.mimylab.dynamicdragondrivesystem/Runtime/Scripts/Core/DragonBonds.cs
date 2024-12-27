@@ -26,7 +26,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal int sympathyCircuit = 0;
 
         [UdonSynced] private Vector3 sync_seatPosition;
-        [UdonSynced] private byte[] sync_selectedInput = new byte[2];
+        [UdonSynced] private int[] sync_selectedInput = new int[2];
         [UdonSynced] private byte[] sync_throttleInputHand = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_turningInputHand = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_elevatorInputHand = new byte[(int)DragonReinsInputType.Count];
@@ -38,7 +38,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced] private bool[] sync_invertAileron = new bool[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_vrGrabMode = new byte[2];
         [UdonSynced] private bool sync_canopyIndication;
-        
+
         // Saddle
         internal Vector3 seatPosition;
         // Reins
@@ -83,10 +83,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             sync_seatPosition = seatPosition;
 
-            int select = Mathf.Max((int)selectedInput[0], 0);
-            sync_selectedInput[0] = (byte)select;
-            select = Mathf.Max((int)selectedInput[1], 0);
-            sync_selectedInput[1] = (byte)select;
+            int select = (int)selectedInput[0];
+            sync_selectedInput[0] = select;
+            select = (int)selectedInput[1];
+            sync_selectedInput[1] = select;
 
             for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
@@ -119,9 +119,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             seatPosition = sync_seatPosition;
 
-            int tmp_selectedInput = (int)sync_selectedInput[0];
+            int tmp_selectedInput = sync_selectedInput[0];
             selectedInput[0] = (DragonReinsInputType)tmp_selectedInput;
-            tmp_selectedInput = (int)sync_selectedInput[1];
+            tmp_selectedInput = sync_selectedInput[1];
             selectedInput[1] = (DragonReinsInputType)tmp_selectedInput;
 
             for (int i = 0; i < (int)DragonReinsInputType.Count; i++)

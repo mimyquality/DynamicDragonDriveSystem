@@ -185,6 +185,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                     reins.SetChangeableInput(DragonReinsInputType.Thumbsticks);
                     reins.SetChangeableInput(DragonReinsInputType.VRHands);
                     reins.SetChangeableInput(DragonReinsInputType.VRHands2);
+                    // inputMethodがバグってる間の暫定
+                    reins.SetChangeableInput(DragonReinsInputType.Legacy);
                     if (_isInitialSelect) { reins.SelectedInput = DragonReinsInputType.Thumbsticks; }
                     break;
                 case (int)VRCInputMethod.Touch:
