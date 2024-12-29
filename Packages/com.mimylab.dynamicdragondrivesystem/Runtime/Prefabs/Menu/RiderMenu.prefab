@@ -90,14 +90,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 0.3764706}
+  m_Color: {r: 0.9, g: 0.9, b: 0.9, a: 0.29803923}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f2a7e556bdd81046849a41403339d71, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2297,11 +2297,6 @@ PrefabInstance:
     - target: {fileID: 1125127799512558129, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
         type: 3}
       propertyPath: m_fontSizeMin
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125127799512558129, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
-        type: 3}
-      propertyPath: m_enableKerning
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125127799512558129, guid: 4f276f2c1423b86479f3c2cb3a9c97d2,
