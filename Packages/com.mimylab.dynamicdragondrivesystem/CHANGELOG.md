@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [0.21.2] - 2024/12/30
+
+- コンポーネントアイコンを正式実装 (thanks ポテト @animekki)
+- OtherMenu用コンポーネントは親子関係の移動をするのみに変更
+
 ## [0.21.1] - 2024/12/29
 
 - **Fixed**
@@ -484,6 +489,7 @@
 - **Added**
   - VPM化
 
+[0.21.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.21.2
 [0.21.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.21.1
 [0.21.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.21.0
 [0.20.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/0.20.0
