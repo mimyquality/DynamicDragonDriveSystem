@@ -60,7 +60,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Min(0.0f), Tooltip("sec")]
         private float _blinkMembraneRateMax = 20.0f;
 
-        [Header("Options")]
+        [Header("Advanced Options")]
         [SerializeField, Tooltip("Required if you want to use the Location parameter.")]
         private WorldMap _worldMap;
 

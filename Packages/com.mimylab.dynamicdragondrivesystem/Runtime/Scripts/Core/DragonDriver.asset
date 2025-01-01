@@ -92,7 +92,7 @@ MonoBehaviour:
       Data: 5|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
     - Name: header
       Entry: 1
-      Data: Speed settings
+      Data: Speed Settings
     - Name: 
       Entry: 8
       Data: 
@@ -479,7 +479,7 @@ MonoBehaviour:
       Data: 30|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
     - Name: header
       Entry: 1
-      Data: Rotate settings
+      Data: Rotate Settings
     - Name: 
       Entry: 8
       Data: 

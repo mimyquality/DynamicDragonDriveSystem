@@ -21,7 +21,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Min(0.0f), Tooltip("m/s")]
         private float _splashSpeed = 1.0f;
 
-        [Header("Option")]
+        [Header("Advanced Options")]
         [SerializeField]
         private GameObject _highEffectPrefab;
         [SerializeField, Min(0.0f), Tooltip("m/s")]

@@ -21,10 +21,11 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Transform _target;
         [SerializeField]
         private Transform _parent;
+
+        [Header("Advanced Options")]
         [SerializeField]
         private bool _returnWhenDisabled = false;
 
-        private bool _isTransferredToParent = false;
         private Transform _defaultParent;
 
         private void Start()
@@ -42,7 +43,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void Interact()
         {
-            SwitchParent(!_isTransferredToParent);
+            SwitchParent(true);
         }
 
         public void TransferToParent()
@@ -63,8 +64,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             var destination = value ? _parent : _defaultParent;
             _target.SetParent(destination);
             _target.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-
-            _isTransferredToParent = value;
         }
     }
 }

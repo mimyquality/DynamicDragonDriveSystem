@@ -224,7 +224,7 @@ MonoBehaviour:
       Data: 14|UnityEngine.HeaderAttribute, UnityEngine.CoreModule
     - Name: header
       Entry: 1
-      Data: Option
+      Data: Advanced Options
     - Name: 
       Entry: 8
       Data: 

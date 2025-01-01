@@ -7,6 +7,9 @@ VRChatには乗り物は数あれど、生物に乗って、更に空まで飛�
 VR酔い対策にも力を入れており、軽量で快適な空の旅をお楽しみいただけます。  
 モデルとアニメーションを差し替える事で、様々な生物/無機物を乗り物にすることができます。また、飛行機能をオフにして地上走行専用の乗り物とする等も可能です。  
 
+> [!WARNING]
+> ドラゴンのモデルやアニメーションは付属しません。各自ご用意ください。  
+
 ## 導入手順
 
 ### リポジトリーのインポート
@@ -32,9 +35,12 @@ VCCから任意のプロジェクトを選択し、「Manage Project」からMan
 
 リポジトリーを使わずに導入したい場合は、[Release](https://github.com/mimyquality/DynamicDragonDriveSystem/releases)からunitypackageファイルをダウンロードして、プロジェクトにインポートしてください。  
 
-### 
+### セットアップ手順
 
-<https://mimyquality.booth.pm/items/5624579>
+公式取説本を以下にて販売しています。  
+利用にあたって購入は必須ではありませんが、セットアップに関するサポートはBOOTHの方での対応のみとなります。  
+
+[Dynamic Dragon Drive System 取扱説明書](https://mimyquality.booth.pm/items/5624579)
 
 ## ライセンス
 
@@ -46,10 +52,10 @@ VCCから任意のプロジェクトを選択し、「Manage Project」からMan
 
 ## クレジット
 
-### 発案、モデル・アニメーション協力
-
-すくりゅー <https://twitter.com/screw0u0>
-
 ### UIデザイン、素材協力
 
 ポテト <https://x.com/animekki>  
+
+### 発案、モデル・アニメーション協力
+
+すくりゅー <https://twitter.com/screw0u0>

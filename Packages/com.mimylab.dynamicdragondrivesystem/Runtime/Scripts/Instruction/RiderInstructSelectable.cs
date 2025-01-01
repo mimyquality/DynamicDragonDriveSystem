@@ -23,6 +23,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [Space]
         [SerializeField]
         private RiderInstructSelectSwitch[] _switches = new RiderInstructSelectSwitch[0];
+        
         internal DragonRider rider;
 
         private int _selectable = 0;

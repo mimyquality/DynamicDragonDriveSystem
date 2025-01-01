@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7536859802946290129}
   - component: {fileID: 292322496838675775}
   - component: {fileID: 4408586410104371654}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooltip_Lock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841951636232897930}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 748477984026463500}
   - component: {fileID: 8883794102824076051}
   - component: {fileID: 2304813248384157934}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tooltip_Unlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6891956625465617296}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: EnterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 6630009392426912582}
   - component: {fileID: 3784961485129311549}
   - component: {fileID: 6623902088187868251}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: DragonSeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

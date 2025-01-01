@@ -21,6 +21,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         [SerializeField, Tooltip("sec"), Min(0.2f)]
         private float _exitAcceptance = 0.8f;
+
+        [Header("Advanced Options")]
         [SerializeField]
         private GameObject _tooltipLock;
         [SerializeField]

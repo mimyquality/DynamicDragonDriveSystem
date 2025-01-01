@@ -47,7 +47,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public ReinsInputGZ gaze;
         public ReinsInputLGC legacy;
 
-        [Space]
+        [Header("Advanced Options")]
         [SerializeField]
         private bool _debugMode = false;
 
@@ -120,7 +120,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                     case DragonReinsInputType.Legacy: selectable = DragonReinsChangeableInputType.Legacy; break;
                 }
                 if ((int)selectable != (_changeableInput & (int)selectable)) { return; }
-                
+
                 _selectedInput = value;
                 InputEnabled = InputEnabled;
             }

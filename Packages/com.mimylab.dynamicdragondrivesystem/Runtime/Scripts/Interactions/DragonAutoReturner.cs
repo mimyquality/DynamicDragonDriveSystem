@@ -25,7 +25,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private bool _stayDragonIsGrounded = true;
 
-        [Header("Option")]
+        [Header("Advanced Options")]
         [SerializeField]
         private ReinsAutoCruise _motionController;
         [SerializeField, Min(0.0f)]

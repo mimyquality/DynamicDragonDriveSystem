@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7489349566754533692}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: EnterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7489349567237374368}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 7489349567574465798}
   - component: {fileID: 7181122239084507886}
   - component: {fileID: 2498875798473804858}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: PirotSeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

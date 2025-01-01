@@ -26,7 +26,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private Vector3 _minSeatAdjustment = new Vector3(0.0f, -0.3f, -0.3f);
 
-        [Space]
+        [Header("Advanced Options")]
         [SerializeField]
         private Transform _snapPoint;
 
@@ -34,7 +34,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _adjustPoint;
 
         internal DragonRider rider;
-        
+
         protected VRCStation _station;
         protected SeatInputManager _seatInput;
         private Transform _enterPoint;

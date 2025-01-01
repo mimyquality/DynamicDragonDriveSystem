@@ -36,7 +36,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         private const float VelocitySmoothingDuration = 0.05f;
 
-        [Header("Speed settings")]
+        [Header("Speed Settings")]
         [SerializeField, Tooltip("m/s^2")]
         private float _acceleration = 5.0f;
         [SerializeField, Tooltip("m/s")]
@@ -50,7 +50,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Min(0.0f)]
         private float _stillDrag = 1.0f;
 
-        [Header("Rotate settings")]
+        [Header("Rotate Settings")]
         [SerializeField, Tooltip("deg/s")]
         private float _updownSpeed = 45.0f;
         [SerializeField, Tooltip("deg/s")]
