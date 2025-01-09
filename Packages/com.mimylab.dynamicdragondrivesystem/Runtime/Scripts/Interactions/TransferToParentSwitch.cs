@@ -27,10 +27,19 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _returnWhenDisabled = false;
 
         private Transform _defaultParent;
+        private Vector3 _defaultPosition;
+        private Quaternion _defaultRotation;
+        private Vector3 _defaultScale;
 
         private void Start()
         {
-            if (_target) { _defaultParent = _target.parent; }
+            if (_target)
+            {
+                _defaultParent = _target.parent;
+                _defaultPosition = _target.localPosition;
+                _defaultRotation = _target.localRotation;
+                _defaultScale = _target.localScale;
+            }
         }
 
         private void OnDisable()
@@ -61,9 +70,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!_target) { return; }
             if (!_parent) { return; }
 
-            var destination = value ? _parent : _defaultParent;
-            _target.SetParent(destination);
-            _target.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            if (value)
+            {
+                _target.SetParent(_parent);
+                _target.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+                return;
+            }
+
+            _target.SetParent(_defaultParent);
+            _target.SetLocalPositionAndRotation(_defaultPosition, _defaultRotation);
+            _target.localScale = _defaultScale;
         }
     }
 }

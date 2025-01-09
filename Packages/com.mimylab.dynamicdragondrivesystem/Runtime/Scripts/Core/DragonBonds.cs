@@ -26,7 +26,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal int sympathyCircuit = 0;
 
         [UdonSynced] private Vector3 sync_seatPosition;
-        [UdonSynced] private int[] sync_selectedInput = new int[2];
+        [UdonSynced]
+        private int[] sync_selectedInput = new int[]
+        {
+            (int)DragonReinsInputType.None,
+            (int)DragonReinsInputType.None
+        };
         [UdonSynced] private byte[] sync_throttleInputHand = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_turningInputHand = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_elevatorInputHand = new byte[(int)DragonReinsInputType.Count];
@@ -42,7 +47,11 @@ namespace MimyLab.DynamicDragonDriveSystem
         // Saddle
         internal Vector3 seatPosition;
         // Reins
-        internal DragonReinsInputType[] selectedInput = new DragonReinsInputType[2];
+        internal DragonReinsInputType[] selectedInput = new DragonReinsInputType[]
+        {
+            DragonReinsInputType.None,
+            DragonReinsInputType.None
+        };
         // HandType[]が扱いにくいのでint[]でやりとりする
         internal int[] throttleInputHand = new int[(int)DragonReinsInputType.Count];
         internal int[] turningInputHand = new int[(int)DragonReinsInputType.Count];

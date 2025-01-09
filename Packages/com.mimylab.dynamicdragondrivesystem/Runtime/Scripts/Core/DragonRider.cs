@@ -298,9 +298,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             // Reins
             var isVR = Networking.LocalPlayer.IsUserInVR();
-            reins.SelectedInput = bonds.selectedInput[isVR ? 0 : 1];
-            _isInitialSelect = false;
-
+            var bondsSelectedInput = bonds.selectedInput[isVR ? 0 : 1];
+            if (bondsSelectedInput != DragonReinsInputType.None)
+            {
+                reins.SelectedInput = bondsSelectedInput;
+                _isInitialSelect = false;
+            }
             var throttleInputHand = bonds.throttleInputHand;
             var turningInputHand = bonds.turningInputHand;
             var elevatorInputHand = bonds.elevatorInputHand;
