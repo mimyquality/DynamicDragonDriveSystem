@@ -155,6 +155,8 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnInputMethodChanged(VRCInputMethod inputMethod)
         {
+            Initialize();
+
             int inputMethodInt = (int)inputMethod;
             switch (inputMethodInt)
             {

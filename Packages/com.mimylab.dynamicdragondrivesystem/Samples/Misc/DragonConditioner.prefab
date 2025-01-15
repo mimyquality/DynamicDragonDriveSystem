@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 180
   m_WholeNumbers: 0
-  m_Value: 45
+  m_Value: 60
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4153,7 +4153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8632279930730446983}
   m_Layer: 0
-  m_Name: RollToTurnRatio
+  m_Name: UpdownToTurnRatio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4936,6 +4936,7 @@ MonoBehaviour:
   m_Script: {fileID: -1533785930, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllowFocusView: 1
 --- !u!1 &5716262489966069498
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,7 +7907,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 60
   m_WholeNumbers: 0
-  m_Value: 12
+  m_Value: 15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -8236,7 +8237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Roll to Turn Ratio
+  m_text: Updown to Turn Ratio
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

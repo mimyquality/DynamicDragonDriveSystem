@@ -178,8 +178,8 @@ MonoBehaviour:
   _stillSpeedThreshold: 3
   _stillDrag: 1
   _updownSpeed: 45
-  _rollSpeed: 45
-  _rollToTurnRatio: 1
+  _rollSpeed: 60
+  _updownToTurnRatio: 1
   _inertialInputDuration: 0.3
   _noseRotateSpeed: 90
   _maxNosePitch: 89

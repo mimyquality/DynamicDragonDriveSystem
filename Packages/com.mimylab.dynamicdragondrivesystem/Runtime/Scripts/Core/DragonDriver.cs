@@ -54,7 +54,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Tooltip("deg/s")]
         private float _updownSpeed = 45.0f;
         [SerializeField, Tooltip("deg/s")]
-        private float _rollSpeed = 45.0f;
+        private float _rollSpeed = 60.0f;
         [SerializeField, Range(0.0f, 2.0f)]
         private float _updownToTurnRatio = 1.0f;
         [SerializeField, Tooltip("sec"), Min(0.0f)]
@@ -80,8 +80,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             (1 << 1) |  // Hovering
             (1 << 2)    // Flight
         );
-        [SerializeField, Tooltip("m/s"), Min(0.0f)]
-        private float _accelerateLimit = 5.0f;
         [SerializeField, Tooltip("m/s")]
         private float _jumpImpulse = 8.0f;
         [SerializeField, Min(0.0f)]
@@ -404,8 +402,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             // 前後判定
             var noseDirection = _rotation * Quaternion.Euler(_noseAngles) * Vector3.forward;
-            var velocityFront = Vector3.Project(_velocity, noseDirection);
-            var sign = (Vector3.Dot(noseDirection, velocityFront) < 0.0f) ? -1.0f : 1.0f;
+            var sign = Mathf.Sign(Vector3.Dot(_velocity, noseDirection));
 
             // 入力値計算
             if (_isAbsolute)
@@ -442,16 +439,13 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             // 進行方向の軸制限
             _targetNoseAngles.x = 0.0f;
-            var pitch = _targetNoseAngles.x;
+            var pitch = 0.0f;
             var noseRotation = Quaternion.Euler(pitch, yaw, 0.0f) * fixedRotation;
             if (_isGrounded && _groundInfo.collider)
             {
                 noseDirection = noseRotation * Vector3.forward;
-                var noseRight = noseRotation * Vector3.right;
-                var horizontalRight = Vector3.ProjectOnPlane(noseRight, _groundInfo.normal);
-                var tiltCorrection = Mathf.Abs(Vector3.Dot(noseRight, horizontalRight));
-                var groundForward = Vector3.ProjectOnPlane(noseDirection, _groundInfo.normal);
-                pitch = tiltCorrection * Vector3.SignedAngle(noseDirection, groundForward, noseRight);
+                var horizontalNoseDirection = Vector3.ProjectOnPlane(noseDirection, _groundInfo.normal);
+                pitch = Vector3.SignedAngle(noseDirection, horizontalNoseDirection, noseRotation * Vector3.right);
                 pitch = Mathf.Clamp(pitch, -_maxNosePitch, _maxNosePitch);
             }
 
@@ -460,13 +454,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             _rotation = fixedRotation;
             _noseAngles = new Vector3(pitch, yaw, 0.0f);
 
-            // 速度の再計算
+            // 静止判定
             if (CheckStill(_targetVelocity.sqrMagnitude))
             {
                 _targetVelocity = Vector3.zero;
                 return;
             }
 
+            // 速度の再計算
             noseRotation = fixedRotation * Quaternion.Euler(_noseAngles);
             var relativeVelocity = Quaternion.Inverse(noseRotation) * _velocity;
             var velocityForward = Vector3.Project(relativeVelocity, _targetVelocity);
@@ -478,8 +473,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             // 前後判定
             var noseDirection = _rotation * Quaternion.Euler(_noseAngles) * Vector3.forward;
-            var velocityFront = Vector3.Project(_velocity, noseDirection);
-            var sign = (Vector3.Dot(noseDirection, velocityFront) < 0.0f) ? -1.0f : 1.0f;
+            var sign = Mathf.Sign(Vector3.Dot(_velocity, noseDirection));
 
             // 入力値計算
             if (_isAbsolute)
@@ -545,6 +539,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void Flight()
         {
+            // 前後判定
+            var noseDirection = _rotation * Quaternion.Euler(_noseAngles) * Vector3.forward;
+            var sign = Mathf.Sign(Vector3.Dot(_velocity, noseDirection));
+
             // 入力値計算
             if (_inertialInputDuration > 0.0f)
             {
@@ -574,16 +572,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             var fixedUp = fixedRotation * Vector3.up;
             var upAxis = (Vector3.Dot(fixedUp, Vector3.up) < 0.0f) ? Vector3.down : Vector3.up;
             var horizontalRotation = Quaternion.LookRotation(fixedForward, upAxis);
-            var verticalDot = Mathf.Abs(Vector3.Dot(fixedForward, Vector3.up));
-            var pitchAxis = Vector3.Slerp(horizontalRotation * Vector3.right, fixedRotation * Vector3.right, verticalDot);
-            var sidewaysDot = Vector3.Dot(fixedRotation * Vector3.right, upAxis);
-            var pitchCorrection = 1.0f - sidewaysDot * sidewaysDot;
-            calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, pitchAxis);
+            var pitchCorrection = Mathf.Abs(Vector3.Angle(fixedUp, Vector3.up) / 90.0f - 1.0f);
+            calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, horizontalRotation * Vector3.right);
             fixedRotation = calculateRotation * fixedRotation;
+
+            pitchCorrection = Mathf.Abs(Vector3.Angle(fixedForward, Vector3.up) / 90.0f - 1.0f);
+            calculateRotation = Quaternion.AngleAxis(pitchCorrection * pitch, Vector3.right);
+            fixedRotation = fixedRotation * calculateRotation;
 
             // 本体を横旋回
             var turn = Vector3.Dot(fixedRotation * Vector3.left, Vector3.up);
-            turn *= Time.deltaTime * _updownToTurnRatio * _updownSpeed;
+            turn *= Time.deltaTime * sign * _updownToTurnRatio * _updownSpeed;
             calculateRotation = Quaternion.AngleAxis(turn, Vector3.up);
             fixedRotation = calculateRotation * fixedRotation;
 
@@ -591,13 +590,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             _velocity = Quaternion.Inverse(_rotation) * fixedRotation * _velocity;
             _rotation = fixedRotation;
 
-            // 速度の再計算
+            // 静止判定
             if (CheckStill(_targetVelocity.sqrMagnitude))
             {
                 _targetVelocity = Vector3.zero;
                 return;
             }
 
+            // 速度の再計算
             var noseRotation = fixedRotation * Quaternion.Euler(_noseAngles);
             var relativeVelocity = Quaternion.Inverse(noseRotation) * _velocity;
             _targetVelocity = CalculateTargetVelocity(_targetVelocity, relativeVelocity, _maxSpeed);
@@ -676,16 +676,21 @@ namespace MimyLab.DynamicDragonDriveSystem
                    (sqrSpeed < _stillSpeedThreshold * _stillSpeedThreshold);
         }
 
-        private Vector3 CalculateTargetVelocity(Vector3 targetVelocity, Vector3 relativeVelocity, float maxSpeed)
+        private Vector3 CalculateTargetVelocity(Vector3 targetVelocity, Vector3 currentVelocity, float maxSpeed)
         {
             // 入力値計算
             var thrust = Time.deltaTime * _acceleration * _throttle;
 
-            var velocityForward = Vector3.Project(relativeVelocity, targetVelocity);
-            var differenceVelocity = targetVelocity - velocityForward;
-            if (differenceVelocity.sqrMagnitude > _accelerateLimit * _accelerateLimit)
+            //var limitVelocity = Vector3.Project(currentVelocity, targetVelocity);
+            var limitVelocity = currentVelocity;
+            if (Vector3.Dot(targetVelocity, limitVelocity) > 0.0f)
             {
-                targetVelocity = Vector3.ClampMagnitude(targetVelocity, _accelerateLimit) + velocityForward;
+                // ToDo:ここの係数見直し
+                var limitSpeed = (1.0f + Time.deltaTime * (_drag + _acceleration)) * limitVelocity.magnitude + _stillSpeedThreshold;
+                if (targetVelocity.sqrMagnitude > limitSpeed * limitSpeed)
+                {
+                    targetVelocity = Vector3.ClampMagnitude(targetVelocity, limitSpeed);
+                }
             }
             targetVelocity = Vector3.ClampMagnitude(targetVelocity + thrust, maxSpeed);
 
