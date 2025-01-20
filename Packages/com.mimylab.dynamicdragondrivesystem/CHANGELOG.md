@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [1.0.3] - 2025/1/20
+
+- **Fixed**
+  - 高速飛行時のピッチ回転計算を更に見直し
+
 ## [1.0.2] - 2025/1/15
 
 - **Fixed**
@@ -22,6 +27,7 @@
 
 正式リリース
 
+[1.0.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.3
 [1.0.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.2
 [1.0.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.1
 [1.0.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.0
