@@ -14,7 +14,8 @@ VR酔い対策にも力を入れており、軽量で快適な空の旅をお楽
 
 ### リポジトリーのインポート
 
-VCC(VRChat Creator Companion)をインストール済みの場合、以下の**どちらか一つ**の手順を行うことでMimyLabのリポジトリーをインポートできます。
+VCC(VRChat Creator Companion)または [ALCOM](https://vrc-get.anatawa12.com/ja/alcom/) をインストール済みの場合、以下の**どちらか一つ**の手順を行うことでMimyLabのリポジトリーをインポートできます。  
+(ALCOM の場合、適宜読み替えてください。)  
 
 > [!NOTE]
 > リポジトリーが既にインポート済みの場合、この手順をスキップできます。[VPMパッケージのインポート](#vpmパッケージのインポート)へ進んでください。
@@ -30,7 +31,7 @@ vpm add repo https://vpm.mimylab.com/index.json
 
 ### VPMパッケージのインポート
 
-VCCから任意のプロジェクトを選択し、「Manage Project」からManage Packages画面に移動します。  
+VCC から任意のプロジェクトを選択し、「Manage Project」から Manage Packages 画面に移動します。  
 読み込んだパッケージが一覧に出てくるので、 **Dynamic Dragon Drive Sytstem** の右にある「＋」ボタンを押すか「Installed Version」から直接バージョンを選ぶことで、プロジェクトにインポートします。  
 
 リポジトリーを使わずに導入したい場合は、[Release](https://github.com/mimyquality/DynamicDragonDriveSystem/releases)からunitypackageファイルをダウンロードして、プロジェクトにインポートしてください。  
@@ -39,6 +40,7 @@ VCCから任意のプロジェクトを選択し、「Manage Project」からMan
 
 公式取説本を以下にて販売しています。  
 利用にあたって購入は必須ではありませんが、セットアップに関するサポートはBOOTHの方での対応のみとなります。  
+※機能要望やバグ報告はこのGitHubリポジトリーの Issue や Pull requests へお願いします。  
 
 [Dynamic Dragon Drive System 取扱説明書](https://mimyquality.booth.pm/items/5624579)
 
