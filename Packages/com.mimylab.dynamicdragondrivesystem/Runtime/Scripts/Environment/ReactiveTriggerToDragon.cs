@@ -76,7 +76,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 if (_duration > 0.0f) { SendCustomEventDelayedSeconds(nameof(_ReactivateGameObject), _duration); }
             }
             if (_particleSystem && _emit > 0) { _particleSystem.Emit(_emit); }
-            if (_audioSource && _audioClip) { _audioSource.PlayOneShot(_audioClip, _audioSource.volume); }
+            if (_audioSource && _audioClip) { _audioSource.PlayOneShot(_audioClip); }
             if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
         }
 

@@ -4,6 +4,11 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [1.0.4] - 2025/2/10
+
+- **Fixed**
+  - PlayOneShot() 系の音量が過剰に小さくなる不具合を修正
+
 ## [1.0.3] - 2025/1/20
 
 - **Fixed**
@@ -27,6 +32,7 @@
 
 正式リリース
 
+[1.0.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.4
 [1.0.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.3
 [1.0.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.2
 [1.0.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.1
