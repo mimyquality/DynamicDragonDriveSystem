@@ -4,6 +4,13 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [1.0.5] - 2025/4/14
+
+- **Fixed**
+  - ドラゴンに騎乗中でも稀にリスポーンできてしまう対策を強化
+  - リスポーン後も地上歩行状態を引き継いでしまっていたのを修正
+  - テレポートした時に移動速度を引き継ぐよう修正
+
 ## [1.0.4] - 2025/2/10
 
 - **Fixed**
@@ -32,6 +39,7 @@
 
 正式リリース
 
+[1.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.5
 [1.0.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.4
 [1.0.3]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.3
 [1.0.2]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.2

@@ -290,7 +290,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (Networking.IsOwner(this.gameObject))
             {
+                if (_isDrive) { return; }
+
                 _objectSync.Respawn();
+
+                // 地上歩行中フラグをリセット(FixedUpdateで再評価させるため)
+                _isWalking = false;
             }
         }
 
@@ -298,7 +303,18 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (Networking.IsOwner(this.gameObject))
             {
+                // 現状を算出
+                _velocity = _rigidbody.velocity;
+                _rotation = _rigidbody.rotation;
+
                 _objectSync.TeleportTo(target);
+
+                // 地上歩行中フラグをリセット(FixedUpdateで再評価させるため)
+                _isWalking = false;
+
+                // テレポート後も速度を継承
+                var rotateToTarget = Quaternion.Inverse(_rotation) * target.rotation;
+                _rigidbody.velocity = rotateToTarget * _velocity;
             }
         }
 

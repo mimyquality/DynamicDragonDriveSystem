@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright (c) 2024 Mimy Quality
 Released under the MIT license
 https://opensource.org/license/mit
@@ -22,7 +22,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private GameObject _activateObject;
         [SerializeField]
         private GameObject _inactivateObject;
-        [SerializeField, Tooltip("Reactivate after specified time if Duration > 0")]
+        [SerializeField, Min(0), Tooltip("Reactivate after specified time if Duration > 0")]
         private float _duration = 0.0f;
 
         [Header("Emit particle")]
