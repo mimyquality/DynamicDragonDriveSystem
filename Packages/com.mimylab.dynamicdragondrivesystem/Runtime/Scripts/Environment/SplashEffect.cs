@@ -8,9 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [RequireComponent(typeof(Collider))]
@@ -28,7 +25,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _highSplashSpeed = 3.0f;
 
         [Header("Settings")]
-        [SerializeField, Range(1, 32)]
+        [SerializeField, Range(1, 256)]
         private int _poolSize = 10;
         [SerializeField]
         private Vector3 _normal = Vector3.up;
@@ -36,9 +33,13 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _effectTime = 3.0f;
 
         private Collider _collider;
-        private GameObject[] _effectPool, _highEffectPool;
-        private Transform[] _effectsTransform, _highEffectsTransform;
-        private bool[] _effectsActive;
+        private int _spawnCount = 0;
+        private int _returnCount = 0;
+        private int[] _spawnedEffects = new int[0];
+        private GameObject[] _effectPool = new GameObject[0];
+        private GameObject[] _highEffectPool = new GameObject[0];
+        private Transform[] _effectsTransform = new Transform[0];
+        private Transform[] _highEffectsTransform = new Transform[0];
 
         private bool _isNormalCheck;
 
@@ -49,25 +50,24 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _collider = GetComponent<Collider>();
 
+            _spawnedEffects = new int[_poolSize];
             _effectPool = new GameObject[_poolSize];
-            _highEffectPool = new GameObject[_poolSize];
             _effectsTransform = new Transform[_poolSize];
-            _highEffectsTransform = new Transform[_poolSize];
-            _effectsActive = new bool[_poolSize];
             for (int i = 0; i < _effectPool.Length; i++)
             {
-                _effectsActive[i] = false;
                 _effectPool[i] = Instantiate(_effectPrefab);
-                _effectPool[i].SetActive(_effectsActive[i]);
+                _effectPool[i].SetActive(false);
                 _effectsTransform[i] = _effectPool[i].transform;
             }
 
             if (_highEffectPrefab)
             {
+                _highEffectPool = new GameObject[_poolSize];
+                _highEffectsTransform = new Transform[_poolSize];
                 for (int i = 0; i < _highEffectPool.Length; i++)
                 {
                     _highEffectPool[i] = Instantiate(_highEffectPrefab);
-                    _highEffectPool[i].SetActive(_effectsActive[i]);
+                    _highEffectPool[i].SetActive(false);
                     _highEffectsTransform[i] = _highEffectPool[i].transform;
                 }
             }
@@ -89,12 +89,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_isNormalCheck)
             {
                 var worldNormal = this.transform.TransformDirection(_normal);
-                if (Vector3.Dot(worldNormal, collideeVelocity) >= 0.0f)
-                {
-                    return;
-                }
+                if (Vector3.Dot(worldNormal, collideeVelocity) >= 0.0f) { return; }
             }
 
+            // SpawnEffect() か SpawnHighEffect() のどちらかだけ実行
             var collideeSpeed = collideeVelocity.sqrMagnitude;
             if (_highEffectPrefab && collideeSpeed > _highSplashSpeed * _highSplashSpeed)
             {
@@ -109,78 +107,43 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        private bool SpawnEffect(Vector3 position)
+        private void SpawnEffect(Vector3 position)
         {
-            for (int i = 0; i < _effectPool.Length; i++)
-            {
-                if (!_effectsActive[i])
-                {
-                    _effectsTransform[i].position = position;
-                    _effectsActive[i] = true;
-                    _effectPool[i].SetActive(_effectsActive[i]);
-                    SendCustomEventDelayedSeconds("_ReturnEffect" + i.ToString(), _effectTime);
-                    return true;
-                }
-            }
+            var index = System.Array.IndexOf(_spawnedEffects, 0);
+            if (index < 0) { return; }
 
-            return false;
+            _spawnCount = (_spawnCount < _poolSize) ? _spawnCount + 1 : 1;
+            _spawnedEffects[index] = _spawnCount;
+
+            _effectsTransform[index].position = position;
+            _effectPool[index].SetActive(true);
+
+            SendCustomEventDelayedSeconds(nameof(_ReturnEffect), _effectTime);
         }
 
-        private bool SpawnHighEffect(Vector3 position)
+        private void SpawnHighEffect(Vector3 position)
         {
-            for (int i = 0; i < _highEffectPool.Length; i++)
-            {
-                if (!_effectsActive[i])
-                {
-                    _highEffectsTransform[i].position = position;
-                    _effectsActive[i] = true;
-                    _highEffectPool[i].SetActive(_effectsActive[i]);
-                    SendCustomEventDelayedSeconds("_ReturnEffect" + i.ToString(), _effectTime);
-                    return true;
-                }
-            }
+            var index = System.Array.IndexOf(_spawnedEffects, 0);
+            if (index < 0) { return; }
 
-            return false;
+            _spawnCount = (_spawnCount < _poolSize) ? _spawnCount + 1 : 1;
+            _spawnedEffects[index] = _spawnCount;
+
+            _highEffectsTransform[index].position = position;
+            _highEffectPool[index].SetActive(true);
+
+            SendCustomEventDelayedSeconds(nameof(_ReturnEffect), _effectTime);
         }
 
-        private void ReturnEffect(int index)
+        public void _ReturnEffect()
         {
-            _effectsActive[index] = false;
-            _effectPool[index].SetActive(_effectsActive[index]);
-            if (_highEffectPrefab) { _highEffectPool[index].SetActive(_effectsActive[index]); }
-        }
+            _returnCount = (_returnCount < _poolSize) ? _returnCount + 1 : 1;
+            var index = System.Array.IndexOf(_spawnedEffects, _returnCount);
+            if (index < 0) { return; }
 
-        public void _ReturnEffect0() { ReturnEffect(0); }
-        public void _ReturnEffect1() { ReturnEffect(1); }
-        public void _ReturnEffect2() { ReturnEffect(2); }
-        public void _ReturnEffect3() { ReturnEffect(3); }
-        public void _ReturnEffect4() { ReturnEffect(4); }
-        public void _ReturnEffect5() { ReturnEffect(5); }
-        public void _ReturnEffect6() { ReturnEffect(6); }
-        public void _ReturnEffect7() { ReturnEffect(7); }
-        public void _ReturnEffect8() { ReturnEffect(8); }
-        public void _ReturnEffect9() { ReturnEffect(9); }
-        public void _ReturnEffect10() { ReturnEffect(10); }
-        public void _ReturnEffect11() { ReturnEffect(11); }
-        public void _ReturnEffect12() { ReturnEffect(12); }
-        public void _ReturnEffect13() { ReturnEffect(13); }
-        public void _ReturnEffect14() { ReturnEffect(14); }
-        public void _ReturnEffect15() { ReturnEffect(15); }
-        public void _ReturnEffect16() { ReturnEffect(16); }
-        public void _ReturnEffect17() { ReturnEffect(17); }
-        public void _ReturnEffect18() { ReturnEffect(18); }
-        public void _ReturnEffect19() { ReturnEffect(19); }
-        public void _ReturnEffect20() { ReturnEffect(20); }
-        public void _ReturnEffect21() { ReturnEffect(21); }
-        public void _ReturnEffect22() { ReturnEffect(22); }
-        public void _ReturnEffect23() { ReturnEffect(23); }
-        public void _ReturnEffect24() { ReturnEffect(24); }
-        public void _ReturnEffect25() { ReturnEffect(25); }
-        public void _ReturnEffect26() { ReturnEffect(26); }
-        public void _ReturnEffect27() { ReturnEffect(27); }
-        public void _ReturnEffect28() { ReturnEffect(28); }
-        public void _ReturnEffect29() { ReturnEffect(29); }
-        public void _ReturnEffect30() { ReturnEffect(30); }
-        public void _ReturnEffect31() { ReturnEffect(31); }
+            _spawnedEffects[index] = 0;
+            _effectPool[index].SetActive(false);
+            if (_highEffectPrefab) { _highEffectPool[index].SetActive(false); }
+        }
     }
 }

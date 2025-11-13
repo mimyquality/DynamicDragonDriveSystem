@@ -48,7 +48,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             // 加速指示
             _thrust = Accelerate(direction);
             // 方向指示
-            driver._InputDirectRotate(Focus(direction), true);
+            driver._InputDirectRotate(ConvertNoseDirection(direction), true);
         }
 
         private float Accelerate(Vector3 direction)
@@ -75,15 +75,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             return 0.0f;
         }
 
-        private Vector3 Focus(Vector3 direction)
+        private Vector3 ConvertNoseDirection(Vector3 direction)
         {
-            direction = Quaternion.Inverse(_dragonTF.rotation) * direction;
-
-            var horizontalDirection = Vector3.ProjectOnPlane(direction, Vector3.up);
+            var relativeDirection = Quaternion.Inverse(_dragonTF.rotation) * direction;
+            var horizontalDirection = Vector3.ProjectOnPlane(relativeDirection, Vector3.up);
             var yaw = Vector3.SignedAngle(Vector3.forward, horizontalDirection, Vector3.up);
-            var pitch = Vector3.SignedAngle(horizontalDirection, direction, Quaternion.LookRotation(horizontalDirection) * Vector3.right);
+            var pitch = Vector3.SignedAngle(horizontalDirection, relativeDirection, Quaternion.LookRotation(horizontalDirection) * Vector3.right);
 
-            Debug.Log(new Vector3(Mathf.Clamp(pitch, -90.0f, 90.0f), Mathf.Clamp(yaw, -90.0f, 90.0f)).ToString());
             return new Vector3(Mathf.Clamp(pitch, -90.0f, 90.0f), Mathf.Clamp(yaw, -90.0f, 90.0f));
         }
     }
