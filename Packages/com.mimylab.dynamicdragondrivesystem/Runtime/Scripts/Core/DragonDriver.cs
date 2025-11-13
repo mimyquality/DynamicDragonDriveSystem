@@ -11,6 +11,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     //using VRC.Udon;
     using VRC.SDK3.Components;
+    using VRC.SDK3.UdonNetworkCalling;
 
     public enum DragonDriverStateType
     {
@@ -286,6 +287,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         /******************************
          入力操作受付
          ******************************/
+        [NetworkCallable(1)]
         public void Respawn()
         {
             if (Networking.IsOwner(this.gameObject))

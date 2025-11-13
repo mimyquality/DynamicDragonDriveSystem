@@ -9,7 +9,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
+    using VRC.SDK3.UdonNetworkCalling;
     using VRC.Udon.Common.Interfaces;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -62,6 +62,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(TriggerCollision));
         }
 
+        [NetworkCallable]
         public void TriggerCollision()
         {
             Initialize();

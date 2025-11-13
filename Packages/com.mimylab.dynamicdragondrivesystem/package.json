@@ -14,7 +14,7 @@
   "dependencies": {},
   "gitDependencies": {},
   "vpmDependencies": {
-    "com.vrchat.worlds": "^3.7.4"
+    "com.vrchat.worlds": "^3.8.1"
   },
   "legacyFolders": {},
   "legacyFiles": {}

@@ -143,6 +143,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator = GetComponent<Animator>();
             _rigidbody = driver.GetComponent<Rigidbody>();
 
+            _animator.applyRootMotion = false;
             _validParameters = ValidateParameters(_parameterHashes, _animator);
 
             _initialized = true;
@@ -164,8 +165,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             SetAnimatorParameters();
         }
 
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
         // Animator.applyRootMotionを強制的にオフにする
         private void OnAnimatorMove() { }
+#endif
 
         public void _TriggerBlink()
         {

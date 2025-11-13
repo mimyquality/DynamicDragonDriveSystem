@@ -15,7 +15,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Song")]
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DragonSong : UdonSharpBehaviour
     {
         private const int MaxClipList = 10;
