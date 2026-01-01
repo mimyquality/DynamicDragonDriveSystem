@@ -39,11 +39,11 @@
   <Project Path="UdonSharp.Lib.csproj" />
   <Project Path="VRC.SDKBase.Editor.BuildPipeline.csproj" />
   <Project Path="VRChat.Bootstrapper.Editor.csproj" />
+  <Project Path="FukuroUdon.Editor.csproj" />
   <Project Path="centauricore.networkdebugger.csproj" />
   <Project Path="UniTask.Addressables.csproj" />
   <Project Path="centauricore.networkdebugger.samples.Editor.csproj" />
   <Project Path="UniTask.TextMeshPro.csproj" />
   <Project Path="jp.lilxyzw.editortoolbox.vrchat.csproj" />
-  <Project Path="DragonDrivingSchool.csproj" />
   <Project Path="jp.whiteflare.unlitwf.csproj" />
 </Solution>
