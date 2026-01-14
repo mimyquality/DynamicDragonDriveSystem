@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Auto Returner")]
@@ -63,7 +61,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _driver = _target.driver;
             _saddle = _target.saddle;
             _collider = _driver.GetComponent<SphereCollider>();
-            if (_motionController) { _motionController.driver = _driver; }
+            if (_motionController) { _motionController._driver = _driver; }
 
             _currentMotionTime = _delayTime + 10.0f;
             IsReturning = false;

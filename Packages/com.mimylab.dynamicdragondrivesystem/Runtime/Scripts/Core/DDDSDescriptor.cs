@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/DDDS Descriptor")]
@@ -31,17 +30,17 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (!rider) { rider = GetComponentInChildren<DragonRider>(true); }
             if (!actor) { actor = GetComponentInChildren<DragonActor>(true); }
 
-            saddle.rider = rider;
-            reins.driver = driver;
-            rider.driver = driver;
-            rider.saddle = saddle;
-            rider.reins = reins;
-            rider.actor = actor;
+            saddle._rider = rider;
+            reins._driver = driver;
+            rider._driver = driver;
+            rider._saddle = saddle;
+            rider._reins = reins;
+            rider._actor = actor;
             if (actor)
             {
-                actor.driver = driver;
-                actor.reins = reins;
-                actor.rider = rider;
+                actor._driver = driver;
+                actor._reins = reins;
+                actor._rider = rider;
             }
         }
     }

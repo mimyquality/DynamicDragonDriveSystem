@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Debug/ReinsInput VRHandle Gizmo")]
@@ -54,22 +52,24 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_reinsVRHandle) { return; }
 
-            var avatarRootRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
-            var leftHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
-            var rightHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
+            Quaternion avatarRootRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
+            Vector3 leftHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
+            Vector3 rightHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
 
-            var gizmoPosition = (leftHandPosition / 2) + (rightHandPosition / 2);
+            Vector3 gizmoPosition = (leftHandPosition / 2) + (rightHandPosition / 2);
             _inputGizmo.SetPositionAndRotation(gizmoPosition, avatarRootRotation);
 
             if (_adjustToAvatarScale) { AdjustGizmoScale(); }
         }
 
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
         // AnimatorのApply Root Motion対策
         private void OnAnimatorMove() { }
+#endif
 
         private void AdjustGizmoScale()
         {
-            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
+            float avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
             if (avatarScale == _avatarScale) { return; }
 
             _inputGizmo.localScale = avatarScale * Vector3.one;

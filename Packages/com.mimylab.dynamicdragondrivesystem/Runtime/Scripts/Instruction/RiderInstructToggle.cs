@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using UnityEngine.UI;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Toggle")]
@@ -28,8 +26,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private RiderInstructToggleSwitch _switch_OFF;
 
-        internal DragonRider rider;
-        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
+        internal DragonRider _rider;
+        internal DragonReinsInputType _targetReinsInput = DragonReinsInputType.None;
 
         private Toggle _uiToggle;
         private bool _currentOn = false;
@@ -46,13 +44,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             _currentOn = _isOn;
             if (_switch_ON)
             {
-                _switch_ON.toggler = this;
-                _switch_ON.isOn = false;
+                _switch_ON._toggler = this;
+                _switch_ON._isOn = false;
             }
             if (_switch_OFF)
             {
-                _switch_OFF.toggler = this;
-                _switch_OFF.isOn = true;
+                _switch_OFF._toggler = this;
+                _switch_OFF._isOn = true;
             }
 
             _initialized = true;
@@ -72,9 +70,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _Change(bool value)
         {
             Initialize();
-            
+
             _currentOn = value;
-            rider._OnToggleChanged(this);
+            _rider._OnToggleChanged(this);
         }
 
         internal void _OnValueChanged(bool value)

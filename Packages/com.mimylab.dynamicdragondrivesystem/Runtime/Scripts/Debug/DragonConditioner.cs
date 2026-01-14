@@ -6,13 +6,11 @@ https://opensource.org/license/mit
 
 namespace MimyLab.DynamicDragonDriveSystem
 {
+    using TMPro;
     using UdonSharp;
     using UnityEngine;
     using UnityEngine.UI;
     using VRC.SDKBase;
-    //using VRC.Udon;
-    //using VRC.SDK3.Components;
-    using TMPro;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Debug/Dragon Conditioner")]

@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using UnityEngine.UI;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Select")]
@@ -28,8 +26,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private GameObject[] _activeWhenSelect = new GameObject[0];
 
-        internal DragonRider rider;
-        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
+        internal DragonRider _rider;
+        internal DragonReinsInputType _targetReinsInput = DragonReinsInputType.None;
 
         private Slider _uiSlider;
         private int _select = 0;
@@ -48,8 +46,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_switches[i])
                 {
-                    _switches[i].selector = this;
-                    _switches[i].number = i;
+                    _switches[i]._selector = this;
+                    _switches[i]._number = i;
                 }
             }
 
@@ -72,7 +70,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
 
             _select = value;
-            rider._OnSelectChanged(this);
+            _rider._OnSelectChanged(this);
         }
 
         internal void _OnValueChanged(int value)

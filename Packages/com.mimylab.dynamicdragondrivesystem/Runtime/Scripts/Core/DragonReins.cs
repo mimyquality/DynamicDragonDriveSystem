@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     //using VRC.SDKBase;
-    //using VRC.Udon;
 
     public enum DragonReinsInputType
     {
@@ -23,7 +22,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         Count
     }
 
-    public enum DragonReinsChangeableInputType
+    [System.Flags]
+    public enum DragonReinsChangeableInputTypes
     {
         None = 0,
         Thumbsticks = 1 << DragonReinsInputType.Thumbsticks,
@@ -51,7 +51,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private bool _debugMode = false;
 
-        internal DragonDriver driver;
+        internal DragonDriver _driver;
 
         private bool _inputEnabled = false;
         public bool InputEnabled
@@ -109,15 +109,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             get => _selectedInput;
             set
             {
-                var selectable = DragonReinsChangeableInputType.None;
+                var selectable = DragonReinsChangeableInputTypes.None;
                 switch (value)
                 {
-                    case DragonReinsInputType.Thumbsticks: selectable = DragonReinsChangeableInputType.Thumbsticks; break;
-                    case DragonReinsInputType.Keyboard: selectable = DragonReinsChangeableInputType.Keyboard; break;
-                    case DragonReinsInputType.VRHands: selectable = DragonReinsChangeableInputType.VRHands; break;
-                    case DragonReinsInputType.VRHands2: selectable = DragonReinsChangeableInputType.VRHands2; break;
-                    case DragonReinsInputType.Gaze: selectable = DragonReinsChangeableInputType.Gaze; break;
-                    case DragonReinsInputType.Legacy: selectable = DragonReinsChangeableInputType.Legacy; break;
+                    case DragonReinsInputType.Thumbsticks: selectable = DragonReinsChangeableInputTypes.Thumbsticks; break;
+                    case DragonReinsInputType.Keyboard: selectable = DragonReinsChangeableInputTypes.Keyboard; break;
+                    case DragonReinsInputType.VRHands: selectable = DragonReinsChangeableInputTypes.VRHands; break;
+                    case DragonReinsInputType.VRHands2: selectable = DragonReinsChangeableInputTypes.VRHands2; break;
+                    case DragonReinsInputType.Gaze: selectable = DragonReinsChangeableInputTypes.Gaze; break;
+                    case DragonReinsInputType.Legacy: selectable = DragonReinsChangeableInputTypes.Legacy; break;
                 }
                 if ((int)selectable != (_changeableInput & (int)selectable)) { return; }
 
@@ -134,12 +134,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
-            if (keyboard) keyboard.driver = driver;
-            if (thumbsticks) thumbsticks.driver = driver;
-            if (vrHands) vrHands.driver = driver;
-            if (vrHands2) vrHands2.driver = driver;
-            if (gaze) gaze.driver = driver;
-            if (legacy) legacy.driver = driver;
+            if (keyboard) keyboard._driver = _driver;
+            if (thumbsticks) thumbsticks._driver = _driver;
+            if (vrHands) vrHands._driver = _driver;
+            if (vrHands2) vrHands2._driver = _driver;
+            if (gaze) gaze._driver = _driver;
+            if (legacy) legacy._driver = _driver;
 
             _initialized = true;
         }
@@ -190,22 +190,22 @@ namespace MimyLab.DynamicDragonDriveSystem
             switch (inputType)
             {
                 case DragonReinsInputType.Thumbsticks:
-                    if (thumbsticks) { _changeableInput |= (int)DragonReinsChangeableInputType.Thumbsticks; }
+                    if (thumbsticks) { _changeableInput |= (int)DragonReinsChangeableInputTypes.Thumbsticks; }
                     break;
                 case DragonReinsInputType.Keyboard:
-                    if (keyboard) { _changeableInput |= (int)DragonReinsChangeableInputType.Keyboard; }
+                    if (keyboard) { _changeableInput |= (int)DragonReinsChangeableInputTypes.Keyboard; }
                     break;
                 case DragonReinsInputType.VRHands:
-                    if (vrHands) { _changeableInput |= (int)DragonReinsChangeableInputType.VRHands; }
+                    if (vrHands) { _changeableInput |= (int)DragonReinsChangeableInputTypes.VRHands; }
                     break;
                 case DragonReinsInputType.VRHands2:
-                    if (vrHands2) { _changeableInput |= (int)DragonReinsChangeableInputType.VRHands2; }
+                    if (vrHands2) { _changeableInput |= (int)DragonReinsChangeableInputTypes.VRHands2; }
                     break;
                 case DragonReinsInputType.Gaze:
-                    if (gaze) { _changeableInput |= (int)DragonReinsChangeableInputType.Gaze; }
+                    if (gaze) { _changeableInput |= (int)DragonReinsChangeableInputTypes.Gaze; }
                     break;
                 case DragonReinsInputType.Legacy:
-                    if (legacy) { _changeableInput |= (int)DragonReinsChangeableInputType.Legacy; }
+                    if (legacy) { _changeableInput |= (int)DragonReinsChangeableInputTypes.Legacy; }
                     break;
             }
         }

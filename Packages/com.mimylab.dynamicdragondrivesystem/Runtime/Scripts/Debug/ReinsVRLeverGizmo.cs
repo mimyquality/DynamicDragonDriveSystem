@@ -9,9 +9,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Debug/ReinsInput VRLever Gizmo")]
@@ -59,29 +57,32 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_reinsVRLever) { return; }
 
-            var avatarRootRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
-            var leftHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
-            var rightHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
+            Quaternion avatarRootRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
+            Vector3 leftHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
+            Vector3 rightHandPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
 
-            var throttleGizmoPosition = (_reinsVRLever.ThrottleInputHand == HandType.LEFT) ? leftHandPosition : rightHandPosition;
+            Vector3 throttleGizmoPosition = (_reinsVRLever.ThrottleInputHand == HandType.LEFT) ? leftHandPosition : rightHandPosition;
             _throttleGizmo.SetPositionAndRotation(throttleGizmoPosition, avatarRootRotation);
 
 
-            var turnGizmoPosition = (_reinsVRLever.TurnInputHand == HandType.LEFT) ? leftHandPosition : rightHandPosition;
+            Vector3 turnGizmoPosition = (_reinsVRLever.TurnInputHand == HandType.LEFT) ? leftHandPosition : rightHandPosition;
             _turnGizmo.SetPositionAndRotation(turnGizmoPosition, avatarRootRotation);
 
-            var elevatorGizmoPosition = (_reinsVRLever.ElevatorInputHand == HandType.LEFT) ? leftHandPosition : rightHandPosition;
+            Vector3 elevatorGizmoPosition = (_reinsVRLever.ElevatorInputHand == HandType.LEFT) ? leftHandPosition : rightHandPosition;
             _elevatorGizmo.SetPositionAndRotation(elevatorGizmoPosition, avatarRootRotation);
 
             if (_adjustToAvatarScale) { AdjustGizmoScale(); }
         }
 
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
         // AnimatorのApply Root Motion対策
         private void OnAnimatorMove() { }
+#endif
 
         private void AdjustGizmoScale()
         {
-            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
+            float avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
             if (avatarScale == _avatarScale) { return; }
 
             _throttleGizmo.localScale = avatarScale * Vector3.one;

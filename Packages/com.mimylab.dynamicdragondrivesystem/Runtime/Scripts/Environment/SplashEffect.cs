@@ -81,19 +81,19 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
         }
 
-        protected virtual void PlayEffect(Vector3 collideePosition, Vector3 collideeVelocity)
+        private protected virtual void PlayEffect(Vector3 collideePosition, Vector3 collideeVelocity)
         {
             Initialize();
 
             // 進入方向と速度のバリデーション
             if (_isNormalCheck)
             {
-                var worldNormal = this.transform.TransformDirection(_normal);
+                Vector3 worldNormal = this.transform.TransformDirection(_normal);
                 if (Vector3.Dot(worldNormal, collideeVelocity) >= 0.0f) { return; }
             }
 
             // SpawnEffect() か SpawnHighEffect() のどちらかだけ実行
-            var collideeSpeed = collideeVelocity.sqrMagnitude;
+            float collideeSpeed = collideeVelocity.sqrMagnitude;
             if (_highEffectPrefab && collideeSpeed > _highSplashSpeed * _highSplashSpeed)
             {
                 SpawnHighEffect(_collider.ClosestPoint(collideePosition));
@@ -109,7 +109,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SpawnEffect(Vector3 position)
         {
-            var index = System.Array.IndexOf(_spawnedEffects, 0);
+            int index = System.Array.IndexOf(_spawnedEffects, 0);
             if (index < 0) { return; }
 
             _spawnCount = (_spawnCount < _poolSize) ? _spawnCount + 1 : 1;
@@ -123,7 +123,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void SpawnHighEffect(Vector3 position)
         {
-            var index = System.Array.IndexOf(_spawnedEffects, 0);
+            int index = System.Array.IndexOf(_spawnedEffects, 0);
             if (index < 0) { return; }
 
             _spawnCount = (_spawnCount < _poolSize) ? _spawnCount + 1 : 1;
@@ -138,7 +138,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _ReturnEffect()
         {
             _returnCount = (_returnCount < _poolSize) ? _returnCount + 1 : 1;
-            var index = System.Array.IndexOf(_spawnedEffects, _returnCount);
+            int index = System.Array.IndexOf(_spawnedEffects, _returnCount);
             if (index < 0) { return; }
 
             _spawnedEffects[index] = 0;

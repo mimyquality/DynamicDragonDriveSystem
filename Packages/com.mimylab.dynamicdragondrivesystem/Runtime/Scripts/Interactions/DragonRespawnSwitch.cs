@@ -9,9 +9,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common.Interfaces;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Interactions/Dragon Respawn Switch")]

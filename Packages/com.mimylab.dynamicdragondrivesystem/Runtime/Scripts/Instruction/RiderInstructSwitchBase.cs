@@ -9,15 +9,13 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using UnityEngine.UI;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [RequireComponent(typeof(Button))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructSwitchBase : UdonSharpBehaviour
     {
-        protected Button _button = null;
+        private protected Button _button = null;
 
         internal void _SetInteractable(bool value)
         {

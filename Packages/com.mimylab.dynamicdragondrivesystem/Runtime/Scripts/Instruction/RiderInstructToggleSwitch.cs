@@ -8,20 +8,18 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider ToggleSwitch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructToggleSwitch : RiderInstructSwitchBase
     {
-        internal RiderInstructToggle toggler;
-        internal bool isOn;
+        internal RiderInstructToggle _toggler;
+        internal bool _isOn;
 
         public override void Interact()
         {
-            if (toggler) { toggler._Change(isOn); }
+            if (_toggler) { _toggler._Change(_isOn); }
         }
     }
 }

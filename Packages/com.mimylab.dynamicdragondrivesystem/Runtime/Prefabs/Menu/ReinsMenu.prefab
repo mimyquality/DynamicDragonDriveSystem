@@ -1848,6 +1848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
         type: 3}
+      propertyPath: _reinsInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
@@ -4550,6 +4555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
         type: 3}
+      propertyPath: _reinsInput
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
@@ -5530,6 +5540,11 @@ PrefabInstance:
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
         type: 3}
       propertyPath: reinsInput
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
+        type: 3}
+      propertyPath: _reinsInput
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
@@ -7138,6 +7153,11 @@ PrefabInstance:
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
         type: 3}
       propertyPath: reinsInput
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
+        type: 3}
+      propertyPath: _reinsInput
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
@@ -8983,6 +9003,11 @@ PrefabInstance:
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
         type: 3}
       propertyPath: reinsInput
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,
+        type: 3}
+      propertyPath: _reinsInput
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 618213012301080630, guid: 5ba040453bb24f1429c71bcea7a07000,

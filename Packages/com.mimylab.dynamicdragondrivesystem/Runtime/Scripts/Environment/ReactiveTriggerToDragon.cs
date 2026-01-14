@@ -10,7 +10,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     using VRC.Udon;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Environment/ReactiveTrigger to Dragon")]
@@ -59,7 +58,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void OnTriggerEnter(Collider other)
         {
             if (!other) { return; }
-            var rb = other.attachedRigidbody;
+            Rigidbody rb = other.attachedRigidbody;
             if (!rb) { return; }
             var dragon = rb.GetComponent<DragonDriver>();
             if (!dragon) { return; }

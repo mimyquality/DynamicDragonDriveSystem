@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/Reins AutoCruise")]
@@ -31,7 +29,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
-            _dragonTF = driver.transform;
+            _dragonTF = _driver.transform;
 
             _initialized = true;
         }
@@ -40,22 +38,22 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
         }
 
-        protected override void InputKey()
+        private protected override void InputKey()
         {
             if (!targetPoint) { return; }
 
-            var direction = targetPoint.position - _dragonTF.position;
+            Vector3 direction = targetPoint.position - _dragonTF.position;
             // 加速指示
             _thrust = Accelerate(direction);
             // 方向指示
-            driver._InputDirectRotate(ConvertNoseDirection(direction), true);
+            _driver._InputDirectRotate(ConvertNoseDirection(direction), true);
         }
 
         private float Accelerate(Vector3 direction)
         {
             _brakes = false;
 
-            var sqrCurrentSpeed = driver.Velocity.sqrMagnitude;
+            float sqrCurrentSpeed = _driver.Velocity.sqrMagnitude;
             if (direction.sqrMagnitude < _stoppingDistance * _stoppingDistance)
             {
                 if (sqrCurrentSpeed > _stillSpeedThreshold * _stillSpeedThreshold)
@@ -77,10 +75,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private Vector3 ConvertNoseDirection(Vector3 direction)
         {
-            var relativeDirection = Quaternion.Inverse(_dragonTF.rotation) * direction;
-            var horizontalDirection = Vector3.ProjectOnPlane(relativeDirection, Vector3.up);
-            var yaw = Vector3.SignedAngle(Vector3.forward, horizontalDirection, Vector3.up);
-            var pitch = Vector3.SignedAngle(horizontalDirection, relativeDirection, Quaternion.LookRotation(horizontalDirection) * Vector3.right);
+            Vector3 relativeDirection = Quaternion.Inverse(_dragonTF.rotation) * direction;
+            Vector3 horizontalDirection = Vector3.ProjectOnPlane(relativeDirection, Vector3.up);
+            float yaw = Vector3.SignedAngle(Vector3.forward, horizontalDirection, Vector3.up);
+            float pitch = Vector3.SignedAngle(horizontalDirection, relativeDirection, Quaternion.LookRotation(horizontalDirection) * Vector3.right);
 
             return new Vector3(Mathf.Clamp(pitch, -90.0f, 90.0f), Mathf.Clamp(yaw, -90.0f, 90.0f));
         }

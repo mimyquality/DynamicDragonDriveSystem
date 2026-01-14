@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Environment/World Map")]
@@ -37,7 +35,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public int GetLocation(Transform target)
         {
-            var targetPoint = target.position;
+            Vector3 targetPoint = target.position;
             for (int i = 0; i < _locations.Length; i++)
             {
                 if (_locations[i].CheckIsIn(targetPoint))

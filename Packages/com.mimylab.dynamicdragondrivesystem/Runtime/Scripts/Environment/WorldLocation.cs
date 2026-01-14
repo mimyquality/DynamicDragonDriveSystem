@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Environment/World Location")]
@@ -25,7 +23,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             var isIn = false;
 
-            foreach (var col in _area)
+            foreach (Collider col in _area)
             {
                 if (!col) { continue; }
 

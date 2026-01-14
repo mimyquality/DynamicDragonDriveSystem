@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using UnityEngine.UI;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Volume")]
@@ -26,8 +24,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private RiderInstructVolumeSwitch[] _switches = new RiderInstructVolumeSwitch[0];
 
-        internal DragonRider rider;
-        internal DragonReinsInputType targetReinsInput = DragonReinsInputType.None;
+        internal DragonRider _rider;
+        internal DragonReinsInputType _targetReinsInput = DragonReinsInputType.None;
 
         private Slider _uiSlider;
         private float _currentVolume = 0.0f;
@@ -47,7 +45,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_switches[i])
                 {
-                    _switches[i].volumer = this;
+                    _switches[i]._volumer = this;
                 }
             }
 
@@ -68,9 +66,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         public void _Change(float value)
         {
             Initialize();
-            
+
             _currentVolume = value;
-            rider._OnVolumeChanged(this);
+            _rider._OnVolumeChanged(this);
         }
 
         internal void _OnValueChanged(float value)

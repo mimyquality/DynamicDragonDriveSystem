@@ -1130,19 +1130,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: _enabledState
+      Data: _capableState
     - Name: $v
       Entry: 7
       Data: 73|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: _enabledState
+      Data: _capableState
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 74|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MimyLab.DynamicDragonDriveSystem.DragonDriverEnabledStateSelect, DynamicDragonDriveSystem
+      Data: MimyLab.DynamicDragonDriveSystem.DragonDriverCapableStates, DynamicDragonDriveSystem
     - Name: 
       Entry: 8
       Data: 

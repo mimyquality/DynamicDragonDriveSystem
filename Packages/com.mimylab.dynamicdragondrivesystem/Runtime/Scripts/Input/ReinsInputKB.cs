@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -37,7 +35,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_turningInputHand == HandType.LEFT) { _aileron = -value; }
         }
 
-        protected override void InputKey()
+        private protected override void InputKey()
         {
             if (_throttleInputHand == HandType.RIGHT)
             {

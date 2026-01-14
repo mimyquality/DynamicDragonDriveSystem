@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -42,25 +41,25 @@ namespace MimyLab.DynamicDragonDriveSystem
             _brakes = value < -_brakesAcceptanceThreshold;
         }
 
-        protected override void InputKey()
+        private protected override void InputKey()
         {
-            driver._InputDirectRotate(_gazeAngles, true);
+            _driver._InputDirectRotate(_gazeAngles, true);
         }
 
         private Vector3 GetGazeAngles()
         {
-            var playerRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
-            var headRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;
-            var gazeRotation = Quaternion.Inverse(playerRotation) * headRotation;
+            Quaternion playerRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.AvatarRoot).rotation;
+            Quaternion headRotation = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).rotation;
+            Quaternion gazeRotation = Quaternion.Inverse(playerRotation) * headRotation;
             if (gazeRotation.w == 0.0f && gazeRotation.z == 0.0f && gazeRotation.y == 0.0f && gazeRotation.x == 0.0f)
             {
                 return Vector3.zero;
             }
 
-            var gazeDirection = gazeRotation * Vector3.forward;
-            var horizontalDirection = Vector3.ProjectOnPlane(gazeDirection, Vector3.up);
-            var yaw = Vector3.SignedAngle(Vector3.forward, horizontalDirection, Vector3.up);
-            var pitch = Vector3.SignedAngle(horizontalDirection, gazeDirection, Quaternion.LookRotation(horizontalDirection) * Vector3.right);
+            Vector3 gazeDirection = gazeRotation * Vector3.forward;
+            Vector3 horizontalDirection = Vector3.ProjectOnPlane(gazeDirection, Vector3.up);
+            float yaw = Vector3.SignedAngle(Vector3.forward, horizontalDirection, Vector3.up);
+            float pitch = Vector3.SignedAngle(horizontalDirection, gazeDirection, Quaternion.LookRotation(horizontalDirection) * Vector3.right);
             return new Vector3(pitch, yaw);
         }
     }

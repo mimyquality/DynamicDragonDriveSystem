@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -28,7 +27,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private GameObject _tooltipUnlock;
 
-        internal bool disableInput;
+        internal bool _disableInput;
 
         private DragonSeat _seat;
         private bool _isVR = true;
@@ -107,7 +106,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void InputMoveVertical(float value, UdonInputEventArgs args)
         {
-            if (disableInput) { return; }
+            if (_disableInput) { return; }
             if (_lockAdjust) { return; }
 
             _inputAdjust.z = value;
@@ -115,7 +114,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
         {
-            if (disableInput) { return; }
+            if (_disableInput) { return; }
             if (_lockAdjust) { return; }
 
             _inputAdjust.y = -value;
@@ -124,7 +123,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         public override void InputLookHorizontal(float value, UdonInputEventArgs args)
         {
             if (!_isVR) { return; }
-            if (disableInput) { return; }
+            if (_disableInput) { return; }
             if (_lockAdjust) { return; }
 
             _inputAdjust.x = value;
@@ -134,7 +133,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _inputJump = value;
 
-            if (!disableInput && !value) { LockAdjust = !LockAdjust; }
+            if (!_disableInput && !value) { LockAdjust = !LockAdjust; }
 
             // スマホはJumpボタン長押しが出来ないのでダブルタップ処理
             if (_isTouch)
@@ -154,7 +153,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void InputKey()
         {
             if (_isVR) { return; }
-            if (disableInput) { return; }
+            if (_disableInput) { return; }
             if (_lockAdjust) { return; }
 
             _inputAdjust.x =

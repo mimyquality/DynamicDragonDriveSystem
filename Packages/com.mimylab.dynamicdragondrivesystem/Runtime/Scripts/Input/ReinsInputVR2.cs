@@ -7,10 +7,9 @@ https://opensource.org/license/mit
 namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
-    using UnityEngine;
     using UnityEditor;
+    using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -68,7 +67,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 new Keyframe(_throttleDeadzone, 0.0f),
                 new Keyframe(1.0f, 1.0f)
             );
-            var keys = _throttleInputCurve.keys;
+            Keyframe[] keys = _throttleInputCurve.keys;
             for (int i = 0; i < keys.Length; i++)
             {
                 AnimationUtility.SetKeyLeftTangentMode(_throttleInputCurve, i, AnimationUtility.TangentMode.Linear);
@@ -81,7 +80,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _throttleDeadzone = Mathf.Clamp01(_throttleDeadzone);
             if ((0.0f < _throttleDeadzone) && (_throttleDeadzone < 1.0f))
             {
-                var keys = _throttleInputCurve.keys;
+                Keyframe[] keys = _throttleInputCurve.keys;
                 keys[1].time = -_throttleDeadzone;
                 _throttleInputCurve.MoveKey(1, keys[1]);
                 keys[2].time = _throttleDeadzone;
@@ -96,7 +95,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _centerGrabRotateAxis = Vector3.Slerp(Vector3.forward, Vector3.down, _rotateAxisTilt);
 
             // 警告避け
-            var trash = _throttleDeadzone;
+            float trash = _throttleDeadzone;
         }
 
         public override void PostLateUpdate()
@@ -121,7 +120,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             ActivateGrab(_isGrabLeft & _isGrabRight);
         }
 
-        protected override void InputKey()
+        private protected override void InputKey()
         {
             InputGrabJump();
 
@@ -130,14 +129,14 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _thrust = _throttleInputCurve.Evaluate(_centerGrabMove.z);
 
-            var angle = -Mathf.Clamp(_centerGrabAngle, -90.0f, 90.0f);
+            float angle = -Mathf.Clamp(_centerGrabAngle, -90.0f, 90.0f);
             var directRotation = new Vector3
             (
                 -_centerGrabMove.y * 90.0f,
                 angle,
                 angle
             );
-            driver._InputDirectRotate(Vector3.Scale(_rotateSign, directRotation));
+            _driver._InputDirectRotate(Vector3.Scale(_rotateSign, directRotation));
 
             angle = Mathf.Clamp(_centerGrabAngle / _rotateScale, -1.0f, 1.0f);
             _elevator = -_centerGrabMove.y;
@@ -165,11 +164,11 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private Vector3 GetCenterGrabMove()
         {
-            var result = Vector3.zero;
+            Vector3 result = Vector3.zero;
             if (!_isGrabBoth) { return result; }
 
-            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
-            var centerHandPosition = (_leftHandPosition + _rightHandPosition) / 2;
+            float avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
+            Vector3 centerHandPosition = (_leftHandPosition + _rightHandPosition) / 2;
             centerHandPosition = Quaternion.Inverse(_originRotation) * (centerHandPosition - _originPosition);
 
             if (_flagGrabBoth)
@@ -186,24 +185,24 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_isGrabBoth) { return 0.0f; }
 
-            var centerHandDirection = _rightHandPosition - _leftHandPosition;
+            Vector3 centerHandDirection = _rightHandPosition - _leftHandPosition;
             centerHandDirection = Quaternion.Inverse(_originRotation) * centerHandDirection;
 
             if (_flagGrabBoth)
             {
                 _centerGrabDirection = centerHandDirection;
             }
-            var angle = Vector3.SignedAngle(_centerGrabDirection, centerHandDirection, _centerGrabRotateAxis);
+            float angle = Vector3.SignedAngle(_centerGrabDirection, centerHandDirection, _centerGrabRotateAxis);
 
             return angle;
         }
 
         private void InputGrabJump()
         {
-            var grabJump = _centerGrabMove.y > _jumpAcceptanceThreshold;
+            bool grabJump = _centerGrabMove.y > _jumpAcceptanceThreshold;
             if (grabJump && !_prevGrabJump)
             {
-                driver._InputJump();
+                _driver._InputJump();
             }
             _prevGrabJump = grabJump;
         }

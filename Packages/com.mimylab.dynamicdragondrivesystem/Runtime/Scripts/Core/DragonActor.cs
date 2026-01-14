@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
 
     public enum DragonActorParameterName
     {
@@ -73,9 +72,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced]
         private Vector3 sync_noseAngles;
 
-        internal DragonDriver driver;
-        internal DragonReins reins;
-        internal DragonRider rider;
+        internal DragonDriver _driver;
+        internal DragonReins _reins;
+        internal DragonRider _rider;
 
         private Animator _animator;
         private Rigidbody _rigidbody;
@@ -141,10 +140,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_initialized) { return; }
 
             _animator = GetComponent<Animator>();
-            _rigidbody = driver.GetComponent<Rigidbody>();
+            _rigidbody = _driver.GetComponent<Rigidbody>();
 
             _animator.applyRootMotion = false;
-            _validParameters = ValidateParameters(_parameterHashes, _animator);
+            _validParameters = ValidateParameters(_animator, _parameterHashes);
 
             _initialized = true;
         }
@@ -159,7 +158,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void Update()
         {
             _rotation = _rigidbody.rotation;
-            _isOwner = Networking.IsOwner(driver.gameObject);
+            _isOwner = Networking.IsOwner(_driver.gameObject);
             UpdateSyncParameters();
             CalculateParameters();
             SetAnimatorParameters();
@@ -176,7 +175,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _animator.SetTrigger(_parameterHashes[(int)DragonActorParameterName.OnBlink]);
 
-            var nextTiming = Random.Range(_blinkRateMin, _blinkRateMax);
+            float nextTiming = Random.Range(_blinkRateMin, _blinkRateMax);
             SendCustomEventDelayedSeconds(nameof(_TriggerBlink), nextTiming);
         }
 
@@ -186,7 +185,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _animator.SetTrigger(_parameterHashes[(int)DragonActorParameterName.OnBlinkMembrane]);
 
-            var nextTiming = Random.Range(_blinkMembraneRateMin, _blinkMembraneRateMax);
+            float nextTiming = Random.Range(_blinkMembraneRateMin, _blinkMembraneRateMax);
             SendCustomEventDelayedSeconds(nameof(_TriggerBlinkMembrane), nextTiming);
         }
 
@@ -198,14 +197,14 @@ namespace MimyLab.DynamicDragonDriveSystem
             _animator.SetTrigger(_parameterHashes[(int)DragonActorParameterName.OnCollision]);
         }
 
-        static private bool[] ValidateParameters(int[] parametersHash, Animator animator)
+        static private bool[] ValidateParameters(Animator animator, int[] parametersHash)
         {
             var result = new bool[parametersHash.Length];
 
-            var parameters = animator.parameters;
+            AnimatorControllerParameter[] parameters = animator.parameters;
             for (int i = 0; i < parameters.Length; i++)
             {
-                var validIndex = System.Array.IndexOf(parametersHash, parameters[i].nameHash);
+                int validIndex = System.Array.IndexOf(parametersHash, parameters[i].nameHash);
                 if (validIndex > -1) { result[validIndex] = true; }
             }
 
@@ -222,24 +221,24 @@ namespace MimyLab.DynamicDragonDriveSystem
                 return;
             }
 
-            if (sync_isBrakes != driver.IsBrakes)
+            if (sync_isBrakes != _driver.IsBrakes)
             {
                 sync_isBrakes = !sync_isBrakes;
                 RequestSerialization();
             }
-            if (sync_isOverdrive != driver.IsOverdrive)
+            if (sync_isOverdrive != _driver.IsOverdrive)
             {
                 sync_isOverdrive = !sync_isOverdrive;
                 RequestSerialization();
             }
 
-            if (sync_state != driver.State)
+            if (sync_state != _driver.State)
             {
-                sync_state = driver.State;
+                sync_state = _driver.State;
                 RequestSerialization();
             }
 
-            var noseAngles = driver.NoseAngles;
+            Vector3 noseAngles = _driver.NoseAngles;
             // Animator向けに反転
             _noseAngles.x = (sync_state == (int)DragonDriverStateType.Walking) ? 0.0f : -noseAngles.x;
             _noseAngles.y = noseAngles.y;
@@ -253,24 +252,24 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void CalculateParameters()
         {
-            _isPilot = rider.IsPilot;
-            _isRide = rider.IsRide;
-            _isMount = rider.IsMount;
+            _isPilot = _rider.IsPilot;
+            _isRide = _rider.IsRide;
+            _isMount = _rider.IsMount;
 
-            _isGrounded = driver.IsGrounded;
+            _isGrounded = _driver.IsGrounded;
 
             if (sync_state == (int)DragonDriverStateType.Walking)
             {
                 var pitch = 0.0f;
                 if (_isGrounded)
                 {
-                    var groundNormal = driver.GroundNormal;
-                    var noseRotation = Quaternion.Euler(pitch, _noseAngles.y, 0.0f) * _rotation;
-                    var noseDirection = noseRotation * Vector3.forward;
-                    var noseLeft = noseRotation * Vector3.left;
-                    var horizontalLeft = Vector3.ProjectOnPlane(noseLeft, groundNormal);
-                    var tiltCorrection = Mathf.Abs(Vector3.Dot(noseLeft, horizontalLeft));
-                    var groundForward = Vector3.ProjectOnPlane(noseDirection, groundNormal);
+                    Vector3 groundNormal = _driver.GroundNormal;
+                    Quaternion noseRotation = Quaternion.Euler(pitch, _noseAngles.y, 0.0f) * _rotation;
+                    Vector3 noseDirection = noseRotation * Vector3.forward;
+                    Vector3 noseLeft = noseRotation * Vector3.left;
+                    Vector3 horizontalLeft = Vector3.ProjectOnPlane(noseLeft, groundNormal);
+                    float tiltCorrection = Mathf.Abs(Vector3.Dot(noseLeft, horizontalLeft));
+                    Vector3 groundForward = Vector3.ProjectOnPlane(noseDirection, groundNormal);
                     pitch = tiltCorrection * Vector3.SignedAngle(noseDirection, groundForward, noseLeft);
                 }
                 _groundedNoseAngle = Mathf.SmoothDamp(_groundedNoseAngle, pitch, ref _groundedAngleVelocity, GroundedSmoothingDuration);
@@ -281,24 +280,24 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _groundedNoseAngle = _noseAngles.x;
             }
 
-            var forward = _rotation * Vector3.forward;
-            var up = _rotation * Vector3.up;
+            Vector3 forward = _rotation * Vector3.forward;
+            Vector3 up = _rotation * Vector3.up;
 
-            var level = Vector3.ProjectOnPlane(forward, Vector3.up);
-            var left = Quaternion.LookRotation(level) * Vector3.left;
+            Vector3 level = Vector3.ProjectOnPlane(forward, Vector3.up);
+            Vector3 left = Quaternion.LookRotation(level) * Vector3.left;
             _pitch = Vector3.SignedAngle(level, forward, left);
 
             level = Quaternion.LookRotation(forward) * Vector3.up;
             _roll = Vector3.SignedAngle(level, up, forward);
 
-            _relativeVelocity = Quaternion.Inverse(_rotation) * driver.Velocity;
-            _relativeAngularVelocity = Quaternion.Inverse(_rotation) * driver.AngularVelocity;
+            _relativeVelocity = Quaternion.Inverse(_rotation) * _driver.Velocity;
+            _relativeAngularVelocity = Quaternion.Inverse(_rotation) * _driver.AngularVelocity;
 
             _speed = _relativeVelocity.magnitude;
             _angularSpeed = _relativeAngularVelocity.magnitude;
 
             ReinsInputManager reinsInput;
-            if (reinsInput = reins._GetEnabledInput())
+            if (reinsInput = _reins._GetEnabledInput())
             {
                 _throttle = reinsInput.Thrust;
                 _turn = reinsInput.Turn;
@@ -313,7 +312,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (_worldMap)
             {
-                _location = _worldMap.GetLocation(driver.transform);
+                _location = _worldMap.GetLocation(_driver.transform);
             }
         }
 

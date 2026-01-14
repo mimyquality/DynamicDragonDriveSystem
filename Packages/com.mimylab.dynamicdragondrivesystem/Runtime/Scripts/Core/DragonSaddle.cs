@@ -8,28 +8,26 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Saddle")]
     public class DragonSaddle : DragonSeat
     {
-        protected override void Start()
+        private protected override void Start()
         {
             base.Start();
 
             EnableAdjust = false;
         }
 
-        protected override void OnLocalPlayerMount()
+        private protected override void OnLocalPlayerMount()
         {
-            rider._OnSaddleRided();
+            _rider._OnSaddleRided();
         }
 
-        protected override void OnLocalPlayerUnmount()
+        private protected override void OnLocalPlayerUnmount()
         {
-            rider._OnSaddleExited();
+            _rider._OnSaddleExited();
         }
     }
 }

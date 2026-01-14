@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -48,7 +46,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _InputBrakeRight = value > _brakesAcceptanceThreshold;
         }
 
-        protected override void InputKey()
+        private protected override void InputKey()
         {
             _brakes = _InputBrakeLeft && _InputBrakeRight;
         }

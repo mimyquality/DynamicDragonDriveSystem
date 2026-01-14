@@ -9,8 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
-    //using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Debug/Reins Grab Helper")]
@@ -54,7 +52,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             if (_saddle.IsMount)
             {
-                var owner = Networking.GetOwner(_driver.gameObject);
+                VRCPlayerApi owner = Networking.GetOwner(_driver.gameObject);
                 if (Utilities.IsValid(owner) && !(_vrOnly && !owner.IsUserInVR()))
                 {
                     SnapLeftGrabHand(owner);
@@ -71,10 +69,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_leftGrabPoint) { return; }
 
-            var leftHandPosition = grabPlayer.GetBonePosition(HumanBodyBones.LeftHand);
+            Vector3 leftHandPosition = grabPlayer.GetBonePosition(HumanBodyBones.LeftHand);
             if (!leftHandPosition.Equals(Vector3.zero))
             {
-                var leftFingerPosition = grabPlayer.GetBonePosition(HumanBodyBones.LeftMiddleIntermediate);
+                Vector3 leftFingerPosition = grabPlayer.GetBonePosition(HumanBodyBones.LeftMiddleIntermediate);
                 if (leftFingerPosition.Equals(Vector3.zero))
                 {
                     leftFingerPosition = grabPlayer.GetBonePosition(HumanBodyBones.LeftMiddleProximal);
@@ -91,10 +89,10 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_rightGrabPoint) { return; }
 
-            var rightHandPosition = grabPlayer.GetBonePosition(HumanBodyBones.RightHand);
+            Vector3 rightHandPosition = grabPlayer.GetBonePosition(HumanBodyBones.RightHand);
             if (!rightHandPosition.Equals(Vector3.zero))
             {
-                var rightFingerPosition = grabPlayer.GetBonePosition(HumanBodyBones.RightMiddleIntermediate);
+                Vector3 rightFingerPosition = grabPlayer.GetBonePosition(HumanBodyBones.RightMiddleIntermediate);
                 if (rightFingerPosition.Equals(Vector3.zero))
                 {
                     rightFingerPosition = grabPlayer.GetBonePosition(HumanBodyBones.RightMiddleProximal);
@@ -111,7 +109,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_leftGrabPoint) { return; }
 
-            var currentPosition = _leftGrabPoint.localPosition;
+            Vector3 currentPosition = _leftGrabPoint.localPosition;
             if (currentPosition == _defaultLeftReinsPosition) { return; }
 
             _leftGrabPoint.localPosition = Vector3.MoveTowards(currentPosition, _defaultLeftReinsPosition, _returnSpeed);
@@ -121,7 +119,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (!_rightGrabPoint) { return; }
 
-            var currentPosition = _rightGrabPoint.localPosition;
+            Vector3 currentPosition = _rightGrabPoint.localPosition;
             if (currentPosition == _defaultRightReinsPosition) { return; }
 
             _rightGrabPoint.localPosition = Vector3.MoveTowards(currentPosition, _defaultRightReinsPosition, _returnSpeed);

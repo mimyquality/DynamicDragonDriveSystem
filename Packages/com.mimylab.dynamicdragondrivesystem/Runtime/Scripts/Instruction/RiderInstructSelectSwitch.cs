@@ -8,20 +8,18 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider SelectSwitch")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class RiderInstructSelectSwitch : RiderInstructSwitchBase
     {
-        internal RiderInstructSelect selector;
-        internal int number;
+        internal RiderInstructSelect _selector;
+        internal int _number;
 
         public override void Interact()
         {
-            if (selector) { selector._Change(number); }
+            if (_selector) { _selector._Change(_number); }
         }
     }
 }

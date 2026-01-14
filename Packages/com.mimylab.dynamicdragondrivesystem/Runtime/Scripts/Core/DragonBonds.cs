@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.SDK3.Components;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -21,9 +20,9 @@ namespace MimyLab.DynamicDragonDriveSystem
         private const float RememberWaitTime = 2.0f;
 
         [SerializeField]
-        internal bool enableSympathize = false;
+        internal bool _enableSympathize = false;
         [SerializeField]
-        internal int sympathyCircuit = 0;
+        internal int _sympathyCircuit = 0;
 
         [UdonSynced] private Vector3 sync_seatPosition;
         [UdonSynced]
@@ -45,26 +44,26 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced] private bool sync_canopyIndication;
 
         // Saddle
-        internal Vector3 seatPosition;
+        internal Vector3 _seatPosition;
         // Reins
-        internal DragonReinsInputType[] selectedInput = new DragonReinsInputType[]
+        internal DragonReinsInputType[] _selectedInput = new DragonReinsInputType[]
         {
             DragonReinsInputType.None,
             DragonReinsInputType.None
         };
         // HandType[]が扱いにくいのでint[]でやりとりする
-        internal int[] throttleInputHand = new int[(int)DragonReinsInputType.Count];
-        internal int[] turningInputHand = new int[(int)DragonReinsInputType.Count];
-        internal int[] elevatorInputHand = new int[(int)DragonReinsInputType.Count];
-        internal bool[] invertThrust = new bool[(int)DragonReinsInputType.Count];
-        internal bool[] invertClimb = new bool[(int)DragonReinsInputType.Count];
-        internal bool[] invertStrafe = new bool[(int)DragonReinsInputType.Count];
-        internal bool[] invertElevator = new bool[(int)DragonReinsInputType.Count];
-        internal bool[] invertLadder = new bool[(int)DragonReinsInputType.Count];
-        internal bool[] invertAileron = new bool[(int)DragonReinsInputType.Count];
-        internal ReinsInputVRGrabMode[] vrGrabMode = new ReinsInputVRGrabMode[2];
+        internal int[] _throttleInputHand = new int[(int)DragonReinsInputType.Count];
+        internal int[] _turningInputHand = new int[(int)DragonReinsInputType.Count];
+        internal int[] _elevatorInputHand = new int[(int)DragonReinsInputType.Count];
+        internal bool[] _invertThrust = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] _invertClimb = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] _invertStrafe = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] _invertElevator = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] _invertLadder = new bool[(int)DragonReinsInputType.Count];
+        internal bool[] _invertAileron = new bool[(int)DragonReinsInputType.Count];
+        internal ReinsInputVRGrabMode[] _vrGrabMode = new ReinsInputVRGrabMode[2];
         // Canopy
-        internal bool canopyIndication;
+        internal bool _canopyIndication;
 
         private DragonRider _rider;
         private DragonBonds[] _sympathizedBonds;
@@ -90,67 +89,67 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void OnPreSerialization()
         {
-            sync_seatPosition = seatPosition;
+            sync_seatPosition = _seatPosition;
 
-            int select = (int)selectedInput[0];
+            var select = (int)_selectedInput[0];
             sync_selectedInput[0] = select;
-            select = (int)selectedInput[1];
+            select = (int)_selectedInput[1];
             sync_selectedInput[1] = select;
 
             for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
-                select = throttleInputHand[i];
+                select = _throttleInputHand[i];
                 sync_throttleInputHand[i] = (byte)select;
-                select = turningInputHand[i];
+                select = _turningInputHand[i];
                 sync_turningInputHand[i] = (byte)select;
-                select = elevatorInputHand[i];
+                select = _elevatorInputHand[i];
                 sync_elevatorInputHand[i] = (byte)select;
 
-                sync_invertThrust[i] = invertThrust[i];
-                sync_invertClimb[i] = invertClimb[i];
-                sync_invertStrafe[i] = invertStrafe[i];
-                sync_invertElevator[i] = invertElevator[i];
-                sync_invertLadder[i] = invertLadder[i];
-                sync_invertAileron[i] = invertAileron[i];
+                sync_invertThrust[i] = _invertThrust[i];
+                sync_invertClimb[i] = _invertClimb[i];
+                sync_invertStrafe[i] = _invertStrafe[i];
+                sync_invertElevator[i] = _invertElevator[i];
+                sync_invertLadder[i] = _invertLadder[i];
+                sync_invertAileron[i] = _invertAileron[i];
             }
 
-            select = (int)vrGrabMode[0];
+            select = (int)_vrGrabMode[0];
             sync_vrGrabMode[0] = (byte)select;
-            select = (int)vrGrabMode[1];
+            select = (int)_vrGrabMode[1];
             sync_vrGrabMode[1] = (byte)select;
 
-            sync_canopyIndication = canopyIndication;
+            sync_canopyIndication = _canopyIndication;
         }
 
         public override void OnDeserialization()
         {
             Initialize();
 
-            seatPosition = sync_seatPosition;
+            _seatPosition = sync_seatPosition;
 
             int tmp_selectedInput = sync_selectedInput[0];
-            selectedInput[0] = (DragonReinsInputType)tmp_selectedInput;
+            _selectedInput[0] = (DragonReinsInputType)tmp_selectedInput;
             tmp_selectedInput = sync_selectedInput[1];
-            selectedInput[1] = (DragonReinsInputType)tmp_selectedInput;
+            _selectedInput[1] = (DragonReinsInputType)tmp_selectedInput;
 
             for (int i = 0; i < (int)DragonReinsInputType.Count; i++)
             {
-                throttleInputHand[i] = (int)sync_throttleInputHand[i];
-                turningInputHand[i] = (int)sync_turningInputHand[i];
-                elevatorInputHand[i] = (int)sync_elevatorInputHand[i];
+                _throttleInputHand[i] = (int)sync_throttleInputHand[i];
+                _turningInputHand[i] = (int)sync_turningInputHand[i];
+                _elevatorInputHand[i] = (int)sync_elevatorInputHand[i];
 
-                invertThrust[i] = sync_invertThrust[i];
-                invertClimb[i] = sync_invertClimb[i];
-                invertStrafe[i] = sync_invertStrafe[i];
-                invertElevator[i] = sync_invertElevator[i];
-                invertLadder[i] = sync_invertLadder[i];
-                invertAileron[i] = sync_invertAileron[i];
+                _invertThrust[i] = sync_invertThrust[i];
+                _invertClimb[i] = sync_invertClimb[i];
+                _invertStrafe[i] = sync_invertStrafe[i];
+                _invertElevator[i] = sync_invertElevator[i];
+                _invertLadder[i] = sync_invertLadder[i];
+                _invertAileron[i] = sync_invertAileron[i];
             }
 
-            vrGrabMode[0] = (ReinsInputVRGrabMode)sync_vrGrabMode[0];
-            vrGrabMode[1] = (ReinsInputVRGrabMode)sync_vrGrabMode[1];
+            _vrGrabMode[0] = (ReinsInputVRGrabMode)sync_vrGrabMode[0];
+            _vrGrabMode[1] = (ReinsInputVRGrabMode)sync_vrGrabMode[1];
 
-            canopyIndication = sync_canopyIndication;
+            _canopyIndication = sync_canopyIndication;
 
             if (Networking.IsOwner(this.gameObject))
             {
@@ -171,11 +170,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             _waitingToRemember = false;
             RequestSerialization();
 
-            if (enableSympathize)
+            if (_enableSympathize)
             {
                 if (_sympathizedBonds == null) { _sympathizedBonds = GetSympathizedBonds(); }
 
-                foreach (var bonds in _sympathizedBonds)
+                foreach (DragonBonds bonds in _sympathizedBonds)
                 {
                     bonds._Sympathize(this);
                 }
@@ -187,21 +186,21 @@ namespace MimyLab.DynamicDragonDriveSystem
             Initialize();
 
             // Saddle
-            seatPosition = memorizedBonds.seatPosition;
+            _seatPosition = memorizedBonds._seatPosition;
             // Reins
-            memorizedBonds.selectedInput.CopyTo(selectedInput, 0);
-            memorizedBonds.throttleInputHand.CopyTo(throttleInputHand, 0);
-            memorizedBonds.turningInputHand.CopyTo(turningInputHand, 0);
-            memorizedBonds.elevatorInputHand.CopyTo(elevatorInputHand, 0);
-            memorizedBonds.invertThrust.CopyTo(invertThrust, 0);
-            memorizedBonds.invertClimb.CopyTo(invertClimb, 0);
-            memorizedBonds.invertStrafe.CopyTo(invertStrafe, 0);
-            memorizedBonds.invertElevator.CopyTo(invertElevator, 0);
-            memorizedBonds.invertLadder.CopyTo(invertLadder, 0);
-            memorizedBonds.invertAileron.CopyTo(invertAileron, 0);
-            memorizedBonds.vrGrabMode.CopyTo(vrGrabMode, 0);
+            memorizedBonds._selectedInput.CopyTo(_selectedInput, 0);
+            memorizedBonds._throttleInputHand.CopyTo(_throttleInputHand, 0);
+            memorizedBonds._turningInputHand.CopyTo(_turningInputHand, 0);
+            memorizedBonds._elevatorInputHand.CopyTo(_elevatorInputHand, 0);
+            memorizedBonds._invertThrust.CopyTo(_invertThrust, 0);
+            memorizedBonds._invertClimb.CopyTo(_invertClimb, 0);
+            memorizedBonds._invertStrafe.CopyTo(_invertStrafe, 0);
+            memorizedBonds._invertElevator.CopyTo(_invertElevator, 0);
+            memorizedBonds._invertLadder.CopyTo(_invertLadder, 0);
+            memorizedBonds._invertAileron.CopyTo(_invertAileron, 0);
+            memorizedBonds._vrGrabMode.CopyTo(_vrGrabMode, 0);
             // Canopy
-            canopyIndication = memorizedBonds.canopyIndication;
+            _canopyIndication = memorizedBonds._canopyIndication;
 
             RequestSerialization();
 
@@ -210,16 +209,16 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private DragonBonds[] GetSympathizedBonds()
         {
-            var playerObjects = Networking.LocalPlayer.GetPlayerObjects();
+            GameObject[] playerObjects = Networking.LocalPlayer.GetPlayerObjects();
             var sympathizedBonds = new DragonBonds[playerObjects.Length];
             var count = 0;
-            foreach (var playerObject in playerObjects)
+            foreach (GameObject playerObject in playerObjects)
             {
                 var dragonBonds = playerObject.GetComponent<DragonBonds>();
                 if (dragonBonds &&
                     dragonBonds != this &&
-                    dragonBonds.enableSympathize &&
-                    dragonBonds.sympathyCircuit == sympathyCircuit)
+                    dragonBonds._enableSympathize &&
+                    dragonBonds._sympathyCircuit == _sympathyCircuit)
                 {
                     sympathizedBonds[count++] = dragonBonds;
                 }

@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -17,21 +15,21 @@ namespace MimyLab.DynamicDragonDriveSystem
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReinsInputManager : UdonSharpBehaviour
     {
-        internal DragonDriver driver;
-
         [SerializeField, HideInInspector]
-        protected HandType _throttleInputHand = HandType.LEFT;
+        private protected HandType _throttleInputHand = HandType.LEFT;
         [SerializeField, HideInInspector]
-        protected HandType _turningInputHand = HandType.RIGHT;
+        private protected HandType _turningInputHand = HandType.RIGHT;
         [SerializeField, HideInInspector]
-        protected HandType _elevatorInputHand = HandType.RIGHT;
+        private protected HandType _elevatorInputHand = HandType.RIGHT;
 
-        protected float _thrust, _climb, _strafe;
-        protected float _elevator, _ladder, _aileron;
-        protected bool _brakes, _turbo;
+        internal DragonDriver _driver;
 
-        protected Vector3 _accelerateSign = Vector3.one;
-        protected Vector3 _rotateSign = Vector3.one;
+        private protected float _thrust, _climb, _strafe;
+        private protected float _elevator, _ladder, _aileron;
+        private protected bool _brakes, _turbo;
+
+        private protected Vector3 _accelerateSign = Vector3.one;
+        private protected Vector3 _rotateSign = Vector3.one;
 
         public bool ThrustIsInvert
         {
@@ -80,7 +78,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         }
 
         public virtual float Thrust { get => _thrust; }
-        public virtual float Turn { get => (driver.State == (int)DragonDriverStateType.Flight) ? -_aileron : _ladder; }
+        public virtual float Turn { get => (_driver.State == (int)DragonDriverStateType.Flight) ? -_aileron : _ladder; }
         public virtual float Elevator { get => -_elevator; }
 
         private Vector3 _accelerate = Vector3.zero;
@@ -91,7 +89,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_accelerate != value)
                 {
-                    driver._InputAccelerate(Vector3.Scale(_accelerateSign, value));
+                    _driver._InputAccelerate(Vector3.Scale(_accelerateSign, value));
                     _accelerate = value;
                 }
             }
@@ -104,7 +102,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 if (_rotate != value)
                 {
-                    driver._InputRotate(Vector3.Scale(_rotateSign, value));
+                    _driver._InputRotate(Vector3.Scale(_rotateSign, value));
                     _rotate = value;
                 }
             }
@@ -115,7 +113,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             get => _emergencyBrakes;
             set
             {
-                if (_emergencyBrakes != value) { driver._InputEmergencyBrakes(value); }
+                if (_emergencyBrakes != value) { _driver._InputEmergencyBrakes(value); }
                 _emergencyBrakes = value;
             }
         }
@@ -125,20 +123,20 @@ namespace MimyLab.DynamicDragonDriveSystem
             get => _overdrive;
             set
             {
-                if (_overdrive != value) { driver._InputOverdrive(value); }
+                if (_overdrive != value) { _driver._InputOverdrive(value); }
                 _overdrive = value;
             }
         }
 
         private void OnDisable()
         {
-            if (!driver) { return; }
+            if (!_driver) { return; }
 
             Accelerate = Vector3.zero;
             Rotate = Vector3.zero;
             EmergencyBreakes = false;
             Overdrive = false;
-            driver._InputDirectRotate(Vector3.zero);
+            _driver._InputDirectRotate(Vector3.zero);
         }
 
         private void Update()
@@ -155,9 +153,9 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public override void InputJump(bool value, UdonInputEventArgs args)
         {
-            if (!value) { driver._InputJump(); }
+            if (!value) { _driver._InputJump(); }
         }
 
-        protected virtual void InputKey() { }
+        private protected virtual void InputKey() { }
     }
 }

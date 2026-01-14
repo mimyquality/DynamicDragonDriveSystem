@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -24,7 +22,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private RiderInstructSelectSwitch[] _switches = new RiderInstructSelectSwitch[0];
         
-        internal DragonRider rider;
+        internal DragonRider _rider;
 
         private int _selectable = 0;
 

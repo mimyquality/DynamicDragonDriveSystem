@@ -9,7 +9,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UdonSharp;
     using UnityEngine;
     using VRC.SDKBase;
-    //using VRC.Udon;
     using VRC.Udon.Common;
 
     public enum ReinsInputVRGrabMode
@@ -83,7 +82,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
-        protected override void InputKey()
+        private protected override void InputKey()
         {
             InputGrabJump();
 
@@ -94,10 +93,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             //_climb = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.y : _rightGrabMove.y;
             //_strafe = (_throttleInputHand == HandType.LEFT) ? _leftGrgabMove.x : _rightGrabMove.x;
 
-            var pitch = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
-            var yaw = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
-            var roll = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
-            driver._InputDirectRotate(new Vector3(pitch, yaw, roll));
+            float pitch = (_elevatorInputHand == HandType.LEFT) ? _leftGrabRotate.x : _rightGrabRotate.x;
+            float yaw = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.y : _rightGrabRotate.y;
+            float roll = (_turningInputHand == HandType.LEFT) ? _leftGrabRotate.z : _rightGrabRotate.z;
+            _driver._InputDirectRotate(new Vector3(pitch, yaw, roll));
 
             _elevator = Mathf.Clamp(pitch / _rotateScale, -1.0f, 1.0f);
             _ladder = Mathf.Clamp(yaw / _rotateScale, -1.0f, 1.0f);
@@ -145,8 +144,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             var result = Vector3.zero;
             if (!_isGrabLeft) { return result; }
 
-            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
-            var handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
+            float avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
+            Vector3 handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand).position;
             handPosition = Quaternion.Inverse(_originRotation) * (handPosition - _originPosition);
 
             if (_flagGrabLeft)
@@ -164,8 +163,8 @@ namespace MimyLab.DynamicDragonDriveSystem
             var result = Vector3.zero;
             if (!_isGrabRight) { return result; }
 
-            var avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
-            var handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
+            float avatarScale = Mathf.Max(_localPlayer.GetAvatarEyeHeightAsMeters(), 0.1f);
+            Vector3 handPosition = _localPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand).position;
             handPosition = Quaternion.Inverse(_originRotation) * (handPosition - _originPosition);
 
             if (_flagGrabRight)
@@ -213,10 +212,10 @@ namespace MimyLab.DynamicDragonDriveSystem
             var result = Vector3.zero;
             if (rotation == Quaternion.identity) { return result; }
 
-            var rotateDirection = rotation * Vector3.forward;
+            Vector3 rotateDirection = rotation * Vector3.forward;
 
-            var axisDirection = Vector3.ProjectOnPlane(rotateDirection, Vector3.right);
-            var angle = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.right);
+            Vector3 axisDirection = Vector3.ProjectOnPlane(rotateDirection, Vector3.right);
+            float angle = Vector3.SignedAngle(Vector3.forward, axisDirection, Vector3.right);
             result.x = angle;
 
             axisDirection = Vector3.ProjectOnPlane(rotateDirection, Vector3.up);
@@ -231,10 +230,10 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void InputGrabJump()
         {
-            var grabJump = _leftGrgabMove.y > _jumpAcceptanceThreshold;
+            bool grabJump = _leftGrgabMove.y > _jumpAcceptanceThreshold;
             if (grabJump && !_prevGrabJump)
             {
-                driver._InputJump();
+                _driver._InputJump();
             }
             _prevGrabJump = grabJump;
         }

@@ -8,8 +8,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
     using UnityEngine;
-    //using VRC.SDKBase;
-    //using VRC.Udon;
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Instruction/Rider Sub Category")]
@@ -17,6 +15,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     public class RiderSubCategory : UdonSharpBehaviour
     {
         [SerializeField]
-        internal DragonReinsInputType reinsInput;
+        internal DragonReinsInputType _reinsInput;
     }
 }
