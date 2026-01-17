@@ -10,6 +10,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.SDKBase;
     using VRC.Udon;
+    using VRC.Udon.Common.Interfaces;
     using VRCStation = VRC.SDK3.Components.VRCStation;
 
     public enum SeatMountEventType
@@ -17,15 +18,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         OnEnteredAndExited,
         OnEntered,
         OnExited
-    }
-
-    public enum MountedPlayerType
-    {
-        All,
-        Local,
-        Owner,
-        InstanceOwner,
-        //Moderator
     }
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -37,7 +29,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         SeatMountEventType _eventType;
         [SerializeField]
-        private MountedPlayerType _mountedPlayerType;
+        private NetworkEventTarget _eventTarget;
 
         [SerializeField, Header("Activate GameObjects")]
         private GameObject[] _gameObjects = new GameObject[0];
@@ -57,14 +49,15 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_eventType == SeatMountEventType.OnEnteredAndExited ||
                 _eventType == SeatMountEventType.OnEntered)
             {
-                if (ValidateMountedPlayer(player))
+                if (ValidateEventTarget(player))
                 {
-                    EventAction(!_invert);
-
-                    if (_withSetOwner && !_invert && player.isLocal)
+                    if (_withSetOwner && !_invert)
                     {
                         SetObjectsOwner(player);
                     }
+
+                    ToggleActive(!_invert);
+                    ExecuteOtherEvent();
                 }
             }
         }
@@ -74,56 +67,68 @@ namespace MimyLab.DynamicDragonDriveSystem
             if (_eventType == SeatMountEventType.OnEnteredAndExited ||
                 _eventType == SeatMountEventType.OnExited)
             {
-                if (ValidateMountedPlayer(player))
+                if (ValidateEventTarget(player))
                 {
-                    EventAction(_invert);
-
-                    if (_withSetOwner && _invert && player.isLocal)
+                    if (_withSetOwner && _invert)
                     {
                         SetObjectsOwner(player);
                     }
+
+                    ToggleActive(_invert);
+                    ExecuteOtherEvent();
                 }
             }
         }
 
-        private bool ValidateMountedPlayer(VRCPlayerApi player)
+        private bool ValidateEventTarget(VRCPlayerApi player)
         {
-            switch (_mountedPlayerType)
+            switch (_eventTarget)
             {
-                case MountedPlayerType.Local:
-                    if (player.isLocal) { return true; }
-                    break;
-                case MountedPlayerType.Owner:
+                case NetworkEventTarget.All:
+                    return true;
+                case NetworkEventTarget.Owner:
                     if (player.IsOwner(this.gameObject)) { return true; }
                     break;
-                case MountedPlayerType.InstanceOwner:
-                    if (player.isInstanceOwner) { return true; }
+                case NetworkEventTarget.Others:
+                    if (!player.isLocal) { return true; }
                     break;
-                /* case MountedPlayerType.Moderator:
-                    if (player.isModerator) { return true; }
-                    break; */
-                default:
-                    return true;
+                case NetworkEventTarget.Self:
+                    if (player.isLocal) { return true; }
+                    break;
             }
 
             return false;
         }
 
-        private void EventAction(bool objectActive)
-        {
-            for (int i = 0; i < _gameObjects.Length; i++)
-            {
-                if (_gameObjects[i]) { _gameObjects[i].SetActive(objectActive); }
-            }
-
-            if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
-        }
-
         private void SetObjectsOwner(VRCPlayerApi player)
         {
+            if (!player.isLocal) { return; }
+
             for (int i = 0; i < _gameObjects.Length; i++)
             {
-                if (_gameObjects[i]) { Networking.SetOwner(player, _gameObjects[i]); }
+                if (_gameObjects[i])
+                {
+                    Networking.SetOwner(player, _gameObjects[i]);
+                }
+            }
+        }
+
+        private void ToggleActive(bool value)
+        {
+            for (int i = 0; i < _gameObjects.Length; i++)
+            {
+                if (_gameObjects[i])
+                {
+                    _gameObjects[i].SetActive(value);
+                }
+            }
+        }
+
+        private void ExecuteOtherEvent()
+        {
+            if (_udonBehaviour && _eventName != "")
+            {
+                _udonBehaviour.SendCustomEvent(_eventName);
             }
         }
     }

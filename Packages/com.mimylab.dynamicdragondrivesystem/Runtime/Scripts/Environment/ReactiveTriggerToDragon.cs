@@ -11,17 +11,28 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     using VRC.Udon;
 
+    public enum ReactiveTriggerEventTarget
+    {
+        All,
+        Owner,
+        Pilot,
+        Rider,
+    }
+
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Environment/ReactiveTrigger to Dragon")]
     [RequireComponent(typeof(Collider))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ReactiveTriggerToDragon : UdonSharpBehaviour
     {
-        [SerializeField, Header("Activate/Inactivate GameObject")]
-        private GameObject _activateObject;
         [SerializeField]
-        private GameObject _inactivateObject;
-        [SerializeField, Min(0), Tooltip("Reactivate after specified time if Duration > 0")]
+        private ReactiveTriggerEventTarget _eventTarget = ReactiveTriggerEventTarget.All;
+
+        [SerializeField, Header("Toggle GameObjects Active")]
+        private GameObject[] _gameObjects = new GameObject[0];
+        [SerializeField]
+        private bool _invert = false;
+        [SerializeField, Min(0), Tooltip("Re-toggle after specified time if Duration > 0")]
         private float _duration = 0.0f;
 
         [Header("Emit particle")]
@@ -42,10 +53,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private string _eventName = "";
 
-        [Header("Other Options")]
-        [SerializeField]
-        private bool _dragonOwnerOnly = false;
-
         private int _triggerCount = 0;
 
         private void Start()
@@ -58,33 +65,59 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void OnTriggerEnter(Collider other)
         {
             if (!other) { return; }
+
             Rigidbody rb = other.attachedRigidbody;
             if (!rb) { return; }
+
             var dragon = rb.GetComponent<DragonDriver>();
             if (!dragon) { return; }
+            if (!ValidateEventTarget(dragon)) { return; }
 
-            if (_dragonOwnerOnly && !Networking.IsOwner(dragon.gameObject)) { return; }
-
-            if (_activateObject || _inactivateObject)
+            if (_gameObjects.Length > 0)
             {
                 ++_triggerCount;
 
-                if (_activateObject) { _activateObject.SetActive(true); }
-                if (_inactivateObject) { _inactivateObject.SetActive(false); }
+                for (int i = 0; i < _gameObjects.Length; i++)
+                {
+                    if (_gameObjects[i]) { _gameObjects[i].SetActive(!_invert); }
+                }
 
-                if (_duration > 0.0f) { SendCustomEventDelayedSeconds(nameof(_ReactivateGameObject), _duration); }
+                if (_duration > 0.0f) { SendCustomEventDelayedSeconds(nameof(_ToggleActiveDelayed), _duration); }
             }
             if (_particleSystem && _emit > 0) { _particleSystem.Emit(_emit); }
             if (_audioSource && _audioClip) { _audioSource.PlayOneShot(_audioClip); }
             if (_udonBehaviour && _eventName != "") { _udonBehaviour.SendCustomEvent(_eventName); }
         }
 
-        public void _ReactivateGameObject()
+        private bool ValidateEventTarget(DragonDriver driver)
+        {
+            DragonRider rider = driver._rider;
+            switch (_eventTarget)
+            {
+                case ReactiveTriggerEventTarget.All:
+                    return true;
+                case ReactiveTriggerEventTarget.Owner:
+                    if (Networking.IsOwner(this.gameObject)) { return true; }
+                    break;
+                case ReactiveTriggerEventTarget.Pilot:
+                    if (rider.IsPilot) { return true; }
+                    break;
+                case ReactiveTriggerEventTarget.Rider:
+                    if (rider.IsRide) { return true; }
+                    break;
+            }
+
+            return false;
+        }
+
+        public void _ToggleActiveDelayed()
         {
             if (--_triggerCount > 0) { return; }
 
-            if (_activateObject) { _activateObject.SetActive(false); }
-            if (_inactivateObject) { _inactivateObject.SetActive(true); }
+            for (int i = 0; i < _gameObjects.Length; i++)
+            {
+                if (_gameObjects[i]) { _gameObjects[i].SetActive(_invert); }
+            }
         }
     }
 }

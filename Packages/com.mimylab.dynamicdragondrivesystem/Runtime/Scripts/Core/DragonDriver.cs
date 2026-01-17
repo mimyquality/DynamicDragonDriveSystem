@@ -107,6 +107,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 sync_angularVelocity;
 
         // コンポーネント
+        internal DragonRider _rider;
+
         private Rigidbody _rigidbody;
         private SphereCollider _collider;
         private VRCObjectSync _objectSync;

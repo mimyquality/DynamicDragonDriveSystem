@@ -7,6 +7,8 @@ https://opensource.org/license/mit
 namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
+    using UnityEditor.EditorTools;
+
     using UnityEngine;
     using VRC.SDKBase;
     using VRCStation = VRC.SDK3.Components.VRCStation;
@@ -23,13 +25,15 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _maxSeatAdjustment = new Vector3(0.0f, 0.7f, 0.3f);
         [SerializeField]
         private Vector3 _minSeatAdjustment = new Vector3(0.0f, -0.3f, -0.3f);
+        [SerializeField, Min(0.0f), Tooltip("m/s")]
+        private float _adjustSpeed = 0.5f;
 
         [Header("Advanced Options")]
         [SerializeField]
         private Transform _snapPoint;
 
         [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
-        private Vector3 _adjustPoint;
+        private Vector3 sync_adjustPoint;
 
         internal DragonRider _rider;
 
@@ -39,7 +43,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _isRide = false;
         private bool _isMount = false;
         private int _mountedPlayerId = -1;
-        private float _adjustSpeed = 0.5f;  // m/s
         private Vector3 _localAdjustPoint;
         private Transform _defaultParent;
         private Vector3 _defaultPosition;
@@ -47,16 +50,16 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public Vector3 AdjustPoint
         {
-            get => _adjustPoint;
+            get => sync_adjustPoint;
             set
             {
                 Initialize();
 
-                _adjustPoint.x = Mathf.Clamp(value.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
-                _adjustPoint.y = Mathf.Clamp(value.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
-                _adjustPoint.z = Mathf.Clamp(value.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
+                sync_adjustPoint.x = Mathf.Clamp(value.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
+                sync_adjustPoint.y = Mathf.Clamp(value.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
+                sync_adjustPoint.z = Mathf.Clamp(value.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
 
-                _enterPoint.localPosition = _adjustPoint;
+                _enterPoint.localPosition = sync_adjustPoint;
 
                 RequestSerialization();
             }

@@ -40,7 +40,7 @@
       "dependencies": {}
     },
     "jp.whiteflare.worldtools": {
-      "version": "1.14.0",
+      "version": "1.14.1",
       "dependencies": {
         "com.vrchat.worlds": "^3.1.13"
       }
