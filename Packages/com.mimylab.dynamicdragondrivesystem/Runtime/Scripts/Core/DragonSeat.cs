@@ -7,8 +7,6 @@ https://opensource.org/license/mit
 namespace MimyLab.DynamicDragonDriveSystem
 {
     using UdonSharp;
-    using UnityEditor.EditorTools;
-
     using UnityEngine;
     using VRC.SDKBase;
     using VRCStation = VRC.SDK3.Components.VRCStation;
@@ -28,10 +26,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField, Min(0.0f), Tooltip("m/s")]
         private float _adjustSpeed = 0.5f;
 
-        [Header("Advanced Options")]
-        [SerializeField]
-        private Transform _snapPoint;
-
         [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
         private Vector3 sync_adjustPoint;
 
@@ -44,9 +38,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _isMount = false;
         private int _mountedPlayerId = -1;
         private Vector3 _localAdjustPoint;
-        private Transform _defaultParent;
-        private Vector3 _defaultPosition;
-        private Quaternion _defaultRotation;
 
         public Vector3 AdjustPoint
         {
@@ -92,10 +83,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             _seatInput = GetComponent<SeatInputManager>();
             _enterPoint = _station.stationEnterPlayerLocation ? _station.stationEnterPlayerLocation : _station.transform;
             _localAdjustPoint = _enterPoint.localPosition;
-
-            _defaultParent = transform.parent;
-            _defaultPosition = transform.localPosition;
-            _defaultRotation = transform.localRotation;
 
             _station.PlayerMobility = VRCStation.Mobility.ImmobilizeForVehicle;
             _station.canUseStationFromStation = false;
@@ -188,11 +175,6 @@ namespace MimyLab.DynamicDragonDriveSystem
 
                 OnLocalPlayerMount();
             }
-            else if (_snapPoint)
-            {
-                transform.SetParent(_snapPoint);
-                transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-            }
         }
 
         private protected virtual void OnPlayerUnmount(VRCPlayerApi player)
@@ -210,11 +192,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _rider._OnSeatRided(false);
 
                 OnLocalPlayerUnmount();
-            }
-            else if (_snapPoint)
-            {
-                transform.SetParent(_defaultParent);
-                transform.SetLocalPositionAndRotation(_defaultPosition, _defaultRotation);
             }
         }
 
