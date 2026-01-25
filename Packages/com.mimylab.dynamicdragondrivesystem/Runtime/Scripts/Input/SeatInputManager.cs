@@ -61,6 +61,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             }
         }
 
+        private void Reset()
+        {
+            enabled = false;
+        }
+
         private void OnDisable()
         {
             _inputAdjust = Vector3.zero;

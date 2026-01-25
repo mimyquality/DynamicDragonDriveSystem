@@ -27,12 +27,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         [SerializeField]
         private Transform _snapPoint;
 
+        private bool _emptyStation = true;
         private bool _isInStation = false;
 
         private Transform _thisParent;
         private Vector3 _defaultPosition;
         private Quaternion _defaultRotation;
 
+        private Vector3 _targetPosition;
         private Vector3 _followPosition;
         private Quaternion _prevParentRotation;
         private Vector3 _currentVelocity;
@@ -42,25 +44,30 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_initialized) { return; }
 
+            _thisParent = transform.parent;
             _defaultPosition = transform.localPosition;
             _defaultRotation = transform.localRotation;
-
-            _thisParent = transform.parent;
-            _followPosition = transform.position;
-            _prevParentRotation = _thisParent.rotation;
 
             _initialized = true;
         }
         private void Start()
         {
             Initialize();
+
+            if (_emptyStation) { enabled = false; }
         }
 
         private void LateUpdate()
         {
+            if (_emptyStation) { return; }
+
             if (_isInStation)
             {
-                SeatDamping();
+                DampSeat();
+            }
+            else
+            {
+                SnapSeat();
             }
         }
 
@@ -68,17 +75,14 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
+            enabled = true;
+            _emptyStation = false;
+
             if (player.isLocal)
             {
                 _isInStation = true;
                 _followPosition = transform.position;
                 _prevParentRotation = _thisParent.rotation;
-
-            }
-            else if (_snapPoint)
-            {
-                transform.SetParent(_snapPoint);
-                transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             }
         }
 
@@ -86,23 +90,20 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-            if (player.isLocal)
-            {
-                _isInStation = false;
-            }
-            else if (_snapPoint)
-            {
-                transform.SetParent(_thisParent);
-            }
+            enabled = false;
+            _emptyStation = true;
+            _isInStation = false;
 
             transform.SetLocalPositionAndRotation(_defaultPosition, _defaultRotation);
         }
 
-        private void SeatDamping()
+        private void DampSeat()
         {
-            // ローカル座標化
-            _followPosition = Quaternion.Inverse(_prevParentRotation) * _thisParent.rotation * _thisParent.InverseTransformPoint(_followPosition);
+            // 回転分を補正
+            _thisParent.GetPositionAndRotation(out Vector3 parentPosition, out Quaternion parentRotation);
+            _followPosition = Quaternion.Inverse(_prevParentRotation) * parentRotation * (_followPosition - parentPosition) + parentPosition;
 
+            Vector3 targetPosition = _thisParent.TransformPoint(_defaultPosition);
             _followPosition = Vector3.SmoothDamp(_followPosition, _defaultPosition, ref _currentVelocity, _dampingRate);
             _followPosition.x = Mathf.Clamp(_followPosition.x - _defaultPosition.x, -_suspensionDistance.x, _suspensionDistance.x) + _defaultPosition.x;
             _followPosition.y = Mathf.Clamp(_followPosition.y - _defaultPosition.y, -_suspensionDistance.y, _suspensionDistance.y) + _defaultPosition.y;
@@ -111,6 +112,14 @@ namespace MimyLab.DynamicDragonDriveSystem
 
             _followPosition = _thisParent.TransformPoint(_followPosition);
             _prevParentRotation = _thisParent.rotation;
+        }
+
+        private void SnapSeat()
+        {
+            if (_snapPoint)
+            {
+                transform.SetPositionAndRotation(_snapPoint.position, _snapPoint.rotation);
+            }
         }
     }
 }
