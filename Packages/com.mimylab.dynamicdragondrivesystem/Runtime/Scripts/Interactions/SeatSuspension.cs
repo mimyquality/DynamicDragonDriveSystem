@@ -19,9 +19,9 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         // ダンパー調整パラメーター
         [SerializeField, Min(0.0f), Tooltip("meter")]
-        private Vector3 _suspensionDistance = new Vector3(0.0f, 0.2f, 0.0f);
+        private Vector3 _suspensionDistance = new Vector3(0.0f, 0.05f, 0.0f);
         [SerializeField, Min(0.0f)]
-        private float _dampingRate = 0.1f;
+        private float _dampingRate = 0.02f;
 
         [Header("Advanced Options")]
         [SerializeField]
@@ -34,9 +34,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _defaultPosition;
         private Quaternion _defaultRotation;
 
-        private Vector3 _targetPosition;
         private Vector3 _followPosition;
-        private Quaternion _prevParentRotation;
         private Vector3 _currentVelocity;
 
         private bool _initialized = false;
@@ -61,13 +59,19 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             if (_emptyStation) { return; }
 
+            if (!_isInStation)
+            {
+                Snap();
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (_emptyStation) { return; }
+
             if (_isInStation)
             {
-                DampSeat();
-            }
-            else
-            {
-                SnapSeat();
+                Damp();
             }
         }
 
@@ -82,7 +86,6 @@ namespace MimyLab.DynamicDragonDriveSystem
             {
                 _isInStation = true;
                 _followPosition = transform.position;
-                _prevParentRotation = _thisParent.rotation;
             }
         }
 
@@ -97,24 +100,26 @@ namespace MimyLab.DynamicDragonDriveSystem
             transform.SetLocalPositionAndRotation(_defaultPosition, _defaultRotation);
         }
 
-        private void DampSeat()
+        private void Damp()
         {
-            // 回転分を補正
-            _thisParent.GetPositionAndRotation(out Vector3 parentPosition, out Quaternion parentRotation);
-            _followPosition = Quaternion.Inverse(_prevParentRotation) * parentRotation * (_followPosition - parentPosition) + parentPosition;
+            // ローカル座標化
+            Vector3 followPosition = transform.InverseTransformPoint(_followPosition);
+            Vector3 targetPosition = transform.InverseTransformPoint(_thisParent.TransformPoint(_defaultPosition));
 
-            Vector3 targetPosition = _thisParent.TransformPoint(_defaultPosition);
-            _followPosition = Vector3.SmoothDamp(_followPosition, _defaultPosition, ref _currentVelocity, _dampingRate);
-            _followPosition.x = Mathf.Clamp(_followPosition.x - _defaultPosition.x, -_suspensionDistance.x, _suspensionDistance.x) + _defaultPosition.x;
-            _followPosition.y = Mathf.Clamp(_followPosition.y - _defaultPosition.y, -_suspensionDistance.y, _suspensionDistance.y) + _defaultPosition.y;
-            _followPosition.z = Mathf.Clamp(_followPosition.z - _defaultPosition.z, -_suspensionDistance.z, _suspensionDistance.z) + _defaultPosition.z;
-            transform.localPosition = _followPosition;
+            Vector3 min = targetPosition - _suspensionDistance;
+            Vector3 max = targetPosition + _suspensionDistance;
+            followPosition.x = Mathf.Clamp(followPosition.x, min.x, max.x);
+            followPosition.y = Mathf.Clamp(followPosition.y, min.y, max.y);
+            followPosition.z = Mathf.Clamp(followPosition.z, min.z, max.z);
 
-            _followPosition = _thisParent.TransformPoint(_followPosition);
-            _prevParentRotation = _thisParent.rotation;
+            followPosition = Vector3.SmoothDamp(followPosition, targetPosition, ref _currentVelocity, _dampingRate);
+
+            // ワールド座標に戻して書き込み
+            _followPosition = transform.TransformPoint(followPosition);
+            transform.position = _followPosition;
         }
 
-        private void SnapSeat()
+        private void Snap()
         {
             if (_snapPoint)
             {
