@@ -19,7 +19,7 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         // ダンパー調整パラメーター
         [SerializeField, Min(0.0f), Tooltip("meter")]
-        private Vector3 _suspensionDistance = new Vector3(0.0f, 0.05f, 0.0f);
+        private Vector3 _suspensionDistance = new Vector3(0.0f, 0.1f, 0.0f);
         [SerializeField, Min(0.0f)]
         private float _dampingRate = 0.02f;
 
