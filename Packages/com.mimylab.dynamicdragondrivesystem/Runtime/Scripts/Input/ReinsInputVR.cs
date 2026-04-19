@@ -11,12 +11,6 @@ namespace MimyLab.DynamicDragonDriveSystem
     using VRC.SDKBase;
     using VRC.Udon.Common;
 
-    public enum ReinsInputVRGrabMode
-    {
-        Hold,
-        Toggle,
-    }
-
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Input/ReinsInput VRLever")]
     public class ReinsInputVR : ReinsInputManager
@@ -33,7 +27,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _brakesAcceptanceThreshold = 0.95f;
 
         private VRCPlayerApi _localPlayer;
-        private ReinsInputVRGrabMode _vrGrabMode;
         private bool _isGrabLeft, _isGrabRight;
         private bool _flagGrabLeft, _flagGrabRight;
         private Vector3 _originPosition, _leftGrabPosition, _rightGrabPosition;
@@ -45,12 +38,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private Vector3 _leftGrabRotate, _rightGrabRotate;
         //private Vector3 _leftHandRotate, _rightHandRotate;
         private bool _prevGrabJump;
-
-        public ReinsInputVRGrabMode VRGrabMode
-        {
-            get => _vrGrabMode;
-            set => _vrGrabMode = value;
-        }
 
         private void Start()
         {

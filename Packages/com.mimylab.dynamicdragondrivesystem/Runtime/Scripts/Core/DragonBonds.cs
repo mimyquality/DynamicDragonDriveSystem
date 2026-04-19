@@ -13,7 +13,7 @@ namespace MimyLab.DynamicDragonDriveSystem
 
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Bonds")]
-    [RequireComponent(typeof(VRCPlayerObject), typeof(VRCEnablePersistence))]
+    [RequireComponent(typeof(VRCEnablePersistence))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class DragonBonds : UdonSharpBehaviour
     {
@@ -34,13 +34,13 @@ namespace MimyLab.DynamicDragonDriveSystem
         [UdonSynced] private byte[] sync_throttleInputHand = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_turningInputHand = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private byte[] sync_elevatorInputHand = new byte[(int)DragonReinsInputType.Count];
+        [UdonSynced] private byte[] sync_vrGrabMode = new byte[(int)DragonReinsInputType.Count];
         [UdonSynced] private bool[] sync_invertThrust = new bool[(int)DragonReinsInputType.Count];
         [UdonSynced] private bool[] sync_invertClimb = new bool[(int)DragonReinsInputType.Count];
         [UdonSynced] private bool[] sync_invertStrafe = new bool[(int)DragonReinsInputType.Count];
         [UdonSynced] private bool[] sync_invertElevator = new bool[(int)DragonReinsInputType.Count];
         [UdonSynced] private bool[] sync_invertLadder = new bool[(int)DragonReinsInputType.Count];
         [UdonSynced] private bool[] sync_invertAileron = new bool[(int)DragonReinsInputType.Count];
-        [UdonSynced] private byte[] sync_vrGrabMode = new byte[2];
         [UdonSynced] private bool sync_canopyIndication;
 
         // Saddle
@@ -55,13 +55,13 @@ namespace MimyLab.DynamicDragonDriveSystem
         internal int[] _throttleInputHand = new int[(int)DragonReinsInputType.Count];
         internal int[] _turningInputHand = new int[(int)DragonReinsInputType.Count];
         internal int[] _elevatorInputHand = new int[(int)DragonReinsInputType.Count];
+        internal int[] _vrGrabMode = new int[(int)DragonReinsInputType.Count];
         internal bool[] _invertThrust = new bool[(int)DragonReinsInputType.Count];
         internal bool[] _invertClimb = new bool[(int)DragonReinsInputType.Count];
         internal bool[] _invertStrafe = new bool[(int)DragonReinsInputType.Count];
         internal bool[] _invertElevator = new bool[(int)DragonReinsInputType.Count];
         internal bool[] _invertLadder = new bool[(int)DragonReinsInputType.Count];
         internal bool[] _invertAileron = new bool[(int)DragonReinsInputType.Count];
-        internal ReinsInputVRGrabMode[] _vrGrabMode = new ReinsInputVRGrabMode[2];
         // Canopy
         internal bool _canopyIndication;
 
@@ -104,6 +104,8 @@ namespace MimyLab.DynamicDragonDriveSystem
                 sync_turningInputHand[i] = (byte)select;
                 select = _elevatorInputHand[i];
                 sync_elevatorInputHand[i] = (byte)select;
+                select = _vrGrabMode[i];
+                sync_vrGrabMode[i] = (byte)select;
 
                 sync_invertThrust[i] = _invertThrust[i];
                 sync_invertClimb[i] = _invertClimb[i];
@@ -113,16 +115,13 @@ namespace MimyLab.DynamicDragonDriveSystem
                 sync_invertAileron[i] = _invertAileron[i];
             }
 
-            select = (int)_vrGrabMode[0];
-            sync_vrGrabMode[0] = (byte)select;
-            select = (int)_vrGrabMode[1];
-            sync_vrGrabMode[1] = (byte)select;
-
             sync_canopyIndication = _canopyIndication;
         }
 
         public override void OnDeserialization()
         {
+            if (!Networking.IsOwner(this.gameObject)) { return; }
+
             Initialize();
 
             _seatPosition = sync_seatPosition;
@@ -137,6 +136,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _throttleInputHand[i] = (int)sync_throttleInputHand[i];
                 _turningInputHand[i] = (int)sync_turningInputHand[i];
                 _elevatorInputHand[i] = (int)sync_elevatorInputHand[i];
+                _vrGrabMode[i] = (int)sync_vrGrabMode[i];
 
                 _invertThrust[i] = sync_invertThrust[i];
                 _invertClimb[i] = sync_invertClimb[i];
@@ -146,15 +146,9 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _invertAileron[i] = sync_invertAileron[i];
             }
 
-            _vrGrabMode[0] = (ReinsInputVRGrabMode)sync_vrGrabMode[0];
-            _vrGrabMode[1] = (ReinsInputVRGrabMode)sync_vrGrabMode[1];
-
             _canopyIndication = sync_canopyIndication;
 
-            if (Networking.IsOwner(this.gameObject))
-            {
-                _rider._OnRemind(this);
-            }
+            _rider._OnRemind(this);
         }
 
         // Riderの方から一通り変更値を書き込み後、最後に実行(RequestSerialization()感覚で使う)
@@ -192,13 +186,13 @@ namespace MimyLab.DynamicDragonDriveSystem
             memorizedBonds._throttleInputHand.CopyTo(_throttleInputHand, 0);
             memorizedBonds._turningInputHand.CopyTo(_turningInputHand, 0);
             memorizedBonds._elevatorInputHand.CopyTo(_elevatorInputHand, 0);
+            memorizedBonds._vrGrabMode.CopyTo(_vrGrabMode, 0);
             memorizedBonds._invertThrust.CopyTo(_invertThrust, 0);
             memorizedBonds._invertClimb.CopyTo(_invertClimb, 0);
             memorizedBonds._invertStrafe.CopyTo(_invertStrafe, 0);
             memorizedBonds._invertElevator.CopyTo(_invertElevator, 0);
             memorizedBonds._invertLadder.CopyTo(_invertLadder, 0);
             memorizedBonds._invertAileron.CopyTo(_invertAileron, 0);
-            memorizedBonds._vrGrabMode.CopyTo(_vrGrabMode, 0);
             // Canopy
             _canopyIndication = memorizedBonds._canopyIndication;
 

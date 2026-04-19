@@ -4,6 +4,13 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [1.1.1] - 2026/4/19
+
+**Changed**  
+
+- 内部的に ReinsInput 系コンポーネントの処理共通化
+  - これに伴い、この更新を反映したワールドでは入力コンフィグのサーバー保存状態がリセットされます。
+
 ## [1.1.0] - 2026/2/1
 
 **Added**  
@@ -57,6 +64,7 @@
 
 正式リリース
 
+[1.1.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.1.1
 [1.1.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.1.0
 [1.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.5
 [1.0.4]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.4

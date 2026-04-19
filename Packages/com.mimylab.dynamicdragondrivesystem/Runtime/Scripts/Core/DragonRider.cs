@@ -88,6 +88,11 @@ namespace MimyLab.DynamicDragonDriveSystem
             return value == 1 ? HandType.LEFT : HandType.RIGHT;
         }
 
+        public static ReinsInputVRGrabMode IntToGrabMode(int value)
+        {
+            return value == 1 ? ReinsInputVRGrabMode.Toggle : ReinsInputVRGrabMode.Hold;
+        }
+
         private bool _initialized = false;
         private void Initialize()
         {
@@ -265,6 +270,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _bonds._throttleInputHand[i] = (int)reinsInput.ThrottleInputHand;
                 _bonds._turningInputHand[i] = (int)reinsInput.TurnInputHand;
                 _bonds._elevatorInputHand[i] = (int)reinsInput.ElevatorInputHand;
+                _bonds._vrGrabMode[i] = (int)reinsInput.VRGrabMode;
 
                 _bonds._invertThrust[i] = reinsInput.ThrustIsInvert;
                 _bonds._invertClimb[i] = reinsInput.ClimbIsInvert;
@@ -272,18 +278,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _bonds._invertElevator[i] = reinsInput.ElevatorIsInvert;
                 _bonds._invertLadder[i] = reinsInput.LadderIsInvert;
                 _bonds._invertAileron[i] = reinsInput.AileronIsInvert;
-
-                switch ((DragonReinsInputType)i)
-                {
-                    case DragonReinsInputType.VRHands:
-                        ReinsInputVR vrHands = _reins.vrHands;
-                        if (vrHands) { _bonds._vrGrabMode[0] = vrHands.VRGrabMode; }
-                        break;
-                    case DragonReinsInputType.VRHands2:
-                        ReinsInputVR2 vrHands2 = _reins.vrHands2;
-                        if (vrHands2) { _bonds._vrGrabMode[1] = vrHands2.VRGrabMode; }
-                        break;
-                }
             }
 
             // Canopy
@@ -308,6 +302,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             int[] throttleInputHand = bonds._throttleInputHand;
             int[] turningInputHand = bonds._turningInputHand;
             int[] elevatorInputHand = bonds._elevatorInputHand;
+            int[] vrGrabMode = bonds._vrGrabMode;
             bool[] invertThrust = bonds._invertThrust;
             bool[] invertClimb = bonds._invertClimb;
             bool[] invertStrafe = bonds._invertStrafe;
@@ -322,6 +317,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 reinsInput.ThrottleInputHand = IntToHandType(throttleInputHand[i]);
                 reinsInput.TurnInputHand = IntToHandType(turningInputHand[i]);
                 reinsInput.ElevatorInputHand = IntToHandType(elevatorInputHand[i]);
+                reinsInput.VRGrabMode = IntToGrabMode(vrGrabMode[i]);
 
                 reinsInput.ThrustIsInvert = invertThrust[i];
                 reinsInput.ClimbIsInvert = invertClimb[i];
@@ -330,11 +326,6 @@ namespace MimyLab.DynamicDragonDriveSystem
                 reinsInput.LadderIsInvert = invertLadder[i];
                 reinsInput.AileronIsInvert = invertAileron[i];
             }
-
-            ReinsInputVR vrHands = _reins.vrHands;
-            if (vrHands) { vrHands.VRGrabMode = bonds._vrGrabMode[0]; }
-            ReinsInputVR2 vrHands2 = _reins.vrHands2;
-            if (vrHands2) { vrHands2.VRGrabMode = bonds._vrGrabMode[1]; }
 
             // Canopy
             ShowCanopy(bonds._canopyIndication);
@@ -530,20 +521,12 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         private void VRGrabMode(RiderInstructSelect selector)
         {
-            var select = (ReinsInputVRGrabMode)selector.Select;
-            switch (selector._targetReinsInput)
-            {
-                case DragonReinsInputType.VRHands:
-                    ReinsInputVR vrHands = _reins.vrHands;
-                    if (vrHands) { vrHands.VRGrabMode = select; }
-                    if (_bonds) { _bonds._vrGrabMode[0] = select; }
-                    break;
-                case DragonReinsInputType.VRHands2:
-                    ReinsInputVR2 vrHands2 = _reins.vrHands2;
-                    if (vrHands2) { vrHands2.VRGrabMode = select; }
-                    if (_bonds) { _bonds._vrGrabMode[1] = select; }
-                    break;
-            }
+            int select = selector.Select;
+            DragonReinsInputType target = selector._targetReinsInput;
+            ReinsInputManager reinsInput = _reins._GetInput(target);
+            if (reinsInput) { reinsInput.VRGrabMode = (ReinsInputVRGrabMode)select; }
+
+            if (_bonds) { _bonds._vrGrabMode[(int)target] = select; }
         }
 
         private void ShowCanopy(RiderInstructToggle toggler)
@@ -653,17 +636,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                     if (reinsInput) { _selects[index]._OnValueChanged((int)reinsInput.ElevatorInputHand); }
                     break;
                 case DragonRiderSelectInstruction.VRGrabMode:
-                    switch (_selects[index]._targetReinsInput)
-                    {
-                        case DragonReinsInputType.VRHands:
-                            ReinsInputVR vrHands = _reins.vrHands;
-                            if (vrHands) { _selects[index]._OnValueChanged((int)vrHands.VRGrabMode); }
-                            break;
-                        case DragonReinsInputType.VRHands2:
-                            ReinsInputVR2 vrHands2 = _reins.vrHands2;
-                            if (vrHands2) { _selects[index]._OnValueChanged((int)vrHands2.VRGrabMode); }
-                            break;
-                    }
+                    if (reinsInput) { _selects[index]._OnValueChanged((int)reinsInput.VRGrabMode); }
                     break;
             }
         }

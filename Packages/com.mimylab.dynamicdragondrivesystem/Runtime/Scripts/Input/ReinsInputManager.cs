@@ -10,6 +10,12 @@ namespace MimyLab.DynamicDragonDriveSystem
     using UnityEngine;
     using VRC.Udon.Common;
 
+    public enum ReinsInputVRGrabMode
+    {
+        Hold,
+        Toggle,
+    }
+
     [Icon(ComponentIconPath.DDDSystem)]
     [DefaultExecutionOrder(-10)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
@@ -21,6 +27,8 @@ namespace MimyLab.DynamicDragonDriveSystem
         private protected HandType _turningInputHand = HandType.RIGHT;
         [SerializeField, HideInInspector]
         private protected HandType _elevatorInputHand = HandType.RIGHT;
+        //[SerializeField, HideInInspector]
+        private protected ReinsInputVRGrabMode _vrGrabMode = ReinsInputVRGrabMode.Hold;
 
         internal DragonDriver _driver;
 
@@ -75,6 +83,11 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             get => _elevatorInputHand;
             set => _elevatorInputHand = value;
+        }
+        public ReinsInputVRGrabMode VRGrabMode
+        {
+            get => _vrGrabMode;
+            set => _vrGrabMode = value;
         }
 
         public virtual float Thrust { get => _thrust; }

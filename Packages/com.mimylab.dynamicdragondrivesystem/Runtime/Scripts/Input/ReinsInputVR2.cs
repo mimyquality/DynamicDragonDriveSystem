@@ -35,7 +35,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private AnimationCurve _throttleInputCurve;
 
         private VRCPlayerApi _localPlayer;
-        private ReinsInputVRGrabMode _vrGrabMode;
         private bool _isGrabLeft, _isGrabRight, _isGrabBoth;
         private bool _flagGrabBoth;
         private Vector3 _originPosition, _leftHandPosition, _rightHandPosition;
@@ -50,12 +49,6 @@ namespace MimyLab.DynamicDragonDriveSystem
         private bool _prevGrabJump;
 
         public override float Turn { get => -_ladder; }  // _ladder == _aileron なので
-
-        public ReinsInputVRGrabMode VRGrabMode
-        {
-            get => _vrGrabMode;
-            set => _vrGrabMode = value;
-        }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR 
         private void Reset()
