@@ -4,11 +4,10 @@ Released under the MIT license
 https://opensource.org/license/mit
 */
 
+using UnityEngine;
+
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using UdonSharp;
-    using UnityEngine;
-
     [Icon(ComponentIconPath.DDDSystem)]
     [AddComponentMenu("Dynamic Dragon Drive System/Core/Dragon Saddle")]
     public class DragonSaddle : DragonSeat

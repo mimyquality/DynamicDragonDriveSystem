@@ -17,10 +17,10 @@ namespace MimyLab.DynamicDragonDriveSystem
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (!Utilities.IsValid(other)) { return; }
+            if (!Utilities.IsValid(other)) return;
 
             var driver = other.GetComponent<DragonDriver>();
-            if (!driver) { return; }
+            if (!driver) return;
 
             PlayEffect(driver.transform.position, driver.Velocity);
         }

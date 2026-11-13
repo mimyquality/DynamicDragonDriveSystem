@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7536859802946290129}
   - component: {fileID: 292322496838675775}
   - component: {fileID: 4408586410104371654}
+  - component: {fileID: 5772408374338058543}
   m_Layer: 5
   m_Name: Tooltip_Lock
   m_TagString: Untagged
@@ -35,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.9}
-  m_SizeDelta: {x: 15, y: 6.5}
+  m_SizeDelta: {x: 20, y: 6.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &292322496838675775
 MeshRenderer:
@@ -99,12 +100,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Disable Adjust Input</b>
-
-
-    Long press jump button
-
-    to get down.'
+  m_text: "<b>\u5EA7\u9AD8\u8ABF\u6574\u6A5F\u80FD\uFF1A\u7121\u52B9</b>\n<b>Disable
+    Adjust Input</b>\n\u30B8\u30E3\u30F3\u30D7\u30DC\u30BF\u30F3\u9577\u62BC\u3057\u3067\u964D\u308A\u308B\nLong
+    press jump button to get down."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -113,8 +111,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293322470
+  m_fontColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -176,6 +174,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 292322496838675775}
   m_maskType: 0
+--- !u!114 &5772408374338058543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806258426275988792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 682552386, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facing: 0
+  _allowTilt: 1
+  _smoothingFactor: 0
+  _upFrom: {fileID: 966790105098646003}
+  _matchViewpointRotation: 0
 --- !u!1 &3139963829835910564
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +233,7 @@ GameObject:
   - component: {fileID: 748477984026463500}
   - component: {fileID: 8883794102824076051}
   - component: {fileID: 2304813248384157934}
+  - component: {fileID: 2803819867422864541}
   m_Layer: 5
   m_Name: Tooltip_Unlock
   m_TagString: Untagged
@@ -242,7 +258,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.9}
-  m_SizeDelta: {x: 15, y: 6.5}
+  m_SizeDelta: {x: 20, y: 6.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8883794102824076051
 MeshRenderer:
@@ -306,12 +322,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Enable Adjust Input</b>
-
-
-    Long press jump button
-
-    to get down.'
+  m_text: "<b>\u5EA7\u9AD8\u8ABF\u6574\u6A5F\u80FD\uFF1A\u6709\u52B9</b>\n<b>Enable
+    Adjust Input</b>\n\u30B8\u30E3\u30F3\u30D7\u30DC\u30BF\u30F3\u9577\u62BC\u3057\u3067\u964D\u308A\u308B\nLong
+    press jump button to get down."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -320,8 +333,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293322470
+  m_fontColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -383,6 +396,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8883794102824076051}
   m_maskType: 0
+--- !u!114 &2803819867422864541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342002481579944810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 682552386, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facing: 0
+  _allowTilt: 1
+  _smoothingFactor: 0
+  _upFrom: {fileID: 966790105098646003}
+  _matchViewpointRotation: 0
 --- !u!1 &6303974953373931228
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +570,7 @@ MonoBehaviour:
   interactText: Ride to seat
   interactTextGO: {fileID: 0}
   proximity: 2
+  OutlineRenderers: []
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
@@ -591,6 +622,7 @@ MonoBehaviour:
   interactText: Ride to tandem seat
   interactTextGO: {fileID: 0}
   proximity: 2
+  OutlineRenderers: []
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0

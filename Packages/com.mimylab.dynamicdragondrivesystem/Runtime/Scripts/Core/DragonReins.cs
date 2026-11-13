@@ -4,10 +4,12 @@ Released under the MIT license
 https://opensource.org/license/mit
 */
 
+using System;
+using UdonSharp;
+using UnityEngine;
+
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using UdonSharp;
-    using UnityEngine;
     //using VRC.SDKBase;
 
     public enum DragonReinsInputType
@@ -22,7 +24,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         Count
     }
 
-    [System.Flags]
+    [Flags]
     public enum DragonReinsChangeableInputTypes
     {
         None = 0,

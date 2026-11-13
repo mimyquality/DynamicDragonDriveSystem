@@ -4,11 +4,12 @@ Released under the MIT license
 https://opensource.org/license/mit
 */
 
+using UdonSharp;
+using UnityEngine;
+using VRC.SDKBase;
+
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using UdonSharp;
-    using UnityEngine;
-    using VRC.SDKBase;
     using VRCStation = VRC.SDK3.Components.VRCStation;
 
     [Icon(ComponentIconPath.DDDSystem)]
@@ -27,7 +28,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private float _adjustSpeed = 0.5f;
 
         [UdonSynced, FieldChangeCallback(nameof(AdjustPoint))]
-        private Vector3 sync_adjustPoint;
+        private Vector3 n_adjustPoint;
 
         internal DragonRider _rider;
 
@@ -41,16 +42,16 @@ namespace MimyLab.DynamicDragonDriveSystem
 
         public Vector3 AdjustPoint
         {
-            get => sync_adjustPoint;
+            get => n_adjustPoint;
             set
             {
                 Initialize();
 
-                sync_adjustPoint.x = Mathf.Clamp(value.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
-                sync_adjustPoint.y = Mathf.Clamp(value.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
-                sync_adjustPoint.z = Mathf.Clamp(value.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
+                n_adjustPoint.x = Mathf.Clamp(value.x, _minSeatAdjustment.x, _maxSeatAdjustment.x);
+                n_adjustPoint.y = Mathf.Clamp(value.y, _minSeatAdjustment.y, _maxSeatAdjustment.y);
+                n_adjustPoint.z = Mathf.Clamp(value.z, _minSeatAdjustment.z, _maxSeatAdjustment.z);
 
-                _enterPoint.localPosition = sync_adjustPoint;
+                _enterPoint.localPosition = n_adjustPoint;
 
                 RequestSerialization();
             }
@@ -84,7 +85,7 @@ namespace MimyLab.DynamicDragonDriveSystem
             _enterPoint = _station.stationEnterPlayerLocation ? _station.stationEnterPlayerLocation : _station.transform;
             _localAdjustPoint = _enterPoint.localPosition;
 
-            _station.PlayerMobility = VRCStation.Mobility.ImmobilizeForVehicle;
+            _station.PlayerMobility = VRC.SDKBase.VRCStation.Mobility.ImmobilizeForVehicle;
             _station.canUseStationFromStation = false;
             _station.disableStationExit = true;
 
@@ -131,7 +132,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             Initialize();
 
-            Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
             _station.UseStation(Networking.LocalPlayer);
         }
 
@@ -153,7 +154,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         {
             _localAdjustPoint = position;
 
-            if (Networking.IsOwner(this.gameObject))
+            if (Networking.IsOwner(gameObject))
             {
                 AdjustPoint = _localAdjustPoint;
             }
@@ -170,7 +171,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _isRide = true;
                 AdjustPoint = _localAdjustPoint;
                 _seatInput.enabled = true;
-                this.DisableInteractive = true;
+                DisableInteractive = true;
                 _rider._OnSeatRided(true);
 
                 OnLocalPlayerMount();
@@ -188,7 +189,7 @@ namespace MimyLab.DynamicDragonDriveSystem
                 _isRide = false;
                 _localAdjustPoint = AdjustPoint;
                 _seatInput.enabled = false;
-                this.DisableInteractive = false;
+                DisableInteractive = false;
                 _rider._OnSeatRided(false);
 
                 OnLocalPlayerUnmount();

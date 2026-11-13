@@ -4,10 +4,11 @@ Released under the MIT license
 https://opensource.org/license/mit
 */
 
+using UdonSharp;
+using UnityEngine;
+
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using UdonSharp;
-    using UnityEngine;
     //using VRC.SDKBase;
 
     [Icon(ComponentIconPath.DDDSystem)]

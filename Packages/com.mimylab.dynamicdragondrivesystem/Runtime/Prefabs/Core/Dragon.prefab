@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3311772992720924186}
   - component: {fileID: 3311772992720924181}
   - component: {fileID: 3311772992720924180}
-  - component: {fileID: 4268892602610182705}
+  - component: {fileID: 874277431519772590}
   - component: {fileID: 199909266594195303}
   - component: {fileID: 9001113461601927758}
+  - component: {fileID: 4268892602610182705}
   - component: {fileID: 7994871193463562907}
   m_Layer: 13
   m_Name: Dragon
@@ -99,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllowCollisionOwnershipTransfer: 0
---- !u!114 &4268892602610182705
+  ForceKinematicOnRemote: 0
+--- !u!114 &874277431519772590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,21 +110,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3311772992720924177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7496fc6b1df73d745a9da0f9a80eadb7, type: 3}
+  m_Script: {fileID: -1767456517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  _udonSharpBackingUdonBehaviour: {fileID: 199909266594195303}
-  _collisionTriggerVelocity: 8
-  _collisionIncidenceAngle: 60
 --- !u!114 &199909266594195303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +129,7 @@ MonoBehaviour:
   interactText: Use
   interactTextGO: {fileID: 0}
   proximity: 2
+  OutlineRenderers: []
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
@@ -187,14 +178,37 @@ MonoBehaviour:
   _centerSnapTolerance: 5
   _stateShiftSpeed: 40
   _landingSpeed: 60
-  _enabledState: 7
-  _accelerateLimit: 5
+  _capableState: 7
   _jumpImpulse: 8
   _brakePower: 2
   _groundLayer:
     serializedVersion: 2
     m_Bits: 231703
   _slopeLimit: 45
+--- !u!114 &4268892602610182705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311772992720924177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7496fc6b1df73d745a9da0f9a80eadb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _udonSharpBackingUdonBehaviour: {fileID: 199909266594195303}
+  _collisionTriggerVelocity: 8
+  _collisionIncidenceAngle: 60
 --- !u!114 &7994871193463562907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +225,7 @@ MonoBehaviour:
   interactText: Use
   interactTextGO: {fileID: 0}
   proximity: 2
+  OutlineRenderers: []
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0

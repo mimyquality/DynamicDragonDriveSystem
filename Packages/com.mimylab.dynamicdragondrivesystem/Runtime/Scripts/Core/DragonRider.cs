@@ -4,13 +4,14 @@ Released under the MIT license
 https://opensource.org/license/mit
 */
 
+using System;
+using UdonSharp;
+using UnityEngine;
+using VRC.SDKBase;
+using VRC.Udon.Common;
+
 namespace MimyLab.DynamicDragonDriveSystem
 {
-    using UdonSharp;
-    using UnityEngine;
-    using VRC.SDKBase;
-    using VRC.Udon.Common;
-
     public enum DragonRiderToggleInstruction
     {
         SeatAdjust,
@@ -83,12 +84,12 @@ namespace MimyLab.DynamicDragonDriveSystem
         public bool IsRide { get => _isRide; }
         public bool IsMount { get => _isMount; }
 
-        public static HandType IntToHandType(int value)
+        private static HandType IntToHandType(int value)
         {
             return value == 1 ? HandType.LEFT : HandType.RIGHT;
         }
 
-        public static ReinsInputVRGrabMode IntToGrabMode(int value)
+        private static ReinsInputVRGrabMode IntToGrabMode(int value)
         {
             return value == 1 ? ReinsInputVRGrabMode.Toggle : ReinsInputVRGrabMode.Hold;
         }
@@ -562,7 +563,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void FeedbackToggles(DragonRiderToggleInstruction instruction)
         {
             int index = 0;
-            while ((index = System.Array.IndexOf(_togglesInstruction, instruction, index)) > -1)
+            while ((index = Array.IndexOf(_togglesInstruction, instruction, index)) > -1)
             {
                 FeedbackToggle(index++);
 
@@ -611,7 +612,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void FeedbackSelects(DragonRiderSelectInstruction instruction)
         {
             int index = 0;
-            while ((index = System.Array.IndexOf(_selectsInstruction, instruction, index)) > -1)
+            while ((index = Array.IndexOf(_selectsInstruction, instruction, index)) > -1)
             {
                 FeedbackSelect(index++);
 
@@ -651,7 +652,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void FeedbackSelectables(DragonRiderSelectInstruction instruction)
         {
             int index = 0;
-            while ((index = System.Array.IndexOf(_selectablesInstruction, instruction, index)) > -1)
+            while ((index = Array.IndexOf(_selectablesInstruction, instruction, index)) > -1)
             {
                 FeedbackSelectable(index++);
 
@@ -678,7 +679,7 @@ namespace MimyLab.DynamicDragonDriveSystem
         private void FeedbackVolumes(DragonRiderVolumeInstruction instruction)
         {
             int index = 0;
-            while ((index = System.Array.IndexOf(_volumesInstruction, instruction, index)) > -1)
+            while ((index = Array.IndexOf(_volumesInstruction, instruction, index)) > -1)
             {
                 FeedbackVolume(index++);
 

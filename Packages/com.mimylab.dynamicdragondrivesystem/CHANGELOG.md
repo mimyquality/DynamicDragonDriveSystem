@@ -4,6 +4,15 @@
 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)のフォーマットと、
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)の採番に則り更新されます。  
 
+## [1.2.0] - 2026/11/13
+
+VRCSDK - World 3.10.6 以上が必要になります。  
+
+**Changed**  
+
+- ドラゴンの速度と角速度を VRC Velocity Tracker から取得するように変更
+- 後部座席の Tips 表示に日本語を併記、更に VRC Billboard を追加し、ビューポイントの方を向くようにしました
+
 ## [1.1.1] - 2026/4/19
 
 **Changed**  
@@ -64,6 +73,7 @@
 
 正式リリース
 
+[1.2.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.2.0
 [1.1.1]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.1.1
 [1.1.0]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.1.0
 [1.0.5]: https://github.com/mimyquality/DynamicDragonDriveSystem/releases/tag/1.0.5
